@@ -12,6 +12,28 @@
 			"version": "latest"
 		}
 	},
+	"customizations": {
+		"codespaces": {
+			"repositories": {
+				"asasvirtuais/asasvirtuais": {
+					"permissions": {
+						"actions": "write",
+						"checks": "write",
+						"contents": "write",
+						"deployments": "write",
+						"discussions": "write",
+						"issues": "write",
+						"packages": "read",
+						"pages": "write",
+						"pull_requests": "write",
+						"repository_projects": "write",
+						"statuses": "write",
+						"workflows": "write"
+					}
+				}
+			}
+		}
+	},
 	"forwardPorts": [
 		3000
 	],
