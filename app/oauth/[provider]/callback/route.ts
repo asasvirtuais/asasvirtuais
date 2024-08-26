@@ -15,7 +15,7 @@ const exchangeCodeForToken = async (provider: string, code: string): Promise<Tok
             client_secret: clientSecret(provider) as string,
             code,
             grant_type: 'authorization_code',
-            redirect_uri: redirectUri()
+            redirect_uri: redirectUri(provider)
         })
     })
 
