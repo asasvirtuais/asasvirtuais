@@ -36,8 +36,9 @@ export const getById = (id: string) => (
 
 export const replace = (id: string, data: InsertCredential) => (
   kysely
-    .replaceInto('credentials')
-    .values({ ...data, id, created_at: new Date() })
+    .updateTable('credentials')
+    .where('id', '=', id)
+    .set({ ...data, created_at: new Date() })
     .returningAll()
     .executeTakeFirstOrThrow()
 )
