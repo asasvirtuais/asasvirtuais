@@ -1,6 +1,5 @@
 {
   "private": true,
-  "name": "@asasvirtuais/next-seed",
   "scripts": {
     "dev": "next dev",
     "lint": "next lint",
