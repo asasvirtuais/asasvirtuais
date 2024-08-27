@@ -10,13 +10,11 @@ export default forwardRef<Flicking, PropsWithChildren>(({ children }, ref) => {
             bound
             // circular
             align='prev'
-            onSelect={
-                e => e.panel.focus(0)
-                // .then(() => e.panel.element.focus())
-            }
+            onSelect={e => e.panel.focus(200)}
             preventClickOnDrag
             preventEventsBeforeInit
-            resizeDebounce={201}
+            resizeDebounce={550}
+            useFractionalSize
         >
             {children}
         </Flicking>
