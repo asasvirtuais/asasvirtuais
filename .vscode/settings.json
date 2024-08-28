@@ -31,5 +31,8 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     // Misc
-    "files.autoSave": "onWindowChange"
+    "files.autoSave": "onWindowChange",
+    "typescript.tsdk": "/usr/local/share/npm-global/lib/node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "js/ts.implicitProjectConfig.target": "ESNext"
 }

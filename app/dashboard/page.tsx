@@ -1,90 +1,9 @@
-import { Box, Container as ChakraContainer, Center, GridItem, GridItemProps, HStack, Grid, VStack, ContainerProps, Button, List, ListProps, ListItem, ButtonProps, LinkProps, Link } from '@chakra-ui/react'
+import { Center, GridItem, GridItemProps, HStack, VStack } from '@chakra-ui/react'
+import { Container } from './container'
+import { HNav, NavProps, VNav } from '../components/nav'
+import { NavItem } from '../components/nav'
+import { HMenu, MenuItem } from '../components/menu'
 
-const Container = ({ children, ...props }: ContainerProps) => (
-    <ChakraContainer maxW='full' {...props}>
-        {children}
-    </ChakraContainer>
-)
-
-type NavProps = ListProps
-
-const Nav = ({ children, ...props }: NavProps) => (
-    <List as='nav'
-        // Remove defaults
-        listStyleType='none' p={0} m={0}
-        {...props}>{children}</List>
-)
-
-const VNav = ({ children, ...props }: NavProps) => {
-    return (
-        <Nav
-            // Vertical Menu
-            flexDir='column'
-            // Alignment
-            justifyContent='space-between'
-            {...props}>{children}</Nav>
-    )
-}
-
-const HNav = ({ children, ...props }: NavProps) => {
-    return (
-        <Nav
-            // Horizontal Menu
-            display='flex' flexDir='row'
-            // Alignment
-            justifyContent='space-between'
-            {...props}>{children}</Nav>
-    )
-}
-
-const NavItem = ({ children, ...props }: LinkProps) => (
-    // ListItem is just boilerplate code, might want to replace it or apply role='link', not sure yet
-    <ListItem>
-        <Link size='sm' {...props}>
-            {children}
-        </Link>
-    </ListItem>
-)
-
-type MenuProps = ListProps
-
-const Menu = ({ children, ...props }: MenuProps) => (
-    <List as='menu'
-        // Remove defaults
-        listStyleType='none' p={0} m={0}
-        {...props}>{children}</List>
-)
-
-const VMenu = ({ children, ...props }: MenuProps) => {
-    return (
-        <Menu
-            // Vertical Menu
-            flexDir='column'
-            // Alignment
-            justifyContent='space-between'
-            {...props}>{children}</Menu>
-    )
-}
-
-const HMenu = ({ children, ...props }: MenuProps) => {
-    return (
-        <Menu
-            // Horizontal Menu
-            display='flex' flexDir='row'
-            // Alignment
-            justifyContent='space-between'
-            {...props}>{children}</Menu>
-    )
-}
-
-const MenuItem = ({ children, ...props }: ButtonProps) => (
-    // ListItem is just boilerplate code, might want to replace it or apply role='button', not sure yet
-    <ListItem>
-        <Button size='sm' variant='ghost' {...props}>
-            {children}
-        </Button>
-    </ListItem>
-)
 const Header = (props: Omit<GridItemProps, 'children'>) => (
     <GridItem as='header' {...props}>
         <Container>
