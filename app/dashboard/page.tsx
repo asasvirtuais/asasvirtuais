@@ -1,8 +1,8 @@
 import { Grid, Center, GridItem, GridItemProps, HStack, VStack } from '@chakra-ui/react'
 import { Container } from './container'
-import { HNav, NavProps, VNav } from '../components/nav'
-import { NavItem } from '../components/nav'
-import { HMenu, MenuItem } from '../components/menu'
+import { HNav, StackNavProps, VNav } from '@/app/components/stack/nav'
+import { NavItem } from '@/app/components/stack/nav'
+import { HMenu, MenuItem } from '@/app/components/stack/menu'
 
 const Header = (props: Omit<GridItemProps, 'children'>) => (
     <GridItem as='header' {...props}>
@@ -44,7 +44,7 @@ const Aside = ({ children, ...props }: GridItemProps) => (
     </GridItem>
 )
 
-const SideNav = (props: Omit<NavProps, 'children'>) => (
+const SideNav = (props: Omit<StackNavProps, 'children'>) => (
     <VNav {...props}>
         <NavItem>Nav item 1</NavItem>
         <NavItem>Nav item 2</NavItem>
@@ -90,3 +90,4 @@ export default function DashboardPage() {
         </Grid>
     )
 }
+
