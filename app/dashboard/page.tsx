@@ -1,4 +1,4 @@
-import { Center, GridItem, GridItemProps, HStack, VStack } from '@chakra-ui/react'
+import { Grid, Center, GridItem, GridItemProps, HStack, VStack } from '@chakra-ui/react'
 import { Container } from './container'
 import { HNav, NavProps, VNav } from '../components/nav'
 import { NavItem } from '../components/nav'
@@ -44,7 +44,7 @@ const Aside = ({ children, ...props }: GridItemProps) => (
     </GridItem>
 )
 
-const SideNav = (props: NavProps) => (
+const SideNav = (props: Omit<NavProps, 'children'>) => (
     <VNav {...props}>
         <NavItem>Nav item 1</NavItem>
         <NavItem>Nav item 2</NavItem>
