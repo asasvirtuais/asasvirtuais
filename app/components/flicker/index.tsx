@@ -1,4 +1,6 @@
 'use client'
+import '@egjs/flicking-plugins/dist/arrow.css'
+import '@egjs/react-flicking/dist/flicking.css'
 import { forwardRef } from 'react'
 import { PropsWithChildren } from 'react'
 import Flicking from '@egjs/react-flicking'

@@ -1,8 +1,4 @@
 import Flicker from '.'
-
-import '@egjs/flicking-plugins/dist/arrow.css'
-import '@egjs/react-flicking/dist/flicking.css'
-
 import { Box } from '@chakra-ui/react'
 import Panel from './panel'
 
