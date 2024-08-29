@@ -2,14 +2,14 @@ import type { StorybookConfig } from '@storybook/nextjs'
 
 const config: StorybookConfig = {
   stories: [
-    '../app/**/*/story.tsx',
+    '../**/*/story.tsx',
   ],
   addons: [
-    // '@storybook/addon-onboarding',
-    // '@storybook/addon-links',
+    '@storybook/addon-onboarding',
+    '@storybook/addon-links',
     '@storybook/addon-essentials',
-    // '@chromatic-com/storybook',
-    // '@storybook/addon-interactions',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
     '@chakra-ui/storybook-addon'
   ],
   features: {
