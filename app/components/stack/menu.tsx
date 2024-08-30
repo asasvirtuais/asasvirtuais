@@ -1,5 +1,5 @@
 'use client'
-import { As, forwardRef } from '@chakra-ui/react'
+import { As, PropsOf, forwardRef } from '@chakra-ui/react'
 import { StackList, VList, HList, StackListProps } from '@/app/components/stack/list'
 import useForwardAs from '@/app/hooks/useForwardAs'
 
@@ -13,6 +13,7 @@ export const StackMenu = forwardRef<StackListProps, typeof StackList>(({ childre
         justifyContent='space-between'
         {...props}>{children}</StackList>
 ))
+export type StackMenuProps = PropsOf<typeof StackMenu>
 
 export const HMenu = forwardRef<StackListProps, typeof HList>(({ children, ...props }, ref) => (
     <StackMenu ref={ref} as={HList} {...props}>{children}</StackMenu>
