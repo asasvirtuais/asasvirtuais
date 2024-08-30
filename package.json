@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybuild": "storybook build -o ./public/stories",
+    "postinstall": "storybook build -o ./public/stories"
   },
   "dependencies": {
     "@chakra-ui/provider": "^2.4.2",
