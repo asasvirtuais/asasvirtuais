@@ -1,37 +1,34 @@
 import { StackMenuProps, HMenu, MenuItem } from '@/app/components/stack/menu'
 import { StackNavProps, HNav, NavItem, StackNav } from '@/app/components/stack/nav'
+import { Heading } from '@chakra-ui/react'
 
 export const AppNav = (props: Omit<StackNavProps, 'children'>) => (
     <HNav {...props}>
-        <NavItem>Link A</NavItem>
-        <NavItem>Link B</NavItem>
-        <NavItem>Link C</NavItem>
+        <NavItem href='/'>
+            <Heading>Asas Virtuais</Heading>
+        </NavItem>
     </HNav>
 )
 export const AppMenu = (props: Omit<StackMenuProps, 'children'>) => (
     <HMenu {...props}>
-        <MenuItem>Menu A</MenuItem>
-        <MenuItem>Menu B</MenuItem>
-        <MenuItem>Menu C</MenuItem>
+        <MenuItem variant='solid' colorScheme='gray' >Logout</MenuItem>
     </HMenu>
 )
 export const SideNav = (props: Omit<StackNavProps, 'children'>) => (
     <StackNav {...props}>
-        <NavItem>Nav item 1</NavItem>
-        <NavItem>Nav item 2</NavItem>
-        <NavItem>Nav item 3</NavItem>
+        <NavItem href='/dashboard/credentials'>Access Credentials</NavItem>
     </StackNav>
 )
 export const SideMenu = (props: Omit<StackMenuProps, 'children'>) => (
     <HMenu {...props}>
-        <MenuItem>Action 1</MenuItem>
-        <MenuItem>Action 2</MenuItem>
+        <MenuItem></MenuItem>
+        <MenuItem></MenuItem>
     </HMenu>
 )
 export const ActionMenu = (props: Omit<StackMenuProps, 'children'>) => (
     <HMenu {...props}>
-        <MenuItem>Action 1</MenuItem>
-        <MenuItem>Action 2</MenuItem>
-        <MenuItem>Action 3</MenuItem>
+        <MenuItem></MenuItem>
+        <MenuItem></MenuItem>
+        <MenuItem></MenuItem>
     </HMenu>
 )

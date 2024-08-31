@@ -5,6 +5,7 @@ import { Container } from './container'
 
 import { ContainerProps } from '@chakra-ui/react'
 import { AppNav, AppMenu, SideNav, SideMenu, ActionMenu } from './menus'
+import { PropsWithChildren } from 'react'
 
 const Header = (props: GridItemProps) => (
     <GridItem as='header'
@@ -44,7 +45,7 @@ const Footer = ({ children, ...props }: GridItemProps) => (
         {children}
     </GridItem>
 )
-export default function DashboardPage() {
+export default function DashboardLayout({ children }: PropsWithChildren) {
     return (
         <Grid gridTemplateColumns='auto 1fr' gridTemplateRows='auto 1fr auto'
             bg='#F4F4F4'
@@ -57,7 +58,9 @@ export default function DashboardPage() {
                 </Navbar>
             </Header>
 
-            <Main colStart={2} colEnd={3} bg='#F4F4F4' />
+            <Main colStart={2} colEnd={3} bg='#F4F4F4'>
+                {children}
+            </Main>
 
             <Aside colStart={1} colEnd={2} rowStart={2} rowSpan={2} bg='#E4E4E4'>
                 <SideNav spacing={4} />
