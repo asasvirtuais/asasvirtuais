@@ -20,10 +20,7 @@ const Navbar = (props: ContainerProps) => (
         {...props} />
 )
 const Main = (props: GridItemProps) => (
-    <GridItem as='main'
-        // Alignment
-        display='flex' justifyContent='center' alignItems='center' flexDir='column'
-        {...props} />
+    <GridItem as='main' {...props} />
 )
 const Aside = ({ children, ...props }: GridItemProps) => (
     <GridItem as='aside'
