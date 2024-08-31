@@ -1,4 +1,4 @@
-import { Grid, GridItem, GridItemProps } from '@chakra-ui/react'
+import { Grid, GridItem, GridItemProps, VStack } from '@chakra-ui/react'
 
 import { Divider } from '@chakra-ui/react'
 import { Container } from './container'
@@ -50,7 +50,7 @@ export default function DashboardPage() {
             bg='#F4F4F4'
             minH='100vh'>
 
-            <Header colSpan={2} py={2} bg='#C4C4C4'>
+            <Header colSpan={2} bg='#C4C4C4'>
                 <Navbar>
                     <AppNav />
                     <AppMenu />
@@ -61,7 +61,7 @@ export default function DashboardPage() {
 
             <Aside colStart={1} colEnd={2} rowStart={2} rowSpan={2} bg='#E4E4E4'>
                 <SideNav spacing={4} />
-                <Divider size='lg' borderWidth='2px' colorScheme='gray' />
+                <Divider borderColor='gray.500' />
                 <SideMenu />
             </Aside>
             <Footer colStart={2} bg='#C4C4C4'>
