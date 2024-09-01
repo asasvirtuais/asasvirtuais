@@ -26,10 +26,10 @@ export const VMenu = forwardRef<StackListProps, typeof VList>(({ children, ...pr
 import { ListItem, Button, ButtonProps } from '@chakra-ui/react'
 
 export interface MenuItemProps extends ButtonProps { }
-export const MenuItem = forwardRef<MenuItemProps, As>(({ children, ...props }) => (
+export const MenuItem = forwardRef<MenuItemProps, As>(({ children, ...props }, ref) => (
     // ListItem is just boilerplate code, might want to replace it or apply role='button', not sure yet
     <ListItem>
-        <Button size='sm' variant='ghost' {...props}>
+        <Button ref={ref} size='sm' variant='ghost' {...props}>
             {children}
         </Button>
     </ListItem>

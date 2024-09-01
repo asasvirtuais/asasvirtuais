@@ -23,7 +23,8 @@
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.2.1"
+    "react-icons": "^5.2.1",
+    "react-use": "^17.5.1"
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.1.0",

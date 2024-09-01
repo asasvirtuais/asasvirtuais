@@ -1,5 +1,5 @@
 'use client'
-import { PropsOf, forwardRef } from '@chakra-ui/react'
+import { PropsOf, forwardRef, MergeWithAs, ListItemProps } from '@chakra-ui/react'
 import { StackList, VList, HList, StackListProps } from '@/app/components/stack/list'
 import useForwardAs from '@/app/hooks/useForwardAs'
 
@@ -24,13 +24,10 @@ export const VNav = forwardRef<StackListProps, typeof VList>(({ children, ...pro
     <StackNav ref={ref} as={VList} {...props}>{children}</StackNav>
 ))
 
-import { LinkProps, Link, ListItem } from '@chakra-ui/react'
+import { Link, ListItem } from '@chakra-ui/react'
 
-export const NavItem = ({ children, ...props }: LinkProps) => (
-    // ListItem is just boilerplate code, might want to replace it or apply role='link', not sure yet
-    <ListItem>
-        <Link size='sm' {...props}>
-            {children}
-        </Link>
+export const NavItem = forwardRef<ListItemProps, typeof Link>(({ children, as, ...props }, ref) => (
+    <ListItem ref={ref} size='sm' as={useForwardAs(Link, as)} {...props}>
+        {children}
     </ListItem>
-)
+))
