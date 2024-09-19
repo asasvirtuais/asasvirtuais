@@ -10,6 +10,11 @@
     "resolveJsonModule": true,
     "lib": [ "esnext" ]
   },
+  "paths": {
+    "@/*": [
+      "./*"
+    ]
+  },
   "include": [
     "**/*.ts",
     "**/*.tsx",
