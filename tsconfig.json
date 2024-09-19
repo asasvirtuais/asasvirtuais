@@ -1,7 +1,8 @@
 {
   "extends": [
     "./config/checks.tsconfig.json",
-    "./config/modules.tsconfig.json"
+    "./config/modules.tsconfig.json",
+    "./config/next.tsconfig.json"
   ],
   "compilerOptions": {
     "skipLibCheck": true,
