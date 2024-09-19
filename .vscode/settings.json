@@ -1,0 +1,31 @@
+{
+    // Editor
+    "editor.autoClosingDelete": "always",
+    "editor.autoClosingOvertype": "always",
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.stickyScroll.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Fira Code",
+    "editor.renderWhitespace": "all",
+    "editor.autoClosingComments": "always",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.formatOnSave": false,
+    // Git
+    "git.autofetch": true,
+    // Formatting Preferences
+    "html.completion.attributeDefaultValue": "singlequotes",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.format.semicolons": "remove",
+    // Language or extension specifics
+    "[jsonc][jsonl][json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    // Misc
+    "files.autoSave": "onWindowChange",
+    "typescript.tsdk": "/usr/local/share/npm-global/lib/node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "js/ts.implicitProjectConfig.target": "ESNext"
+}

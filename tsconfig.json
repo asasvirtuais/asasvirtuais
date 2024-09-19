@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "./config/checks.tsconfig.json",
+    "./config/modules.tsconfig.json"
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "lib": [ "esnext" ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

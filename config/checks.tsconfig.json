@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "strict": true,
+
+        // True if strict
+        // "alwaysStrict": true,
+        // "noImplicitAny": true,
+        // "noImplicitThis": true,
+        // "strictBindCallApply": true,
+        // "strictBuiltinIteratorReturn": true,
+        // "strictNullChecks": true,
+        // "strictPropertyInitialization": true,
+        // Seems to cause trouble with generics
+        "strictFunctionTypes": false,
+        // Not really helpful in my experience
+        "useUnknownInCatchVariables": false,
+
+        // Defaults undefined (just warnings)
+        // "allowUnreachableCode": undefined,
+        // Enforces explicit undefined,
+        "exactOptionalPropertyTypes": true,
+        // Sometimes I just do console.log during a switch
+        "noFallthroughCasesInSwitch": false,
+        // Class extensions must explicitly overwrite existing methods
+        "noImplicitOverride": true,
+        /** I rather avoid adding more code
+         *  if the code editor can accurately infer the type
+         *  with TypeScript help */
+        "noImplicitReturns": false,
+
+        // Most often unhelpful
+        "noUnusedLocals": false,
+        // These two might make things more difficult
+        // Enforces more explicity property attribute typing
+        "noPropertyAccessFromIndexSignature": true,
+        // Makes property access more strict
+        "noUncheckedIndexedAccess": true
+    }
+}
