@@ -9,7 +9,9 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "lib": [ "esnext" ],
+    "lib": [
+      "esnext"
+    ],
     "paths": {
       "@/*": [
         "./*"
@@ -19,7 +21,8 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

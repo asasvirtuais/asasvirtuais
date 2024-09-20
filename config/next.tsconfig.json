@@ -3,6 +3,7 @@
         "noEmit": true,
         "jsx": "preserve",
         "incremental": true,
+        "allowJs": true,
         "lib": [
             "dom",
             "dom.iterable",
@@ -15,8 +16,7 @@
         ]
     },
     "include": [
-        "next-env.d.ts",
-        ".next/types/**/*.ts"
+        "next-env.d.ts"
     ],
     "exclude": [
         ".next"
