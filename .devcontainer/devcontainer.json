@@ -1,0 +1,41 @@
+{
+	"name": "@asasvirtuais/devcontainer",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:20-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			// Defaults
+			"installDirectlyFromGitHubRelease": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/vercel-cli:1": {
+			// Defaults
+			"version": "latest"
+		}
+	},
+	"customizations": {
+		"codespaces": {
+			"repositories": {
+				"asasvirtuais/asasvirtuais": {
+					"permissions": {
+						"actions": "write",
+						"checks": "write",
+						"contents": "write",
+						"deployments": "write",
+						"discussions": "write",
+						"issues": "write",
+						"packages": "read",
+						"pages": "write",
+						"pull_requests": "write",
+						"repository_projects": "write",
+						"statuses": "write",
+						"workflows": "write"
+					}
+				}
+			}
+		}
+	},
+	"forwardPorts": [
+		3000
+	],
+	"postCreateCommand": "pnpm install"
+}
