@@ -1,8 +1,9 @@
 'use client'
-import { As, forwardRef } from '@chakra-ui/react'
+import type { ElementType } from 'react'
+import { forwardRef } from '@chakra-ui/react'
 import { Link as ChakraNextLink, LinkProps } from '@chakra-ui/next-js'
 
-const Link = forwardRef<LinkProps, As>((props, ref) => (
+const Link = forwardRef<LinkProps, ElementType>((props, ref) => (
     <ChakraNextLink ref={ref} {...props} />
 ))
 

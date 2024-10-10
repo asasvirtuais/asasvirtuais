@@ -29,7 +29,6 @@ import Link from '@/app/components/link'
 
 export const NavItem = forwardRef<ListItemProps, typeof Link>(({ children, as, ...props }, ref) => (
     <ListItem ref={ref}
-        // @ts-expect-error
         as={useForwardAs(Link, as)}
         {...props}>
         {children}

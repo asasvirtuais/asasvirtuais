@@ -1,5 +1,6 @@
 'use client'
-import { As, PropsOf, forwardRef } from '@chakra-ui/react'
+import type { ElementType } from 'react'
+import { PropsOf, forwardRef } from '@chakra-ui/react'
 import { StackList, VList, HList, StackListProps } from '@/app/components/stack/list'
 import useForwardAs from '@/app/hooks/useForwardAs'
 
@@ -27,7 +28,7 @@ export const VMenu = forwardRef<StackListProps, typeof VList>(({ children, ...pr
 import { ListItem, Button, ButtonProps } from '@chakra-ui/react'
 
 export interface MenuItemProps extends ButtonProps { }
-export const MenuItem = forwardRef<MenuItemProps, As>(({ children, ...props }, ref) => (
+export const MenuItem = forwardRef<MenuItemProps, ElementType>(({ children, ...props }, ref) => (
     // ListItem is just boilerplate code, might want to replace it or apply role='button', not sure yet
     <ListItem>
         <Button ref={ref} size='sm' variant='ghost' {...props}>
