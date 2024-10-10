@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ImageResponse } from 'next/og'
 import inject from 'fnts/inject'
-import { FunctionComponent, ReactNode } from 'react'
+import { FunctionComponent } from 'react'
 
 declare global {
     // Returns NextResponse, handles the request and returns a Response
@@ -17,8 +17,8 @@ declare global {
         R extends any = void
     > = (request: NextRequest, params?: { params: P }) => R
 
-    type NextLayoutHandler<P extends Record<string, string>> = FunctionComponent<P & { [SLOT: string] : ReactNode }>
-    type NextPageHandler<P extends Record<string, string>> = FunctionComponent<P>
+    type NextLayoutHandler<P = any> = FunctionComponent<P>
+    type NextPageHandler<P = any> = FunctionComponent<P>
 }
 
 
@@ -45,10 +45,10 @@ export const handleNextRouteAsync = <
 )
 
 export const route = handleNextRouteAsync
-export const layout = <P extends Record<string, string> = Record<string, string>>( handler: NextLayoutHandler<P> ) => (
+export const layout = <P = any>( handler: NextLayoutHandler<P> ) => (
     (props: P) => handler(props)
 )
-export const page = <P extends Record<string, string> = Record<string, string>>( handler: NextLayoutHandler<P> ) => (
+export const page = <P = any>( handler: NextLayoutHandler<P> ) => (
     (props: P) => handler(props)
 )
 
