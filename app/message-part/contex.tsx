@@ -7,11 +7,14 @@ import { createContext } from '@chakra-ui/react-context'
 
 export type MessagePartsProps = {
     value: MessagePart[]
+    message: string
 }
 
-const useMessagePartsHook = ( { value } : MessagePartsProps ) => {
+const useMessagePartsHook = ( { value, message } : MessagePartsProps ) => {
 
     const [messageParts, setMessageParts] = useState<MessagePart[]|undefined>(value)
+
+    // TODO: fetch message parts by message (id)
 
     return {
         messageParts,
@@ -20,7 +23,7 @@ const useMessagePartsHook = ( { value } : MessagePartsProps ) => {
 
 const [MessagePartsContextProvider, useMessagePartsContext] = createContext<ReturnType<typeof useMessagePartsHook>>()
 
-export const MessagePartsProvider = ( { children, ...props } : PropsWithChildren<MessagePartsProps> ) => {
+export const MessagePartsProvider = ( { children,  ...props } : PropsWithChildren<MessagePartsProps> ) => {
     const value = useMessagePartsHook(props)
     return (
         <MessagePartsContextProvider value={value}>

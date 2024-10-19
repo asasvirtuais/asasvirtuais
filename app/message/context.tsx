@@ -1,14 +1,18 @@
+'use client'
 import { createContext } from '@chakra-ui/react-context'
 import { PropsWithChildren, useState } from 'react'
 import { Message } from '.'
 
 type MessagesProps = {
     value: Message[]
+    chat?: string
 }
 
-const useMessagesHook = ( { value } : MessagesProps ) => {
+const useMessagesHook = ( { value, chat } : MessagesProps ) => {
 
     const [messages, setMessages] = useState<Message[]|undefined>(value)
+
+    // TODO: fetch messages from chat
 
     return {
         messages,

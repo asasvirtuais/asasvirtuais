@@ -1,6 +1,5 @@
 import { Text, Badge, Box, Stack, Center } from '@chakra-ui/react'
 import { userOrLogin } from '@/app/auth/actions'
-import Conversa from '@/app/chat/component'
 
 export default async () => {
     const user = await userOrLogin('/dashboard')
@@ -11,7 +10,6 @@ export default async () => {
                 dateStyle: 'full'
             })}</Badge>
             <Center height='100%' w='100%'>
-                <Conversa />
             </Center>
         </Stack>
     )
