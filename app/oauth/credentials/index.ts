@@ -1,5 +1,5 @@
 import { Generated, Insertable, Selectable } from 'kysely'
-import kysely from '@/app/kysely'
+import kysely, { genRandomId } from '@/app/kysely'
 
 export type Select = Selectable<CredentialsTable>
 
@@ -20,13 +20,10 @@ export interface CredentialsTable {
 export type InsertCredential = Omit<Insertable<CredentialsTable>, 'id' | 'key'>
 export type SelectCredential = Selectable<CredentialsTable>
 
-const rnd = () => Math.random().toString(36).substring(2).toUpperCase()
-const rand = () => rnd() + rnd() + rnd()
-
 export const insert = (insert: InsertCredential) => (
   kysely
     .insertInto('credentials')
-    .values({ id: rand(), ...insert })
+    .values({ id: genRandomId(), ...insert })
     .returning('id')
     .executeTakeFirstOrThrow()
 )

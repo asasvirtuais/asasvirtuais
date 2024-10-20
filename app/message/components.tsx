@@ -4,8 +4,8 @@ import { HStack, VStack, Avatar } from '@chakra-ui/react'
 import { Card, CardBody, CardHeader } from '@chakra-ui/react/card'
 
 import { useChat } from '@/app/chat/context'
-import { MessagePartsProvider } from '@/app/message-part/contex'
-import { MessagePartsComponent } from '@/app/message-part/components'
+import { MessagePartsProvider } from '@/app/paragraph/contex'
+import { MessagePartsComponent } from '@/app/paragraph/components'
 
 import { Message } from '.'
 import { useMessages } from './context'
