@@ -2,6 +2,8 @@ import { Generated, Insertable, Selectable } from 'kysely'
 
 export type Chat = {
     id: string
+    messages: string[]
+    type: 'dashboard'
 }
 
 export interface ChatTable {
