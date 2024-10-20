@@ -1,11 +1,12 @@
 import { StackMenuProps, HMenu, MenuItem } from '@/app/components/stack/menu'
 import { StackNavProps, HNav, NavItem, StackNav } from '@/app/components/stack/nav'
 import { Button, Heading } from '@chakra-ui/react'
+import { title } from '@/app/fonts'
 
 export const AppNav = (props: Omit<StackNavProps, 'children'>) => (
     <HNav {...props}>
         <NavItem href='/' hideBelow='md'>
-            <Heading>Asas Virtuais</Heading>
+            <Heading fontFamily={title.style.fontFamily} >Asas Virtuais</Heading>
         </NavItem>
         <NavItem href='#mobile-sidebar' hideFrom='md'
             _hover={{ textDecoration: 'none' }}>

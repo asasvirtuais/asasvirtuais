@@ -2,11 +2,7 @@
 import { ChakraProvider } from '@chakra-ui/provider'
 import { extendTheme } from '@chakra-ui/react'
 import { PropsWithChildren } from 'react'
-import { Comfortaa, Major_Mono_Display } from 'next/font/google'
-
-export const title = Major_Mono_Display({weight: '400', subsets: ['latin']})
-
-export const body = Comfortaa({ subsets: ['latin'] })
+import { body, title } from './fonts'
 
 const theme = extendTheme({
     fonts: {
@@ -24,10 +20,8 @@ const theme = extendTheme({
     }
 })
 
-export default function ({ children }: PropsWithChildren) {
-    return (
-        <ChakraProvider theme={theme}>
-            {children}
-        </ChakraProvider>
-    )
-}
+export default ({ children }: PropsWithChildren) => (
+    <ChakraProvider theme={theme}>
+        {children}
+    </ChakraProvider>
+)
