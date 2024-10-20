@@ -4,8 +4,8 @@ import { HStack, VStack, Avatar } from '@chakra-ui/react'
 import { Card, CardBody, CardHeader } from '@chakra-ui/react/card'
 
 import { useChat } from '@/app/chat/context'
-import { MessagePartsProvider } from '@/app/paragraph/contex'
-import { MessagePartsComponent } from '@/app/paragraph/components'
+import { ParagraphsProvider } from '@/app/paragraph/contex'
+import { ParagraphsComponent } from '@/app/paragraph/components'
 
 import { Message } from '.'
 import { useMessages } from './context'
@@ -32,9 +32,9 @@ export const MessageComponent = ( message: Message ) => {
                 <VStack order={isMine ? 1 : 2}>
                     <CardBody fontSize='sm' p={2}>
                         {/* TODO: include message parts in message object as a dynamically inserted property */}
-                        <MessagePartsProvider value={[]} message={message.id}>
-                            <MessagePartsComponent />
-                        </MessagePartsProvider>
+                        <ParagraphsProvider value={[]} message={message.id}>
+                            <ParagraphsComponent />
+                        </ParagraphsProvider>
                     </CardBody>
                 </VStack>
             </HStack>

@@ -2,13 +2,13 @@ import { createKysely } from '@vercel/postgres-kysely'
 import { CredentialsTable } from '@/app/oauth/credentials'
 import { ChatTable } from '@/app/chat'
 import { MessageTable } from '@/app/message'
-import { MessagePartTable } from '@/app/paragraph'
+import { ParagraphTable } from '@/app/paragraph'
 
 interface Database {
     credentials: CredentialsTable
-    chat: ChatTable
-    message: MessageTable
-    'message_part': MessagePartTable
+    chats: ChatTable
+    messages: MessageTable
+    paragraphs: ParagraphTable
 }
 
 export const randomString = () => Math.random().toString(36).substring(2).toUpperCase()
