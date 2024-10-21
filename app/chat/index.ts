@@ -4,15 +4,13 @@ import kysely, { genRandomId } from '@/app/kysely'
 export type Chat = {
     id: string
     user: string
-    messages: string[]
     type: 'dashboard'
 }
 
 export interface ChatTable {
   id: Generated<string>
   user: string
-  messages: Generated<string[]>
-  type: 'dashboard'
+  type: 'dashboard',
 }
 
 export type InsertCredential = Insertable<ChatTable>

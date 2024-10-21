@@ -3,7 +3,6 @@ import { userOrLogin } from '@/app/auth/actions'
 import { ChatComponent } from '@/app/chat/components'
 import { initDashboardChat } from '@/app/chat/actions'
 import { ChatProvider } from '@/app/chat/context'
-import { MessagesProvider } from '@/app/message/context'
 import { ParagraphsProvider } from '@/app/paragraph/contex'
 
 export default async () => {
@@ -16,11 +15,9 @@ export default async () => {
                 dateStyle: 'full'
             })}</Badge>
             <ParagraphsProvider value={[]}>
-                <MessagesProvider chat={chat?.id}>
-                    <ChatProvider value={chat}>
-                        <ChatComponent/>
-                    </ChatProvider>
-                </MessagesProvider>
+                <ChatProvider value={chat}>
+                    <ChatComponent/>
+                </ChatProvider>
             </ParagraphsProvider>
         </>
     )

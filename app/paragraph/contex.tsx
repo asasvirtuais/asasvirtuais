@@ -1,11 +1,10 @@
 'use client'
-import type { Paragraph } from '.'
+import { chatParagraphs, type Paragraph } from '.'
 
-import { PropsWithChildren, useEffect, useState, useCallback } from 'react'
+import { PropsWithChildren, useState, useCallback } from 'react'
 
 import { createContext } from '@chakra-ui/react-context'
 import { useBoolean } from '@chakra-ui/react'
-import { chatParagraphs } from './actions'
 
 export type ParagraphsProps = {
     value?: Paragraph[]
