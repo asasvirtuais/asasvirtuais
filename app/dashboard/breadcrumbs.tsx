@@ -9,7 +9,7 @@ export default function Breadcrumbs({
     base?: `/${string}`,
 }) {
     return (
-        <Breadcrumb >
+        <Breadcrumb>
             <BreadcrumbItem>
                 <Link href={base} as={BreadcrumbLink}
                     textTransform='capitalize'

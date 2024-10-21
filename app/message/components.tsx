@@ -1,27 +1,34 @@
 'use client'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { HStack, VStack, Avatar } from '@chakra-ui/react'
 import { Card, CardBody, CardHeader } from '@chakra-ui/react/card'
 
 import { useChat } from '@/app/chat/context'
-import { ParagraphsProvider } from '@/app/paragraph/contex'
+import { useParagraphs } from '@/app/paragraph/contex'
 import { ParagraphsComponent } from '@/app/paragraph/components'
 
-import { Message } from '.'
-import { useMessages } from './context'
+import { MessageProvider, useMessage, useMessages } from './context'
 
-export const MessageComponent = ( message: Message ) => {
+export const MessageComponent = () => {
+    
+    const { message } = useMessage()
+    const { fetchMessageParagraphs } = useParagraphs()
 
+    
     const { chat } = useChat()
-
+    
     const isMine = useMemo(() => message?.author === 'me', [chat])
+
+    useEffect(() => {
+        if (message)
+            fetchMessageParagraphs(message.id)
+    }, [message])
 
     return (
         <Card
+        p={2}
             my={4}
-            p={2}
-            bg='white'
-            >
+            bg='white'>
             <HStack justifyContent={isMine ? 'flex-end' : 'flex-start'} alignItems='flex-start'>
                 <VStack order={isMine ? 2 : 1}>
                     <CardHeader p={1} fontSize='xs' fontWeight='bold'>
@@ -31,10 +38,7 @@ export const MessageComponent = ( message: Message ) => {
                 </VStack>
                 <VStack order={isMine ? 1 : 2}>
                     <CardBody fontSize='sm' p={2}>
-                        {/* TODO: include message parts in message object as a dynamically inserted property */}
-                        <ParagraphsProvider value={[]} message={message.id}>
-                            <ParagraphsComponent />
-                        </ParagraphsProvider>
+                        <ParagraphsComponent />
                     </CardBody>
                 </VStack>
             </HStack>
@@ -47,7 +51,9 @@ export const MessagesComponent = () => {
     return (
         <>
             {messages?.map(m => (
-                <MessageComponent key={m.id} {...m} />
+                <MessageProvider key={m.id} value={m}>
+                    <MessageComponent />
+                </MessageProvider>
             ))}
         </>
     )

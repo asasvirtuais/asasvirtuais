@@ -1,21 +1,37 @@
 'use client'
 import { createContext } from '@chakra-ui/react-context'
-import { PropsWithChildren, useState } from 'react'
-import { Message } from '.'
+import { PropsWithChildren, use, useCallback, useEffect, useState } from 'react'
+import { chatMessages, Message } from '.'
+import { useBoolean } from '@chakra-ui/react'
 
 type MessagesProps = {
-    value: Message[]
-    chat?: string
+    value?: Message[]
+    chat?: string | undefined
 }
 
 const useMessagesHook = ( { value, chat } : MessagesProps ) => {
 
-    const [messages, setMessages] = useState<Message[]|undefined>(value)
+    const [messages, setMessages] = useState<Message[]>(value ?? [])
+    const [loading, setLoading] = useBoolean(false)
+    const [error, setError] = useState<{error: any} | undefined>(undefined)
 
-    // TODO: fetch messages from chat
+    const add = useCallback( (message: Message) => (
+        setMessages(prev => [...prev.filter(m => m.id !== message.id), message])
+    ), [] )
+
+    useEffect(() => {
+        if (chat)
+            chatMessages(chat)
+            .then(setMessages)
+            .catch(setError)
+            .finally(setLoading.off)
+    }, [chat])
 
     return {
         messages,
+        loading,
+        error,
+        add,
     }
 }
 
