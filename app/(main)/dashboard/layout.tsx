@@ -1,5 +1,5 @@
 'use client'
-import { AppShell, Burger, Group, NavLink, Title, Badge, Button, Text } from '@mantine/core'
+import { AppShell, Burger, Group, NavLink, Title, Badge, Button, Text, Space } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { IconMessage, IconMessageCircle2, IconLogin, IconLogout, IconSettings } from '@tabler/icons-react'
 import Link from 'next/link'
@@ -63,6 +63,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </AppShell.Header>
 
             <AppShell.Navbar p="md">
+                <Text size="xs" fw={700} tt="uppercase" c="dimmed" mb="xs" mt="xs">
+                    Main
+                </Text>
+                <NavLink
+                    component={Link}
+                    href="/dashboard/settings"
+                    label="Settings"
+                    leftSection={<IconSettings size={16} stroke={1.5} />}
+                    active={pathname === '/dashboard/settings'}
+                />
+
+                <Space h="lg" />
+
+                <Text size="xs" fw={700} tt="uppercase" c="dimmed" mb="xs">
+                    CRUD
+                </Text>
                 <NavLink
                     component={Link}
                     href="/dashboard/chats"
@@ -76,13 +92,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     label="Messages"
                     leftSection={<IconMessage size={16} stroke={1.5} />}
                     active={pathname === '/dashboard/messages'}
-                />
-                <NavLink
-                    component={Link}
-                    href="/dashboard/settings"
-                    label="Settings"
-                    leftSection={<IconSettings size={16} stroke={1.5} />}
-                    active={pathname === '/dashboard/settings'}
                 />
             </AppShell.Navbar>
 
