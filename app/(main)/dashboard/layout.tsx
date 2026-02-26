@@ -70,8 +70,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <NavLink
                     component={Link}
                     href="/dashboard/scenarios"
-                    label="Scenario"
-                    leftSection={null}
+                    label="Scenarios"
+                    leftSection={<IconMessageCircle2 size={16} stroke={1.5} />}
                     active={pathname === '/dashboard/scenarios'}
                 />
 

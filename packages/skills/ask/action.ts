@@ -32,11 +32,12 @@ export async function askSkillAction({
     await createInDb({
         table: 'messages',
         data: {
+            id: crypto.randomUUID(),
             chat: askingChatId,
             role: 'user',
             content: `Here is a question/request from ${askingChatTitle}: ${question}, please respond.`,
             timestamp: Date.now(),
-        }
+        } as any
     })
 
     const model = await getProvider(respondingChatModel)
@@ -54,11 +55,12 @@ export async function askSkillAction({
     await createInDb({
         table: 'messages',
         data: {
+            id: crypto.randomUUID(),
             chat: askingChatId,
             role: 'user',
             content: `Here is the response to your question to ${askingChatTitle}: ${question}. Response: ${response}`,
             timestamp: Date.now(),
-        }
+        } as any
     })
 
     return response
