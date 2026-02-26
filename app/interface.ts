@@ -1,8 +1,8 @@
 'use server'
-import { firestoreInterface } from 'asasvirtuais-firebase/interface'
+import { firestoreInterface } from './firestore-interface'
 import { schema } from './schema'
 
-const rootInterface = firestoreInterface<typeof schema, keyof typeof schema>()
+const rootInterface = firestoreInterface<typeof schema, keyof typeof schema>(schema)
 
 export const find = (async (props) => {
     return rootInterface.find(props)
