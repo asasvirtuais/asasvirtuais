@@ -117,9 +117,9 @@ export default function Home() {
         }}
       />
 
-      <Container size="lg" py={80} style={{ position: 'relative', zIndex: 1 }}>
+      <Container size="lg" pt={40} style={{ position: 'relative', zIndex: 1 }}>
         {/* Header/Nav */}
-        <Group justify="space-between" mb={100}>
+        <Group justify="space-between" >
           <Group gap="xs">
             <ThemeIcon size="xl" radius="md" variant="gradient" gradient={{ from: 'violet', to: 'cyan' }}>
               <FaCode size={20} />
@@ -213,7 +213,7 @@ export default function Home() {
                 width: '120%',
                 height: '120%',
                 background: 'radial-gradient(circle, rgba(121, 80, 242, 0.1) 0%, rgba(0,0,0,0) 70%)',
-                zIndex: -1
+                zIndex: -1,
               }}
             />
             <Image
@@ -221,9 +221,8 @@ export default function Home() {
               alt="Ícaro C. Capobianco"
               style={{
                 maxWidth: '100%',
-                maxHeight: rem(500),
                 height: 'auto',
-                filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))'
+                filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))',
               }}
             />
           </Box>
