@@ -1,17 +1,16 @@
 'use client'
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
-import { Button, Stack, Group, Title } from '@mantine/core'
+import { Button, Stack } from '@mantine/core'
 import { schema, type Readable } from '.'
 import { TitleField, InstructionsField, TemperatureField, ModelField } from './fields'
 import { useChats } from './provider'
 
 export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
     return (
-        <CreateForm table='Chats' schema={schema} onSuccess={onSuccess}>
+        <CreateForm table='chats' schema={schema} onSuccess={onSuccess}>
             {form => (
                 <form onSubmit={form.submit}>
                     <Stack>
-                        <Title order={3}>New Chat</Title>
                         <TitleField />
                         <ModelField />
                         <TemperatureField />
@@ -27,12 +26,12 @@ export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
 }
 
 export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
-    const { single, id } = useSingle('Chats', schema)
+    const { single, id } = useSingle('chats', schema)
     const item = single as Readable
 
     return (
         <UpdateForm
-            table='Chats'
+            table='chats'
             schema={schema}
             id={id}
             defaults={{
@@ -61,7 +60,7 @@ export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
 }
 
 export function DeleteChat({ onSuccess }: { onSuccess?: () => void }) {
-    const { id } = useSingle('Chats', schema)
+    const { id } = useSingle('chats', schema)
     const { remove } = useChats()
 
     return (

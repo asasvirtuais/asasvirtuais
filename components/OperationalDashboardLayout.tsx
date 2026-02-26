@@ -10,7 +10,8 @@ import {
     Group,
     Text,
     Card,
-    Button
+    Button,
+    Tabs
 } from '@mantine/core'
 import { SingleProvider } from 'asasvirtuais/react-interface'
 import { IconPlus, IconDatabase } from '@tabler/icons-react'
@@ -25,6 +26,7 @@ export interface OperationalDashboardLayoutProps {
     CreateForm: React.ComponentType<{ onSuccess?: (item: any) => void }>;
     UpdateForm: React.ComponentType;
     DeleteForm: React.ComponentType<{ onSuccess?: () => void }>;
+    CustomView?: React.ComponentType;
 }
 
 export function OperationalDashboardLayout({
@@ -36,7 +38,8 @@ export function OperationalDashboardLayout({
     SingleItem,
     CreateForm,
     UpdateForm,
-    DeleteForm
+    DeleteForm,
+    CustomView
 }: OperationalDashboardLayoutProps) {
     const { array, list } = useTableHook()
     const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -63,7 +66,7 @@ export function OperationalDashboardLayout({
                             setSelectedId(null)
                         }}
                     >
-                        Create New
+                        New Chat
                     </Button>
                 </Group>
 
@@ -103,33 +106,65 @@ export function OperationalDashboardLayout({
                         <Paper withBorder p='xl' radius='md' mih={400}>
                             {isCreating ? (
                                 <Stack>
-                                    <Title order={2}>Create Record</Title>
+                                    <Title order={2}>Create Chat</Title>
                                     <CreateForm onSuccess={handleCreateSuccess} />
                                 </Stack>
                             ) : selectedId ? (
                                 <SingleProvider id={selectedId} table={tableName} schema={schema}>
-                                    <Stack gap='xl'>
-                                        <Group justify='space-between'>
-                                            <Title order={2}>Manage Record</Title>
-                                            <DeleteForm onSuccess={() => setSelectedId(null)} />
-                                        </Group>
+                                    {CustomView ? (
+                                        <Tabs defaultValue="custom">
+                                            <Tabs.List mb="md">
+                                                <Tabs.Tab value="custom">Interface Demo</Tabs.Tab>
+                                                <Tabs.Tab value="admin">CRUD Dashboard</Tabs.Tab>
+                                            </Tabs.List>
 
-                                        <Grid>
-                                            <Grid.Col span={{ base: 12, lg: 6 }}>
-                                                <Title order={4} mb='md'>View Display</Title>
-                                                <SingleItem />
-                                            </Grid.Col>
-                                            <Grid.Col span={{ base: 12, lg: 6 }}>
-                                                <Title order={4} mb='md'>Update Form</Title>
-                                                <UpdateForm />
-                                            </Grid.Col>
-                                        </Grid>
-                                    </Stack>
+                                            <Tabs.Panel value="custom">
+                                                <CustomView />
+                                            </Tabs.Panel>
+
+                                            <Tabs.Panel value="admin">
+                                                <Stack gap="xl">
+                                                    <Group justify="space-between">
+                                                        <Title order={2}>Manage Record</Title>
+                                                        <DeleteForm onSuccess={() => setSelectedId(null)} />
+                                                    </Group>
+                                                    <Grid>
+                                                        <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                            <Title order={4} mb="md">Display View</Title>
+                                                            <SingleItem />
+                                                        </Grid.Col>
+                                                        <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                            <Title order={4} mb="md">Update Form</Title>
+                                                            <UpdateForm />
+                                                        </Grid.Col>
+                                                    </Grid>
+                                                </Stack>
+                                            </Tabs.Panel>
+                                        </Tabs>
+                                    ) : (
+                                        <Stack gap="xl">
+                                            <Group justify="space-between">
+                                                <Title order={2}>Manage Record</Title>
+                                                <DeleteForm onSuccess={() => setSelectedId(null)} />
+                                            </Group>
+                                            <Grid>
+                                                <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                    <Title order={4} mb="md">Display View</Title>
+                                                    <SingleItem />
+                                                </Grid.Col>
+                                                <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                    <Title order={4} mb="md">Update Form</Title>
+                                                    <UpdateForm />
+                                                </Grid.Col>
+                                            </Grid>
+                                        </Stack>
+                                    )}
                                 </SingleProvider>
                             ) : (
                                 <Stack align='center' justify='center' mih={500} gap='xs'>
                                     <IconDatabase size={48} stroke={1.5} color='var(--mantine-color-gray-4)' />
-                                    <Text size='lg' fw={500}>Select a record to start</Text>
+                                    <Text size='lg' fw={500}>Select a Chat</Text>
+                                    <Text size='sm' c='dimmed'>Choose an item from the list to start.</Text>
                                 </Stack>
                             )}
                         </Paper>

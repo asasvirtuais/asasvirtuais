@@ -1,6 +1,6 @@
 'use client'
+import { Text } from '@mantine/core'
 import { useSingle } from 'asasvirtuais/react-interface'
-import { Card, Text, Badge, Group, Stack, TypographyStylesProvider } from '@mantine/core'
 import ReactMarkdown from 'react-markdown'
 import { schema, type Readable } from '.'
 
@@ -14,54 +14,25 @@ export function ChatListItem({ item }: { item: Readable }) {
 }
 
 export function ChatItem() {
-    const { single } = useSingle('Chats', schema)
+    const { single } = useSingle('chats', schema)
     const item = single as Readable
-
     return (
-        <Card shadow='sm' padding='lg' radius='md' withBorder>
-            <Group justify='space-between' mb='xs'>
-                <Text fw={500}>{item.title || 'Untitled Record'}</Text>
-                <Badge color='blue' variant='light'>{item.model}</Badge>
-            </Group>
-
-            <Text size='sm' color='dimmed' lineClamp={2}>
-                {item.instructions || 'No instructions provided.'}
-            </Text>
-
-            <Group mt='md' gap={5}>
-                <Text size='xs' fw={700}>Temp:</Text>
-                <Text size='xs'>{item.temperature ?? 0.7}</Text>
-            </Group>
-        </Card>
+        <>
+            <Text fw={500}>{item.title || 'Untitled Record'}</Text>
+            <Text size='xs' c='dimmed'>{item.id}</Text>
+        </>
     )
 }
 
 export function SingleChat() {
-    const { single } = useSingle('Chats', schema)
+    const { single } = useSingle('chats', schema)
     const item = single as Readable
-
     return (
-        <Stack>
-            <Group justify='space-between'>
-                <Text size='xl' fw={700}>{item.title}</Text>
-                <Badge size='lg'>{item.model}</Badge>
-            </Group>
-
-            <Group gap='xs'>
-                <Text fw={600}>Temperature:</Text>
-                <Text>{item.temperature}</Text>
-            </Group>
-
-            <Stack gap={5}>
-                <Text fw={600}>Instructions:</Text>
-                <Card withBorder radius='md' p='md'>
-                    <TypographyStylesProvider>
-                        <ReactMarkdown>
-                            {item.instructions || ''}
-                        </ReactMarkdown>
-                    </TypographyStylesProvider>
-                </Card>
-            </Stack>
-        </Stack>
+        <div>
+            <h1>{item.title}</h1>
+            <ReactMarkdown>{item.instructions || ''}</ReactMarkdown>
+            <p>Temperature: {item.temperature}</p>
+            <p>Model: {item.model}</p>
+        </div>
     )
 }

@@ -56,8 +56,8 @@ function MessageBubble({ role, content }: { role: 'user' | 'assistant', content:
     )
 }
 
-export default function SingleChatView() {
-    const { single, id } = useSingle('Chats', schema)
+export function SingleChatView() {
+    const { single, id } = useSingle('chats', schema)
     const item = single as Readable
     const [opened, { open, close }] = useDisclosure(false)
 
@@ -68,7 +68,7 @@ export default function SingleChatView() {
             {/* Header: Title + Settings */}
             <ChatHeader>
                 <Box style={{ flex: 1 }}>
-                    <UpdateForm table="Chats" schema={schema} id={id} defaults={{ title: item.title || '' }}>
+                    <UpdateForm table="chats" schema={schema} id={id} defaults={{ title: item.title || '' }}>
                         {form => (
                             <form onBlur={form.submit} style={{ maxWidth: 300 }}>
                                 <TextInput
