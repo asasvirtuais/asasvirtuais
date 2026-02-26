@@ -1,13 +1,15 @@
 'use client'
-import { AppShell, Burger, Group, NavLink, Title } from '@mantine/core'
+import { AppShell, Burger, Group, NavLink, Title, Badge, Button, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { IconMessage, IconMessageCircle2 } from '@tabler/icons-react'
+import { IconMessage, IconMessageCircle2, IconLogin, IconLogout, IconSettings } from '@tabler/icons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     const [opened, { toggle }] = useDisclosure()
     const pathname = usePathname()
+    const { user, isLoading } = useUser()
 
     return (
         <AppShell
@@ -16,13 +18,47 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             padding="md"
         >
             <AppShell.Header>
-                <Group h="100%" px="md">
-                    <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    <Link href='/dashboard'>
-                        <Title order={3}>
-                            A.I. Dashboard
-                        </Title>
-                    </Link>
+                <Group h="100%" px="md" justify="space-between">
+                    <Group>
+                        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+                        <Link href='/dashboard' style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Title order={3}>
+                                A.I. Dashboard
+                            </Title>
+                        </Link>
+                    </Group>
+
+                    <Group>
+                        {!isLoading && !user && (
+                            <Group gap="xs">
+                                <Badge color="gray" variant="light">Guest Mode</Badge>
+                                <Button
+                                    component="a"
+                                    href="/auth/login"
+                                    size="xs"
+                                    variant="outline"
+                                    leftSection={<IconLogin size={14} />}
+                                >
+                                    Sign In
+                                </Button>
+                            </Group>
+                        )}
+                        {user && (
+                            <Group gap="xs">
+                                <Text size="sm" fw={500}>{user.name || user.email}</Text>
+                                <Button
+                                    component="a"
+                                    href="/auth/logout"
+                                    size="xs"
+                                    variant="subtle"
+                                    color="gray"
+                                    leftSection={<IconLogout size={14} />}
+                                >
+                                    Log out
+                                </Button>
+                            </Group>
+                        )}
+                    </Group>
                 </Group>
             </AppShell.Header>
 
@@ -40,6 +76,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     label="Messages"
                     leftSection={<IconMessage size={16} stroke={1.5} />}
                     active={pathname === '/dashboard/messages'}
+                />
+                <NavLink
+                    component={Link}
+                    href="/dashboard/settings"
+                    label="Settings"
+                    leftSection={<IconSettings size={16} stroke={1.5} />}
+                    active={pathname === '/dashboard/settings'}
                 />
             </AppShell.Navbar>
 

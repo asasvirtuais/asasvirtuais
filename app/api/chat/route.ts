@@ -1,6 +1,7 @@
-import { google } from '@ai-sdk/google'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { openai } from '@ai-sdk/openai'
 import { streamText, convertToModelMessages } from 'ai'
+import { list } from '../../interface'
 
 export const maxDuration = 30
 
@@ -12,11 +13,25 @@ export async function POST(req: Request) {
             return new Response('Messages are required', { status: 400 })
         }
 
-        const provider = model?.includes('gpt') ? openai : google
-        const modelName = model || 'gemini-3-flash-preview'
+        // Fetch user settings to get custom API key
+        const settings = await list({ table: 'settings', query: { $limit: 1 } })
+        const userApiKey = (settings?.[0] as any)?.google_api_key
+
+        const modelName = model || 'gemini-1.5-flash'
+
+        let provider: any
+        if (modelName.includes('gpt')) {
+            provider = openai(modelName)
+        } else {
+            // Initialize Google provider with custom key if available
+            const google = createGoogleGenerativeAI({
+                apiKey: userApiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY
+            })
+            provider = google(modelName)
+        }
 
         const result = streamText({
-            model: provider(modelName),
+            model: provider,
             // AI SDK v6: convertToModelMessages is async
             messages: await convertToModelMessages(messages),
             system: instructions || '',
