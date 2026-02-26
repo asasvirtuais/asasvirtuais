@@ -14,20 +14,21 @@ This repository uses a strict pattern for demonstrating data model packages usin
    - All package CRUD operational dashboards MUST use this layout.
    - It is an opinionated, strict container that wires primitive components into a side-by-side CRUD dashboard.
    - Supports a `CustomView` prop to inject a dedicated "Interface Demo" tab alongside the technical "CRUD Dashboard".
+   - **Important**: This component belongs to the application layer and should be used in the `app/demo` routes, not inside the `packages` themselves.
 
-## Creating a Model Dashboard
+## Creating a Model Dashboard Demo
 
-Inside your specific package folder (e.g., `packages/chat/page.tsx`), use the `OperationalDashboardLayout` to assemble your primitives:
+To create a demo for a model package (e.g., `chats`), use the `OperationalDashboardLayout` directly in the demo route (`app/demo/chat/page.tsx`):
 
 ```tsx
 'use client'
 import { OperationalDashboardLayout } from '@/components/OperationalDashboardLayout'
-import { schema } from '.'
-import { useChats } from './provider'
-import { CreateChat, UpdateChat, DeleteChat } from './forms'
-import { SingleChat, ChatListItem } from './components'
+import { schema } from '@/packages/chat'
+import { CreateChat, UpdateChat, DeleteChat } from '@/packages/chat/forms'
+import { SingleChat, ChatListItem } from '@/packages/chat/components'
+import { SingleChatView } from './SingleChatView'
 
-export default function ChatPage({ CustomView }: { CustomView?: React.ComponentType }) {
+export default function ChatDemoPage() {
     return (
         <OperationalDashboardLayout
             title='Chat Model CRUD'
@@ -38,7 +39,7 @@ export default function ChatPage({ CustomView }: { CustomView?: React.ComponentT
             CreateForm={CreateChat}
             UpdateForm={UpdateChat}
             DeleteForm={DeleteChat}
-            CustomView={CustomView}
+            CustomView={SingleChatView}
         />
     )
 }
@@ -53,7 +54,6 @@ For the dashboard to function, the model package must export/provide:
 - `CreateForm`: A `CreateForm` powered creation loop.
 - `UpdateForm`: An `UpdateForm` powered update loop.
 - `DeleteForm`: A deletion button/trigger.
-- **Optional `CustomView`**: A component for a high-fidelity interface demonstration (e.g., a chat UI).
 
 ## The Chat LEGO Layout Pattern
 
@@ -68,18 +68,3 @@ When building chat-like interfaces, use the LEGO components from `packages/chat/
 
 - **Table keys**: Always all lowercase (e.g., `chats`, `messages`).
 - **Demo Views**: Store high-fidelity demo components (like `SingleChatView`) in the `app/demo/[model]/` workspace, not in the core package, to keep the package library focused on data and logic.
-
-## Exposing the Demo
-
-Import the package's unified `page.tsx` and pass any demo-specific views:
-
-```tsx
-// app/demo/chat/page.tsx
-'use client'
-import ChatPage from '@/packages/chat/page'
-import { SingleChatView } from './SingleChatView'
-
-export default function ChatDemoPage() {
-    return <ChatPage CustomView={SingleChatView} />
-}
-```
