@@ -5,8 +5,6 @@ import { ChatsProvider } from '@/packages/chat/provider'
 import { MessagesProvider } from '@/packages/message/provider'
 import { CharactersProvider } from '@/packages/character/provider'
 import { VenuesProvider } from '@/packages/venue/provider'
-import { ScenariosProvider } from '@/packages/scenario/provider'
-
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
     return (
@@ -15,9 +13,7 @@ export default function AppProviders({ children }: { children: React.ReactNode }
                 <MessagesProvider>
                     <CharactersProvider>
                         <VenuesProvider>
-                            <ScenariosProvider>
-                                {children}
-                            </ScenariosProvider>
+                            {children}
                         </VenuesProvider>
                     </CharactersProvider>
                 </MessagesProvider>

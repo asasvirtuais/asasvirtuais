@@ -14,14 +14,14 @@ export function TitleField() {
     )
 }
 
-export function SystemField() {
-    const { fields, setField } = useFields<{ system: string }>()
+export function CircumstancesField() {
+    const { fields, setField } = useFields<{ circumstances: string }>()
     return (
         <Textarea
-            label="System Prompt"
-            value={fields.system || ''}
-            onChange={(e) => setField('system', e.target.value)}
-            placeholder="Initial instructions for the AI in this venue"
+            label="Circumstances"
+            value={fields.circumstances || ''}
+            onChange={(e) => setField('circumstances', e.target.value)}
+            placeholder="Initial circumstances/system instructions for the AI in this venue"
             minRows={4}
         />
     )

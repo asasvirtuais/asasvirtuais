@@ -1,6 +1,6 @@
 'use client'
 import { useFields } from 'asasvirtuais/fields'
-import { TextInput, Textarea, Select, Slider, Stack, Text } from '@mantine/core'
+import { TextInput, Textarea, Select, Slider, Stack, Text, TagsInput } from '@mantine/core'
 
 export function TitleField() {
     const { fields, setField } = useFields<{ title: string }>()
@@ -63,6 +63,19 @@ export function ModelField() {
             ]}
             value={fields.model || ''}
             onChange={val => setField('model', val || '')}
+        />
+    )
+}
+
+export function ToolsField() {
+    const { fields, setField } = useFields<{ tools: string[] }>()
+    return (
+        <TagsInput
+            label="Tools"
+            value={fields.tools || []}
+            onChange={(value) => setField('tools', value)}
+            placeholder="Available tools for this chat"
+            clearable
         />
     )
 }

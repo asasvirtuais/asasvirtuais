@@ -99,12 +99,9 @@ function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
     )
 }
 
-import { schema as scenarioSchema, type Readable as ScenarioReadable } from '@/packages/scenario'
-
 export function DashboardChatView() {
-    // 1. We are now provided the Scenario ID, not the Chat ID
-    const { single } = useSingle('scenarios', scenarioSchema)
-    const scenario = single as ScenarioReadable
+    const { single, id } = useSingle('chats', schema)
+    const item = single as Readable
 
     const [opened, { open, close }] = useDisclosure(false)
     const [editOpened, { open: openEdit, close: closeEdit }] = useDisclosure(false)
@@ -112,22 +109,19 @@ export function DashboardChatView() {
 
     const { list: listMessages, array: dbMessages } = useMessages()
 
-    const chatId = scenario?.chat
-
     useEffect(() => {
-        if (chatId) {
-            listMessages.trigger({ query: { chat: chatId } })
+        if (id) {
+            listMessages.trigger({ query: { chat: id } })
         }
-    }, [chatId])
+    }, [id])
 
-    // Pass the actual Chat ID to the AI hook
     const {
         input,
         handleInputChange,
         handleSubmit,
         status,
         error,
-    } = useAIChat(chatId || '')
+    } = useAIChat(id)
 
     const isLoading = status === 'submitted' || status === 'streaming'
 
@@ -142,8 +136,7 @@ export function DashboardChatView() {
         }
     }, [sortedMessages.length, isLoading])
 
-    if (!scenario) return <Text c="dimmed" ta="center" py="xl">Scenario not found.</Text>
-    if (!chatId) return <Text c="dimmed" ta="center" py="xl">Chat disconnected from Scenario.</Text>
+    if (!item) return <Text c="dimmed" ta="center" py="xl">Chat not found.</Text>
 
     return (
         <ChatPageLayout>

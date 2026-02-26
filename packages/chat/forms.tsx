@@ -2,7 +2,7 @@
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
 import { Button, Stack } from '@mantine/core'
 import { schema, type Readable } from '.'
-import { TitleField, InstructionsField, TemperatureField, ModelField } from './fields'
+import { TitleField, InstructionsField, TemperatureField, ModelField, ToolsField } from './fields'
 import { useChats } from './provider'
 
 export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
@@ -15,6 +15,7 @@ export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
                         <ModelField />
                         <TemperatureField />
                         <InstructionsField />
+                        <ToolsField />
                         <Button type='submit' loading={form.loading} fullWidth>
                             Save Chat
                         </Button>
@@ -39,6 +40,7 @@ export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
                 instructions: item.instructions || '',
                 temperature: item.temperature ?? 0.7,
                 model: item.model || 'gemini-2.0-flash',
+                tools: item.tools || [],
             }}
             onSuccess={onSuccess}
         >
@@ -49,6 +51,7 @@ export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
                         <ModelField />
                         <TemperatureField />
                         <InstructionsField />
+                        <ToolsField />
                         <Button type='submit' loading={form.loading} fullWidth>
                             Update Chat
                         </Button>

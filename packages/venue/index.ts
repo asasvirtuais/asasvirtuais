@@ -3,13 +3,13 @@ import z from 'zod'
 export const readable = z.object({
     id: z.string(),
     title: z.string().optional(),
-    system: z.string().optional(),
+    circumstances: z.string().optional(),
     tools: z.array(z.string()).optional(),
 })
 
 export const writable = readable.pick({
     title: true,
-    system: true,
+    circumstances: true,
     tools: true,
 })
 

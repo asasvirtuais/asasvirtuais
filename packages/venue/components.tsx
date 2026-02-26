@@ -11,7 +11,7 @@ export function VenueListItem() {
             <Stack gap={4}>
                 <Title order={4}>{venue.title || 'Untitled Venue'}</Title>
                 <Text size="sm" c="dimmed" lineClamp={2}>
-                    {venue.system || 'No system prompt set'}
+                    {venue.circumstances || 'No circumstances set'}
                 </Text>
                 {venue.tools && venue.tools.length > 0 && (
                     <Group gap={4} mt={4}>
@@ -36,11 +36,11 @@ export function SingleVenue() {
 
             <Stack gap="xs">
                 <Title order={5} c="dimmed" tt="uppercase">
-                    System Prompt
+                    Circumstances
                 </Title>
                 <Paper p="md" withBorder bg="gray.1">
                     <Text size="sm" style={{ whiteSpace: 'pre-wrap', fontFamily: 'monospace' }}>
-                        {venue.system}
+                        {venue.circumstances}
                     </Text>
                 </Paper>
             </Stack>

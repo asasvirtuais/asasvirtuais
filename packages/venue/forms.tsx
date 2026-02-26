@@ -1,7 +1,7 @@
 'use client'
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
 import { schema, type Readable } from '.'
-import { TitleField, SystemField, ToolsField } from './fields'
+import { TitleField, CircumstancesField, ToolsField } from './fields'
 import { useVenues } from './provider'
 import { Button, Stack } from '@mantine/core'
 
@@ -12,7 +12,7 @@ export function CreateVenue({ onSuccess }: { onSuccess?: (venue: Readable) => vo
                 <form onSubmit={form.submit}>
                     <Stack gap="md">
                         <TitleField />
-                        <SystemField />
+                        <CircumstancesField />
                         <ToolsField />
                         <Button type="submit" loading={form.loading}>
                             Create Venue
@@ -34,7 +34,7 @@ export function UpdateVenue({ onSuccess }: { onSuccess?: (venue: Readable) => vo
             id={id}
             defaults={{
                 title: venue.title || '',
-                system: venue.system || '',
+                circumstances: venue.circumstances || '',
                 tools: venue.tools || [],
             }}
             onSuccess={onSuccess}
@@ -43,7 +43,7 @@ export function UpdateVenue({ onSuccess }: { onSuccess?: (venue: Readable) => vo
                 <form onSubmit={form.submit}>
                     <Stack gap="md">
                         <TitleField />
-                        <SystemField />
+                        <CircumstancesField />
                         <ToolsField />
                         <Button type="submit" loading={form.loading}>
                             Save Changes

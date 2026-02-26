@@ -3,102 +3,99 @@ import { useEffect, useState } from 'react'
 import { useChats } from '@/packages/chat/provider'
 import { useCharacters } from '@/packages/character/provider'
 import { useVenues } from '@/packages/venue/provider'
-import { useScenarios } from '@/packages/scenario/provider'
 import { SingleProvider } from 'asasvirtuais/react-interface'
-import { schema } from '@/packages/scenario'
+import { schema } from '@/packages/chat'
 import { Box, Center, Loader, Title } from '@mantine/core'
 import { DashboardChatView } from './DashboardChatView'
 
 export default function DashboardRootPage() {
-    const { list: listChats, create: createChat } = useChats()
+    const { list: listChats, create: createChat, update: updateChat } = useChats()
     const { list: listCharacters, create: createCharacter } = useCharacters()
     const { list: listVenues, create: createVenue } = useVenues()
-    const { list: listScenarios, create: createScenario } = useScenarios()
 
-    const [targetScenarioId, setTargetScenarioId] = useState<string | null>(null)
+    const [targetChatId, setTargetChatId] = useState<string | null>(null)
     const [initializing, setInitializing] = useState(true)
 
     useEffect(() => {
         let isMounted = true
 
-        const initDashboardScenario = async () => {
+        const initDashboardChat = async () => {
             try {
-                // 1. Check for existing Dashboard Scenario
-                const scenariosRes = await listScenarios.trigger({
-                    query: { instructions: "You're at the dashboard chat with the user, this chat is the default chat of the app" }
-                })
-
-                if (!isMounted) return
-
-                if (scenariosRes.length > 0) {
-                    setTargetScenarioId(scenariosRes[0].id)
-                    return
-                }
-
-                // 2. Scenario doesn't exist, we need to create the pieces
-                // Character: Assistant
-                let charId = ''
+                // 1. Fetch or create Character: Assistant
+                let charDetails = "you're an A.I assistant"
+                let charSkills = ['database']
                 const charsRes = await listCharacters.trigger({ query: { name: 'Assistant' } })
                 if (charsRes.length > 0) {
-                    charId = charsRes[0].id
+                    charDetails = charsRes[0].details || charDetails
+                    charSkills = charsRes[0].skills || charSkills
                 } else {
-                    const newChar = await createCharacter.trigger({
+                    await createCharacter.trigger({
                         data: {
                             name: 'Assistant',
-                            details: "you're an A.I assistant",
-                            skills: ['database']
+                            details: charDetails,
+                            skills: charSkills
                         }
                     })
-                    charId = newChar.id
                 }
 
-                // Venue: Admin
-                let venueId = ''
+                // 2. Fetch or create Venue: Admin
+                let venueCircumstances = "you're at the administration of the app dashboard with the user"
+                let venueTools: string[] = []
                 const venuesRes = await listVenues.trigger({ query: { title: 'Admin' } })
                 if (venuesRes.length > 0) {
-                    venueId = venuesRes[0].id
+                    venueCircumstances = venuesRes[0].circumstances || venueCircumstances
+                    venueTools = venuesRes[0].tools || venueTools
                 } else {
-                    const newVenue = await createVenue.trigger({
+                    await createVenue.trigger({
                         data: {
                             title: 'Admin',
-                            system: "you're at the administration of the app dashboard with the user"
+                            circumstances: venueCircumstances,
+                            tools: venueTools
                         }
                     })
-                    venueId = newVenue.id
-                }
-
-                // Chat: Dashboard Chat
-                let chatId = ''
-                const chatsRes = await listChats.trigger({ query: { title: 'Dashboard Chat' } })
-                if (chatsRes.length > 0) {
-                    chatId = chatsRes[0].id
-                } else {
-                    const newChat = await createChat.trigger({ data: { title: 'Dashboard Chat' } })
-                    chatId = newChat.id
                 }
 
                 if (!isMounted) return
 
-                // 3. Create the Scenario
-                const newScenario = await createScenario.trigger({
-                    data: {
-                        instructions: "You're at the dashboard chat with the user, this chat is the default chat of the app",
-                        character: charId,
-                        venue: venueId,
-                        chat: chatId
-                    }
-                })
+                // 3. Compose the Chat
+                const combinedInstructions = `${charDetails}\n${venueCircumstances}\nYou're at the dashboard chat with the user, this chat is the default chat of the app`
+                const combinedTools = Array.from(new Set([...charSkills, ...venueTools]))
 
-                setTargetScenarioId(newScenario.id)
+                const chatsRes = await listChats.trigger({ query: { title: 'Dashboard Chat' } })
+
+                if (chatsRes.length > 0) {
+                    const existingChat = chatsRes[0]
+                    // We can optionally update it if instructions/tools have changed
+                    if (existingChat.instructions !== combinedInstructions ||
+                        JSON.stringify(existingChat.tools) !== JSON.stringify(combinedTools)) {
+                        await updateChat.trigger({
+                            id: existingChat.id,
+                            data: {
+                                instructions: combinedInstructions,
+                                tools: combinedTools
+                            }
+                        })
+                    }
+                    if (isMounted) setTargetChatId(existingChat.id)
+                } else {
+                    const newChat = await createChat.trigger({
+                        data: {
+                            title: 'Dashboard Chat',
+                            instructions: combinedInstructions,
+                            tools: combinedTools
+                        }
+                    })
+                    if (isMounted) setTargetChatId(newChat.id)
+                }
 
             } catch (err) {
-                console.error("Failed to initialize Dashboard Scenario", err)
+                console.error("Failed to initialize Dashboard Chat", err)
             } finally {
                 if (isMounted) setInitializing(false)
             }
         }
 
-        initDashboardScenario()
+        initDashboardChat()
 
         return () => { isMounted = false }
     }, []) // Only run once on mount
@@ -111,17 +108,17 @@ export default function DashboardRootPage() {
         )
     }
 
-    if (!targetScenarioId) {
+    if (!targetChatId) {
         return (
             <Center h="100%" mih={400}>
-                <Title order={3} c="red.6">Failed to load Dashboard Scenario.</Title>
+                <Title order={3} c="red.6">Failed to load Dashboard Chat.</Title>
             </Center>
         )
     }
 
     return (
         <Box h="calc(100vh - 92px)">
-            <SingleProvider id={targetScenarioId} table="scenarios" schema={schema}>
+            <SingleProvider id={targetChatId} table="chats" schema={schema}>
                 <DashboardChatView />
             </SingleProvider>
         </Box>
