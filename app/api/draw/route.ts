@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { unzipSync } from 'fflate'
-import { storage } from '@/packages/firebase/src/admin'
+import { put } from '@vercel/blob'
 import { authorize } from '@/app/api'
 
 const NOVELAI_API_URL = 'https://image.novelai.net/ai/generate-image'
@@ -158,23 +158,15 @@ export async function POST(req: NextRequest) {
             )
         }
 
-        // Save to Google Cloud Storage
-        const bucket = storage.bucket('novelai')
-        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.png`
-        const file = bucket.file(fileName)
+        // Save to Vercel Blob
+        const fileName = `novelai/${Date.now()}-${Math.random().toString(36).substring(7)}.png`
 
-        await file.save(Buffer.from(firstFile), {
-            metadata: {
-                contentType: 'image/png',
-            },
+        const blob = await put(fileName, Buffer.from(firstFile), {
+            access: 'public',
+            contentType: 'image/png',
         })
 
-        // Make the file public (optional, depends on bucket settings, but usually needed for redirect)
-        await file.makePublic().catch(err => console.error('Error making file public:', err))
-
-        const publicUrl = `https://storage.googleapis.com/novelai/${fileName}`
-
-        return NextResponse.redirect(new URL(publicUrl), 307)
+        return NextResponse.redirect(new URL(blob.url), 307)
     } catch (error: any) {
         console.error('Error drawing image:', error)
         return NextResponse.json(
