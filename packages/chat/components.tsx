@@ -4,6 +4,15 @@ import { Card, Text, Badge, Group, Stack, TypographyStylesProvider } from '@mant
 import ReactMarkdown from 'react-markdown'
 import { schema, type Readable } from '.'
 
+export function ChatListItem({ item }: { item: Readable }) {
+    return (
+        <>
+            <Text fw={500} truncate>{item.title || 'Untitled Record'}</Text>
+            <Text size='xs' c='dimmed' truncate>{item.id}</Text>
+        </>
+    )
+}
+
 export function ChatItem() {
     const { single } = useSingle('Chats', schema)
     const item = single as Readable

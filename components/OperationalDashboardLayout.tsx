@@ -1,0 +1,141 @@
+'use client'
+import { useState, useEffect } from 'react'
+import {
+    Container,
+    Grid,
+    Stack,
+    Title,
+    Paper,
+    ScrollArea,
+    Group,
+    Text,
+    Card,
+    Button
+} from '@mantine/core'
+import { SingleProvider } from 'asasvirtuais/react-interface'
+import { IconPlus, IconDatabase } from '@tabler/icons-react'
+
+export interface OperationalDashboardLayoutProps {
+    title: string;
+    tableName: string;
+    schema: any;
+    useTableHook: () => { array: any[], list: { trigger: (params: any) => void } };
+    ListItem: React.ComponentType<{ item: any }>;
+    SingleItem: React.ComponentType;
+    CreateForm: React.ComponentType<{ onSuccess?: (item: any) => void }>;
+    UpdateForm: React.ComponentType;
+    DeleteForm: React.ComponentType<{ onSuccess?: () => void }>;
+}
+
+export function OperationalDashboardLayout({
+    title,
+    tableName,
+    schema,
+    useTableHook,
+    ListItem,
+    SingleItem,
+    CreateForm,
+    UpdateForm,
+    DeleteForm
+}: OperationalDashboardLayoutProps) {
+    const { array, list } = useTableHook()
+    const [selectedId, setSelectedId] = useState<string | null>(null)
+    const [isCreating, setIsCreating] = useState(false)
+
+    useEffect(() => {
+        list.trigger({})
+    }, [])
+
+    const handleCreateSuccess = (newItem: any) => {
+        setIsCreating(false)
+        setSelectedId(newItem.id)
+    }
+
+    return (
+        <Container size='xl' py='xl'>
+            <Stack gap='xl'>
+                <Group justify='space-between'>
+                    <Title order={1}>{title}</Title>
+                    <Button
+                        leftSection={<IconPlus size={16} />}
+                        onClick={() => {
+                            setIsCreating(true)
+                            setSelectedId(null)
+                        }}
+                    >
+                        Create New
+                    </Button>
+                </Group>
+
+                <Grid gutter='md'>
+                    <Grid.Col span={{ base: 12, md: 4 }}>
+                        <Paper withBorder p='md' radius='md'>
+                            <Stack gap='sm'>
+                                <Text fw={700} size='sm' c='dimmed' tt='uppercase'>Record List</Text>
+                                <ScrollArea h={500} offsetScrollbars>
+                                    <Stack gap='xs'>
+                                        {array.map((item) => (
+                                            <Card
+                                                key={item.id}
+                                                shadow='xs'
+                                                p='sm'
+                                                radius='md'
+                                                withBorder
+                                                onClick={() => {
+                                                    setSelectedId(item.id)
+                                                    setIsCreating(false)
+                                                }}
+                                                style={{
+                                                    cursor: 'pointer',
+                                                    backgroundColor: selectedId === item.id ? 'var(--mantine-color-blue-light)' : undefined,
+                                                }}
+                                            >
+                                                <ListItem item={item} />
+                                            </Card>
+                                        ))}
+                                    </Stack>
+                                </ScrollArea>
+                            </Stack>
+                        </Paper>
+                    </Grid.Col>
+
+                    <Grid.Col span={{ base: 12, md: 8 }}>
+                        <Paper withBorder p='xl' radius='md' mih={400}>
+                            {isCreating ? (
+                                <Stack>
+                                    <Title order={2}>Create Record</Title>
+                                    <CreateForm onSuccess={handleCreateSuccess} />
+                                </Stack>
+                            ) : selectedId ? (
+                                <SingleProvider id={selectedId} table={tableName} schema={schema}>
+                                    <Stack gap='xl'>
+                                        <Group justify='space-between'>
+                                            <Title order={2}>Manage Record</Title>
+                                            <DeleteForm onSuccess={() => setSelectedId(null)} />
+                                        </Group>
+
+                                        <Grid>
+                                            <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                <Title order={4} mb='md'>View Display</Title>
+                                                <SingleItem />
+                                            </Grid.Col>
+                                            <Grid.Col span={{ base: 12, lg: 6 }}>
+                                                <Title order={4} mb='md'>Update Form</Title>
+                                                <UpdateForm />
+                                            </Grid.Col>
+                                        </Grid>
+                                    </Stack>
+                                </SingleProvider>
+                            ) : (
+                                <Stack align='center' justify='center' mih={500} gap='xs'>
+                                    <IconDatabase size={48} stroke={1.5} color='var(--mantine-color-gray-4)' />
+                                    <Text size='lg' fw={500}>Select a record to start</Text>
+                                </Stack>
+                            )}
+                        </Paper>
+                    </Grid.Col>
+                </Grid>
+            </Stack>
+        </Container>
+    )
+}
