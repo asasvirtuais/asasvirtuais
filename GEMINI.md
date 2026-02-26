@@ -1,4 +1,8 @@
-# asasvirtuais Framework — Operational Demo Standard
+# asasvirtuais.dev
+
+This project is a website for presenting, developing, demoing and presenting my projects, including and especially the asasvirtuais framework.
+
+Operational Demo Standard
 
 This repository uses a strict pattern for demonstrating data model packages using purely local database features via IndexedDB. This ensures that any model can be tested, demoed, or interacted with securely and offline, without requiring a functioning backend.
 
@@ -100,3 +104,5 @@ In the `asasvirtuais` framework, we avoid "God Components" with dozens of boolea
   </MessagePaper>
 </MessageLayout>
 ```
+
+We use pnpm here not npm.

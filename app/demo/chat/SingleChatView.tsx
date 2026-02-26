@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import {
     ChatPageLayout,
     ChatHeader,
@@ -28,16 +28,22 @@ import {
     IconSettings,
     IconSend,
     IconPlus,
-    IconRobot
+    IconRobot,
+    IconLoader2
 } from '@tabler/icons-react'
 import ReactMarkdown from 'react-markdown'
 import { UpdateChat } from '@/packages/chat/forms'
+import { useAIChat } from '@/packages/aichat/hooks'
 
 /**
  * Message Bubble component for Demo
  */
-function MessageBubble({ role, content }: { role: 'user' | 'assistant', content: string }) {
+function MessageBubble({ role, content }: { role: string, content: string }) {
     const isAssistant = role === 'assistant'
+    const isSystem = role === 'system'
+
+    if (isSystem) return null
+
     return (
         <Group align="flex-start" justify={isAssistant ? 'flex-start' : 'flex-end'} wrap="nowrap" gap="sm">
             {isAssistant && <Avatar radius="xl" color="blue"><IconRobot size={20} /></Avatar>}
@@ -47,9 +53,11 @@ function MessageBubble({ role, content }: { role: 'user' | 'assistant', content:
                 withBorder={isAssistant}
                 bg={isAssistant ? 'gray.0' : 'blue.6'}
                 c={isAssistant ? 'black' : 'white'}
-                style={{ maxWidth: '80%' }}
+                style={{ maxWidth: '85%', overflowWrap: 'break-word' }}
             >
-                <ReactMarkdown>{content}</ReactMarkdown>
+                <Box style={{ fontSize: 'var(--mantine-font-size-sm)' }}>
+                    <ReactMarkdown>{content}</ReactMarkdown>
+                </Box>
             </Paper>
             {!isAssistant && <Avatar radius="xl" src={null} />}
         </Group>
@@ -61,7 +69,27 @@ export function SingleChatView() {
     const item = single as Readable
     const [opened, { open, close }] = useDisclosure(false)
 
-    if (!item) return <Text c="dimmed" ta="center" py="xl">Persona not found.</Text>
+    const {
+        messages,
+        input,
+        handleInputChange,
+        handleSubmit,
+        status,
+        error,
+        regenerate,
+    } = useAIChat(id)
+
+    const isLoading = status === 'submitted' || status === 'streaming'
+
+    // Auto-scroll to bottom of ChatBody
+    useEffect(() => {
+        const scrollArea = document.querySelector('.mantine-ScrollArea-viewport')
+        if (scrollArea) {
+            scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' })
+        }
+    }, [messages])
+
+    if (!item) return <Text c="dimmed" ta="center" py="xl">Chat not found.</Text>
 
     return (
         <ChatPageLayout>
@@ -98,84 +126,103 @@ export function SingleChatView() {
                 </Menu>
             </ChatHeader>
 
-            {/* Body: Instructions + Demo Messages */}
+            {/* Body: Streamed Messages */}
             <ChatBody>
                 {/* System Instructions Section */}
                 {item.instructions && (
                     <Paper withBorder p="sm" radius="md" bg="gray.1" mb="md" style={{ borderStyle: 'dashed' }}>
                         <Text size="xs" fw={700} c="dimmed" mb={4} tt="uppercase">System Context</Text>
-                        <Box style={{ fontSize: 'var(--mantine-font-size-sm)' }}>
+                        <Box style={{ fontSize: 'var(--mantine-font-size-xs)', opacity: 0.7 }}>
                             <ReactMarkdown>{item.instructions}</ReactMarkdown>
                         </Box>
                     </Paper>
                 )}
 
-                {/* Long Demo Message Thread to demonstrate scroll */}
                 <Stack gap="lg">
-                    <MessageBubble
-                        role="assistant"
-                        content={`Hello! I am **${item.title || 'the AI'}**. How can I help you today?`}
-                    />
-                    <MessageBubble
-                        role="user"
-                        content="Can you explain the difference between local-first and cloud-only architectures?"
-                    />
-                    <MessageBubble
-                        role="assistant"
-                        content="Local-first software combines the best of both worlds: the availability and performance of local apps with the collaboration features of cloud apps. Data is stored on your device first, then synced."
-                    />
-                    <MessageBubble
-                        role="user"
-                        content="Tell me more about the technical challenges of synchronization."
-                    />
-                    <MessageBubble
-                        role="assistant"
-                        content="Synchronization often involves Conflict-free Replicated Data Types (CRDTs) to ensure convergence across different devices without requiring a central authority to resolve every edit. It's complex but provides a superior user experience."
-                    />
-                    <MessageBubble
-                        role="user"
-                        content="How does this framework handle that?"
-                    />
-                    <MessageBubble
-                        role="assistant"
-                        content="The `asasvirtuais` framework simplifies this by providing robust IndexedDB primitives and agnostic database interfaces, allowing you to build reactive local-first apps with minimal boilerplate."
-                    />
-                    <MessageBubble
-                        role="user"
-                        content="This looks great. Let's start building a demo app!"
-                    />
-                    <MessageBubble
-                        role="assistant"
-                        content="Excellent! We've already set up the basic layout. What should be the first feature we implement?"
-                    />
+                    {messages.length === 0 && !isLoading && (
+                        <Text ta="center" c="dimmed" size="sm" py="xl">
+                            No messages yet. Say hello to {item.title || 'AI'}!
+                        </Text>
+                    )}
+
+                    {messages.map((m) => (
+                        <MessageBubble
+                            key={m.id}
+                            role={m.role}
+                            content={m.parts.filter(p => p.type === 'text').map(p => p.text).join('')}
+                        />
+                    ))}
+
+                    {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
+                        <Group gap="sm">
+                            <Avatar radius="xl" color="blue">
+                                <IconLoader2 size={18} className="animate-spin" />
+                            </Avatar>
+                            <Paper p="xs" radius="md" bg="gray.0" withBorder>
+                                <Text size="sm" c="dimmed">AI is thinking...</Text>
+                            </Paper>
+                        </Group>
+                    )}
+
+                    {error && (
+                        <Paper p="md" radius="md" bg="red.0" withBorder style={{ borderColor: 'var(--mantine-color-red-4)' }}>
+                            <Stack gap="xs">
+                                <Text size="sm" c="red.9" fw={500}>Something went wrong</Text>
+                                <Text size="xs" c="red.7">{error.message}</Text>
+                                <Button variant="outline" color="red" size="compact-xs" onClick={() => regenerate()}>
+                                    Retry
+                                </Button>
+                            </Stack>
+                        </Paper>
+                    )}
                 </Stack>
             </ChatBody>
 
-            {/* Input: Simple Textarea + Quick Actions */}
+            {/* Input Form */}
             <ChatInput>
-                <Group gap="xs">
-                    <Button variant="light" size="compact-xs" color="gray" radius="xl">Sync Strategy</Button>
-                    <Button variant="light" size="compact-xs" color="gray" radius="xl">Storage Limits</Button>
-                </Group>
+                <form onSubmit={handleSubmit}>
+                    <Stack gap="xs">
+                        <Group gap="xs">
+                            <Button variant="light" size="compact-xs" color="gray" radius="xl">Context: {item.model || 'Default'}</Button>
+                            <Button variant="light" size="compact-xs" color="gray" radius="xl">Temp: {item.temperature || 0.7}</Button>
+                        </Group>
 
-                <Group align="flex-end" gap="sm">
-                    <ActionIcon variant="light" size="lg" radius="md">
-                        <IconPlus size={20} />
-                    </ActionIcon>
-                    <Textarea
-                        placeholder="Type a message..."
-                        style={{ flex: 1 }}
-                        autosize
-                        minRows={1}
-                        variant="filled"
-                    />
-                    <ActionIcon variant="filled" size="lg" radius="md" color="blue">
-                        <IconSend size={20} />
-                    </ActionIcon>
-                </Group>
+                        <Group align="flex-end" gap="sm">
+                            <ActionIcon variant="light" size="lg" radius="md" disabled={isLoading}>
+                                <IconPlus size={20} />
+                            </ActionIcon>
+                            <Textarea
+                                placeholder="Type a message..."
+                                style={{ flex: 1 }}
+                                autosize
+                                minRows={1}
+                                maxRows={4}
+                                variant="filled"
+                                value={input}
+                                onChange={handleInputChange}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                        e.preventDefault()
+                                        handleSubmit(e as any)
+                                    }
+                                }}
+                            />
+                            <ActionIcon
+                                type="submit"
+                                variant="filled"
+                                size="lg"
+                                radius="md"
+                                color="blue"
+                                disabled={!input.trim() || isLoading}
+                            >
+                                <IconSend size={20} />
+                            </ActionIcon>
+                        </Group>
+                    </Stack>
+                </form>
             </ChatInput>
 
-            <Modal opened={opened} onClose={close} title="Edit Persona" centered>
+            <Modal opened={opened} onClose={close} title="Chat Settings" centered size="lg">
                 <UpdateChat onSuccess={close} />
             </Modal>
         </ChatPageLayout>
