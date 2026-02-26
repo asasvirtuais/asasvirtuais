@@ -3,7 +3,7 @@ import { OperationalDashboardLayout } from '@/components/OperationalDashboardLay
 import { schema } from '@/packages/chat'
 import { CreateChat, UpdateChat, DeleteChat } from '@/packages/chat/forms'
 import { SingleChat, ChatListItem } from '@/packages/chat/components'
-import { SingleChatView } from './SingleChatView'
+import { DemoSingleChatView } from './DemoSingleChatView'
 
 export default function ChatDemoPage() {
     return (
@@ -16,7 +16,7 @@ export default function ChatDemoPage() {
             CreateForm={CreateChat}
             UpdateForm={UpdateChat}
             DeleteForm={DeleteChat}
-            CustomView={SingleChatView}
+            CustomView={DemoSingleChatView}
         />
     )
 }

@@ -18,15 +18,21 @@ import {
     Paper,
     Avatar,
     Title,
-    Loader
+    Loader,
+    Menu,
+    Modal
 } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import {
     IconSend,
     IconRobot,
-    IconUser
+    IconUser,
+    IconDotsVertical,
+    IconSettings
 } from '@tabler/icons-react'
 import ReactMarkdown from 'react-markdown'
 import { useAIChat } from '@/packages/aichat/hooks'
+import { UpdateChat } from '@/packages/chat/forms'
 
 /**
  * Premium Message Bubble Component
@@ -74,6 +80,7 @@ function DashboardMessageBubble({ role, content }: { role: string, content: stri
 export function DashboardChatView() {
     const { single, id } = useSingle('chats', schema)
     const item = single as Readable
+    const [opened, { open, close }] = useDisclosure(false)
 
     const {
         messages,
@@ -101,14 +108,33 @@ export function DashboardChatView() {
         <ChatPageLayout>
             {/* Header */}
             <ChatHeader>
-                <Group>
-                    <Avatar color="blue" radius="md">
-                        <IconRobot size={24} />
-                    </Avatar>
-                    <Box>
-                        <Title order={4}>{item.title || 'A.I. Assistant'}</Title>
-                        <Text size="xs" c="dimmed">Always here to help</Text>
-                    </Box>
+                <Group justify="space-between" style={{ width: '100%' }}>
+                    <Group>
+                        <Avatar color="blue" radius="md" variant="filled" style={{ border: '2px solid var(--mantine-color-blue-1)' }}>
+                            <IconRobot size={24} />
+                        </Avatar>
+                        <Box>
+                            <Title order={4} style={{ letterSpacing: '-0.5px' }}>{item.title || 'A.I. Assistant'}</Title>
+                            <Group gap={6}>
+                                <Box w={8} h={8} radius="xl" bg="green.5" style={{ borderRadius: '50%' }} />
+                                <Text size="xs" c="dimmed" fw={500}>System Online</Text>
+                            </Group>
+                        </Box>
+                    </Group>
+
+                    <Menu shadow="lg" width={200} position="bottom-end" transitionProps={{ transition: 'pop-top-right' }}>
+                        <Menu.Target>
+                            <ActionIcon variant="subtle" color="gray" radius="xl" size="lg">
+                                <IconDotsVertical size={20} />
+                            </ActionIcon>
+                        </Menu.Target>
+                        <Menu.Dropdown>
+                            <Menu.Label>Management</Menu.Label>
+                            <Menu.Item leftSection={<IconSettings size={16} stroke={1.5} />} onClick={open}>
+                                Chat Settings
+                            </Menu.Item>
+                        </Menu.Dropdown>
+                    </Menu>
                 </Group>
             </ChatHeader>
 
@@ -189,6 +215,11 @@ export function DashboardChatView() {
                     </Group>
                 </form>
             </ChatInput>
+            <Modal opened={opened} onClose={close} title="Dashboard Chat Configuration" centered radius="lg">
+                <Paper p="xs">
+                    <UpdateChat onSuccess={close} />
+                </Paper>
+            </Modal>
         </ChatPageLayout>
     )
 }

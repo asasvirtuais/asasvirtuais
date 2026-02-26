@@ -64,7 +64,7 @@ function MessageBubble({ role, content }: { role: string, content: string }) {
     )
 }
 
-export function SingleChatView() {
+export function DemoSingleChatView() {
     const { single, id } = useSingle('chats', schema)
     const item = single as Readable
     const [opened, { open, close }] = useDisclosure(false)

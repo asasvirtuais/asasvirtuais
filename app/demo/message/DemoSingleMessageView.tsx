@@ -12,7 +12,7 @@ import {
 import { Stack, Title, Divider, Text, Alert, Box } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 
-export function SingleMessageView() {
+export function DemoSingleMessageView() {
     const { single, loading } = useSingle('messages', schema)
 
     if (loading) return <Text>Loading message...</Text>

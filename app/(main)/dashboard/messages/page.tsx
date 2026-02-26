@@ -3,7 +3,7 @@ import { OperationalDashboardLayout } from '@/components/OperationalDashboardLay
 import { schema } from '@/packages/message'
 import { CreateMessage, UpdateMessage, DeleteMessage } from '@/packages/message/forms'
 import { SingleMessage, MessageListItem } from '@/packages/message/components'
-import { SingleMessageView } from '@/app/demo/message/SingleMessageView'
+import { DemoSingleMessageView } from '@/app/demo/message/DemoSingleMessageView'
 
 export default function MessageDashboardPage() {
     return (
@@ -16,7 +16,7 @@ export default function MessageDashboardPage() {
             CreateForm={CreateMessage}
             UpdateForm={UpdateMessage}
             DeleteForm={DeleteMessage}
-            CustomView={SingleMessageView}
+            CustomView={DemoSingleMessageView}
         />
     )
 }
