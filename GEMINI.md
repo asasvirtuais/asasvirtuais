@@ -68,3 +68,35 @@ When building chat-like interfaces, use the LEGO components from `packages/chat/
 
 - **Table keys**: Always all lowercase (e.g., `chats`, `messages`).
 - **Demo Views**: Store high-fidelity demo components (like `SingleChatView`) in the `app/demo/[model]/` workspace, not in the core package, to keep the package library focused on data and logic.
+
+
+# Composed Layout Pattern (LEGO Blocks)
+
+In the `asasvirtuais` framework, we avoid "God Components" with dozens of boolean props (e.g., `showAvatar`, `isUser`, `borderless`). Instead, we export atomic building blocks that allow developers to compose unique interfaces while keeping logical consistency.
+
+## Core Blocks
+
+- **[MessageLayout](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#25-40)**: The outer container handling alignment and spacing.
+- **[MessageAvatar](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#41-53)**: Dedicated avatar component with support for various shapes and sizes.
+- **[MessagePaper](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#54-75)**: The "bubble" container, handling backgrounds, borders, and shadows.
+- **[MessageText](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#76-88)**: Styled text component with proper wrap-around and white-space handling.
+- **[MessageMenuOptions](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#118-169)**: Built-in actions (Edit, Delete, Debug Info).
+- **[MessageFloatingLayout](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#89-110)**: High-fidelity specialization for Character AI-style wrapping text.
+
+## Benefits
+
+1. **Flexibility**: Want a rectangular avatar instead of a circle? Just change the `radius` prop on [MessageAvatar](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/layout.tsx#41-53) instead of adding a new prop to a master [MessageView](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/app/demo/message/SingleMessageView.tsx#15-130).
+2. **Prop Spreading**: All blocks extend Mantine's base props (`BoxProps`, `PaperProps`, etc.), allowing immediate access to `bg`, `c`, `mt`, `opacity`, and more.
+3. **Clean Code**: Components like [SingleMessage](file:///C:/Users/Usu%C3%A1rio/Desktop/asasvirtuais-next/packages/message/components.tsx#37-71) remain simple and readable by composing these blocks rather than managing complex conditional logic.
+
+## Usage Example
+
+```tsx
+<MessageLayout justify="flex-start">
+  <MessageAvatar color="teal">A</MessageAvatar>
+  <MessagePaper withBorder p="md">
+    <MessageText>{content}</MessageText>
+    <MessageMenuOptions metadata={metadata} />
+  </MessagePaper>
+</MessageLayout>
+```
