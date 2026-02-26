@@ -73,13 +73,15 @@ import {
 
 ## WHAT WE'RE BUILDING
 
-The target product is a **local-first SPA installable as a PWA**. All data lives in IndexedDB on the user's device — no server, no cloud, no login required. The typical app has three sections:
+The target product is a modern web application built using the `asasvirtuais` pattern. The framework is designed to be **database agnostic**. While it provides excellent support for local-first setups using IndexedDB—perfect for standalone apps that require zero configuration or user authentication—it can easily interface with traditional server-side databases via Next.js Server Actions or API routes.
+
+The typical app has three sections:
 
 - A **landing page** that presents the product, its value proposition, and a call to action. This is a marketing/presentation page.
-- An **onboarding flow** where the user configures the app for their needs — this might mean entering a name, choosing preferences, or saving an API key for an AI feature. Onboarding data is saved to IndexedDB just like any other entity.
+- An **onboarding flow** where the user configures the app for their needs — this might mean entering a name, choosing preferences, or saving an API key for an AI feature.
 - The **main app** where the user creates and manages their data. This is a standard CRUD interface with list, detail, create, and edit views.
 
-Use whichever UI component library fits your project (e.g. Chakra UI, shadcn/ui, MUI, etc.).
+Use whichever UI component library fits your project (e.g. Mantine, Chakra UI, shadcn/ui, MUI, etc.).
 
 ---
 

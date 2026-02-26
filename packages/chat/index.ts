@@ -6,6 +6,7 @@ export const readable = z.object({
     instructions: z.string().optional(),
     temperature: z.number().optional(),
     model: z.string().optional(),
+    tools: z.array(z.string()).optional(),
 })
 
 export const writable = readable.pick({
@@ -13,6 +14,7 @@ export const writable = readable.pick({
     instructions: true,
     temperature: true,
     model: true,
+    tools: true,
 })
 
 export const schema = { readable, writable }

@@ -99,33 +99,40 @@ function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
     )
 }
 
+import { schema as scenarioSchema, type Readable as ScenarioReadable } from '@/packages/scenario'
+
 export function DashboardChatView() {
-    const { single, id } = useSingle('chats', schema)
-    const item = single as Readable
+    // 1. We are now provided the Scenario ID, not the Chat ID
+    const { single } = useSingle('scenarios', scenarioSchema)
+    const scenario = single as ScenarioReadable
+
     const [opened, { open, close }] = useDisclosure(false)
     const [editOpened, { open: openEdit, close: closeEdit }] = useDisclosure(false)
     const [editingMessageId, setEditingMessageId] = useState<string | null>(null)
 
     const { list: listMessages, array: dbMessages } = useMessages()
 
-    useEffect(() => {
-        if (id) {
-            listMessages.trigger({ query: { chat: id } })
-        }
-    }, [id])
+    const chatId = scenario?.chat
 
+    useEffect(() => {
+        if (chatId) {
+            listMessages.trigger({ query: { chat: chatId } })
+        }
+    }, [chatId])
+
+    // Pass the actual Chat ID to the AI hook
     const {
         input,
         handleInputChange,
         handleSubmit,
         status,
         error,
-    } = useAIChat(id)
+    } = useAIChat(chatId || '')
 
     const isLoading = status === 'submitted' || status === 'streaming'
 
     // Sort messages by timestamp
-    const sortedMessages = [...dbMessages].sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+    const sortedMessages = [...dbMessages].sort((a, b: any) => (a.timestamp || 0) - (b.timestamp || 0))
 
     // Auto-scroll to bottom of ChatBody
     useEffect(() => {
@@ -135,7 +142,8 @@ export function DashboardChatView() {
         }
     }, [sortedMessages.length, isLoading])
 
-    if (!item) return <Text c="dimmed" ta="center" py="xl">Chat not found.</Text>
+    if (!scenario) return <Text c="dimmed" ta="center" py="xl">Scenario not found.</Text>
+    if (!chatId) return <Text c="dimmed" ta="center" py="xl">Chat disconnected from Scenario.</Text>
 
     return (
         <ChatPageLayout>
@@ -147,7 +155,7 @@ export function DashboardChatView() {
                             <IconRobot size={24} />
                         </Avatar>
                         <Box>
-                            <Title order={4} style={{ letterSpacing: '-0.5px' }}>{item.title || 'A.I. Assistant'}</Title>
+                            <Title order={4} style={{ letterSpacing: '-0.5px' }}>{'A.I. Assistant'}</Title>
                             <Group gap={6}>
                                 <Box w={8} h={8} bg="green.5" style={{ borderRadius: '50%' }} />
                                 <Text size="xs" c="dimmed" fw={500}>System Online</Text>
