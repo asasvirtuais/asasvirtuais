@@ -129,6 +129,16 @@ export default function Home() {
             </Text>
           </Group>
           <Group gap="md">
+            <Button
+              component="a"
+              href="/dashboard"
+              variant="subtle"
+              color="violet"
+              size="sm"
+              leftSection={<FaDatabase size={14} />}
+            >
+              Database Dashboard
+            </Button>
             <Tooltip label="GitHub">
               <ActionIcon
                 component="a"
