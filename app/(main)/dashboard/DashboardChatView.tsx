@@ -10,7 +10,7 @@ import {
     MessageAvatar,
     MessageLayout,
     MessagePaper,
-    MessageText,
+    MessageProse,
     MessageMenuOptions
 } from '@/packages/message/layout'
 import { useSingle } from 'asasvirtuais/react-interface'
@@ -79,9 +79,9 @@ function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
                 }}
             >
                 <Box style={{ flex: 1 }}>
-                    <MessageText size="md" style={{ lineHeight: 1.6 }}>
+                    <MessageProse style={{ fontSize: '1rem' }}>
                         <ReactMarkdown>{message.content || ''}</ReactMarkdown>
-                    </MessageText>
+                    </MessageProse>
                 </Box>
                 <MessageMenuOptions
                     metadata={message.metadata}
