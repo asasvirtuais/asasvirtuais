@@ -7,37 +7,38 @@ This repository uses a strict pattern for demonstrating data model packages usin
 1. **The `app/demo` Workspace**
    - The `/demo` path acts as an isolated section of the app.
    - It is wrapped in its own layout (`app/demo/layout.tsx`) with an `IndexedInterfaceProvider` instead of the standard remote interface.
-   - Any model package component rendered within this tree writes exclusively to an IndexedDB database (e.g., `asasvirtuais-demo-v1`), rather than Firestore or Supabase.
+   - Any model package component rendered within this tree writes exclusively to an IndexedDB database (e.g., `asasvirtuais-demo-v1`).
 
 2. **The `OperationalDashboardLayout` Component**
    - Located at `components/OperationalDashboardLayout.tsx`.
-   - All package CRUD operational dashboards must use this layout.
-   - It is an opinionated, strict container that accepts the primitive components generated inside a model package, and wires them into a side-by-side CRUD dashboard with state-based navigation (no page reloads).
+   - All package CRUD operational dashboards MUST use this layout.
+   - It is an opinionated, strict container that wires primitive components into a side-by-side CRUD dashboard.
+   - Supports a `CustomView` prop to inject a dedicated "Interface Demo" tab alongside the technical "CRUD Dashboard".
 
 ## Creating a Model Dashboard
 
-Inside your specific package folder (e.g., `packages/todo/page.tsx`), use the `OperationalDashboardLayout` to assemble your primitives:
+Inside your specific package folder (e.g., `packages/chat/page.tsx`), use the `OperationalDashboardLayout` to assemble your primitives:
 
 ```tsx
 'use client'
 import { OperationalDashboardLayout } from '@/components/OperationalDashboardLayout'
 import { schema } from '.'
-import { useTodos } from './provider'
-import { CreateTodo, UpdateTodo, DeleteTodo } from './forms'
-import { SingleTodo, TodoListItem } from './components'
+import { useChats } from './provider'
+import { CreateChat, UpdateChat, DeleteChat } from './forms'
+import { SingleChat, ChatListItem } from './components'
 
-export default function TodoPage() {
+export default function ChatPage({ CustomView }: { CustomView?: React.ComponentType }) {
     return (
         <OperationalDashboardLayout
-            title='Todo Model CRUD'
-            tableName='Todos'
+            title='Chat Model CRUD'
+            tableName='chats' // Standard: all lowercase
             schema={schema}
-            useTableHook={useTodos as any}
-            ListItem={TodoListItem}
-            SingleItem={SingleTodo}
-            CreateForm={CreateTodo}
-            UpdateForm={UpdateTodo}
-            DeleteForm={DeleteTodo}
+            ListItem={ChatListItem}
+            SingleItem={SingleChat}
+            CreateForm={CreateChat}
+            UpdateForm={UpdateChat}
+            DeleteForm={DeleteChat}
+            CustomView={CustomView}
         />
     )
 }
@@ -45,27 +46,40 @@ export default function TodoPage() {
 
 ### Component Requirements
 
-For the dashboard to function, the model package must export the following primitive blocks:
+For the dashboard to function, the model package must export/provide:
 
-- `useTableHook`: The primary hook exporting `list` and `array` (e.g., `useTodos`).
-- `ListItem`: A simple non-isolated component that receives an `item` prop and determines how it looks in the sidebar list.
-- `SingleItem`: A `useSingle` powered component that displays the model's details.
-- `CreateForm`: A `CreateForm` powered creation loop (takes an `onSuccess` callback).
+- `ListItem`: Receives an `item` prop for the sidebar list.
+- `SingleItem`: A `useSingle` powered detail display.
+- `CreateForm`: A `CreateForm` powered creation loop.
 - `UpdateForm`: An `UpdateForm` powered update loop.
-- `DeleteForm`: The button that runs the deletion process (takes an `onSuccess` callback).
+- `DeleteForm`: A deletion button/trigger.
+- **Optional `CustomView`**: A component for a high-fidelity interface demonstration (e.g., a chat UI).
+
+## The Chat LEGO Layout Pattern
+
+When building chat-like interfaces, use the LEGO components from `packages/chat/layout.tsx`:
+
+- **`<ChatPageLayout>`**: Main outer container.
+- **`<ChatHeader>`**: Top bar (use for editable titles and action menus).
+- **`<ChatBody>`**: Scrollable message area with sticky support.
+- **`<ChatInput>`**: Footer area for message input and quick actions.
+
+## Naming Conventions
+
+- **Table keys**: Always all lowercase (e.g., `chats`, `messages`).
+- **Demo Views**: Store high-fidelity demo components (like `SingleChatView`) in the `app/demo/[model]/` workspace, not in the core package, to keep the package library focused on data and logic.
 
 ## Exposing the Demo
 
-To actually make the page viewable, you just import the package's unified `page.tsx` file inside an `app/demo/[model]/page.tsx` route:
+Import the package's unified `page.tsx` and pass any demo-specific views:
 
 ```tsx
-// app/demo/todo/page.tsx
+// app/demo/chat/page.tsx
 'use client'
-import TodoPage from '@/packages/todo/page'
+import ChatPage from '@/packages/chat/page'
+import { SingleChatView } from './SingleChatView'
 
-export default function TodoDemoPage() {
-    return <TodoPage />
+export default function ChatDemoPage() {
+    return <ChatPage CustomView={SingleChatView} />
 }
 ```
-
-Because this route is under `/demo`, it automatically inherits the `IndexedInterfaceProvider` from `app/demo/providers.tsx`.

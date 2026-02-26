@@ -1,7 +1,6 @@
 'use client'
 import { OperationalDashboardLayout } from '@/components/OperationalDashboardLayout'
 import { schema } from '.'
-import { useChats } from './provider'
 import { CreateChat, UpdateChat, DeleteChat } from './forms'
 import { SingleChat, ChatListItem } from './components'
 export default function ChatDashboardPage({ CustomView }: { CustomView?: React.ComponentType }) {
@@ -10,7 +9,6 @@ export default function ChatDashboardPage({ CustomView }: { CustomView?: React.C
             title='Chat Model Package'
             tableName='chats'
             schema={schema}
-            useTableHook={useChats as any}
             ListItem={ChatListItem}
             SingleItem={SingleChat}
             CreateForm={CreateChat}

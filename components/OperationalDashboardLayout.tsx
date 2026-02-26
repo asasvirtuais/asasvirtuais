@@ -15,12 +15,12 @@ import {
 } from '@mantine/core'
 import { SingleProvider } from 'asasvirtuais/react-interface'
 import { IconPlus, IconDatabase } from '@tabler/icons-react'
+import { useTable } from '@/packages/asasvirtuais/packages/react-interface'
 
 export interface OperationalDashboardLayoutProps {
     title: string;
     tableName: string;
     schema: any;
-    useTableHook: () => { array: any[], list: { trigger: (params: any) => void } };
     ListItem: React.ComponentType<{ item: any }>;
     SingleItem: React.ComponentType;
     CreateForm: React.ComponentType<{ onSuccess?: (item: any) => void }>;
@@ -33,7 +33,6 @@ export function OperationalDashboardLayout({
     title,
     tableName,
     schema,
-    useTableHook,
     ListItem,
     SingleItem,
     CreateForm,
@@ -41,7 +40,7 @@ export function OperationalDashboardLayout({
     DeleteForm,
     CustomView
 }: OperationalDashboardLayoutProps) {
-    const { array, list } = useTableHook()
+    const { array, list } = useTable(tableName, schema)
     const [selectedId, setSelectedId] = useState<string | null>(null)
     const [isCreating, setIsCreating] = useState(false)
 
