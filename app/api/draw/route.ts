@@ -166,7 +166,7 @@ export async function POST(req: NextRequest) {
             contentType: 'image/png',
         })
 
-        return NextResponse.redirect(new URL(blob.url), 307)
+        return NextResponse.json({ url: blob.url })
     } catch (error: any) {
         console.error('Error drawing image:', error)
         return NextResponse.json(
