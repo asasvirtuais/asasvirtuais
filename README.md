@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ícaro C. Capobianco
+**Solutions Architect & Full-Stack Web Developer**
 
-## Getting Started
+I specialize in building codebase future-proof architecture for small projects aimed to become big. With over 7 years of remote experience, my approach is centered on elegant engineering: building resilient foundations that scale effortlessly while writing custom code only where it matters most.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🧠 My Approach
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Pragmatic Architecture**: I leverage specialized, reliable tools (Airtable, Stripe, Auth0) so I can focus on building a resilient, future-proof foundation that scales without the overhead of custom infrastructure.
+- **Code the Exception**: Custom code is a liability unless it's strictly necessary. I focus engineering efforts on the unique business logic that gives your project a competitive advantage.
+- **Innovation & Experience**: I'm driven by the challenge of creating something truly innovative and remarkable to use. I focus on building products that aren't just functional, but feel awesome for the end user.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🚀 Featured Open Source
 
-## Learn More
+#### [asasvirtuais Framework](https://www.npmjs.com/package/asasvirtuais)
+My open-source React framework designed to resolve the gap between API integration and state management. Built to eliminate architectural debt for CRUD-driven applications and local-first PWAs.
 
-To learn more about Next.js, take a look at the following resources:
+- **AI-Friendly**: Simple, predictable primitives that LLMs can generate correctly.
+- **Agnostic Database**: Deep integration with IndexedDB for seamless offline apps.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 💼 Selected Work
 
-## Deploy on Vercel
+- **Latham Pools Lead Qualification**: A frontend lead qualification tool built with React and GraphQL. It reads Airtable bases to guide clients through pool shape and type selection for a major US pool sales company.
+- **Grimoire RPG Companion**: A complex RPG companion app showcasing the abilities of the `asasvirtuais` framework in handling intricate, local-first state management without the traditional overhead.
+- **CertWorld CMS & Learning**: A functional MVP for a machine learning courses platform. Built single-handedly from client discovery to launch, featuring complex onboarding flows and Stripe integration.
+- **Easy AI Diary & Chat**: A local-first PWA powered by Gemini AI for automated journal analysis and chat, utilizing IndexedDB for rock-solid offline data persistence.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🛠️ Technologies
+
+- **Frontend / Core**: TypeScript, React, Next.js, Mantine
+- **Backend / DB**: Node.js, Postgres, MongoDB
+- **Integration**: Stripe, Airtable, Vercel
+- **Specialized**: Python, PHP, Docker
+
+---
+
+### 📫 Connect with me
+
+- [LinkedIn](https://linkedin.com/in/asasvirtuais)
+- [GitHub](https://github.com/asasvirtuais)
+- [UpWork](https://upwork.com/fl/icarocc)
+
+*"I'm looking for environments where architectural strategy and elegant engineering can directly drive success. Let's discuss how my approach can benefit your team."*

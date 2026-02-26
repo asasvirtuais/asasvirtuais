@@ -1,11 +1,11 @@
 'use client'
-import { IndexedInterfaceProvider } from 'asasvirtuais/indexed-interface'
-import { schema } from '@/app/schema'
+import { InterfaceProvider } from '@/packages/asasvirtuais/packages/interface-provider'
+import { create, find, list, remove, update } from './interface'
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
     return (
-        <IndexedInterfaceProvider dbName='nextTemplateDb' schema={schema}>
+        <InterfaceProvider find={find} list={list} create={create} update={update} remove={remove}>
             {children}
-        </IndexedInterfaceProvider>
+        </InterfaceProvider>
     )
 }

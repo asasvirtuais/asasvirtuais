@@ -174,7 +174,7 @@ export default function Home() {
               </Title>
               <Text size="xl" c="dimmed" style={{ lineHeight: 1.6 }}>
                 I'm Ícaro C. Capobianco, a Full-Stack Web Developer and Solutions Architect with 7 years of remote experience.
-                I build reliable web applications by leveraging the right tools for the job—writing custom code only where it adds unique business value.
+                I specialize in building codebase future-proof architecture for small projects aimed to become big—coding the exception only where it adds unique business value.
               </Text>
             </Box>
 
@@ -238,8 +238,8 @@ export default function Home() {
             </ThemeIcon>
             <Text fw={700} size="lg" mb="xs">Pragmatic Architecture</Text>
             <Text size="sm" c="dimmed">
-              I rely on specialized, reliable tools (Airtable, Stripe, Auth0) for heavy lifting.
-              This minimizes risk, reduces overhead, and ensures faster delivery without reinventing the wheel.
+              I leverage specialized, reliable tools (Airtable, Stripe, Auth0) so I can focus on building a resilient,
+              future-proof foundation that scales without the overhead of custom infrastructure.
             </Text>
           </GlassCard>
           <GlassCard>
@@ -256,10 +256,10 @@ export default function Home() {
             <ThemeIcon variant="light" color="pink" size="xl" radius="md" mb="md">
               <FaLightbulb />
             </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs">Focus on Outcomes</Text>
+            <Text fw={700} size="lg" mb="xs">Innovation & Experience</Text>
             <Text size="sm" c="dimmed">
-              I'm driven by financial outcomes. By deeply understanding business challenges and legacy systems,
-              I rapidly prototype precise, high-value solutions that grow alongside the business.
+              I'm driven by the challenge of creating something truly innovative and remarkable to use.
+              I focus on building products that aren't just functional, but feel awesome for the end user.
             </Text>
           </GlassCard>
         </SimpleGrid>
