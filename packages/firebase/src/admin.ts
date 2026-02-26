@@ -1,5 +1,6 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app'
 import { getFirestore } from 'firebase-admin/firestore'
+import { getStorage } from 'firebase-admin/storage'
 
 export const account = JSON.parse(process.env.SERVICE_ACCOUNT_JSON as string)
 
@@ -9,3 +10,5 @@ export const app = getApps()[0] ?? initializeApp({
 })
 
 export const firestore = getFirestore(app, 'asasvirtuais')
+
+export const storage = getStorage(app)
