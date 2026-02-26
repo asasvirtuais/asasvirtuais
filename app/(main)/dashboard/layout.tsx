@@ -1,7 +1,7 @@
 'use client'
 import { AppShell, Burger, Group, NavLink, Title, Badge, Button, Text, Space } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { IconMessage, IconMessageCircle2, IconLogin, IconLogout, IconSettings } from '@tabler/icons-react'
+import { IconMessage, IconMessageCircle2, IconLogin, IconLogout, IconSettings, IconUsers, IconMapPin, IconTheater } from '@tabler/icons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useUser } from '@auth0/nextjs-auth0/client'
@@ -81,17 +81,38 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </Text>
                 <NavLink
                     component={Link}
+                    href="/dashboard/scenarios"
+                    label="Scenarios"
+                    leftSection={<IconTheater size={16} stroke={1.5} />}
+                    active={pathname?.startsWith('/dashboard/scenarios')}
+                />
+                <NavLink
+                    component={Link}
+                    href="/dashboard/characters"
+                    label="Characters"
+                    leftSection={<IconUsers size={16} stroke={1.5} />}
+                    active={pathname?.startsWith('/dashboard/characters')}
+                />
+                <NavLink
+                    component={Link}
+                    href="/dashboard/venues"
+                    label="Venues"
+                    leftSection={<IconMapPin size={16} stroke={1.5} />}
+                    active={pathname?.startsWith('/dashboard/venues')}
+                />
+                <NavLink
+                    component={Link}
                     href="/dashboard/chats"
                     label="Chats"
                     leftSection={<IconMessageCircle2 size={16} stroke={1.5} />}
-                    active={pathname === '/dashboard/chats'}
+                    active={pathname?.startsWith('/dashboard/chats')}
                 />
                 <NavLink
                     component={Link}
                     href="/dashboard/messages"
                     label="Messages"
                     leftSection={<IconMessage size={16} stroke={1.5} />}
-                    active={pathname === '/dashboard/messages'}
+                    active={pathname?.startsWith('/dashboard/messages')}
                 />
             </AppShell.Navbar>
 
