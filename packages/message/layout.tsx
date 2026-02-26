@@ -80,9 +80,32 @@ export function MessageText({
     ...props
 }: TextProps & { children?: React.ReactNode }) {
     return (
-        <Text size={size} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', flex: 1, ...style }} {...props}>
+        <Text component="div" size={size} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', flex: 1, ...style }} {...props}>
             {children}
         </Text>
+    )
+}
+
+/**
+ * Prose component for Markdown content to avoid <p> inside <p> errors
+ */
+export function MessageProse({
+    children,
+    style,
+    ...props
+}: BoxProps & { children?: React.ReactNode }) {
+    return (
+        <Box
+            style={{
+                lineHeight: 1.6,
+                wordBreak: 'break-word',
+                flex: 1,
+                ...style
+            }}
+            {...props}
+        >
+            {children}
+        </Box>
     )
 }
 

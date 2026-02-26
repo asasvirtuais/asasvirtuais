@@ -48,6 +48,7 @@ export function useAIChat(chatId: string) {
                 instructions: chat?.instructions,
                 model: chat?.model,
                 temperature: chat?.temperature,
+                chatTitle: chat?.title,
             },
         }),
         onFinish: async ({ message }) => {
