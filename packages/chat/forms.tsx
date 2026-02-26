@@ -45,7 +45,7 @@ export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
                 title: item.title || '',
                 instructions: item.instructions || '',
                 temperature: item.temperature ?? 0.7,
-                model: item.model || 'gemini-3.0-flash-preview',
+                model: item.model || 'gemini-3-flash-preview',
                 tools: item.tools || [],
             }}
             onSuccess={onSuccess}

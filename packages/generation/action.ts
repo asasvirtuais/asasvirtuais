@@ -6,7 +6,7 @@ import { writable as CharacterWritable } from '@/packages/character'
 import { writable as VenueWritable } from '@/packages/venue'
 import { writable as ChatWritable } from '@/packages/chat'
 
-async function getProvider(model: string = 'gemini-3.0-flash-preview') {
+async function getProvider(model: string = 'gemini-3-flash-preview') {
     const cookieStore = await cookies()
     const userApiKey = cookieStore.get('google-ai-key')?.value
     const google = createGoogleGenerativeAI({
