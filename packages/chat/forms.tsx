@@ -1,78 +1,80 @@
 'use client'
-import { CreateForm, useSingle } from 'asasvirtuais/react-interface'
-import { conversationSchema, messageSchema, type ConversationReadable, type MessageReadable } from '.'
-import { TitleField, ModelField, ContentField } from './fields'
-import { useConversations, useMessages } from './provider'
+import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
+import { Button, Stack, Group, Title } from '@mantine/core'
+import { schema, type Readable } from '.'
+import { TitleField, InstructionsField, TemperatureField, ModelField } from './fields'
+import { useChats } from './provider'
 
-// ─── Conversation forms ─────────────────────────────────────────────────────────
-
-export function CreateConversation({ onSuccess }: { onSuccess?: (c: ConversationReadable) => void }) {
+export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
     return (
-        <CreateForm table='Conversations' schema={conversationSchema} onSuccess={onSuccess}>
+        <CreateForm table='Chats' schema={schema} onSuccess={onSuccess}>
             {form => (
                 <form onSubmit={form.submit}>
-                    <TitleField />
-                    <ModelField />
-                    <button type='submit' disabled={form.loading}>
-                        {form.loading ? 'Creating…' : 'New Chat'}
-                    </button>
+                    <Stack>
+                        <Title order={3}>New Chat</Title>
+                        <TitleField />
+                        <ModelField />
+                        <TemperatureField />
+                        <InstructionsField />
+                        <Button type='submit' loading={form.loading} fullWidth>
+                            Save Chat
+                        </Button>
+                    </Stack>
                 </form>
             )}
         </CreateForm>
     )
 }
 
-export function DeleteConversation({ onSuccess }: { onSuccess?: () => void }) {
-    const { id } = useSingle('Conversations', conversationSchema)
-    const { remove } = useConversations()
-    return (
-        <button
-            onClick={async () => { await remove.trigger({ id }); onSuccess?.() }}
-            disabled={remove.loading}
-        >
-            {remove.loading ? 'Deleting…' : 'Delete'}
-        </button>
-    )
-}
+export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
+    const { single, id } = useSingle('Chats', schema)
+    const item = single as Readable
 
-// ─── Message forms ──────────────────────────────────────────────────────────────
-
-/** Sends a user message to a conversation. Does NOT call AI — that's handled by the app layer. */
-export function SendMessage({
-    conversationId,
-    onSuccess,
-}: {
-    conversationId: string
-    onSuccess?: (m: MessageReadable) => void
-}) {
     return (
-        <CreateForm
-            table='Messages'
-            schema={messageSchema}
-            defaults={{ conversationId, role: 'user', createdAt: Date.now() }}
+        <UpdateForm
+            table='Chats'
+            schema={schema}
+            id={id}
+            defaults={{
+                title: item.title || '',
+                instructions: item.instructions || '',
+                temperature: item.temperature ?? 0.7,
+                model: item.model || 'gemini-2.0-flash',
+            }}
             onSuccess={onSuccess}
         >
             {form => (
                 <form onSubmit={form.submit}>
-                    <ContentField />
-                    <button type='submit' disabled={form.loading}>
-                        {form.loading ? '…' : 'Send'}
-                    </button>
+                    <Stack>
+                        <TitleField />
+                        <ModelField />
+                        <TemperatureField />
+                        <InstructionsField />
+                        <Button type='submit' loading={form.loading} fullWidth>
+                            Update Chat
+                        </Button>
+                    </Stack>
                 </form>
             )}
-        </CreateForm>
+        </UpdateForm>
     )
 }
 
-export function DeleteMessage({ onSuccess }: { onSuccess?: () => void }) {
-    const { id } = useSingle('Messages', messageSchema)
-    const { remove } = useMessages()
+export function DeleteChat({ onSuccess }: { onSuccess?: () => void }) {
+    const { id } = useSingle('Chats', schema)
+    const { remove } = useChats()
+
     return (
-        <button
-            onClick={async () => { await remove.trigger({ id }); onSuccess?.() }}
-            disabled={remove.loading}
+        <Button
+            variant='light'
+            color='red'
+            onClick={async () => {
+                await remove.trigger({ id })
+                onSuccess?.()
+            }}
+            loading={remove.loading}
         >
-            Delete
-        </button>
+            Delete Chat
+        </Button>
     )
 }

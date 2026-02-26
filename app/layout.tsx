@@ -4,7 +4,6 @@ import '@mantine/notifications/styles.css'
 import { ColorSchemeScript } from '@mantine/core'
 import { Provider } from '@/components/ui/provider'
 import { Auth0Provider } from '@auth0/nextjs-auth0/client'
-import AppProviders from './providers'
 
 export default function RootLayout({
   children,
@@ -19,9 +18,7 @@ export default function RootLayout({
       <body>
         <Auth0Provider>
           <Provider>
-            <AppProviders>
-              {children}
-            </AppProviders>
+            {children}
           </Provider>
         </Auth0Provider>
       </body>

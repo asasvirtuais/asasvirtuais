@@ -1,42 +1,58 @@
 'use client'
 import { useSingle } from 'asasvirtuais/react-interface'
-import { conversationSchema, messageSchema, type ConversationReadable, type MessageReadable } from '.'
+import { Card, Text, Badge, Group, Stack, TypographyStylesProvider } from '@mantine/core'
+import ReactMarkdown from 'react-markdown'
+import { schema, type Readable } from '.'
 
-// ─── Conversation components ────────────────────────────────────────────────────
+export function ChatItem() {
+    const { single } = useSingle('Chats', schema)
+    const item = single as Readable
 
-/** Compact row for sidebar lists — must be inside SingleProvider for 'Conversations' */
-export function ConversationItem() {
-    const { single } = useSingle('Conversations', conversationSchema)
-    const convo = single as ConversationReadable
     return (
-        <div className='conversation-item'>
-            <span className='conversation-title'>{convo.title || 'Untitled'}</span>
-            {convo.model && <span className='conversation-model'>{convo.model}</span>}
-        </div>
+        <Card shadow='sm' padding='lg' radius='md' withBorder>
+            <Group justify='space-between' mb='xs'>
+                <Text fw={500}>{item.title || 'Untitled Chat'}</Text>
+                <Badge color='blue' variant='light'>{item.model}</Badge>
+            </Group>
+
+            <Text size='sm' color='dimmed' lineClamp={2}>
+                {item.instructions || 'No instructions provided.'}
+            </Text>
+
+            <Group mt='md' gap={5}>
+                <Text size='xs' fw={700}>Temp:</Text>
+                <Text size='xs'>{item.temperature ?? 0.7}</Text>
+            </Group>
+        </Card>
     )
 }
 
-/** Full header for currently active conversation — must be inside SingleProvider */
-export function ConversationHeader() {
-    const { single } = useSingle('Conversations', conversationSchema)
-    const convo = single as ConversationReadable
-    return (
-        <div className='conversation-header'>
-            <h2>{convo.title || 'Untitled'}</h2>
-            {convo.model && <span className='model-badge'>{convo.model}</span>}
-        </div>
-    )
-}
+export function SingleChat() {
+    const { single } = useSingle('Chats', schema)
+    const item = single as Readable
 
-// ─── Message components ─────────────────────────────────────────────────────────
-
-/** Single message bubble — must be inside SingleProvider for 'Messages' */
-export function MessageBubble() {
-    const { single } = useSingle('Messages', messageSchema)
-    const msg = single as MessageReadable
     return (
-        <div className={`message-bubble message-${msg.role}`}>
-            <div className='message-content'>{msg.content}</div>
-        </div>
+        <Stack>
+            <Group justify='space-between'>
+                <Text size='xl' fw={700}>{item.title}</Text>
+                <Badge size='lg'>{item.model}</Badge>
+            </Group>
+
+            <Group gap='xs'>
+                <Text fw={600}>Temperature:</Text>
+                <Text>{item.temperature}</Text>
+            </Group>
+
+            <Stack gap={5}>
+                <Text fw={600}>Instructions:</Text>
+                <Card withBorder radius='md' p='md'>
+                    <TypographyStylesProvider>
+                        <ReactMarkdown>
+                            {item.instructions || ''}
+                        </ReactMarkdown>
+                    </TypographyStylesProvider>
+                </Card>
+            </Stack>
+        </Stack>
     )
 }

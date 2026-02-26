@@ -1,43 +1,68 @@
 'use client'
 import { useFields } from 'asasvirtuais/fields'
-
-// ─── Conversation fields ────────────────────────────────────────────────────────
+import { TextInput, Textarea, Select, Slider, Stack, Text } from '@mantine/core'
 
 export function TitleField() {
     const { fields, setField } = useFields<{ title: string }>()
     return (
-        <input
+        <TextInput
+            label='Title'
+            placeholder='System Persona Name'
             value={fields.title || ''}
             onChange={e => setField('title', e.target.value)}
-            placeholder='Conversation title…'
         />
+    )
+}
+
+export function InstructionsField() {
+    const { fields, setField } = useFields<{ instructions: string }>()
+    return (
+        <Textarea
+            label='Instructions'
+            placeholder='System instructions for the AI...'
+            value={fields.instructions || ''}
+            onChange={e => setField('instructions', e.target.value)}
+            minRows={4}
+        />
+    )
+}
+
+export function TemperatureField() {
+    const { fields, setField } = useFields<{ temperature: number }>()
+    return (
+        <Stack gap={5}>
+            <Text size='sm' fw={500}>Temperature</Text>
+            <Slider
+                value={fields.temperature ?? 0.7}
+                onChange={val => setField('temperature', val)}
+                min={0}
+                max={2}
+                step={0.1}
+                label={val => val.toFixed(1)}
+                marks={[
+                    { value: 0, label: '0' },
+                    { value: 1, label: '1' },
+                    { value: 2, label: '2' },
+                ]}
+                mb='xl'
+            />
+        </Stack>
     )
 }
 
 export function ModelField() {
     const { fields, setField } = useFields<{ model: string }>()
     return (
-        <select
-            value={fields.model || 'gemini-2.0-flash'}
-            onChange={e => setField('model', e.target.value)}
-        >
-            <option value='gemini-2.0-flash'>Gemini 2.0 Flash</option>
-            <option value='gemini-2.0-pro'>Gemini 2.0 Pro</option>
-            <option value='gemini-1.5-flash'>Gemini 1.5 Flash</option>
-        </select>
-    )
-}
-
-// ─── Message fields ─────────────────────────────────────────────────────────────
-
-export function ContentField({ placeholder = 'Type a message…' }: { placeholder?: string }) {
-    const { fields, setField } = useFields<{ content: string }>()
-    return (
-        <textarea
-            value={fields.content || ''}
-            onChange={e => setField('content', e.target.value)}
-            placeholder={placeholder}
-            rows={1}
+        <Select
+            label='Model'
+            placeholder='Select AI Model'
+            data={[
+                { value: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
+                { value: 'gemini-2.0-pro', label: 'Gemini 2.0 Pro' },
+                { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
+            ]}
+            value={fields.model || ''}
+            onChange={val => setField('model', val || '')}
         />
     )
 }

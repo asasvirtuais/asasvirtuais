@@ -1,6 +1,6 @@
 'use client'
 import { InterfaceProvider } from '@/packages/asasvirtuais/packages/interface-provider'
-import { create, find, list, remove, update } from './interface'
+import { create, find, list, remove, update } from '../interface'
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
     return (
