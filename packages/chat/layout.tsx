@@ -15,7 +15,7 @@ export function ChatHeader({ children }: { children: React.ReactNode }) {
 
 export function ChatBody({ children }: { children: React.ReactNode }) {
     return (
-        <ScrollArea h="400px" p="md" offsetScrollbars>
+        <ScrollArea style={{ flex: 1 }} p="md" offsetScrollbars>
             <Stack gap="md">
                 {children}
             </Stack>
@@ -34,7 +34,10 @@ export function ChatInput({ children }: { children: React.ReactNode }) {
 export function ChatPageLayout({ children }: { children: React.ReactNode }) {
     return (
         <Box
+            h="100%"
             style={{
+                display: 'flex',
+                flexDirection: 'column',
                 border: '1px solid var(--mantine-color-gray-2)',
                 borderRadius: 'var(--mantine-radius-md)',
                 backgroundColor: 'var(--mantine-color-white)',
