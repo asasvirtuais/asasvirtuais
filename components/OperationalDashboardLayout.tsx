@@ -15,7 +15,7 @@ import {
 } from '@mantine/core'
 import { SingleProvider } from 'asasvirtuais/react-interface'
 import { IconPlus, IconDatabase } from '@tabler/icons-react'
-import { useTable } from '@/packages/asasvirtuais/packages/react-interface'
+import { useTable } from 'asasvirtuais/react-interface'
 
 export interface OperationalDashboardLayoutProps {
     title: string;
@@ -65,7 +65,7 @@ export function OperationalDashboardLayout({
                             setSelectedId(null)
                         }}
                     >
-                        New Chat
+                        New Record
                     </Button>
                 </Group>
 
@@ -73,27 +73,28 @@ export function OperationalDashboardLayout({
                     <Grid.Col span={{ base: 12, md: 4 }}>
                         <Paper withBorder p='md' radius='md'>
                             <Stack gap='sm'>
-                                <Text fw={700} size='sm' c='dimmed' tt='uppercase'>Record List</Text>
+                                <Text fw={700} size='sm' c='dimmed' tt='uppercase'>{tableName} Record List</Text>
                                 <ScrollArea h={500} offsetScrollbars>
                                     <Stack gap='xs'>
                                         {array.map((item) => (
-                                            <Card
-                                                key={item.id}
-                                                shadow='xs'
-                                                p='sm'
-                                                radius='md'
-                                                withBorder
-                                                onClick={() => {
-                                                    setSelectedId(item.id)
-                                                    setIsCreating(false)
-                                                }}
-                                                style={{
-                                                    cursor: 'pointer',
-                                                    backgroundColor: selectedId === item.id ? 'var(--mantine-color-blue-light)' : undefined,
-                                                }}
-                                            >
-                                                <ListItem item={item} />
-                                            </Card>
+                                            <SingleProvider key={item.id} id={item.id} table={tableName} schema={schema}>
+                                                <Card
+                                                    shadow='xs'
+                                                    p='sm'
+                                                    radius='md'
+                                                    withBorder
+                                                    onClick={() => {
+                                                        setSelectedId(item.id)
+                                                        setIsCreating(false)
+                                                    }}
+                                                    style={{
+                                                        cursor: 'pointer',
+                                                        backgroundColor: selectedId === item.id ? 'var(--mantine-color-blue-light)' : undefined,
+                                                    }}
+                                                >
+                                                    <ListItem item={item} />
+                                                </Card>
+                                            </SingleProvider>
                                         ))}
                                     </Stack>
                                 </ScrollArea>
@@ -105,7 +106,7 @@ export function OperationalDashboardLayout({
                         <Paper withBorder p='xl' radius='md' mih={400}>
                             {isCreating ? (
                                 <Stack>
-                                    <Title order={2}>Create Chat</Title>
+                                    <Title order={2}>Create New {tableName.slice(0, -1)}</Title>
                                     <CreateForm onSuccess={handleCreateSuccess} />
                                 </Stack>
                             ) : selectedId ? (
@@ -124,7 +125,7 @@ export function OperationalDashboardLayout({
                                             <Tabs.Panel value="admin">
                                                 <Stack gap="xl">
                                                     <Group justify="space-between">
-                                                        <Title order={2}>Manage Record</Title>
+                                                        <Title order={2}>Manage {tableName.slice(0, -1)}</Title>
                                                         <DeleteForm onSuccess={() => setSelectedId(null)} />
                                                     </Group>
                                                     <Grid>
@@ -143,7 +144,7 @@ export function OperationalDashboardLayout({
                                     ) : (
                                         <Stack gap="xl">
                                             <Group justify="space-between">
-                                                <Title order={2}>Manage Record</Title>
+                                                <Title order={2}>Manage {tableName.slice(0, -1)}</Title>
                                                 <DeleteForm onSuccess={() => setSelectedId(null)} />
                                             </Group>
                                             <Grid>
@@ -162,7 +163,7 @@ export function OperationalDashboardLayout({
                             ) : (
                                 <Stack align='center' justify='center' mih={500} gap='xs'>
                                     <IconDatabase size={48} stroke={1.5} color='var(--mantine-color-gray-4)' />
-                                    <Text size='lg' fw={500}>Select a Chat</Text>
+                                    <Text size='lg' fw={500}>Select an item</Text>
                                     <Text size='sm' c='dimmed'>Choose an item from the list to start.</Text>
                                 </Stack>
                             )}
