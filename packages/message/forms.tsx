@@ -42,9 +42,9 @@ export function UpdateMessage({ onSuccess }: { onSuccess?: (item: Readable) => v
             id={id}
             defaults={{
                 chat: message.chat,
-                Role: message.Role,
-                Content: message.Content || '',
-                Metadata: message.Metadata || {},
+                role: message.role,
+                content: message.content || '',
+                metadata: message.metadata || {},
             }}
             onSuccess={onSuccess}
         >

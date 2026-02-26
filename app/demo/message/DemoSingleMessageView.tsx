@@ -23,11 +23,11 @@ export function DemoSingleMessageView() {
     )
 
     const message = single as Readable
-    const isUser = message.Role === 'user'
-    const isSystem = message.Role === 'system'
+    const isUser = message.role === 'user'
+    const isSystem = message.role === 'system'
 
     // Some dummy long text for the floating layout demo
-    const longText = "This is a very long message. It needs to be long enough so that you can see how the text wraps around the floated avatar like it does in Character AI and other similar chat interfaces. Float left combined with block display makes text flow naturally around the rectangle. Let's add some more filler text just to make sure it wraps properly. " + (message.Content || '')
+    const longText = "This is a very long message. It needs to be long enough so that you can see how the text wraps around the floated avatar like it does in Character AI and other similar chat interfaces. Float left combined with block display makes text flow naturally around the rectangle. Let's add some more filler text just to make sure it wraps properly. " + (message.content || '')
 
     return (
         <Stack gap="xl" p="md">
@@ -41,7 +41,7 @@ export function DemoSingleMessageView() {
             <MessageLayout justify={isUser ? 'flex-end' : 'flex-start'}>
                 {!isUser && (
                     <MessageAvatar color={isSystem ? 'gray' : 'teal'} radius="xl">
-                        {message.Role?.[0]?.toUpperCase()}
+                        {message.role?.[0]?.toUpperCase()}
                     </MessageAvatar>
                 )}
 
@@ -52,11 +52,11 @@ export function DemoSingleMessageView() {
                         color={isUser ? 'var(--mantine-color-white)' : 'inherit'}
                         radius="lg"
                     >
-                        <MessageText>{message.Content}</MessageText>
-                        <MessageMenuOptions metadata={message.Metadata} iconColor={isUser ? 'white' : 'gray'} />
+                        <MessageText>{message.content}</MessageText>
+                        <MessageMenuOptions metadata={message.metadata} iconColor={isUser ? 'white' : 'gray'} />
                     </MessagePaper>
                     <Text size="xs" color="dimmed" mt={4} ta={isUser ? 'right' : 'left'} px={4}>
-                        {message.Role?.charAt(0).toUpperCase() + message.Role?.slice(1)}
+                        {message.role?.charAt(0).toUpperCase() + message.role?.slice(1)}
                     </Text>
                 </Box>
 
@@ -68,13 +68,13 @@ export function DemoSingleMessageView() {
             <Divider label="Borderless UI" labelPosition="center" />
             <MessageLayout justify="flex-start">
                 <MessageAvatar color="grape" radius="md">
-                    {message.Role?.[0]?.toUpperCase()}
+                    {message.role?.[0]?.toUpperCase()}
                 </MessageAvatar>
 
                 <Box style={{ flex: 1 }}>
                     <MessagePaper bg="transparent" withBorder={false} p={0} radius={0}>
-                        <MessageText>{message.Content}</MessageText>
-                        <MessageMenuOptions metadata={message.Metadata} />
+                        <MessageText>{message.content}</MessageText>
+                        <MessageMenuOptions metadata={message.metadata} />
                     </MessagePaper>
                 </Box>
             </MessageLayout>
@@ -101,13 +101,13 @@ export function DemoSingleMessageView() {
                 >
                     <Box style={{ display: 'inline' }}>
                         <Text component="span" fw={700} mr="xs">
-                            {message.Role?.charAt(0).toUpperCase() + message.Role?.slice(1)} Assistant
+                            {message.role?.charAt(0).toUpperCase() + message.role?.slice(1)} Assistant
                         </Text>
                         <Text component="span" size="sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                             {longText}
                         </Text>
                         <MessageMenuOptions
-                            metadata={message.Metadata}
+                            metadata={message.metadata}
                             style={{ display: 'inline-block', marginLeft: '0.5rem', verticalAlign: 'middle' }}
                         />
                     </Box>
@@ -118,9 +118,9 @@ export function DemoSingleMessageView() {
             <MessageLayout justify="center">
                 <MessagePaper bg="var(--mantine-color-gray-1)" withBorder radius="sm" p="xs">
                     <Text size="xs" c="dimmed" fs="italic">
-                        {message.Content}
+                        {message.content}
                     </Text>
-                    <MessageMenuOptions metadata={message.Metadata} />
+                    <MessageMenuOptions metadata={message.metadata} />
                 </MessagePaper>
             </MessageLayout>
 

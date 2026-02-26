@@ -6,6 +6,12 @@ import {
     ChatBody,
     ChatInput
 } from '@/packages/chat/layout'
+import {
+    MessageAvatar,
+    MessageLayout,
+    MessagePaper,
+    MessageText
+} from '@/packages/message/layout'
 import { useSingle } from 'asasvirtuais/react-interface'
 import { schema, type Readable } from '@/packages/chat'
 import {
@@ -35,7 +41,7 @@ import { useAIChat } from '@/packages/aichat/hooks'
 import { UpdateChat } from '@/packages/chat/forms'
 
 /**
- * Premium Message Bubble Component
+ * Premium Message Bubble Component using LEGO blocks
  */
 function DashboardMessageBubble({ role, content }: { role: string, content: string }) {
     const isAssistant = role === 'assistant'
@@ -44,36 +50,35 @@ function DashboardMessageBubble({ role, content }: { role: string, content: stri
     if (isSystem) return null
 
     return (
-        <Group align="flex-start" justify={isAssistant ? 'flex-start' : 'flex-end'} wrap="nowrap" gap="md">
+        <MessageLayout justify={isAssistant ? 'flex-start' : 'flex-end'}>
             {isAssistant && (
-                <Avatar radius="xl" color="blue" size="md">
+                <MessageAvatar radius="xl" color="blue" size="md">
                     <IconRobot size={24} />
-                </Avatar>
+                </MessageAvatar>
             )}
-            <Paper
+            <MessagePaper
                 p="md"
                 radius="lg"
                 shadow="sm"
                 withBorder={false}
                 bg={isAssistant ? 'gray.0' : 'blue.6'}
-                c={isAssistant ? 'dark.9' : 'white'}
+                color={isAssistant ? 'var(--mantine-color-dark-9)' : 'white'}
                 style={{
                     maxWidth: '85%',
-                    overflowWrap: 'break-word',
                     borderBottomLeftRadius: isAssistant ? 4 : undefined,
                     borderBottomRightRadius: !isAssistant ? 4 : undefined,
                 }}
             >
-                <Box style={{ fontSize: 'var(--mantine-font-size-md)', lineHeight: 1.6 }}>
+                <MessageText size="md" style={{ lineHeight: 1.6 }}>
                     <ReactMarkdown>{content}</ReactMarkdown>
-                </Box>
-            </Paper>
+                </MessageText>
+            </MessagePaper>
             {!isAssistant && (
-                <Avatar radius="xl" color="gray" size="md">
-                    <IconUser size={24} />
-                </Avatar>
+                <MessageAvatar radius="xl" color="gray" size="md">
+                    <IconUser color='darkgray' size={24} />
+                </MessageAvatar>
             )}
-        </Group>
+        </MessageLayout>
     )
 }
 
@@ -116,7 +121,7 @@ export function DashboardChatView() {
                         <Box>
                             <Title order={4} style={{ letterSpacing: '-0.5px' }}>{item.title || 'A.I. Assistant'}</Title>
                             <Group gap={6}>
-                                <Box w={8} h={8} radius="xl" bg="green.5" style={{ borderRadius: '50%' }} />
+                                <Box w={8} h={8} bg="green.5" style={{ borderRadius: '50%' }} />
                                 <Text size="xs" c="dimmed" fw={500}>System Online</Text>
                             </Group>
                         </Box>

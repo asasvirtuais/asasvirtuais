@@ -3,18 +3,18 @@ import z from 'zod'
 export const readable = z.object({
     id: z.string(),
     chat: z.string(),
-    Role: z.enum(['user', 'assistant', 'system']).default('user'),
-    Content: z.string().optional(),
-    Timestamp: z.number().optional(),
-    Metadata: z.record(z.string(), z.any()).optional(),
+    role: z.enum(['user', 'assistant', 'system']).default('user'),
+    content: z.string().optional(),
+    timestamp: z.number().optional(),
+    metadata: z.record(z.string(), z.any()).optional(),
 })
 
 export const writable = readable.pick([
     'chat',
-    'Role',
-    'Content',
-    'Timestamp',
-    'Metadata',
+    'role',
+    'content',
+    'timestamp',
+    'metadata',
 ])
 
 export const schema = { readable, writable }

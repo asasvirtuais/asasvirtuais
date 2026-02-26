@@ -23,12 +23,12 @@ export function MessageListItem() {
     const message = single as Readable
     return (
         <Group wrap="nowrap" gap="sm">
-            <Avatar size="sm" color={message.Role === 'user' ? 'blue' : 'green'}>
-                {message.Role?.[0].toUpperCase()}
+            <Avatar size="sm" color={message.role === 'user' ? 'blue' : 'green'}>
+                {message.role?.[0].toUpperCase()}
             </Avatar>
             <Box style={{ flex: 1, overflow: 'hidden' }}>
-                <Text size="sm" fw={500} truncate>{message.Role}</Text>
-                <Text size="xs" color="dimmed" truncate>{message.Content}</Text>
+                <Text size="sm" fw={500} truncate>{message.role}</Text>
+                <Text size="xs" color="dimmed" truncate>{message.content}</Text>
             </Box>
         </Group>
     )
@@ -37,14 +37,14 @@ export function MessageListItem() {
 export function SingleMessage() {
     const { single } = useSingle('messages', schema)
     const message = single as Readable
-    const isUser = message.Role === 'user'
-    const isSystem = message.Role === 'system'
+    const isUser = message.role === 'user'
+    const isSystem = message.role === 'system'
 
     return (
         <MessageLayout justify={isUser ? 'flex-end' : 'flex-start'}>
             {!isUser && (
                 <MessageAvatar color={isSystem ? 'gray' : 'teal'}>
-                    {message.Role?.[0]?.toUpperCase()}
+                    {message.role?.[0]?.toUpperCase()}
                 </MessageAvatar>
             )}
 

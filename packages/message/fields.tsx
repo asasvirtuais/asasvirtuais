@@ -3,20 +3,20 @@ import { useFields } from 'asasvirtuais/fields'
 import { TextInput, Textarea, Select, JsonInput } from '@mantine/core'
 
 export function ContentField() {
-    const { fields, setField } = useFields<{ Content: string }>()
+    const { fields, setField } = useFields<{ content: string }>()
     return (
         <Textarea
             label='Content'
             placeholder='Message content...'
-            value={fields.Content || ''}
-            onChange={e => setField('Content', e.target.value)}
+            value={fields.content || ''}
+            onChange={e => setField('content', e.target.value)}
             minRows={2}
         />
     )
 }
 
 export function RoleField() {
-    const { fields, setField } = useFields<{ Role: 'user' | 'assistant' | 'system' }>()
+    const { fields, setField } = useFields<{ role: 'user' | 'assistant' | 'system' }>()
     return (
         <Select
             label='Role'
@@ -25,8 +25,8 @@ export function RoleField() {
                 { value: 'assistant', label: 'Assistant' },
                 { value: 'system', label: 'System' },
             ]}
-            value={fields.Role || 'user'}
-            onChange={val => setField('Role', val as any)}
+            value={fields.role || 'user'}
+            onChange={val => setField('role', val as any)}
         />
     )
 }
@@ -44,7 +44,7 @@ export function ChatField() {
 }
 
 export function MetadataField() {
-    const { fields, setField } = useFields<{ Metadata: any }>()
+    const { fields, setField } = useFields<{ metadata: any }>()
     return (
         <JsonInput
             label='Metadata (Debug Info)'
@@ -53,10 +53,10 @@ export function MetadataField() {
             formatOnBlur
             autosize
             minRows={4}
-            value={JSON.stringify(fields.Metadata || {}, null, 2)}
+            value={JSON.stringify(fields.metadata || {}, null, 2)}
             onChange={val => {
                 try {
-                    setField('Metadata', JSON.parse(val))
+                    setField('metadata', JSON.parse(val))
                 } catch (e) {
                     // ignore invalid json during typing
                 }

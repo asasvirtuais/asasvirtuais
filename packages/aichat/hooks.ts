@@ -23,11 +23,11 @@ export function useAIChat(chatId: string) {
     const initialMessages = useMemo(() => {
         return dbMessages
             .filter(m => m.chat === chatId)
-            .sort((a, b) => (a.Timestamp || 0) - (b.Timestamp || 0))
+            .sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
             .map(m => ({
                 id: m.id,
-                role: m.Role as 'user' | 'assistant' | 'system',
-                parts: [{ type: 'text', text: m.Content || '' }],
+                role: m.role as 'user' | 'assistant' | 'system',
+                parts: [{ type: 'text', text: m.content || '' }],
             })) as unknown as UIMessage[]
     }, [dbMessages, chatId])
 
@@ -63,9 +63,9 @@ export function useAIChat(chatId: string) {
                 await createMessage.trigger({
                     data: {
                         chat: chatId,
-                        Role: 'assistant',
-                        Content: text,
-                        Timestamp: Date.now(),
+                        role: 'assistant',
+                        content: text,
+                        timestamp: Date.now(),
                     }
                 })
             } catch (err) {
@@ -94,9 +94,9 @@ export function useAIChat(chatId: string) {
             await createMessage.trigger({
                 data: {
                     chat: chatId,
-                    Role: 'user',
-                    Content: userContent,
-                    Timestamp: Date.now(),
+                    role: 'user',
+                    content: userContent,
+                    timestamp: Date.now(),
                 }
             })
 
