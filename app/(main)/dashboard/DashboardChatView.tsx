@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     ChatPageLayout,
     ChatHeader,
@@ -10,7 +10,8 @@ import {
     MessageAvatar,
     MessageLayout,
     MessagePaper,
-    MessageText
+    MessageText,
+    MessageMenuOptions
 } from '@/packages/message/layout'
 import { useSingle } from 'asasvirtuais/react-interface'
 import { schema, type Readable } from '@/packages/chat'
@@ -39,15 +40,23 @@ import {
 import ReactMarkdown from 'react-markdown'
 import { useAIChat } from '@/packages/aichat/hooks'
 import { UpdateChat } from '@/packages/chat/forms'
+import { UpdateMessage } from '@/packages/message/forms'
+import { useMessages } from '@/packages/message/provider'
+import { SingleProvider } from 'asasvirtuais/react-interface'
+import { schema as messageSchema } from '@/packages/message'
 
 /**
  * Premium Message Bubble Component using LEGO blocks
  */
-function DashboardMessageBubble({ role, content }: { role: string, content: string }) {
-    const isAssistant = role === 'assistant'
-    const isSystem = role === 'system'
+function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
+    const { single } = useSingle('messages', messageSchema)
+    const message = single as Message
+    console.log(message)
+    const isAssistant = message?.role === 'assistant'
+    const isSystem = message?.role === 'system'
+    const { remove } = useMessages()
 
-    if (isSystem) return null
+    if (isSystem || !message) return null
 
     return (
         <MessageLayout justify={isAssistant ? 'flex-start' : 'flex-end'}>
@@ -69,9 +78,17 @@ function DashboardMessageBubble({ role, content }: { role: string, content: stri
                     borderBottomRightRadius: !isAssistant ? 4 : undefined,
                 }}
             >
-                <MessageText size="md" style={{ lineHeight: 1.6 }}>
-                    <ReactMarkdown>{content}</ReactMarkdown>
-                </MessageText>
+                <Box style={{ flex: 1 }}>
+                    <MessageText size="md" style={{ lineHeight: 1.6 }}>
+                        <ReactMarkdown>{message.content || ''}</ReactMarkdown>
+                    </MessageText>
+                </Box>
+                <MessageMenuOptions
+                    metadata={message.metadata}
+                    iconColor={isAssistant ? 'gray' : 'white'}
+                    onDelete={() => remove.trigger({ id: message.id })}
+                    onEdit={onEdit}
+                />
             </MessagePaper>
             {!isAssistant && (
                 <MessageAvatar radius="xl" color="gray" size="md">
@@ -86,18 +103,29 @@ export function DashboardChatView() {
     const { single, id } = useSingle('chats', schema)
     const item = single as Readable
     const [opened, { open, close }] = useDisclosure(false)
+    const [editOpened, { open: openEdit, close: closeEdit }] = useDisclosure(false)
+    const [editingMessageId, setEditingMessageId] = useState<string | null>(null)
+
+    const { list: listMessages, array: dbMessages } = useMessages()
+
+    useEffect(() => {
+        if (id) {
+            listMessages.trigger({ query: { chat: id } })
+        }
+    }, [id])
 
     const {
-        messages,
         input,
         handleInputChange,
         handleSubmit,
         status,
         error,
-        regenerate,
     } = useAIChat(id)
 
     const isLoading = status === 'submitted' || status === 'streaming'
+
+    // Sort messages by timestamp
+    const sortedMessages = [...dbMessages].sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
 
     // Auto-scroll to bottom of ChatBody
     useEffect(() => {
@@ -105,7 +133,7 @@ export function DashboardChatView() {
         if (scrollArea) {
             scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' })
         }
-    }, [messages])
+    }, [sortedMessages.length, isLoading])
 
     if (!item) return <Text c="dimmed" ta="center" py="xl">Chat not found.</Text>
 
@@ -146,7 +174,7 @@ export function DashboardChatView() {
             {/* Body */}
             <ChatBody>
                 <Stack gap="xl" py="md">
-                    {messages.length === 0 && !isLoading && (
+                    {sortedMessages.length === 0 && !isLoading && (
                         <Stack align="center" gap="xs" py="xl" opacity={0.6}>
                             <IconRobot size={48} stroke={1.5} />
                             <Text ta="center" size="md">
@@ -155,23 +183,26 @@ export function DashboardChatView() {
                         </Stack>
                     )}
 
-                    {messages.map((m) => (
-                        <DashboardMessageBubble
-                            key={m.id}
-                            role={m.role}
-                            content={m.parts.filter(p => p.type === 'text').map(p => p.text).join('')}
-                        />
+                    {sortedMessages.map((m) => (
+                        <SingleProvider key={m.id} id={m.id} table="messages" schema={messageSchema}>
+                            <DashboardMessageBubble
+                                onEdit={() => {
+                                    setEditingMessageId(m.id)
+                                    openEdit()
+                                }}
+                            />
+                        </SingleProvider>
                     ))}
 
-                    {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
-                        <Group gap="md">
-                            <Avatar radius="xl" color="blue" size="md">
+                    {isLoading && (
+                        <MessageLayout justify="flex-start">
+                            <MessageAvatar radius="xl" color="blue" size="md">
                                 <Loader size="xs" type="dots" color="white" />
-                            </Avatar>
-                            <Paper p="md" radius="lg" bg="gray.0">
+                            </MessageAvatar>
+                            <MessagePaper p="md" radius="lg" bg="gray.0">
                                 <Text size="sm" c="dimmed">Analyzing your request...</Text>
-                            </Paper>
-                        </Group>
+                            </MessagePaper>
+                        </MessageLayout>
                     )}
 
                     {error && (
@@ -223,6 +254,16 @@ export function DashboardChatView() {
             <Modal opened={opened} onClose={close} title="Dashboard Chat Configuration" centered radius="lg">
                 <Paper p="xs">
                     <UpdateChat onSuccess={close} />
+                </Paper>
+            </Modal>
+
+            <Modal opened={editOpened} onClose={closeEdit} title="Edit Message" centered radius="lg">
+                <Paper p="xs">
+                    {editingMessageId && (
+                        <SingleProvider id={editingMessageId} table="messages" schema={messageSchema}>
+                            <UpdateMessage onSuccess={closeEdit} />
+                        </SingleProvider>
+                    )}
                 </Paper>
             </Modal>
         </ChatPageLayout>

@@ -54,11 +54,11 @@ export function SingleMessage() {
                     withBorder={!isUser && !isSystem}
                     color={isUser ? 'var(--mantine-color-white)' : 'inherit'}
                 >
-                    <MessageText>{message.Content}</MessageText>
-                    <MessageMenuOptions metadata={message.Metadata} iconColor={isUser ? 'white' : 'gray'} />
+                    <MessageText>{message.content}</MessageText>
+                    <MessageMenuOptions metadata={message.metadata} iconColor={isUser ? 'white' : 'gray'} />
                 </MessagePaper>
                 <Text size="xs" color="dimmed" mt={4} ta={isUser ? 'right' : 'left'} px={4}>
-                    {message.Role?.charAt(0).toUpperCase() + message.Role?.slice(1)}
+                    {message.role?.charAt(0).toUpperCase() + message.role?.slice(1)}
                 </Text>
             </Box>
 
