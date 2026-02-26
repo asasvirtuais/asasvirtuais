@@ -3,7 +3,7 @@ import { authenticate } from 'asasvirtuais/auth0'
 import { firestoreInterface } from './firestore-interface'
 import { schema } from './schema'
 
-const rootInterface = firestoreInterface<typeof schema, keyof typeof schema>(schema)
+const rootInterface = firestoreInterface(schema)
 
 export const find = (async (props) => {
     const user = (await authenticate()).id
