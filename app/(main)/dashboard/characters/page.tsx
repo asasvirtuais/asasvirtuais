@@ -4,6 +4,8 @@ import { schema } from '@/packages/character'
 import { CreateCharacter, UpdateCharacter, DeleteCharacter } from '@/packages/character/forms'
 import { SingleCharacter, CharacterListItem } from '@/packages/character/components'
 
+import { GenerateCharacterButton } from '@/packages/generation/components'
+
 export default function CharactersDashboardPage() {
     return (
         <OperationalDashboardLayout
@@ -15,6 +17,7 @@ export default function CharactersDashboardPage() {
             CreateForm={CreateCharacter}
             UpdateForm={UpdateCharacter}
             DeleteForm={DeleteCharacter}
+            generateButton={<GenerateCharacterButton onGenerate={() => { }} />}
         />
     )
 }

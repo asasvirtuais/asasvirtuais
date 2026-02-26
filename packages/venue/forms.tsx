@@ -1,16 +1,22 @@
 'use client'
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
-import { schema, type Readable } from '.'
+import { schema, type Readable, type Writable } from '.'
 import { TitleField, CircumstancesField, ToolsField } from './fields'
 import { useVenues } from './provider'
-import { Button, Stack } from '@mantine/core'
+import { Button, Stack, Group } from '@mantine/core'
+import { GenerateVenueButton } from '@/packages/generation/components'
 
-export function CreateVenue({ onSuccess }: { onSuccess?: (venue: Readable) => void }) {
+export function CreateVenue({ onSuccess, defaults, hideGenerate }: { onSuccess?: (venue: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (
-        <CreateForm table="venues" schema={schema} onSuccess={onSuccess}>
+        <CreateForm table="venues" schema={schema} onSuccess={onSuccess} defaults={defaults}>
             {(form) => (
                 <form onSubmit={form.submit}>
                     <Stack gap="md">
+                        {!hideGenerate && (
+                            <Group justify="flex-end">
+                                <GenerateVenueButton onGenerate={form.setFields} />
+                            </Group>
+                        )}
                         <TitleField />
                         <CircumstancesField />
                         <ToolsField />

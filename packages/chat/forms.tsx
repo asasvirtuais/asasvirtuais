@@ -1,16 +1,22 @@
 'use client'
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
-import { Button, Stack } from '@mantine/core'
-import { schema, type Readable } from '.'
+import { Button, Stack, Group } from '@mantine/core'
+import { schema, type Readable, type Writable } from '.'
 import { TitleField, InstructionsField, TemperatureField, ModelField, ToolsField } from './fields'
 import { useChats } from './provider'
+import { GenerateChatButton } from '@/packages/generation/components'
 
-export function CreateChat({ onSuccess }: { onSuccess?: (item: Readable) => void }) {
+export function CreateChat({ onSuccess, defaults, hideGenerate }: { onSuccess?: (item: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (
-        <CreateForm table='chats' schema={schema} onSuccess={onSuccess}>
+        <CreateForm table='chats' schema={schema} onSuccess={onSuccess} defaults={defaults}>
             {form => (
                 <form onSubmit={form.submit}>
                     <Stack>
+                        {!hideGenerate && (
+                            <Group justify="flex-end">
+                                <GenerateChatButton onGenerate={form.setFields} />
+                            </Group>
+                        )}
                         <TitleField />
                         <ModelField />
                         <TemperatureField />
@@ -39,7 +45,7 @@ export function UpdateChat({ onSuccess }: { onSuccess?: (item: Readable) => void
                 title: item.title || '',
                 instructions: item.instructions || '',
                 temperature: item.temperature ?? 0.7,
-                model: item.model || 'gemini-2.0-flash',
+                model: item.model || 'gemini-3.0-flash-preview',
                 tools: item.tools || [],
             }}
             onSuccess={onSuccess}

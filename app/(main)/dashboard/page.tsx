@@ -5,7 +5,7 @@ import { useCharacters } from '@/packages/character/provider'
 import { useVenues } from '@/packages/venue/provider'
 import { SingleProvider } from 'asasvirtuais/react-interface'
 import { schema } from '@/packages/chat'
-import { Box, Center, Loader, Title } from '@mantine/core'
+import { Box, Center, Loader, Title, Stack, Group } from '@mantine/core'
 import { DashboardChatView } from './DashboardChatView'
 
 export default function DashboardRootPage() {
@@ -23,7 +23,7 @@ export default function DashboardRootPage() {
             try {
                 // 1. Fetch or create Character: Assistant
                 let charDetails = "you're an A.I assistant"
-                let charSkills = ['database']
+                let charSkills = ['generate_character', 'generate_venue', 'generate_chat']
                 const charsRes = await listCharacters.trigger({ query: { name: 'Assistant' } })
                 if (charsRes.length > 0) {
                     charDetails = charsRes[0].details || charDetails
@@ -58,7 +58,8 @@ export default function DashboardRootPage() {
                 if (!isMounted) return
 
                 // 3. Compose the Chat
-                const combinedInstructions = `${charDetails}\n${venueCircumstances}\nYou're at the dashboard chat with the user, this chat is the default chat of the app`
+                const combinedInstructions = `${charDetails}\n${venueCircumstances}\nYou're at the dashboard chat with the user, this chat is the default chat of the app.
+You have the ability to generate objects based on user requests. When the user asks to create a character, venue or chat, you can use your generation skills.`
                 const combinedTools = Array.from(new Set([...charSkills, ...venueTools]))
 
                 const chatsRes = await listChats.trigger({ query: { title: 'Dashboard Chat' } })
@@ -118,9 +119,14 @@ export default function DashboardRootPage() {
 
     return (
         <Box h="calc(100vh - 92px)">
-            <SingleProvider id={targetChatId} table="chats" schema={schema}>
-                <DashboardChatView />
-            </SingleProvider>
+            <Stack gap="xl" p="md">
+                <Group justify="space-between" align="center">
+                    <Title order={2}>Dashboard</Title>
+                </Group>
+                <SingleProvider id={targetChatId} table="chats" schema={schema}>
+                    <DashboardChatView />
+                </SingleProvider>
+            </Stack>
         </Box>
     )
 }

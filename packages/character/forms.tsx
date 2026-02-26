@@ -1,16 +1,22 @@
 'use client'
 import { CreateForm, UpdateForm, useSingle } from 'asasvirtuais/react-interface'
-import { schema, type Readable } from '.'
+import { schema, type Readable, type Writable } from '.'
 import { NameField, DefinitionField, DetailsField, AvatarField, SkillsField } from './fields'
 import { useCharacters } from './provider'
-import { Button, Stack } from '@mantine/core'
+import { Button, Stack, Group } from '@mantine/core'
+import { GenerateCharacterButton } from '@/packages/generation/components'
 
-export function CreateCharacter({ onSuccess }: { onSuccess?: (character: Readable) => void }) {
+export function CreateCharacter({ onSuccess, defaults, hideGenerate }: { onSuccess?: (character: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (
-        <CreateForm table="characters" schema={schema} onSuccess={onSuccess}>
+        <CreateForm table="characters" schema={schema} onSuccess={onSuccess} defaults={defaults}>
             {(form) => (
                 <form onSubmit={form.submit}>
                     <Stack gap="md">
+                        {!hideGenerate && (
+                            <Group justify="flex-end">
+                                <GenerateCharacterButton onGenerate={form.setFields} />
+                            </Group>
+                        )}
                         <NameField />
                         <DefinitionField />
                         <DetailsField />

@@ -25,6 +25,7 @@ export interface OperationalDashboardLayoutProps {
     CreateForm: React.ComponentType<{ onSuccess?: (item: any) => void }>;
     UpdateForm: React.ComponentType;
     DeleteForm: React.ComponentType<{ onSuccess?: () => void }>;
+    generateButton?: React.ReactNode;
 }
 
 export function OperationalDashboardLayout({
@@ -35,7 +36,8 @@ export function OperationalDashboardLayout({
     SingleItem,
     CreateForm,
     UpdateForm,
-    DeleteForm
+    DeleteForm,
+    generateButton
 }: OperationalDashboardLayoutProps) {
     const { array, list } = useTable(tableName, schema)
     const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -55,15 +57,18 @@ export function OperationalDashboardLayout({
             <Stack gap='xl'>
                 <Group justify='space-between'>
                     <Title order={1}>{title}</Title>
-                    <Button
-                        leftSection={<IconPlus size={16} />}
-                        onClick={() => {
-                            setIsCreating(true)
-                            setSelectedId(null)
-                        }}
-                    >
-                        New Record
-                    </Button>
+                    <Group>
+                        {generateButton}
+                        <Button
+                            leftSection={<IconPlus size={16} />}
+                            onClick={() => {
+                                setIsCreating(true)
+                                setSelectedId(null)
+                            }}
+                        >
+                            New Record
+                        </Button>
+                    </Group>
                 </Group>
 
                 <Grid gutter='md'>

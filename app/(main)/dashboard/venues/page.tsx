@@ -4,6 +4,8 @@ import { schema } from '@/packages/venue'
 import { CreateVenue, UpdateVenue, DeleteVenue } from '@/packages/venue/forms'
 import { SingleVenue, VenueListItem } from '@/packages/venue/components'
 
+import { GenerateVenueButton } from '@/packages/generation/components'
+
 export default function VenuesDashboardPage() {
     return (
         <OperationalDashboardLayout
@@ -15,6 +17,7 @@ export default function VenuesDashboardPage() {
             CreateForm={CreateVenue}
             UpdateForm={UpdateVenue}
             DeleteForm={DeleteVenue}
+            generateButton={<GenerateVenueButton onGenerate={() => { }} />}
         />
     )
 }
