@@ -1,7 +1,7 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { openai } from '@ai-sdk/openai'
 import { streamText, convertToModelMessages } from 'ai'
-import { list } from '../../interface'
+import { cookies } from 'next/headers'
 
 export const maxDuration = 30
 
@@ -13,11 +13,11 @@ export async function POST(req: Request) {
             return new Response('Messages are required', { status: 400 })
         }
 
-        // Fetch user settings to get custom API key
-        const settings = await list({ table: 'settings', query: { $limit: 1 } })
-        const userApiKey = (settings?.[0] as any)?.google_api_key
+        // Get custom API key from cookie
+        const cookieStore = await cookies()
+        const userApiKey = cookieStore.get('google-ai-key')?.value
 
-        const modelName = model || 'gemini-1.5-flash'
+        const modelName = model || 'gemini-3-flash-preview'
 
         let provider: any
         if (modelName.includes('gpt')) {

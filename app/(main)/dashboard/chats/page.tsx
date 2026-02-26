@@ -3,7 +3,6 @@ import { OperationalDashboardLayout } from '@/components/OperationalDashboardLay
 import { schema } from '@/packages/chat'
 import { CreateChat, UpdateChat, DeleteChat } from '@/packages/chat/forms'
 import { SingleChat, ChatListItem } from '@/packages/chat/components'
-import { DemoSingleChatView } from '@/app/demo/chat/DemoSingleChatView'
 
 export default function FirebaseDashboardPage() {
     return (
@@ -16,7 +15,6 @@ export default function FirebaseDashboardPage() {
             CreateForm={CreateChat}
             UpdateForm={UpdateChat}
             DeleteForm={DeleteChat}
-            CustomView={DemoSingleChatView}
         />
     )
 }
