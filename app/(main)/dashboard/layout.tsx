@@ -66,6 +66,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Text size="xs" fw={700} tt="uppercase" c="dimmed" mb="xs" mt="xs">
                     Main
                 </Text>
+
+                <NavLink
+                    component={Link}
+                    href="/dashboard/scenarios"
+                    label="Scenario"
+                    leftSection={null}
+                    active={pathname === '/dashboard/scenarios'}
+                />
+
                 <NavLink
                     component={Link}
                     href="/dashboard/settings"

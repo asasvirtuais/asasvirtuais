@@ -2,8 +2,9 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { openai } from '@ai-sdk/openai'
 import { streamText, convertToModelMessages } from 'ai'
 import { cookies } from 'next/headers'
+import { skillTools } from '@/packages/skills/tools'
 
-export const maxDuration = 30
+export const maxDuration = 60
 
 export async function POST(req: Request) {
     try {
@@ -36,6 +37,8 @@ export async function POST(req: Request) {
             messages: await convertToModelMessages(messages),
             system: instructions || '',
             temperature: temperature ?? 0.7,
+            tools: skillTools,
+            maxSteps: 5, // Allow multi-step tool calls
         })
 
         // AI SDK v6: use toUIMessageStreamResponse for useChat compatibility

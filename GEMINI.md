@@ -727,3 +727,5 @@ return rootInterface.create({ ...props, user })
 ```
 
 Rule of thumb, don't pass the data object as a prop to the view components, rely on SingleProvider and useSingle instead.
+
+Trying to run linting or tsc for checks is dumb and delays development, the IDE already tells you of any errors and I personally inform you of any unchecked errors as well.
