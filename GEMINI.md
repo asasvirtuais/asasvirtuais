@@ -105,4 +105,23 @@ In the `asasvirtuais` framework, we avoid "God Components" with dozens of boolea
 </MessageLayout>
 ```
 
-We use pnpm here not npm.
+Business Logic Interceptors in 
+
+`app/interface.ts`
+
+The app/interface.ts file acts as a secure, server-side middle layer (using 'use server') between your frontend forms and the underlying database adapter (firestoreInterface).
+
+Instead of exporting the database adapter methods directly, it wraps each CRUD operation to inject business logic. Here is how the pattern works:
+
+1. Centralized Authentication Before any database operation occurs, the user is authenticated directly inside the function scope:
+
+```ts
+const user = (await authenticate()).id
+```
+This ensures that every read or write request is strictly authorized.
+
+2. Context Injection (Payload Augmentation) Once the user's ID is retrieved, it is merged into the incoming request parameters using the spread operator before being passed to the actual database adapter:
+
+```ts
+return rootInterface.create({ ...props, user })
+```
