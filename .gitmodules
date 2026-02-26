@@ -1,0 +1,21 @@
+[submodule "packages/asasvirtuais"]
+	path = packages/asasvirtuais
+	url = https://github.com/asasvirtuais/asasvirtuais-framework.git
+[submodule "packages/novelai"]
+	path = packages/novelai
+	url = https://github.com/asasvirtuais/novelai.git
+[submodule "packages/airtable"]
+	path = packages/airtable
+	url = https://github.com/asasvirtuais/airtable.git
+[submodule "packages/firebase"]
+	path = packages/firebase
+	url = https://github.com/asasvirtuais/firebase.git
+[submodule "apps/next-template"]
+	path = apps/next-template
+	url = https://github.com/asasvirtuais/next-template.git
+[submodule "apps/easyaichatdiary"]
+	path = apps/easyaichatdiary
+	url = https://github.com/asasvirtuais/easyaichatdiary.git
+[submodule "apps/nextapi"]
+	path = apps/nextapi
+	url = https://github.com/asasvirtuais/nextapi.git

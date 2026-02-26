@@ -1,0 +1,24 @@
+{
+  "name": "asasvirtuais-airtable",
+  "version": "1.0.1",
+  "main": "./src/index.ts",
+  "description": "TypeScript SDK for Airtable Web API with full type safety and rate limiting",
+  "exports": {
+    "./interface": "./src/interface.ts",
+    "./wretch": "./src/wretch.ts",
+    "./types": "./src/types.ts",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "wretch": "^2.11.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "asasvirtuais": "^2.1.5",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "asasvirtuais": "^2.1.3"
+  }
+}
