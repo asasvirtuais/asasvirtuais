@@ -14,7 +14,7 @@ This repository uses a strict pattern for demonstrating data model packages usin
    - All package CRUD operational dashboards MUST use this layout.
    - It is an opinionated, strict container that wires primitive components into a side-by-side CRUD dashboard.
    - Supports a `CustomView` prop to inject a dedicated "Interface Demo" tab alongside the technical "CRUD Dashboard".
-   - **Important**: This component belongs to the application layer and should be used in the `app/demo` routes, not inside the `packages` themselves.
+   - **Important**: This component belongs to the application layer and should be used in the `app/demo` routes, not inside the `packages` themselves. Rule: never import app modules into the packages, only from packages into the app.
 
 ## Creating a Model Dashboard Demo
 
