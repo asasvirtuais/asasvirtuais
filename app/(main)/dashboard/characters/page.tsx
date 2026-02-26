@@ -4,7 +4,7 @@ import { schema } from '@/packages/character'
 import { CreateCharacter, UpdateCharacter, DeleteCharacter } from '@/packages/character/forms'
 import { SingleCharacter, CharacterListItem } from '@/packages/character/components'
 
-import { GenerateCharacterButton } from '@/packages/generation/components'
+import { GenerateCharacterButton } from '@/packages/skills/components'
 
 export default function CharactersDashboardPage() {
     return (

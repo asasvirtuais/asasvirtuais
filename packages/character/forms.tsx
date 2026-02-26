@@ -4,7 +4,7 @@ import { schema, type Readable, type Writable } from '.'
 import { NameField, DefinitionField, DetailsField, AvatarField, SkillsField } from './fields'
 import { useCharacters } from './provider'
 import { Button, Stack, Group } from '@mantine/core'
-import { GenerateCharacterButton } from '@/packages/generation/components'
+import { GenerateCharacterButton } from '@/packages/skills/components'
 
 export function CreateCharacter({ onSuccess, defaults, hideGenerate }: { onSuccess?: (character: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (

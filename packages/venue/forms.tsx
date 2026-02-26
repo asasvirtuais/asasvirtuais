@@ -4,7 +4,7 @@ import { schema, type Readable, type Writable } from '.'
 import { TitleField, CircumstancesField, ToolsField } from './fields'
 import { useVenues } from './provider'
 import { Button, Stack, Group } from '@mantine/core'
-import { GenerateVenueButton } from '@/packages/generation/components'
+import { GenerateVenueButton } from '@/packages/skills/components'
 
 export function CreateVenue({ onSuccess, defaults, hideGenerate }: { onSuccess?: (venue: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (

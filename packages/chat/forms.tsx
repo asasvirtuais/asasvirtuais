@@ -4,7 +4,7 @@ import { Button, Stack, Group } from '@mantine/core'
 import { schema, type Readable, type Writable } from '.'
 import { TitleField, InstructionsField, TemperatureField, ModelField, ToolsField } from './fields'
 import { useChats } from './provider'
-import { GenerateChatButton } from '@/packages/generation/components'
+import { GenerateChatButton } from '@/packages/skills/components'
 
 export function CreateChat({ onSuccess, defaults, hideGenerate }: { onSuccess?: (item: Readable) => void, defaults?: Partial<Writable>, hideGenerate?: boolean }) {
     return (

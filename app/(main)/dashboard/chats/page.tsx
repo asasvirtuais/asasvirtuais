@@ -4,7 +4,7 @@ import { schema } from '@/packages/chat'
 import { CreateChat, UpdateChat, DeleteChat } from '@/packages/chat/forms'
 import { SingleChat, ChatListItem } from '@/packages/chat/components'
 
-import { GenerateChatButton } from '@/packages/generation/components'
+import { GenerateChatButton } from '@/packages/skills/components'
 
 export default function ChatsDashboardPage() {
     return (
