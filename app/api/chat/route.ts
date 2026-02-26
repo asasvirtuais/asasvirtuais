@@ -2,13 +2,12 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { openai } from '@ai-sdk/openai'
 import { streamText, convertToModelMessages } from 'ai'
 import { cookies } from 'next/headers'
-import { getSkillTools } from '@/packages/skills/tools'
 
 export const maxDuration = 60
 
 export async function POST(req: Request) {
     try {
-        const { messages, instructions, model, temperature, chatId, chatTitle } = await req.json()
+        const { messages, instructions, model, temperature } = await req.json()
 
         if (!messages || !Array.isArray(messages)) {
             return new Response('Messages are required', { status: 400 })
@@ -37,12 +36,7 @@ export async function POST(req: Request) {
             messages: await convertToModelMessages(messages),
             system: instructions || '',
             temperature: temperature ?? 0.7,
-            tools: getSkillTools({
-                chatId: chatId || 'default',
-                chatTitle: chatTitle || 'A.I. Assistant',
-            }),
-            maxSteps: 5, // Allow multi-step tool calls
-        } as any)
+        })
 
         // AI SDK v6: use toUIMessageStreamResponse for useChat compatibility
         return result.toUIMessageStreamResponse()

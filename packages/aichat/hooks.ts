@@ -113,6 +113,7 @@ export function useAIChat(chatId: string) {
     return {
         messages,
         input,
+        setInput,
         handleInputChange,
         handleSubmit: onSubmit,
         status,
