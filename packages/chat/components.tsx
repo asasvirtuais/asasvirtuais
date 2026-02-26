@@ -11,7 +11,7 @@ export function ChatItem() {
     return (
         <Card shadow='sm' padding='lg' radius='md' withBorder>
             <Group justify='space-between' mb='xs'>
-                <Text fw={500}>{item.title || 'Untitled Chat'}</Text>
+                <Text fw={500}>{item.title || 'Untitled Record'}</Text>
                 <Badge color='blue' variant='light'>{item.model}</Badge>
             </Group>
 
