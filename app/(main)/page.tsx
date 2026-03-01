@@ -270,6 +270,17 @@ export default function Home() {
             </Text>
           </GlassCard>
         </SimpleGrid>
+        {/* Value Proposition Highlight */}
+        <Box mb={120}>
+          <GlassCard padding={{ base: 'xl', md: 60 }} style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(121, 80, 242, 0.1) 0%, rgba(21, 170, 191, 0.1) 100%)', border: '1px solid rgba(121, 80, 242, 0.2)' }}>
+            <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }} style={{ lineHeight: 1.3 }}>
+              If your business pivots next week, <Box component="br" display={{ base: 'none', md: 'block' }} /> <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>your app adapts in days not weeks.</Text>
+            </Title>
+            <Text size="xl" c="dimmed" style={{ maxWidth: 800, margin: '0 auto' }}>
+              With my technology stack, you will never again hear a developer say <i>"that's too hard to implement."</i> I deliver flexible, reactive systems designed specifically to accommodate and accelerate rapid business evolution.
+            </Text>
+          </GlassCard>
+        </Box>
 
         {/* Featured Project: asasvirtuais */}
         <Box mb={120}>
