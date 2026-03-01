@@ -131,3 +131,38 @@ export function ContactEmailField() {
         />
     )
 }
+export function TypeFilter() {
+    const { fields, setField } = useFields<{ query: Writable }>()
+    return (
+        <Stack gap={5}>
+            <Text size="sm" fw={500}>Equipment Type</Text>
+            <SegmentedControl
+                data={[
+                    { label: 'Generator', value: 'generator' },
+                    { label: 'Compressor', value: 'compressor' },
+                    { label: 'Pump System', value: 'pump' },
+                ]}
+                value={fields.query?.type || 'generator'}
+                onChange={val => setField('query', { ...fields.query, type: val as Writable['type'] })}
+                fullWidth
+            />
+        </Stack>
+    )
+}
+
+export function EnvironmentFilter() {
+    const { fields, setField } = useFields<{ query: Writable }>()
+    return (
+        <Select
+            label="Installation Environment"
+            placeholder="Select Environment"
+            data={[
+                { value: 'indoor', label: 'Indoor Facility' },
+                { value: 'outdoor', label: 'Outdoor Enclosure' },
+                { value: 'hazardous', label: 'Hazardous Location (Class 1 Div 2)' },
+            ]}
+            value={fields.query?.environment || ''}
+            onChange={val => setField('query', { ...fields.query, environment: val as Writable['environment'] })}
+        />
+    )
+}

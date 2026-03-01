@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { CreateForm, FilterForm, useTable } from 'asasvirtuais/react-interface'
 import { schema } from '.'
 import * as Fields from './fields'
@@ -108,52 +108,108 @@ export function ConfigureMachinery() {
 }
 
 export function SubmittedQuotesList() {
-    // Generate some mock configuration data to showcase listing capabilities
-    const mockData = [
-        { id: 'MC-9082A', type: 'generator', power: 1500, voltage: '480V 3-Phase', fuelType: 'diesel', environment: 'outdoor', features: ['soundproofing', 'auto_transfer', 'remote_monitoring'], contactEmail: 'ops@factory.com' },
-        { id: 'CM-102B', type: 'compressor', power: 250, voltage: '208V 3-Phase', fuelType: 'electric', environment: 'indoor', features: ['vibration_isolation'], contactEmail: 'maintenance@corp.com' },
-        { id: 'PM-405X', type: 'pump', power: 800, voltage: '600V 3-Phase', fuelType: 'natural_gas', environment: 'hazardous', features: ['remote_monitoring'], contactEmail: 'safety@rig.com' }
-    ]
+    const { index, create, array } = useTable('machinery', schema)
+
+    useEffect(() => {
+        // Seed database if empty and data is loaded
+        if (array.length === 0) {
+            const seedData = [
+                { type: 'generator', power: 1500, voltage: '480V 3-Phase', fuelType: 'diesel', environment: 'outdoor', features: ['soundproofing', 'auto_transfer'], contactEmail: 'ops@factory.com' },
+                { type: 'compressor', power: 250, voltage: '208V 3-Phase', fuelType: 'electric', environment: 'indoor', features: ['vibration_isolation'], contactEmail: 'maintenance@corp.com' },
+                { type: 'pump', power: 800, voltage: '600V 3-Phase', fuelType: 'natural_gas', environment: 'hazardous', features: ['remote_monitoring'], contactEmail: 'safety@rig.com' }
+            ]
+            seedData.forEach(data => create.trigger({ data }))
+        }
+    }, [array.length])
 
     return (
-        <Stack mt="xl">
-            {mockData.map((item: any) => (
-                <Card shadow="sm" padding="md" radius="md" withBorder key={item.id}>
-                    <Grid>
-                        <Grid.Col span={{ base: 12, sm: 8 }}>
-                            <Group justify="space-between" mb="xs">
-                                <Group gap="sm">
-                                    <Badge color="blue" size="lg">{String(item.type).toUpperCase()}</Badge>
-                                    <Text fw={700}>{item.id}</Text>
-                                </Group>
-                                <Badge color="indigo" variant="filled">{item.power} kW</Badge>
-                            </Group>
+        <FilterForm table='machinery' schema={schema} autoTrigger>
+            {form => (
+                <Stack gap="xl">
+                    <Card shadow="sm" radius="md" withBorder p="xl" bg="gray.0">
+                        <Stack gap="md">
+                            <Text fw={700} size="lg">
+                                <Intl en="Search & Filter Specifications" pt="Busca e Filtros de Especificações" />
+                            </Text>
+                            <Grid align="flex-end">
+                                <Grid.Col span={{ base: 12, sm: 4 }}>
+                                    <Fields.TypeFilter />
+                                </Grid.Col>
+                                <Grid.Col span={{ base: 12, sm: 4 }}>
+                                    <Fields.EnvironmentFilter />
+                                </Grid.Col>
+                                <Grid.Col span={{ base: 12, sm: 4 }}>
+                                    <Button
+                                        fullWidth
+                                        size="md"
+                                        variant="gradient"
+                                        gradient={{ from: 'blue', to: 'cyan' }}
+                                        onClick={() => form.submit()}
+                                        loading={form.loading}
+                                    >
+                                        <Intl en="Apply Search" pt="Aplicar Busca" />
+                                    </Button>
+                                </Grid.Col>
+                            </Grid>
+                        </Stack>
+                    </Card>
 
-                            <Group gap="xs" mb="sm">
-                                <Badge variant="outline" color="gray">{item.voltage}</Badge>
-                                <Badge variant="outline" color="gray">{String(item.fuelType).replace('_', ' ')}</Badge>
-                                <Badge variant="outline" color="gray">{item.environment}</Badge>
-                            </Group>
+                    <Stack gap="md">
+                        <Group justify="space-between">
+                            <Text fw={600} c="dimmed">
+                                <Intl
+                                    en={`${form.result?.length || 0} Technical Matches Found`}
+                                    pt={`${form.result?.length || 0} Correspondências Técnicas Encontradas`}
+                                />
+                            </Text>
+                        </Group>
 
-                            {item.features?.length > 0 && (
-                                <Text size="sm" mb="sm">
-                                    <strong><Intl en="Selected Features:" pt="Recursos Selecionados:" /></strong> {item.features.join(', ').replace('_', ' ')}
-                                </Text>
-                            )}
-                        </Grid.Col>
+                        {form.result?.map((item: any) => (
+                            <Card shadow="sm" padding="md" radius="md" withBorder key={item.id}>
+                                <Grid>
+                                    <Grid.Col span={{ base: 12, sm: 8 }}>
+                                        <Group justify="space-between" mb="xs">
+                                            <Group gap="sm">
+                                                <Badge color="blue" size="lg">{String(item.type).toUpperCase()}</Badge>
+                                                <Text fw={700}>{item.id}</Text>
+                                            </Group>
+                                            <Badge color="indigo" variant="filled">{item.power} kW</Badge>
+                                        </Group>
 
-                        <Grid.Col span={{ base: 12, sm: 4 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <Box p="sm" bg="gray.1" style={{ borderRadius: 8 }}>
-                                <Text size="xs" c="dimmed" tt="uppercase" fw={700}><Intl en="Primary Contact" pt="Contato Principal" /></Text>
-                                <Text size="sm" fw={500}>{item.contactEmail}</Text>
-                                <Button fullWidth variant="light" size="xs" mt="md" rightSection={<IconSettings size={14} />}>
-                                    <Intl en="Load Configuration" pt="Carregar Configuração" />
-                                </Button>
-                            </Box>
-                        </Grid.Col>
-                    </Grid>
-                </Card>
-            ))}
-        </Stack>
+                                        <Group gap="xs" mb="sm">
+                                            <Badge variant="outline" color="gray">{item.voltage}</Badge>
+                                            <Badge variant="outline" color="gray">{String(item.fuelType).replace('_', ' ')}</Badge>
+                                            <Badge variant="outline" color="gray">{item.environment}</Badge>
+                                        </Group>
+
+                                        {item.features?.length > 0 && (
+                                            <Text size="sm">
+                                                <strong><Intl en="Specifications:" pt="Especificações:" /></strong> {item.features.join(', ').replace('_', ' ')}
+                                            </Text>
+                                        )}
+                                    </Grid.Col>
+
+                                    <Grid.Col span={{ base: 12, sm: 4 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                        <Box p="sm" bg="gray.1" style={{ borderRadius: 8 }}>
+                                            <Text size="xs" c="dimmed" tt="uppercase" fw={700}><Intl en="Project Context" pt="Contexto do Projeto" /></Text>
+                                            <Text size="sm" fw={500}>{item.contactEmail}</Text>
+                                            <Button fullWidth variant="light" size="xs" mt="md">
+                                                <Intl en="Analyze Quote" pt="Analisar Orçamento" />
+                                            </Button>
+                                        </Box>
+                                    </Grid.Col>
+                                </Grid>
+                            </Card>
+                        ))}
+
+                        {form.result?.length === 0 && (
+                            <Text c="dimmed" ta="center" py="xl">
+                                <Intl en="No matching records found." pt="Nenhum registro encontrado." />
+                            </Text>
+                        )}
+                    </Stack>
+                </Stack>
+            )}
+        </FilterForm>
     )
 }
