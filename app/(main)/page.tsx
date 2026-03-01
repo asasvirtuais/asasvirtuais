@@ -170,7 +170,7 @@ export default function Home() {
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={80} mb={120}>
           <Stack gap={40} justify="center">
             <Box>
-              <Badge variant="dot" color="violet" size="lg" mb="sm">Solutions Architect & Framework Developer</Badge>
+              <Badge variant="dot" color="violet" size="lg" mb="sm">Solutions Architect & Full-Stack Developer</Badge>
               <Title
                 order={1}
                 fz={{ base: rem(42), sm: rem(54), md: rem(64) }}
@@ -180,11 +180,11 @@ export default function Home() {
                   marginBottom: rem(24)
                 }}
               >
-                Elegant engineering for <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>maintainable codebases.</Text>
+                Delivering enterprise software in a <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>fraction of the time.</Text>
               </Title>
               <Text size="xl" c="dimmed" style={{ lineHeight: 1.6 }}>
-                I'm Ícaro C. Capobianco, a Full-Stack Web Developer and Solutions Architect with 7 years of remote experience.
-                I specialize in building codebase future-proof architecture for small projects aimed to become big—coding the exception only where it adds unique business value.
+                I'm Ícaro C. Capobianco, a Full-Stack Web Developer and Solutions Architect with over 7 years of experience.
+                I build software that crushes development timelines while drastically reducing maintenance costs. Through highly refined architecture and pragmatic tooling, I deliver what takes teams months, in weeks.
               </Text>
             </Box>
 
@@ -244,32 +244,29 @@ export default function Home() {
         <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" mb={120}>
           <GlassCard>
             <ThemeIcon variant="light" color="violet" size="xl" radius="md" mb="md">
-              <FaTools />
+              <FaRocket />
             </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs">Pragmatic Architecture</Text>
+            <Text fw={700} size="lg" mb="xs">Rapid Delivery</Text>
             <Text size="sm" c="dimmed">
-              I leverage specialized, reliable tools (Airtable, Stripe, Auth0) so I can focus on building a resilient,
-              future-proof foundation that scales without the overhead of custom infrastructure.
+              By leveraging specialized infrastructure (Airtable, Stripe, Auth0) and my custom frameworks, I build resilient, production-ready systems exponentially faster than traditional development teams, slashing initial build costs.
             </Text>
           </GlassCard>
           <GlassCard>
             <ThemeIcon variant="light" color="cyan" size="xl" radius="md" mb="md">
-              <FaCode />
+              <FaTools />
             </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs">Code the Exception</Text>
+            <Text fw={700} size="lg" mb="xs">Near-Zero Maintenance</Text>
             <Text size="sm" c="dimmed">
-              Custom code is a liability unless it's strictly necessary. I focus engineering
-              efforts on the unique business logic that gives your project a competitive advantage.
+              Custom code is a liability unless it's business-critical. By coding only the exception and relying on rock-solid architectural patterns, I deliver lean applications that practically maintain themselves, saving countless hours of technical debt.
             </Text>
           </GlassCard>
           <GlassCard>
             <ThemeIcon variant="light" color="pink" size="xl" radius="md" mb="md">
               <FaLightbulb />
             </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs">Innovation & Experience</Text>
+            <Text fw={700} size="lg" mb="xs">Maximum Velocity</Text>
             <Text size="sm" c="dimmed">
-              I'm driven by the challenge of creating something truly innovative and remarkable to use.
-              I focus on building products that aren't just functional, but feel awesome for the end user.
+              I focus purely on what gives your project a competitive edge. Skipping reinvented wheels means your product reaches the market faster, iterates quicker, and responds instantly to business needs without being bogged down by legacy bloat.
             </Text>
           </GlassCard>
         </SimpleGrid>
@@ -486,10 +483,9 @@ export default function Home() {
 
         {/* Contact/CTA Section */}
         <Box py={80} style={{ textAlign: 'center' }}>
-          <Title order={1} mb="md">Let's work <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>together.</Text></Title>
+          <Title order={1} mb="md">Let's accelerate your <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>product.</Text></Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 600, margin: '0 auto 40px' }}>
-            I'm looking for environments where architectural strategy and elegant engineering
-            can directly drive success. Let's discuss how my approach can benefit your team.
+            Stop waiting months for features that should take weeks. Let's discuss how my high-velocity architectural approach can drastically reduce your development costs and maintenance overhead.
           </Text>
           <Group justify="center" gap="lg">
             <Button
