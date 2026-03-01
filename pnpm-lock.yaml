@@ -47,6 +47,9 @@ importers:
       asasvirtuais-firebase:
         specifier: ^1.0.1
         version: 1.0.1(asasvirtuais@2.5.1)
+      dexie:
+        specifier: ^4.3.0
+        version: 4.3.0
       fflate:
         specifier: ^0.8.2
         version: 0.8.2
@@ -739,6 +742,9 @@ packages:
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
+
+  dexie@4.3.0:
+    resolution: {integrity: sha512-5EeoQpJvMKHe6zWt/FSIIuRa3CWlZeIl6zKXt+Lz7BU6RoRRLgX9dZEynRfXrkLcldKYCBiz7xekTEylnie1Ug==}
 
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
@@ -2331,6 +2337,8 @@ snapshots:
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
+
+  dexie@4.3.0: {}
 
   dom-helpers@5.2.1:
     dependencies:
