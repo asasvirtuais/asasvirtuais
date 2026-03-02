@@ -712,7 +712,7 @@ function LandingPage() {
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
-                <Intl en="$2k – $4k" pt="R$ 10k – R$ 20k" />
+                <Intl en="$6k – $10k" pt="R$ 10k – R$ 20k" />
               </Text>
               <Text size="xs" c="dimmed" mb="md"><Intl en="3–8 weeks delivery" pt="3–8 semanas de entrega" /></Text>
               <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -730,7 +730,7 @@ function LandingPage() {
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
-                <Intl en="$6k+" pt="R$ 30k+" />
+                <Intl en="$10k+" pt="R$ 30k+" />
               </Text>
               <Text size="xs" c="dimmed" mb="md"><Intl en="Project contracts with installment options" pt="Contratos por projeto com parcelamento facilitado" /></Text>
               <Text size="xs" c="dimmed" mb="md"><Intl en="Monthly retainer" pt="Contrato mensal" /></Text>
