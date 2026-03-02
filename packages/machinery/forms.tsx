@@ -7,7 +7,8 @@ import { schema } from '.'
 import * as Fields from './fields'
 import {
     Stepper, Button, Group, Stack, Card, Text, Badge,
-    Divider, Grid, Box, SimpleGrid, Checkbox, Select
+    Divider, Grid, Box, SimpleGrid, Checkbox, Select,
+    Paper
 } from '@mantine/core'
 import { Notifications } from '@mantine/notifications'
 import { IconCheck, IconUser, IconSearch, IconReceipt, IconMail } from '@tabler/icons-react'
@@ -495,9 +496,17 @@ export function SubmittedQuotesList() {
         <FilterForm table='machinery' schema={schema} autoTrigger>
             {form => (
                 <Stack gap="xl">
-                    <Card shadow="sm" radius="md" withBorder p="xl" bg="gray.0">
+                    <Paper
+                        p="xl"
+                        style={{
+                            background: 'rgba(255, 255, 255, 0.03)',
+                            backdropFilter: 'blur(12px)',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            borderRadius: 'var(--mantine-radius-lg)',
+                        }}
+                    >
                         <Stack gap="md">
-                            <Text fw={700} size="lg">
+                            <Text fw={700} size="lg" c="gray.3">
                                 <Intl en="Filter Qualified Leads" pt="Filtrar Leads Qualificados" />
                             </Text>
                             <Grid align="flex-end">
@@ -512,7 +521,7 @@ export function SubmittedQuotesList() {
                                         fullWidth
                                         size="md"
                                         variant="gradient"
-                                        gradient={{ from: 'blue', to: 'cyan' }}
+                                        gradient={{ from: 'violet', to: 'cyan' }}
                                         onClick={() => form.submit()}
                                         loading={form.loading}
                                     >
@@ -521,7 +530,7 @@ export function SubmittedQuotesList() {
                                 </Grid.Col>
                             </Grid>
                         </Stack>
-                    </Card>
+                    </Paper>
 
                     <Stack gap="md">
                         <Text fw={600} c="dimmed">
@@ -532,13 +541,23 @@ export function SubmittedQuotesList() {
                         </Text>
 
                         {form.result?.map((item: any) => (
-                            <Card shadow="sm" padding="md" radius="md" withBorder key={item.id}>
-                                <Grid>
+                            <Paper
+                                key={item.id}
+                                p="lg"
+                                style={{
+                                    background: 'rgba(255, 255, 255, 0.02)',
+                                    backdropFilter: 'blur(12px)',
+                                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                                    borderRadius: 'var(--mantine-radius-lg)',
+                                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                }}
+                            >
+                                <Grid align="center">
                                     <Grid.Col span={{ base: 12, sm: 8 }}>
-                                        <Group justify="space-between" mb="xs">
+                                        <Group justify="space-between" mb="sm">
                                             <Group gap="sm">
-                                                <Badge color="blue" size="lg">{item.companyName || '—'}</Badge>
-                                                <Badge variant="light" color={
+                                                <Badge color="violet" size="lg" variant="light">{item.companyName || '—'}</Badge>
+                                                <Badge variant="outline" color={
                                                     item.companySize === 'Enterprise' ? 'violet' :
                                                         item.companySize === 'Mid-Market' ? 'blue' : 'green'
                                                 }>
@@ -546,30 +565,30 @@ export function SubmittedQuotesList() {
                                                 </Badge>
                                             </Group>
                                             {item.quoteTotal > 0 && (
-                                                <Badge color="green" variant="filled">${item.quoteTotal?.toFixed(2)}/mo</Badge>
+                                                <Badge color="cyan" variant="filled" size="lg">${item.quoteTotal?.toFixed(2)}/mo</Badge>
                                             )}
                                         </Group>
-                                        <Group gap="xs" mb="sm">
-                                            <Badge variant="outline" color="gray">{item.email}</Badge>
-                                            <Badge variant="outline" color="gray">{item.category || '—'}</Badge>
+                                        <Group gap="xs" mb="md">
+                                            <Badge variant="dot" color="gray" size="sm">{item.email}</Badge>
+                                            <Badge variant="dot" color="gray" size="sm">{item.category || '—'}</Badge>
                                         </Group>
                                         {item.selectedProducts?.length > 0 && (
-                                            <Text size="sm">
-                                                <strong><Intl en="Products:" pt="Produtos:" /></strong> {item.selectedProducts.join(', ')}
+                                            <Text size="sm" c="dimmed">
+                                                <Text span fw={600} c="gray.4"><Intl en="Products:" pt="Produtos:" /></Text> {item.selectedProducts.join(', ')}
                                             </Text>
                                         )}
                                     </Grid.Col>
                                     <Grid.Col span={{ base: 12, sm: 4 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                        <Box p="sm" bg="gray.1" style={{ borderRadius: 8 }}>
+                                        <Box p="md" style={{ background: 'rgba(255, 255, 255, 0.03)', borderRadius: 'var(--mantine-radius-md)', border: '1px solid rgba(255,255,255,0.06)' }}>
                                             <Text size="xs" c="dimmed" tt="uppercase" fw={700}><Intl en="Contact" pt="Contato" /></Text>
-                                            <Text size="sm" fw={500}>{item.phone || item.email}</Text>
-                                            <Button fullWidth variant="light" size="xs" mt="md">
+                                            <Text size="sm" fw={500} c="gray.3" mb="xs">{item.phone || item.email}</Text>
+                                            <Button fullWidth variant="light" color="cyan" size="xs" mt="sm">
                                                 <Intl en="Open in CRM" pt="Abrir no CRM" />
                                             </Button>
                                         </Box>
                                     </Grid.Col>
                                 </Grid>
-                            </Card>
+                            </Paper>
                         ))}
 
                         {form.result?.length === 0 && (
