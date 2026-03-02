@@ -213,7 +213,8 @@ export default function DemoFormsPage() {
                         </SimpleGrid>
 
                         {/* Submitted Leads */}
-                        <Box mt={80}>
+                        {/* Removed because it didn't look good and was poorly explained */}
+                        {/* <Box mt={80}>
                             <Title order={2} mb="md">
                                 <Intl en="Qualified Leads" pt="Leads Qualificados" />
                             </Title>
@@ -226,7 +227,7 @@ export default function DemoFormsPage() {
                             <Box style={{ color: 'black' }}>
                                 <SubmittedQuotesList />
                             </Box>
-                        </Box>
+                        </Box> */}
 
                         {/* Footer */}
                         <Divider mt={80} mb="xl" />
