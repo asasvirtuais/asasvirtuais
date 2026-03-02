@@ -1,50 +1,61 @@
 # Ícaro C. Capobianco
-**Solutions Architect & Full-Stack Web Developer**
+**Solutions Architect & Full-Stack Engineer**
 
-I specialize in building codebase future-proof architecture for small projects aimed to become big. With over 7 years of remote experience, my approach is centered on elegant engineering: building resilient foundations that scale effortlessly while writing custom code only where it matters most.
+> **"Technology that adapts to the business, never the other way around."**
 
----
-
-### 🧠 My Approach
-
-- **Pragmatic Architecture**: I leverage specialized, reliable tools (Airtable, Stripe, Auth0) so I can focus on building a resilient, future-proof foundation that scales without the overhead of custom infrastructure.
-- **Code the Exception**: Custom code is a liability unless it's strictly necessary. I focus engineering efforts on the unique business logic that gives your project a competitive advantage.
-- **Innovation & Experience**: I'm driven by the challenge of creating something truly innovative and remarkable to use. I focus on building products that aren't just functional, but feel awesome for the end user.
+I specialize in building complex, data-driven applications with one core philosophy: **Zero Dependency Engineering**. I design architectures that are scalable, maintainable, and completely transparent. When I deliver a project, you own the code, you understand the code, and any competent team—or AI—can take over. No vendor lock-in, no spaghetti code, no "magical" abstractions that require my perpetual presence.
 
 ---
 
-### 🚀 Featured Open Source
+### 🧠 Core Philosophy & Architecture
 
-#### [asasvirtuais Framework](https://www.npmjs.com/package/asasvirtuais)
-My open-source React framework designed to resolve the gap between API integration and state management. Built to eliminate architectural debt for CRUD-driven applications and local-first PWAs.
-
-- **AI-Friendly**: Simple, predictable primitives that LLMs can generate correctly.
-- **Agnostic Database**: Deep integration with IndexedDB for seamless offline apps.
-
----
-
-### 💼 Selected Work
-
-- **Latham Pools Lead Qualification**: A frontend lead qualification tool built with React and GraphQL. It reads Airtable bases to guide clients through pool shape and type selection for a major US pool sales company.
-- **Grimoire RPG Companion**: A complex RPG companion app showcasing the abilities of the `asasvirtuais` framework in handling intricate, local-first state management without the traditional overhead.
-- **CertWorld CMS & Learning**: A functional MVP for a machine learning courses platform. Built single-handedly from client discovery to launch, featuring complex onboarding flows and Stripe integration.
-- **Easy AI Diary & Chat**: A local-first PWA powered by Gemini AI for automated journal analysis and chat, utilizing IndexedDB for rock-solid offline data persistence.
+- **Sovereign Codebases**: My main value proposition is not just writing code, but writing code that doesn't hold your business hostage. I use industry-standard patterns and my own proprietary tooling to eliminate architectural debt from day one.
+- **Absurd Speed, Predictable Quality**: By leveraging deeply tested architectural patterns (like my `asasvirtuais` framework), I bypass the boilerplate phase. I deliver functional, robust systems in weeks, not months.
+- **Stack-Agnostic Integration**: I don't force infrastructure rewrites. Whether your stack is Node, Python, React, Vue, AWS, or Firebase, my architectural approach acts as a layer that seamlessly integrates with your existing ecosystem.
+- **AI-Friendly Primitives**: The code I write is designed to be easily readable by both human junior developers and modern LLMs. Clean boundaries, explicit data flows, and zero hidden side-effects.
 
 ---
 
-### 🛠️ Technologies
+### 🚀 The `asasvirtuais` Framework
 
-- **Frontend / Core**: TypeScript, React, Next.js, Mantine
-- **Backend / DB**: Node.js, Postgres, MongoDB
-- **Integration**: Stripe, Airtable, Vercel
-- **Specialized**: Python, PHP, Docker
+I am the creator of [**asasvirtuais**](https://github.com/asasvirtuais/asasvirtuais-next), an open-source React framework designed to bridge the gap between UI, state management, and async data fetching. 
+
+- **Data-Driven Forms**: Complex multi-step, async-validated forms out of the box without boilerplate.
+- **Backend Mirroring**: Seamlessly mirrors data structures between REST APIs, IndexedDB, and Memory.
+- **Offline-First Ready**: Deep integration with Progressive Web Apps (PWAs) and local-first data layers.
 
 ---
 
-### 📫 Connect with me
+### 💼 Delivered Projects & Architecture Labs
 
-- [LinkedIn](https://linkedin.com/in/asasvirtuais)
-- [GitHub](https://github.com/asasvirtuais)
-- [UpWork](https://upwork.com/fl/icarocc)
+#### 🏆 Featured Client Work
+- **Latham Pools — Lead System**: Interactive lead qualification wizard for a major US manufacturer. Real-time Airtable data powers a multi-step configurator integrated directly with the corporate sales pipeline.
+- **Card Checkout**: Seamless, highly-optimized mobile payment flow with lead capture and real-time order tracking.
+- **Live University**: Full-grade Learning Management System (LMS) handling student enrollments, grading flows, and content delivery.
+- **CertWorld**: Complete e-learning MVP built from discovery to launch, featuring Stripe checkout, video delivery, and certification generation.
 
-*"I'm looking for environments where architectural strategy and elegant engineering can directly drive success. Let's discuss how my approach can benefit your team."*
+#### 🔬 R&D and Architecture Labs
+I build immensely complex personal projects to stress-test scaling patterns before ever bringing them to client codebases.
+- **Grimoire RPG Companion**: An extreme stress-test for my framework. Hundreds of interconnected entities, real-time relational state management, and 100% offline capability (PWA + IndexedDB).
+- **Easy AI Diary**: A local-first PWA powered by Gemini AI. All journal analysis and conversational insights happen dynamically without sending personal data to a centralized backend server.
+
+---
+
+### 🛠️ Tech Stack & Tooling
+
+- **Core UI & Logic**: TypeScript, React, Next.js, Mantine, Tailwind
+- **Backend & Data**: Node.js, Python, PostgreSQL, IndexedDB (Dexie), MongoDB
+- **Cloud & Automation**: Vercel, AWS, Google Cloud, Docker, Airtable Automations
+- **Monetization & Auth**: Stripe, Auth0, Firebase
+
+---
+
+### 📫 Let's Connect
+
+I partner with serious businesses that want premium engineering without the risk of technical lock-in.
+
+- **Portfolio**: [asasvirtuais.dev](https://asasvirtuais.dev)
+- **LinkedIn**: [in/asasvirtuais](https://linkedin.com/in/asasvirtuais)
+- **GitHub**: [@asasvirtuais](https://github.com/asasvirtuais)
+
+*"If your business pivots tomorrow, your software should adapt in days, not months. Let's make that happen."*
