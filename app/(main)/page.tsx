@@ -19,25 +19,20 @@ import {
   Paper,
   BoxProps,
   rem,
-  List
+  Timeline
 } from '@mantine/core'
 import {
   FaGithub,
   FaLinkedin,
   FaCode,
-  FaRocket,
-  FaTools,
-  FaLightbulb,
   FaArrowRight,
-  FaDatabase,
-  FaCheckCircle,
-  FaBrain
+  FaWhatsapp,
+  FaEnvelope
 } from 'react-icons/fa'
 import {
   SiNextdotjs,
   SiReact,
   SiTypescript,
-  SiMantine,
   SiNodedotjs,
   SiPostgresql,
   SiMongodb,
@@ -45,9 +40,24 @@ import {
   SiVercel,
   SiAirtable,
   SiStripe,
-  SiPhp,
-  SiPython
+  SiPython,
+  SiFirebase,
+  SiGooglecloud
 } from 'react-icons/si'
+import {
+  IconRocket,
+  IconShieldCheck,
+  IconClock,
+  IconCurrencyDollar,
+  IconBulb,
+  IconArrowRight,
+  IconMessage,
+  IconCode,
+  IconDeviceLaptop,
+  IconHeadset,
+  IconUsers,
+  IconPuzzle
+} from '@tabler/icons-react'
 
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
 
@@ -60,7 +70,7 @@ const GlassCard = ({ children, padding = 'xl', ...props }: { children: React.Rea
       backdropFilter: 'blur(12px)',
       border: '1px solid rgba(255, 255, 255, 0.08)',
       borderRadius: 'var(--mantine-radius-lg)',
-      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
       ...props.style
     }}
   >
@@ -68,16 +78,19 @@ const GlassCard = ({ children, padding = 'xl', ...props }: { children: React.Rea
   </Paper>
 )
 
-const SkillBadge = ({ icon: Icon, label, color }: { icon: any, label: string, color: string }) => (
-  <Badge
-    variant="filled"
-    size="lg"
-    color={color}
-    leftSection={<Icon size={14} />}
-    style={{ textTransform: 'none', fontWeight: 500 }}
-  >
-    {label}
-  </Badge>
+const StatCard = ({ value, label }: { value: string, label: React.ReactNode }) => (
+  <Box style={{ textAlign: 'center' }}>
+    <Text
+      fw={900}
+      fz={{ base: rem(36), md: rem(48) }}
+      variant="gradient"
+      gradient={{ from: 'violet', to: 'cyan' }}
+      style={{ lineHeight: 1 }}
+    >
+      {value}
+    </Text>
+    <Text size="sm" c="dimmed" mt={4}>{label}</Text>
+  </Box>
 )
 
 export default function Home() {
@@ -107,7 +120,7 @@ function LandingPage() {
           right: '-5%',
           width: '50vw',
           height: '50vw',
-          background: 'radial-gradient(circle, rgba(121, 80, 242, 0.15) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, rgba(121, 80, 242, 0.12) 0%, rgba(0,0,0,0) 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -119,7 +132,7 @@ function LandingPage() {
           left: '-5%',
           width: '60vw',
           height: '60vw',
-          background: 'radial-gradient(circle, rgba(21, 170, 191, 0.1) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, rgba(21, 170, 191, 0.08) 0%, rgba(0,0,0,0) 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -127,7 +140,7 @@ function LandingPage() {
 
       <Container size="lg" pt={40} style={{ position: 'relative', zIndex: 1 }}>
         {/* Header/Nav */}
-        <Group justify="space-between" >
+        <Group justify="space-between">
           <Group gap="xs">
             <ThemeIcon size="xl" radius="md" variant="gradient" gradient={{ from: 'violet', to: 'cyan' }}>
               <FaCode size={20} />
@@ -138,16 +151,6 @@ function LandingPage() {
           </Group>
           <Group gap="md">
             <LanguageToggle />
-            <Button
-              component="a"
-              href="/dashboard"
-              variant="subtle"
-              color="violet"
-              size="sm"
-              leftSection={<FaDatabase size={14} />}
-            >
-              <Intl en="Database Dashboard" pt="Dashboard de Base de Dados" />
-            </Button>
             <Tooltip label="GitHub">
               <ActionIcon
                 component="a"
@@ -175,31 +178,31 @@ function LandingPage() {
           </Group>
         </Group>
 
-        {/* Hero Section */}
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={80} mb={120} mt={60}>
-          <Stack gap={40} justify="center">
+        {/* ========== HERO ========== */}
+        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={80} mb={100} mt={60}>
+          <Stack gap={32} justify="center">
             <Box>
               <Badge variant="dot" color="violet" size="lg" mb="sm">
-                <Intl en="Solutions Architect & Full-Stack Developer" pt="Arquiteto de Soluções & Desenvolvedor Full-Stack" />
+                Ícaro C. Capobianco
               </Badge>
               <Title
                 order={1}
-                fz={{ base: rem(42), sm: rem(54), md: rem(64) }}
+                fz={{ base: rem(38), sm: rem(48), md: rem(56) }}
                 style={{
-                  lineHeight: 1.1,
+                  lineHeight: 1.08,
                   fontWeight: 900,
                   marginBottom: rem(24)
                 }}
               >
                 <Intl
-                  en={<>Delivering enterprise software in a <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>fraction of the time.</Text></>}
-                  pt={<>Entregando software de ponta em uma <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>fração do tempo.</Text></>}
+                  en={<>Software that <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>works for the business, not against it.</Text></>}
+                  pt={<>Software que <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>trabalha a favor do negócio, não contra.</Text></>}
                 />
               </Title>
-              <Text size="xl" c="dimmed" style={{ lineHeight: 1.6 }}>
+              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I'm Ícaro C. Capobianco, a Full-Stack Web Developer and Solutions Architect with over 7 years of experience. I build software that crushes development timelines while drastically reducing maintenance costs. Through highly refined architecture and pragmatic tooling, I deliver what takes teams months, in weeks."
-                  pt="Sou Ícaro C. Capobianco, Desenvolvedor Full-Stack e Arquiteto de Soluções com mais de 7 anos de experiência. Eu construo sistemas que quebram prazos de desenvolvimento enquanto reduzem drasticamente custos de manutenção. Com arquitetura refinada, entrego em dias o que equipes levam meses para construir."
+                  en="7+ years of full-stack expertise applied to building complete products — from database to interface — with a proprietary framework designed to work in any context, any stack, and with any team. The result: development timelines that other teams can't match, and codebases that never become a liability."
+                  pt="7+ anos de expertise full-stack aplicados na construção de produtos completos — do banco de dados à interface — com uma framework proprietária projetada para funcionar em qualquer contexto, qualquer stack e com qualquer equipe. O resultado: prazos de desenvolvimento que outros times não conseguem acompanhar, e códigos que nunca viram passivo."
                 />
               </Text>
             </Box>
@@ -211,20 +214,18 @@ function LandingPage() {
                 variant="gradient"
                 gradient={{ from: 'violet', to: 'cyan' }}
                 rightSection={<FaArrowRight size={16} />}
-                onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Intl en="View My Work" pt="Ver Meu Trabalho" />
+                <Intl en="Get in Touch" pt="Entrar em Contato" />
               </Button>
               <Button
                 size="lg"
                 radius="md"
                 variant="default"
-                leftSection={<FaGithub size={18} />}
-                component="a"
-                href="https://github.com/asasvirtuais"
-                target="_blank"
+                rightSection={<IconArrowRight size={16} />}
+                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Intl en="Explore Framework" pt="Explorar Framework" />
+                <Intl en="See the Work" pt="Ver Trabalhos" />
               </Button>
             </Group>
           </Stack>
@@ -254,362 +255,498 @@ function LandingPage() {
           </Box>
         </SimpleGrid>
 
-        <Divider mb={120} label={<Intl en="My Approach" pt="Minha Abordagem" />} labelPosition="center" />
+        {/* ========== STATS ========== */}
+        <GlassCard mb={120} style={{ background: 'linear-gradient(135deg, rgba(121, 80, 242, 0.06) 0%, rgba(21, 170, 191, 0.06) 100%)', border: '1px solid rgba(121, 80, 242, 0.15)' }}>
+          <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
+            <StatCard value="7+" label={<Intl en="Years of Experience" pt="Anos de Experiência" />} />
+            <StatCard value="20+" label={<Intl en="Delivered Projects" pt="Projetos Entregues" />} />
+            <StatCard value="∞" label={<Intl en="Stack Compatibility" pt="Compatibilidade de Stack" />} />
+            <StatCard value="0" label={<Intl en="Vendor Lock-in" pt="Dependência de Fornecedor" />} />
+          </SimpleGrid>
+        </GlassCard>
 
-        {/* Philosophy Section */}
-        <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" mb={120}>
-          <GlassCard>
-            <ThemeIcon variant="light" color="violet" size="xl" radius="md" mb="md">
-              <FaRocket />
-            </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs"><Intl en="Rapid Delivery" pt="Entrega Rápida" /></Text>
-            <Text size="sm" c="dimmed">
-              <Intl
-                en="By leveraging specialized infrastructure (Airtable, Stripe, Auth0) and my custom frameworks, I build resilient, production-ready systems exponentially faster than traditional development teams, slashing initial build costs."
-                pt="Utilizando infraestrutura especializada (Airtable, Stripe, Auth0) e meus próprios frameworks, construo sistemas resilientes e prontos para produção exponencialmente mais rápido do que times tradicionais."
-              />
-            </Text>
-          </GlassCard>
-          <GlassCard>
-            <ThemeIcon variant="light" color="cyan" size="xl" radius="md" mb="md">
-              <FaTools />
-            </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs"><Intl en="Near-Zero Maintenance" pt="Manutenção Quase Zero" /></Text>
-            <Text size="sm" c="dimmed">
-              <Intl
-                en="Custom code is a liability unless it's business-critical. By coding only the exception and relying on rock-solid architectural patterns, I deliver lean applications that practically maintain themselves, saving countless hours of technical debt."
-                pt="Código customizado é um passivo a menos que seja crítico para o negócio. Desenvolvendo apenas a exceção e contando com padrões sólidos, entrego apps enxutos que praticamente se mantêm sozinhos."
-              />
-            </Text>
-          </GlassCard>
-          <GlassCard>
-            <ThemeIcon variant="light" color="pink" size="xl" radius="md" mb="md">
-              <FaLightbulb />
-            </ThemeIcon>
-            <Text fw={700} size="lg" mb="xs"><Intl en="Maximum Velocity" pt="Velocidade Máxima" /></Text>
-            <Text size="sm" c="dimmed">
-              <Intl
-                en="I focus purely on what gives your project a competitive edge. Skipping reinvented wheels means your product reaches the market faster, iterates quicker, and responds instantly to business needs without being bogged down by legacy bloat."
-                pt="Foco apenas no que dá vantagem competitiva ao seu projeto. Não reinventar a roda significa que sua ideia atinge o mercado antes, itera mais rápido e responde instantaneamente às necessidades do negócio."
-              />
-            </Text>
-          </GlassCard>
-        </SimpleGrid>
+        <Divider mb={120} label={<Intl en="The Real Problem" pt="O Problema Real" />} labelPosition="center" />
 
-        {/* Value Proposition Highlight */}
+        {/* ========== THE PROBLEM ========== */}
         <Box mb={120}>
-          <GlassCard padding={{ base: 'xl', md: 60 }} style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(121, 80, 242, 0.1) 0%, rgba(21, 170, 191, 0.1) 100%)', border: '1px solid rgba(121, 80, 242, 0.2)' }}>
+          <Box mb={60} style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }} style={{ lineHeight: 1.3 }}>
               <Intl
-                en={<>If your business pivots next week, <Box component="br" display={{ base: 'none', md: 'block' }} /> <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>your app adapts in days not weeks.</Text></>}
-                pt={<>Se o seu negócio mudar semana que vem,<Box component="br" display={{ base: 'none', md: 'block' }} /> <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>o app muda em 10 minutos.</Text></>}
+                en={<>Most companies have already been <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>burned by software projects.</Text></>}
+                pt={<>A maioria das empresas já foi <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>queimada por projetos de software.</Text></>}
               />
             </Title>
-            <Text size="xl" c="dimmed" style={{ maxWidth: 800, margin: '0 auto' }}>
+            <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en={<>With my technology stack, you will never again hear a developer say <i>"that's too hard to implement."</i> I deliver flexible, reactive systems designed specifically to accommodate and accelerate rapid business evolution.</>}
-                pt={<>Com a minha solução tecnológica, você nunca mais vai ouvir de um programador que <i>"isso é difícil de implementar."</i> Eu entrego soluções flexíveis desenhadas especificamente para acompanhar a rápida evolução do seu negócio.</>}
+                en="The client hires a team or an agency. They promise the world. Three months later: the budget doubled, half the features don't work, and the company is locked into a codebase nobody else can maintain. It's not bad luck — it's the industry standard."
+                pt="O cliente contrata uma equipe ou agência. Prometem o mundo. Três meses depois: o orçamento dobrou, metade das funcionalidades não funciona, e a empresa está presa numa base de código que ninguém consegue manter. Não é azar — é o padrão do mercado."
+              />
+            </Text>
+          </Box>
+
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
+            <GlassCard style={{ borderColor: 'rgba(255, 107, 107, 0.2)' }}>
+              <ThemeIcon variant="light" color="red" size="xl" radius="md" mb="md">
+                <IconClock size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Endless Delays" pt="Atrasos Sem Fim" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en={<>"It'll be ready in two weeks" turns into two months. Then six. Then "we need to refactor the whole thing." The business waits while developers figure things out.</>}
+                  pt={<>"Fica pronto em duas semanas" vira dois meses. Depois seis. Depois "precisamos refatorar tudo." O negócio espera enquanto o time de desenvolvimento tenta resolver o que deveria ter resolvido antes.</>}
+                />
+              </Text>
+            </GlassCard>
+
+            <GlassCard style={{ borderColor: 'rgba(255, 169, 77, 0.2)' }}>
+              <ThemeIcon variant="light" color="orange" size="xl" radius="md" mb="md">
+                <IconCurrencyDollar size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Costs That Explode" pt="Custos Que Explodem" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="What was quoted at $5k becomes $15k because of 'unforeseen complexities.' The real reason? Bad architecture decisions from day one that snowball into expensive rewrites."
+                  pt="O que foi orçado em R$15k vira R$50k por causa de 'complexidades imprevistas.' O motivo real? Decisões ruins de arquitetura no dia um que viram retrabalhos caros."
+                />
+              </Text>
+            </GlassCard>
+
+            <GlassCard style={{ borderColor: 'rgba(255, 107, 107, 0.2)' }}>
+              <ThemeIcon variant="light" color="red" size="xl" radius="md" mb="md">
+                <IconShieldCheck size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Vendor Lock-in" pt="Refém do Fornecedor" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="The agency delivers something that only they can maintain. Need a change? Pay them. Need a fix? Pay them. Want to leave? Good luck finding someone who understands their spaghetti code."
+                  pt="A agência entrega algo que só ela pode manter. Precisa mudar algo? Pague. Um bug? Pague. Quer sair? Boa sorte achando quem entenda o código espaguete que deixaram."
+                />
+              </Text>
+            </GlassCard>
+          </SimpleGrid>
+        </Box>
+
+        <Divider mb={120} label={<Intl en="A Different Approach" pt="Uma Abordagem Diferente" />} labelPosition="center" />
+
+        {/* ========== MY APPROACH ========== */}
+        <Box mb={120}>
+          <Box mb={60} style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
+            <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }} style={{ lineHeight: 1.3 }}>
+              <Intl
+                en={<>Technology that adapts to the client, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>never the other way around.</Text></>}
+                pt={<>Tecnologia que se adapta ao cliente, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>nunca o contrário.</Text></>}
+              />
+            </Title>
+            <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
+              <Intl
+                en="This expertise is built on a proprietary framework that integrates with any existing stack, any team, and any infrastructure. The architecture is designed so that no one — not even its creator — becomes a dependency. The client owns the code, understands the code, and can move forward with or without this partnership."
+                pt="Essa expertise é construída sobre uma framework proprietária que se integra a qualquer stack existente, qualquer equipe e qualquer infraestrutura. A arquitetura é projetada para que ninguém — nem mesmo o criador — se torne uma dependência. O cliente é dono do código, entende o código, e pode seguir com ou sem essa parceria."
+              />
+            </Text>
+          </Box>
+
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
+            <GlassCard>
+              <ThemeIcon variant="light" color="violet" size="xl" radius="md" mb="md">
+                <IconRocket size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Absurd Speed" pt="Velocidade Absurda" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="Functional systems delivered in weeks, not months. Deep infrastructure expertise combined with proprietary tooling eliminates the learning curve that slows conventional teams down."
+                  pt="Sistemas funcionais entregues em semanas, não meses. Expertise profunda em infraestrutura combinada com ferramental proprietário eliminam a curva de aprendizado que atrasa times convencionais."
+                />
+              </Text>
+            </GlassCard>
+            <GlassCard>
+              <ThemeIcon variant="light" color="cyan" size="xl" radius="md" mb="md">
+                <IconPuzzle size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Works With Any Stack" pt="Funciona Com Qualquer Stack" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="The framework is not a replacement for existing tools — it's a layer that works on top of whatever the client already uses. React, Vue, Angular, REST, GraphQL, Firebase, AWS — the approach adapts."
+                  pt="A framework não substitui ferramentas existentes — é uma camada que funciona sobre o que o cliente já usa. React, Vue, Angular, REST, GraphQL, Firebase, AWS — a abordagem se adapta."
+                />
+              </Text>
+            </GlassCard>
+            <GlassCard>
+              <ThemeIcon variant="light" color="green" size="xl" radius="md" mb="md">
+                <IconUsers size={24} />
+              </ThemeIcon>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Zero Dependency" pt="Zero Dependência" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="The client is never locked in. The code uses industry-standard patterns and clear documentation. Any competent team — or even AI — can take over, extend, and maintain the project independently."
+                  pt="O cliente nunca fica preso. O código usa padrões da indústria e documentação clara. Qualquer equipe competente — ou até uma IA — consegue assumir, estender e manter o projeto de forma independente."
+                />
+              </Text>
+            </GlassCard>
+          </SimpleGrid>
+        </Box>
+
+        {/* ========== HIGHLIGHT CTA ========== */}
+        <Box mb={120}>
+          <GlassCard padding={{ base: 'xl', md: 60 }} style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(121, 80, 242, 0.08) 0%, rgba(21, 170, 191, 0.08) 100%)', border: '1px solid rgba(121, 80, 242, 0.2)' }}>
+            <Title order={2} mb="md" fz={{ base: rem(26), sm: rem(34) }} style={{ lineHeight: 1.3 }}>
+              <Intl
+                en={<>When the business pivots,<Box component="br" display={{ base: 'none', md: 'block' }} /> <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>the software adapts in days, not months.</Text></>}
+                pt={<>Quando o negócio muda de rumo,<Box component="br" display={{ base: 'none', md: 'block' }} /> <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>o software se adapta em dias, não meses.</Text></>}
+              />
+            </Title>
+            <Text size="lg" c="dimmed" style={{ maxWidth: 700, margin: '0 auto' }}>
+              <Intl
+                en="These systems are designed to change. Because every business will change — and technology cannot be the bottleneck."
+                pt="Esses sistemas são projetados para mudar. Porque todo negócio vai mudar — e a tecnologia não pode ser o gargalo."
               />
             </Text>
           </GlassCard>
         </Box>
 
-        {/* Validate Ideas - Proof of Concept */}
-        <Box mb={120}>
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
-            <Stack justify="center">
-              <Badge color="blue" size="lg"><Intl en="Proof of Concept" pt="Prova de Conceito (PoC)" /></Badge>
-              <Title order={2}>
-                <Intl en="Perfect for Validating Ideas" pt="Perfeito para Validar Ideias" />
-              </Title>
-              <Text size="lg" c="dimmed">
-                <Intl
-                  en="Stop building prototypes that get thrown away. With my architecture, validating your idea means building the product. The infrastructure scales from day one."
-                  pt="Chega de criar protótipos para jogar fora. Com a minha arquitetura, ideia validada = construir o app. A infraestrutura base já nasce pronta para escala real."
-                />
-              </Text>
-              <List
-                spacing="sm"
-                size="md"
-                mt="sm"
-                icon={
-                  <ThemeIcon color="violet" size={24} radius="xl">
-                    <FaCheckCircle size={14} />
-                  </ThemeIcon>
-                }
-              >
-                <List.Item><Intl en="Real users on real apps, not mockups." pt="Usuários reais usando apps reais de verdade, não protótipos clicáveis." /></List.Item>
-                <List.Item><Intl en="Go to market and test hypotheses in record time." pt="Vá para o mercado e teste hipóteses em tempo recorde." /></List.Item>
-                <List.Item><Intl en="No throwaway code—your PoC is your production v1." pt="Nenhum código descartável, sua PoC já é a sua versão 1 oficial." /></List.Item>
-              </List>
-            </Stack>
-            <Box style={{ position: 'relative' }}>
-              <GlassCard p="xs" style={{ border: '1px solid rgba(255, 255, 255, 0.1)', overflow: 'hidden' }}>
-                <Image src="/portfolio/latham-estimator/latham1.webp" radius="md" style={{ filter: 'brightness(0.9)' }} />
-              </GlassCard>
-            </Box>
-          </SimpleGrid>
-        </Box>
+        <Divider mb={120} label={<Intl en="Proof" pt="Provas" />} labelPosition="center" />
 
-        {/* Pricing Section */}
-        <Box mb={120} id="pricing">
-          <Title order={2} mb="xl" style={{ textAlign: 'center' }}><Intl en="Pricing / Investment" pt="Precificação / Investimento" /></Title>
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
-            <GlassCard>
-              <Group mb="xs">
-                <Text fw={700} size="xl"><Intl en="Advanced Forms" pt="Formulários Avançados" /></Text>
-              </Group>
-              <Text size="sm" c="dimmed" mb="md" style={{ minHeight: 60 }}>
-                <Intl
-                  en="Advanced forms for precise technical and industrial operations. Specialized data gathering."
-                  pt="Soluções avançadas para operações industriais precisas e técnicas."
-                />
-              </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$2,400 - $3,600" pt="R$ 12k - R$ 18k" />
-              </Text>
-              <Button fullWidth variant="light" color="cyan" radius="md" component="a" href="/forms-demo">
-                <Intl en="View Demo" pt="Ver Demo" />
-              </Button>
-            </GlassCard>
-
-            <GlassCard>
-              <Group mb="xs">
-                <Text fw={700} size="xl"><Intl en="Robust Systems" pt="Sistemas Robustos" /></Text>
-              </Group>
-              <Text size="sm" c="dimmed" mb="md" style={{ minHeight: 60 }}>
-                <Intl
-                  en="Complete projects with robust backend setups, fully architected database, and administrative dashboard."
-                  pt="Projetos de sistemas completos com backend robusto, base de dados modelada e tabela de administração."
-                />
-              </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$4,000 - $10,000" pt="R$ 20k - R$ 50k" />
-              </Text>
-              <Button fullWidth variant="light" color="cyan" radius="md" component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank">
-                <Intl en="Contact Me" pt="Entre em Contato" />
-              </Button>
-            </GlassCard>
-
-            <GlassCard>
-              <Group mb="xs">
-                <Text fw={700} size="xl"><Intl en="Full Applications" pt="Aplicativos Completos" /></Text>
-              </Group>
-              <Text size="sm" c="dimmed" mb="md" style={{ minHeight: 60 }}>
-                <Intl
-                  en="Annual service contracts for comprehensive app development with installment options available."
-                  pt="Contratos anuais para projetos extensos de aplicativos completos, com opções de parcelamento."
-                />
-              </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$10,000+ / yr" pt="R$ 50k+" />
-              </Text>
-              <Button fullWidth variant="light" color="cyan" radius="md" component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank">
-                <Intl en="Contact Me" pt="Entre em Contato" />
-              </Button>
-            </GlassCard>
-          </SimpleGrid>
-        </Box>
-
-        {/* Featured Project: asasvirtuais */}
-        <Box mb={120}>
-          <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
-              <Box p={40}>
-                <Badge color="violet" mb="xs">Open Source</Badge>
-                <Title order={2} mb="md">asasvirtuais Framework</Title>
-                <Text mb="xl" c="dimmed">
-                  <Intl
-                    en="My open-source React framework designed to resolve the gap between API integration and state management. Built to eliminate architectural debt for CRUD-driven applications and local-first PWAs."
-                    pt="Meu próprio framework React open-source desenhado para resolver o abismo entre APIs e gerência de estado. Feito para eliminar dívida arquitetural de apps crud e sistemas PWA local-first."
-                  />
-                </Text>
-                <Stack gap="sm">
-                  <Group gap="md" wrap="nowrap" align="flex-start">
-                    <ThemeIcon size="sm" color="green" variant="light" radius="xl" mt={2} style={{ flexShrink: 0 }}><FaRocket /></ThemeIcon>
-                    <Text size="sm" style={{ flex: 1 }}>
-                      <Intl en="AI-Friendly: Simple, predictable primitives that LLMs can generate correctly." pt="Fácil para IAs: Formatos previsíveis para ajudar LLMs a gerar código corretamente." />
-                    </Text>
-                  </Group>
-                  <Group gap="md" wrap="nowrap" align="flex-start">
-                    <ThemeIcon size="sm" color="blue" variant="light" radius="xl" mt={2} style={{ flexShrink: 0 }}><FaDatabase /></ThemeIcon>
-                    <Text size="sm" style={{ flex: 1 }}>
-                      <Intl en="Agnostic Database: Deep integration with IndexedDB for seamless offline apps." pt="Banco de Dados Agnóstico: Integrações profundas com IndexedDB para excelentes apps offline." />
-                    </Text>
-                  </Group>
-                </Stack>
-                <Button mt={40} variant="outline" color="violet" component="a" href="https://www.npmjs.com/package/asasvirtuais" target="_blank">
-                  <Intl en="View on NPM" pt="Acessar no NPM" />
-                </Button>
-              </Box>
-              <Box style={{ background: 'linear-gradient(45deg, #1a1a1b, #2a2a2b)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 300 }}>
-                <Stack align="center" gap="xs">
-                  <SiReact size={80} color="#61DAFB" style={{ filter: 'drop-shadow(0 0 20px rgba(97, 218, 251, 0.3))' }} />
-                  <Text fw={700} size="lg"><Intl en="Simplified State Management" pt="Gestão de Estado Descomplicada" /></Text>
-                </Stack>
-              </Box>
-            </SimpleGrid>
-          </GlassCard>
-        </Box>
-
-        {/* Portfolio Section */}
-        <Box id="portfolio" mb={120}>
-          <Group justify="space-between" mb="xl">
-            <Title order={2}><Intl en="Selected Work" pt="Trabalhos Selecionados" /></Title>
-            <Anchor href="https://upwork.com/fl/icarocc" target="_blank" size="sm" c="violet"><Intl en="View more on UpWork" pt="Ver mais no UpWork" /></Anchor>
-          </Group>
+        {/* ========== PORTFOLIO ========== */}
+        <Box id="work" mb={120}>
+          <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
+            <Title order={2} mb="sm" fz={{ base: rem(28), sm: rem(36) }}>
+              <Intl en="Real products. Real clients." pt="Produtos reais. Clientes reais." />
+            </Title>
+            <Text size="lg" c="dimmed">
+              <Intl
+                en="From the first meeting with the client to the deployed product. Full scope — architecture, backend, frontend, integrations, and deployment."
+                pt="Da primeira reunião com o cliente ao produto no ar. Escopo completo — arquitetura, backend, frontend, integrações e deploy."
+              />
+            </Text>
+          </Box>
 
           <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
-            {/* Project 1 */}
+            {/* Latham */}
             <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', borderRadius: 'var(--mantine-radius-md)', overflow: 'hidden' }}>
-                <Image src="/portfolio/latham-estimator/latham1.webp" height={240} fit="contain" alt="Latham Estimator" />
+              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/latham-estimator/latham1.webp" height={240} fit="contain" alt="Latham Pools" />
               </Box>
               <Box p="lg">
                 <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Latham Pools Lead Qualification</Text>
-                  <Badge variant="light">React + GraphQL</Badge>
+                  <Text fw={700}>Latham Pools — Lead Qualification</Text>
+                  <Badge variant="light" color="blue">USA</Badge>
                 </Group>
                 <Text size="sm" c="dimmed" mb="md">
                   <Intl
-                    en="A frontend lead qualification tool built with React and GraphQL. It reads Airtable bases to guide clients for a major US pool sales company."
-                    pt="Uma ferramenta frontend voltada a leads usando React e GraphQL para guiar clientes numa das maiores empresas de piscinas dos EUA."
+                    en="An interactive lead qualification wizard for one of the largest pool manufacturers in the United States. Real-time data from Airtable guides potential clients through a configurator integrated with the sales pipeline."
+                    pt="Um wizard interativo de qualificação de leads para uma das maiores fabricantes de piscinas dos EUA. Dados em tempo real do Airtable guiam potenciais clientes por um configurador integrado ao funil de vendas."
                   />
                 </Text>
-                <Group gap="xs"><SiTypescript size={18} /><SiReact size={18} /><SiAirtable size={18} /></Group>
+                <Group gap="xs">
+                  <Badge size="sm" variant="outline" color="gray">React</Badge>
+                  <Badge size="sm" variant="outline" color="gray">GraphQL</Badge>
+                  <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
+                </Group>
               </Box>
             </GlassCard>
 
-            {/* Project 2 */}
+            {/* CertWorld */}
             <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', borderRadius: 'var(--mantine-radius-md)', overflow: 'hidden' }}>
-                <Image src="/portfolio/grimoire/cards.png" height={240} fit="contain" alt="Grimoire Interface" />
+              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/certworld/courses.png" height={240} fit="contain" alt="CertWorld" />
               </Box>
               <Box p="lg">
                 <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Grimoire RPG Companion</Text>
-                  <Badge variant="light">Framework Demo</Badge>
+                  <Text fw={700}>CertWorld — Learning Platform</Text>
+                  <Badge variant="light" color="green">MVP</Badge>
                 </Group>
                 <Text size="sm" c="dimmed" mb="md">
                   <Intl
-                    en="A complex RPG companion app showcasing the abilities of the asasvirtuais framework in handling intricate, local-first state management."
-                    pt="Um app para acompanhamento de campanhas de RPG incrivelmente complexo. Demonstra a enorme capacidade de escala single-player e processamento do asasvirtuais framework."
+                    en="Complete e-learning platform with course catalog, video lessons, exams, certifications, and Stripe Checkout payment. Built from discovery to launch in record time."
+                    pt="Plataforma de e-learning completa com catálogo de cursos, videoaulas, provas, certificações e pagamento via Stripe Checkout. Construída do discovery ao deploy em tempo recorde."
                   />
                 </Text>
-                <Group gap="xs"><SiMantine size={18} /><SiTypescript size={18} /><SiReact size={18} /></Group>
+                <Group gap="xs">
+                  <Badge size="sm" variant="outline" color="gray">Next.js</Badge>
+                  <Badge size="sm" variant="outline" color="gray">Stripe</Badge>
+                  <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
+                </Group>
               </Box>
             </GlassCard>
 
-            {/* Project 3 */}
+            {/* Grimoire */}
             <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', borderRadius: 'var(--mantine-radius-md)', overflow: 'hidden' }}>
-                <Image src="/portfolio/certworld/courses.png" height={240} fit="contain" alt="CertWorld Platform" />
+              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/grimoire/cards.png" height={240} fit="contain" alt="Grimoire RPG" />
               </Box>
               <Box p="lg">
                 <Group justify="space-between" mb="xs">
-                  <Text fw={700}>CertWorld CMS & Learning</Text>
-                  <Badge variant="light">Full MVP</Badge>
+                  <Text fw={700}>Grimoire — RPG Companion App</Text>
+                  <Badge variant="light" color="violet">Complex PWA</Badge>
                 </Group>
                 <Text size="sm" c="dimmed" mb="md">
                   <Intl
-                    en="A functional MVP for a machine learning courses platform. Built single-handedly from client discovery to launch, featuring Stripe integration."
-                    pt="Um MVP 100% funcional para hospedar cursos. Construído do zero em tempo recorde com integrações Airtable e Stripe Checkout."
+                    en="A deeply complex RPG campaign management app with hundreds of interconnected entities, real-time state management, and full offline capability. Demonstrates extreme architecture scale."
+                    pt="App de gerenciamento de campanhas RPG profundamente complexo, com centenas de entidades interconectadas, gestão de estado em tempo real e funcionamento 100% offline. Demonstra escala arquitetural extrema."
                   />
                 </Text>
-                <Group gap="xs"><SiStripe size={18} /><SiNextdotjs size={18} /><SiAirtable size={18} /></Group>
+                <Group gap="xs">
+                  <Badge size="sm" variant="outline" color="gray">React</Badge>
+                  <Badge size="sm" variant="outline" color="gray">IndexedDB</Badge>
+                  <Badge size="sm" variant="outline" color="gray">PWA</Badge>
+                </Group>
               </Box>
             </GlassCard>
 
-            {/* Project 4 */}
+            {/* Easy AI Diary */}
             <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', borderRadius: 'var(--mantine-radius-md)', overflow: 'hidden' }}>
-                <Image src="/portfolio/easyaidiarychat/chat.png" height={240} fit="contain" alt="Easy AI Diary Chat" fallbackSrc="https://placehold.co/600x400?text=Easy+AI+Diary" />
+              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/easyaidiarychat/chat.png" height={240} fit="contain" alt="Easy AI Diary" fallbackSrc="https://placehold.co/600x400?text=Easy+AI+Diary" />
               </Box>
               <Box p="lg">
                 <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Easy AI Diary & Chat</Text>
-                  <Badge variant="light">PWA + Gemini AI</Badge>
+                  <Text fw={700}>Easy AI Diary — AI-Powered Journal</Text>
+                  <Badge variant="light" color="pink">AI + PWA</Badge>
                 </Group>
                 <Text size="sm" c="dimmed" mb="md">
                   <Intl
-                    en="A local-first PWA powered by Gemini AI for automated journal analysis and chat, utilizing IndexedDB for rock-solid offline persistence."
-                    pt="Um PWA local-first rodando integração com Gemini AI para análises automatizadas usando banco de dados IndexedDB de persistência impecável."
+                    en="A local-first PWA powered by Gemini AI for automated journal analysis and conversational insights. All user data stored locally on the device — zero server dependency for personal data."
+                    pt="Um PWA local-first com Gemini AI para análise automatizada de diário e insights conversacionais. Todos os dados do usuário ficam no dispositivo — zero dependência de servidor para dados pessoais."
                   />
                 </Text>
-                <Group gap="xs"><SiMantine size={18} /><FaBrain size={18} /><FaDatabase size={18} /></Group>
+                <Group gap="xs">
+                  <Badge size="sm" variant="outline" color="gray">Gemini AI</Badge>
+                  <Badge size="sm" variant="outline" color="gray">IndexedDB</Badge>
+                  <Badge size="sm" variant="outline" color="gray">PWA</Badge>
+                </Group>
               </Box>
+            </GlassCard>
+          </SimpleGrid>
+
+          <Box mt="xl" style={{ textAlign: 'center' }}>
+            <Button
+              variant="light"
+              color="violet"
+              size="md"
+              component="a"
+              href="/forms-demo"
+              rightSection={<IconArrowRight size={16} />}
+            >
+              <Intl en="See a Live Technical Demo" pt="Ver uma Demo Técnica ao Vivo" />
+            </Button>
+          </Box>
+        </Box>
+
+        <Divider mb={120} label={<Intl en="How It Works" pt="Como Funciona" />} labelPosition="center" />
+
+        {/* ========== PROCESS ========== */}
+        <Box mb={120}>
+          <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
+            <Title order={2} mb="sm" fz={{ base: rem(28), sm: rem(36) }}>
+              <Intl en="Clear process. No mysteries." pt="Processo claro. Sem mistérios." />
+            </Title>
+            <Text size="lg" c="dimmed">
+              <Intl
+                en="From first contact to delivered product. The client always knows where things stand and what comes next."
+                pt="Do primeiro contato ao produto entregue. O cliente sempre sabe onde as coisas estão e qual o próximo passo."
+              />
+            </Text>
+          </Box>
+
+          <Box style={{ maxWidth: 700, margin: '0 auto' }}>
+            <Timeline active={-1} bulletSize={40} lineWidth={2} color="violet">
+              <Timeline.Item bullet={<IconMessage size={20} />} title={<Text fw={700}><Intl en="1. Conversation" pt="1. Conversa" /></Text>}>
+                <Text c="dimmed" size="sm" mt={4}>
+                  <Intl
+                    en="A conversation about the business, the problem, and what's actually needed. No jargon. Listening first."
+                    pt="Uma conversa sobre o negócio, o problema e o que realmente é necessário. Sem jargão técnico. Primeiro ouvir."
+                  />
+                </Text>
+              </Timeline.Item>
+
+              <Timeline.Item bullet={<IconBulb size={20} />} title={<Text fw={700}><Intl en="2. Proposal with Clear Scope" pt="2. Proposta com Escopo Claro" /></Text>}>
+                <Text c="dimmed" size="sm" mt={4}>
+                  <Intl
+                    en="The client receives a document describing exactly what will be built, the timeline, and the investment. No hidden fees. If something is out of scope, it's explicitly stated."
+                    pt="O cliente recebe um documento descrevendo exatamente o que será construído, o prazo e o investimento. Sem taxas escondidas. Se algo está fora do escopo, está explicitamente descrito."
+                  />
+                </Text>
+              </Timeline.Item>
+
+              <Timeline.Item bullet={<IconCode size={20} />} title={<Text fw={700}><Intl en="3. Development" pt="3. Desenvolvimento" /></Text>}>
+                <Text c="dimmed" size="sm" mt={4}>
+                  <Intl
+                    en="The project is built with regular progress updates. The app is always available for the client to test and provide real-time feedback."
+                    pt="O projeto é construído com atualizações regulares de progresso. O app fica sempre disponível para o cliente testar e dar feedback em tempo real."
+                  />
+                </Text>
+              </Timeline.Item>
+
+              <Timeline.Item bullet={<IconDeviceLaptop size={20} />} title={<Text fw={700}><Intl en="4. Delivery" pt="4. Entrega" /></Text>}>
+                <Text c="dimmed" size="sm" mt={4}>
+                  <Intl
+                    en="The finished product is deployed. The client owns the code. Full documentation. A complete walkthrough of everything delivered."
+                    pt="O produto finalizado é deployado. O cliente é dono do código. Documentação completa. Uma apresentação completa de tudo que foi entregue."
+                  />
+                </Text>
+              </Timeline.Item>
+
+              <Timeline.Item bullet={<IconHeadset size={20} />} title={<Text fw={700}><Intl en="5. Support" pt="5. Suporte" /></Text>}>
+                <Text c="dimmed" size="sm" mt={4}>
+                  <Intl
+                    en="Post-launch support period included. After that, the client can continue the partnership, bring in another team, or maintain it internally — the code is theirs."
+                    pt="Período de suporte pós-lançamento incluso. Depois disso, o cliente pode continuar a parceria, trazer outro time, ou manter internamente — o código é dele."
+                  />
+                </Text>
+              </Timeline.Item>
+            </Timeline>
+          </Box>
+        </Box>
+
+        <Divider mb={120} label={<Intl en="Investment" pt="Investimento" />} labelPosition="center" />
+
+        {/* ========== PRICING ========== */}
+        <Box mb={120} id="pricing">
+          <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
+            <Title order={2} mb="sm" fz={{ base: rem(28), sm: rem(36) }}>
+              <Intl en="Transparent pricing." pt="Preços transparentes." />
+            </Title>
+            <Text size="lg" c="dimmed">
+              <Intl
+                en="Real ranges based on past projects. Every project receives an individual quote after the initial conversation."
+                pt="Ranges reais baseados em projetos anteriores. Todo projeto recebe uma cotação individual após a conversa inicial."
+              />
+            </Text>
+          </Box>
+
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
+            <GlassCard>
+              <Badge color="cyan" mb="md"><Intl en="Quick Win" pt="Resultado Rápido" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Specialized Forms & Tools" pt="Formulários & Ferramentas" /></Text>
+              <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
+                <Intl
+                  en="Technical forms, configurators, calculators, data capture tools. The kind of thing that looks simple but most teams deliver broken."
+                  pt="Formulários técnicos, configuradores, calculadoras e ferramentas de captura de dados. O tipo de coisa que parece simples mas a maioria dos times entrega quebrado."
+                />
+              </Text>
+              <Text fw={900} fz={32} mb="md">
+                <Intl en="$1k+" pt="R$ 5k+" />
+              </Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="1–3 weeks delivery" pt="1–3 semanas de entrega" /></Text>
+              <Button fullWidth variant="light" color="cyan" radius="md" component="a" href="/forms-demo">
+                <Intl en="See a Live Demo" pt="Ver Demo ao Vivo" />
+              </Button>
+            </GlassCard>
+
+            <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
+              <Badge color="violet" mb="md"><Intl en="Most Common" pt="Mais Comum" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Complete Systems" pt="Sistemas Completos" /></Text>
+              <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
+                <Intl
+                  en="Full applications with backend, database, authentication, admin dashboard, and integrations (Stripe, Airtable, APIs, etc)."
+                  pt="Aplicações completas com backend, banco de dados, autenticação, painel admin e integrações (Stripe, Airtable, APIs, etc)."
+                />
+              </Text>
+              <Text fw={900} fz={32} mb="md">
+                <Intl en="$2k – $4k" pt="R$ 10k – R$ 20k" />
+              </Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="3–8 weeks delivery" pt="3–8 semanas de entrega" /></Text>
+              <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                <Intl en="Discuss a Project" pt="Discutir um Projeto" />
+              </Button>
+            </GlassCard>
+
+            <GlassCard>
+              <Badge color="green" mb="md"><Intl en="Partnership" pt="Parceria" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Ongoing Development" pt="Desenvolvimento Contínuo" /></Text>
+              <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
+                <Intl
+                  en="Long-term contracts for continuous feature development, maintenance, and technical partnership. Ideal for companies that need CTO-level engineering without the CTO cost."
+                  pt="Contratos contínuos para desenvolvimento de features, manutenção e parceria técnica. Ideal para empresas que precisam de engenharia nível CTO sem o custo de um CTO."
+                />
+              </Text>
+              <Text fw={900} fz={32} mb="md">
+                <Intl en="$6k+" pt="R$ 30k+" />
+              </Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="Project contracts with installment options" pt="Contratos por projeto com parcelamento facilitado" /></Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="Monthly retainer" pt="Contrato mensal" /></Text>
+              <Button fullWidth variant="light" color="green" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                <Intl en="Talk About Partnership" pt="Conversar Sobre Parceria" />
+              </Button>
             </GlassCard>
           </SimpleGrid>
         </Box>
 
-        {/* Tech Stack Section */}
+        {/* ========== TECH STACK (Compact) ========== */}
         <Box mb={120}>
-          <Title order={2} mb="xl" style={{ textAlign: 'center' }}><Intl en="Technologies" pt="Tecnologias" /></Title>
-          <GlassCard>
-            <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="xl">
-              <Stack gap="xs">
-                <Text fw={700} size="sm" c="dimmed" tt="uppercase">Frontend / Core</Text>
-                <Group gap="sm">
-                  <SkillBadge icon={SiTypescript} label="TypeScript" color="blue" />
-                  <SkillBadge icon={SiReact} label="React" color="cyan" />
-                  <SkillBadge icon={SiNextdotjs} label="Next.js" color="dark" />
-                </Group>
-              </Stack>
-              <Stack gap="xs">
-                <Text fw={700} size="sm" c="dimmed" tt="uppercase">Backend / DB</Text>
-                <Group gap="sm">
-                  <SkillBadge icon={SiNodedotjs} label="Node.js" color="green" />
-                  <SkillBadge icon={SiPostgresql} label="Postgres" color="blue" />
-                  <SkillBadge icon={SiMongodb} label="MongoDB" color="green" />
-                </Group>
-              </Stack>
-              <Stack gap="xs">
-                <Text fw={700} size="sm" c="dimmed" tt="uppercase">Integration</Text>
-                <Group gap="sm">
-                  <SkillBadge icon={SiStripe} label="Stripe" color="indigo" />
-                  <SkillBadge icon={SiAirtable} label="Airtable" color="blue" />
-                  <SkillBadge icon={SiVercel} label="Vercel" color="dark" />
-                </Group>
-              </Stack>
-              <Stack gap="xs">
-                <Text fw={700} size="sm" c="dimmed" tt="uppercase">Legacy/Special</Text>
-                <Group gap="sm">
-                  <SkillBadge icon={SiPython} label="Python" color="yellow" />
-                  <SkillBadge icon={SiPhp} label="PHP" color="indigo" />
-                  <SkillBadge icon={SiDocker} label="Docker" color="blue" />
-                </Group>
-              </Stack>
-            </SimpleGrid>
-          </GlassCard>
+          <Box mb="xl" style={{ textAlign: 'center' }}>
+            <Text fw={700} size="sm" c="dimmed" tt="uppercase" mb="xs"><Intl en="Technologies" pt="Tecnologias" /></Text>
+          </Box>
+          <Group justify="center" gap="lg" style={{ opacity: 0.5 }}>
+            <Tooltip label="TypeScript"><SiTypescript size={28} /></Tooltip>
+            <Tooltip label="React"><SiReact size={28} /></Tooltip>
+            <Tooltip label="Next.js"><SiNextdotjs size={28} /></Tooltip>
+            <Tooltip label="Node.js"><SiNodedotjs size={28} /></Tooltip>
+            <Tooltip label="PostgreSQL"><SiPostgresql size={28} /></Tooltip>
+            <Tooltip label="MongoDB"><SiMongodb size={28} /></Tooltip>
+            <Tooltip label="Firebase"><SiFirebase size={28} /></Tooltip>
+            <Tooltip label="Google Cloud"><SiGooglecloud size={28} /></Tooltip>
+            <Tooltip label="Stripe"><SiStripe size={28} /></Tooltip>
+            <Tooltip label="Airtable"><SiAirtable size={28} /></Tooltip>
+            <Tooltip label="Docker"><SiDocker size={28} /></Tooltip>
+            <Tooltip label="Vercel"><SiVercel size={28} /></Tooltip>
+            <Tooltip label="Python"><SiPython size={28} /></Tooltip>
+          </Group>
         </Box>
 
-        {/* Contact/CTA Section */}
-        <Box py={80} style={{ textAlign: 'center' }}>
-          <Title order={1} mb="md">
+        <Divider mb={80} />
+
+        {/* ========== CONTACT CTA ========== */}
+        <Box id="contact" py={80} style={{ textAlign: 'center' }}>
+          <Title order={1} mb="md" fz={{ base: rem(32), sm: rem(44) }}>
             <Intl
-              en={<>Let's accelerate your <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>product.</Text></>}
-              pt={<>Vamos acelerar seu <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>produto.</Text></>}
+              en={<>Ready to build <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>something real?</Text></>}
+              pt={<>Pronto pra construir <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>algo de verdade?</Text></>}
             />
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 600, margin: '0 auto 40px' }}>
             <Intl
-              en="Stop waiting months for features that should take weeks. Let's discuss how my high-velocity architectural approach can drastically reduce your development costs and maintenance overhead."
-              pt="Pare de aguardar meses por algo de algumas semanas. Vamos discutir o quão rápido meu modelo de arquitetura de alta escala destrói barreiras financeiras para te permitir iterar sem estresse."
+              en="No commitment. Just a conversation about the project. If this expertise can help, that will be made clear. If it can't, that will be said too."
+              pt="Sem compromisso. Apenas uma conversa sobre o projeto. Se essa expertise pode ajudar, ficará claro. Se não puder, será dito também."
             />
           </Text>
-          <Group justify="center" gap="lg">
+          <Stack align="center" gap="md">
+            <Group justify="center" gap="lg">
+              <Button
+                size="xl"
+                radius="md"
+                variant="gradient"
+                gradient={{ from: 'violet', to: 'cyan' }}
+                leftSection={<FaWhatsapp size={20} />}
+                component="a"
+                href="https://wa.me/5511999999999"
+                target="_blank"
+              >
+                WhatsApp
+              </Button>
+              <Button
+                size="xl"
+                radius="md"
+                variant="default"
+                leftSection={<FaLinkedin size={20} />}
+                component="a"
+                href="https://linkedin.com/in/asasvirtuais"
+                target="_blank"
+              >
+                LinkedIn
+              </Button>
+            </Group>
             <Button
-              size="xl"
+              size="md"
               radius="md"
-              variant="default"
-              leftSection={<FaLinkedin />}
+              variant="subtle"
+              color="gray"
+              leftSection={<FaEnvelope size={16} />}
               component="a"
-              href="https://linkedin.com/in/asasvirtuais"
-              target="_blank"
+              href="mailto:icaro@asasvirtuais.dev"
             >
-              LinkedIn
+              icaro@asasvirtuais.dev
             </Button>
-          </Group>
+          </Stack>
         </Box>
 
         {/* Footer */}
