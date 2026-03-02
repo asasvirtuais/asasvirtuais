@@ -419,103 +419,173 @@ function LandingPage() {
             </Text>
           </Box>
 
-          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
-            {/* Latham */}
-            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/latham-estimator/latham1.webp" height={240} fit="contain" alt="Latham Pools" />
+          {/* ── FEATURED: Latham Pools ── */}
+          <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">
+            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
+              <Box style={{ position: 'relative', minHeight: 300, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/latham-estimator/latham1.webp" height={300} fit="contain" alt="Latham Pools Estimator" />
               </Box>
-              <Box p="lg">
-                <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Latham Pools — Lead Qualification</Text>
+              <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Group gap="sm" mb="xs">
+                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="Featured Client" pt="Cliente em Destaque" /></Badge>
                   <Badge variant="light" color="blue">USA</Badge>
                 </Group>
-                <Text size="sm" c="dimmed" mb="md">
+                <Text fw={800} size="xl" mb="xs">Latham Pools — Lead Qualification System</Text>
+                <Text size="sm" c="dimmed" mb="md" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="An interactive lead qualification wizard for one of the largest pool manufacturers in the United States. Real-time data from Airtable guides potential clients through a configurator integrated with the sales pipeline."
-                    pt="Um wizard interativo de qualificação de leads para uma das maiores fabricantes de piscinas dos EUA. Dados em tempo real do Airtable guiam potenciais clientes por um configurador integrado ao funil de vendas."
+                    en="Interactive lead qualification wizard for one of the largest pool manufacturers in the United States. Real-time data from Airtable powers a multi-step configurator that guides potential clients through product selection, technical specifications, and pricing — fully integrated with the company's sales pipeline."
+                    pt="Wizard interativo de qualificação de leads para uma das maiores fabricantes de piscinas dos Estados Unidos. Dados em tempo real do Airtable alimentam um configurador multi-etapas que guia potenciais clientes pela seleção de produtos, especificações técnicas e precificação — totalmente integrado ao pipeline de vendas da empresa."
                   />
                 </Text>
                 <Group gap="xs">
                   <Badge size="sm" variant="outline" color="gray">React</Badge>
                   <Badge size="sm" variant="outline" color="gray">GraphQL</Badge>
                   <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
+                  <Badge size="sm" variant="outline" color="gray">Multi-step Forms</Badge>
+                </Group>
+              </Box>
+            </SimpleGrid>
+            <SimpleGrid cols={{ base: 2, sm: 4 }} spacing={2} p={2} pt={0}>
+              <Image src="/portfolio/latham-estimator/latham3.webp" height={120} fit="cover" alt="Latham detail" radius="sm" />
+              <Image src="/portfolio/latham-estimator/latham4.webp" height={120} fit="cover" alt="Latham detail" radius="sm" />
+              <Image src="/portfolio/latham-estimator/latham5.webp" height={120} fit="cover" alt="Latham detail" radius="sm" />
+              <Image src="/portfolio/latham-estimator/latham7.webp" height={120} fit="cover" alt="Latham detail" radius="sm" />
+            </SimpleGrid>
+          </GlassCard>
+
+          {/* ── DELIVERED PROJECTS ── */}
+          <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="xl" mb="xl">
+            {/* Card Checkout */}
+            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
+              <Box style={{ position: 'relative', height: 200, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/cardcheckout/checkout.PNG" height={200} fit="contain" alt="Card Checkout" />
+              </Box>
+              <Box p="lg">
+                <Group justify="space-between" mb="xs">
+                  <Text fw={700} size="sm">Card Checkout — Payment Flow</Text>
+                  <Badge variant="light" color="orange" size="xs"><Intl en="Delivered" pt="Entregue" /></Badge>
+                </Group>
+                <Text size="xs" c="dimmed" mb="sm">
+                  <Intl
+                    en="Multi-step checkout with lead capture, card payment processing, responsive design, and real-time order tracking."
+                    pt="Checkout multi-etapas com captura de leads, processamento de pagamento, design responsivo e rastreamento de pedidos em tempo real."
+                  />
+                </Text>
+                <Group gap={4}>
+                  <Badge size="xs" variant="outline" color="gray">React</Badge>
+                  <Badge size="xs" variant="outline" color="gray">Payments</Badge>
+                  <Badge size="xs" variant="outline" color="gray">Mobile</Badge>
+                </Group>
+              </Box>
+            </GlassCard>
+
+            {/* Live University */}
+            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
+              <Box style={{ position: 'relative', height: 200, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/liveuniversity/cursos.live-university.jpeg" height={200} fit="contain" alt="Live University" />
+              </Box>
+              <Box p="lg">
+                <Group justify="space-between" mb="xs">
+                  <Text fw={700} size="sm">Live University — Course Platform</Text>
+                  <Badge variant="light" color="orange" size="xs"><Intl en="Delivered" pt="Entregue" /></Badge>
+                </Group>
+                <Text size="xs" c="dimmed" mb="sm">
+                  <Intl
+                    en="University-grade course platform with enrollment flow, progress tracking, grading system, and content management."
+                    pt="Plataforma de cursos com fluxo de matrícula, rastreamento de progresso, sistema de notas e gestão de conteúdo."
+                  />
+                </Text>
+                <Group gap={4}>
+                  <Badge size="xs" variant="outline" color="gray">Full-Stack</Badge>
+                  <Badge size="xs" variant="outline" color="gray">LMS</Badge>
+                  <Badge size="xs" variant="outline" color="gray">Auth</Badge>
                 </Group>
               </Box>
             </GlassCard>
 
             {/* CertWorld */}
             <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/certworld/courses.png" height={240} fit="contain" alt="CertWorld" />
+              <Box style={{ position: 'relative', height: 200, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                <Image src="/portfolio/certworld/courses.png" height={200} fit="contain" alt="CertWorld" />
               </Box>
               <Box p="lg">
                 <Group justify="space-between" mb="xs">
-                  <Text fw={700}>CertWorld — Learning Platform</Text>
-                  <Badge variant="light" color="green">MVP</Badge>
+                  <Text fw={700} size="sm">CertWorld — Learning + Certification</Text>
+                  <Badge variant="light" color="green" size="xs">MVP</Badge>
                 </Group>
-                <Text size="sm" c="dimmed" mb="md">
+                <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="Complete e-learning platform with course catalog, video lessons, exams, certifications, and Stripe Checkout payment. Built from discovery to launch in record time."
-                    pt="Plataforma de e-learning completa com catálogo de cursos, videoaulas, provas, certificações e pagamento via Stripe Checkout. Construída do discovery ao deploy em tempo recorde."
+                    en="Complete e-learning platform with catalog, video lessons, exams, certifications, and Stripe Checkout payment."
+                    pt="Plataforma de e-learning completa com catálogo, videoaulas, provas, certificações e pagamento via Stripe."
                   />
                 </Text>
-                <Group gap="xs">
-                  <Badge size="sm" variant="outline" color="gray">Next.js</Badge>
-                  <Badge size="sm" variant="outline" color="gray">Stripe</Badge>
-                  <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
-                </Group>
-              </Box>
-            </GlassCard>
-
-            {/* Grimoire */}
-            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/grimoire/cards.png" height={240} fit="contain" alt="Grimoire RPG" />
-              </Box>
-              <Box p="lg">
-                <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Grimoire — RPG Companion App</Text>
-                  <Badge variant="light" color="violet">Complex PWA</Badge>
-                </Group>
-                <Text size="sm" c="dimmed" mb="md">
-                  <Intl
-                    en="A deeply complex RPG campaign management app with hundreds of interconnected entities, real-time state management, and full offline capability. Demonstrates extreme architecture scale."
-                    pt="App de gerenciamento de campanhas RPG profundamente complexo, com centenas de entidades interconectadas, gestão de estado em tempo real e funcionamento 100% offline. Demonstra escala arquitetural extrema."
-                  />
-                </Text>
-                <Group gap="xs">
-                  <Badge size="sm" variant="outline" color="gray">React</Badge>
-                  <Badge size="sm" variant="outline" color="gray">IndexedDB</Badge>
-                  <Badge size="sm" variant="outline" color="gray">PWA</Badge>
-                </Group>
-              </Box>
-            </GlassCard>
-
-            {/* Easy AI Diary */}
-            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 240, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/easyaidiarychat/chat.png" height={240} fit="contain" alt="Easy AI Diary" fallbackSrc="https://placehold.co/600x400?text=Easy+AI+Diary" />
-              </Box>
-              <Box p="lg">
-                <Group justify="space-between" mb="xs">
-                  <Text fw={700}>Easy AI Diary — AI-Powered Journal</Text>
-                  <Badge variant="light" color="pink">AI + PWA</Badge>
-                </Group>
-                <Text size="sm" c="dimmed" mb="md">
-                  <Intl
-                    en="A local-first PWA powered by Gemini AI for automated journal analysis and conversational insights. All user data stored locally on the device — zero server dependency for personal data."
-                    pt="Um PWA local-first com Gemini AI para análise automatizada de diário e insights conversacionais. Todos os dados do usuário ficam no dispositivo — zero dependência de servidor para dados pessoais."
-                  />
-                </Text>
-                <Group gap="xs">
-                  <Badge size="sm" variant="outline" color="gray">Gemini AI</Badge>
-                  <Badge size="sm" variant="outline" color="gray">IndexedDB</Badge>
-                  <Badge size="sm" variant="outline" color="gray">PWA</Badge>
+                <Group gap={4}>
+                  <Badge size="xs" variant="outline" color="gray">Next.js</Badge>
+                  <Badge size="xs" variant="outline" color="gray">Stripe</Badge>
+                  <Badge size="xs" variant="outline" color="gray">Airtable</Badge>
                 </Group>
               </Box>
             </GlassCard>
           </SimpleGrid>
+
+          {/* ── ARCHITECTURE LABS ── */}
+          <Box mb="xl">
+            <Text size="sm" c="dimmed" mb="md" ta="center" style={{ maxWidth: 600, margin: '0 auto' }}>
+              <Intl
+                en="The projects below are R&D — built to stress-test architecture patterns, offline-first strategies, and AI integrations before applying them in client work."
+                pt="Os projetos abaixo são P&D — construídos para testar padrões de arquitetura, estratégias offline-first e integrações com IA antes de aplicá-los em projetos de clientes."
+              />
+            </Text>
+            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
+              {/* Grimoire */}
+              <GlassCard padding={0} style={{ overflow: 'hidden', opacity: 0.85 }}>
+                <Box style={{ position: 'relative', height: 180, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                  <Image src="/portfolio/grimoire/cards.png" height={180} fit="contain" alt="Grimoire RPG" />
+                </Box>
+                <Box p="lg">
+                  <Group justify="space-between" mb="xs">
+                    <Text fw={700} size="sm">Grimoire — RPG Companion</Text>
+                    <Badge variant="light" color="violet" size="xs"><Intl en="R&D" pt="P&D" /></Badge>
+                  </Group>
+                  <Text size="xs" c="dimmed" mb="sm">
+                    <Intl
+                      en="Hundreds of interconnected entities, full offline capability, complex state trees. The stress-test that validated the framework's architecture for production use."
+                      pt="Centenas de entidades interconectadas, funcionamento 100% offline, árvores de estado complexas. O stress-test que validou a arquitetura da framework para uso em produção."
+                    />
+                  </Text>
+                  <Group gap={4}>
+                    <Badge size="xs" variant="outline" color="gray">React</Badge>
+                    <Badge size="xs" variant="outline" color="gray">IndexedDB</Badge>
+                    <Badge size="xs" variant="outline" color="gray">PWA</Badge>
+                  </Group>
+                </Box>
+              </GlassCard>
+
+              {/* Easy AI Diary */}
+              <GlassCard padding={0} style={{ overflow: 'hidden', opacity: 0.85 }}>
+                <Box style={{ position: 'relative', height: 180, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
+                  <Image src="/portfolio/easyaidiarychat/chat.png" height={180} fit="contain" alt="Easy AI Diary" />
+                </Box>
+                <Box p="lg">
+                  <Group justify="space-between" mb="xs">
+                    <Text fw={700} size="sm">Easy AI Diary — AI Journal</Text>
+                    <Badge variant="light" color="pink" size="xs"><Intl en="R&D" pt="P&D" /></Badge>
+                  </Group>
+                  <Text size="xs" c="dimmed" mb="sm">
+                    <Intl
+                      en="Local-first PWA with Gemini AI for conversational insights. Zero server dependency for personal data. The testbed for AI integration patterns used in client projects."
+                      pt="PWA local-first com Gemini AI para insights conversacionais. Zero dependência de servidor para dados pessoais. O laboratório para padrões de integração com IA usados em projetos de clientes."
+                    />
+                  </Text>
+                  <Group gap={4}>
+                    <Badge size="xs" variant="outline" color="gray">Gemini AI</Badge>
+                    <Badge size="xs" variant="outline" color="gray">IndexedDB</Badge>
+                    <Badge size="xs" variant="outline" color="gray">PWA</Badge>
+                  </Group>
+                </Box>
+              </GlassCard>
+            </SimpleGrid>
+          </Box>
 
           <Box mt="xl" style={{ textAlign: 'center' }}>
             <Button
