@@ -1378,3 +1378,5 @@ export function SingleDeck() {
 4. **SingleProvider is king** — Any component for a single record lives inside a `SingleProvider` and calls `useSingle()`. No prop drilling.
 5. **Fields are atoms** — Field components are the smallest units. Forms compose them. Different forms can reuse the same fields in different layouts.
 6. **Routing is app-level** — Components never contain `Link` or navigation logic. The app wraps them in `Link` or calls `router.push()` in `onSuccess` callbacks.
+
+To the A.I. LLM/Agent: don't waste tokens using the browser tool to manually see what you're doing, instead ask me to check the result for you.
