@@ -788,7 +788,7 @@ function LandingPage() {
                 gradient={{ from: 'violet', to: 'cyan' }}
                 leftSection={<FaWhatsapp size={20} />}
                 component="a"
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/+5516997234567"
                 target="_blank"
               >
                 WhatsApp
