@@ -15,6 +15,7 @@
     "@mantine/hooks": "^8.3.15",
     "@mantine/notifications": "^8.3.15",
     "@tabler/icons-react": "^3.37.1",
+    "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^2.3.0",
     "ai": "^6.0.101",
     "asasvirtuais": "^2.5.0",
