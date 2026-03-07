@@ -27,7 +27,8 @@ import {
     Title,
     Loader,
     Menu,
-    Modal
+    Modal,
+    Button
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
@@ -35,26 +36,118 @@ import {
     IconRobot,
     IconUser,
     IconDotsVertical,
-    IconSettings
+    IconSettings,
+    IconCheck,
+    IconX
 } from '@tabler/icons-react'
 import ReactMarkdown from 'react-markdown'
 import { useAIChat } from '@/packages/aichat/hooks'
 import { UpdateChat } from '@/packages/chat/forms'
-import { UpdateMessage } from '@/packages/message/forms'
 import { useMessages } from '@/packages/message/provider'
 import { SingleProvider } from 'asasvirtuais/react-interface'
 import { schema as messageSchema } from '@/packages/message'
 
 /**
+ * Inline editable message content component
+ */
+function InlineMessageEditor({
+    messageId,
+    initialContent,
+    onDone
+}: {
+    messageId: string
+    initialContent: string
+    onDone: () => void
+}) {
+    const [editContent, setEditContent] = useState(initialContent)
+    const { update } = useMessages()
+    const [saving, setSaving] = useState(false)
+
+    const handleSave = async () => {
+        setSaving(true)
+        try {
+            await update.trigger({
+                id: messageId,
+                data: { content: editContent }
+            })
+            onDone()
+        } catch (err) {
+            console.error('Failed to update message:', err)
+        } finally {
+            setSaving(false)
+        }
+    }
+
+    const handleCancel = () => {
+        setEditContent(initialContent)
+        onDone()
+    }
+
+    return (
+        <Stack gap="xs" style={{ width: '100%' }}>
+            <Textarea
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
+                autosize
+                minRows={2}
+                maxRows={10}
+                radius="md"
+                variant="filled"
+                autoFocus
+                styles={{
+                    input: {
+                        fontSize: '0.95rem',
+                        lineHeight: 1.6,
+                    }
+                }}
+                onKeyDown={(e) => {
+                    if (e.key === 'Escape') {
+                        handleCancel()
+                    }
+                    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                        e.preventDefault()
+                        handleSave()
+                    }
+                }}
+            />
+            <Group gap="xs" justify="flex-end">
+                <Button
+                    size="xs"
+                    variant="subtle"
+                    color="gray"
+                    leftSection={<IconX size={14} />}
+                    onClick={handleCancel}
+                    disabled={saving}
+                >
+                    Cancel
+                </Button>
+                <Button
+                    size="xs"
+                    variant="filled"
+                    leftSection={<IconCheck size={14} />}
+                    onClick={handleSave}
+                    loading={saving}
+                >
+                    Save
+                </Button>
+            </Group>
+            <Text size="xs" c="dimmed" ta="right">
+                Ctrl+Enter to save · Esc to cancel
+            </Text>
+        </Stack>
+    )
+}
+
+/**
  * Premium Message Bubble Component using LEGO blocks
  */
-function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
-    const { single } = useSingle('messages', messageSchema)
+function DashboardMessageBubble() {
+    const { single, id } = useSingle('messages', messageSchema)
     const message = single as Message
-    console.log(message)
     const isAssistant = message?.role === 'assistant'
     const isSystem = message?.role === 'system'
     const { remove } = useMessages()
+    const [isEditing, setIsEditing] = useState(false)
 
     if (isSystem || !message) return null
 
@@ -79,16 +172,26 @@ function DashboardMessageBubble({ onEdit }: { onEdit: () => void }) {
                 }}
             >
                 <Box style={{ flex: 1 }}>
-                    <MessageProse style={{ fontSize: '1rem' }}>
-                        <ReactMarkdown>{message.content || ''}</ReactMarkdown>
-                    </MessageProse>
+                    {isEditing ? (
+                        <InlineMessageEditor
+                            messageId={id}
+                            initialContent={message.content || ''}
+                            onDone={() => setIsEditing(false)}
+                        />
+                    ) : (
+                        <MessageProse style={{ fontSize: '1rem' }}>
+                            <ReactMarkdown>{message.content || ''}</ReactMarkdown>
+                        </MessageProse>
+                    )}
                 </Box>
-                <MessageMenuOptions
-                    metadata={message.metadata}
-                    iconColor={isAssistant ? 'gray' : 'white'}
-                    onDelete={() => remove.trigger({ id: message.id })}
-                    onEdit={onEdit}
-                />
+                {!isEditing && (
+                    <MessageMenuOptions
+                        metadata={message.metadata}
+                        iconColor={isAssistant ? 'gray' : 'white'}
+                        onDelete={() => remove.trigger({ id: message.id })}
+                        onEdit={() => setIsEditing(true)}
+                    />
+                )}
             </MessagePaper>
             {!isAssistant && (
                 <MessageAvatar radius="xl" color="gray" size="md">
@@ -104,8 +207,6 @@ export function DashboardChatView() {
     const item = single as Readable
 
     const [opened, { open, close }] = useDisclosure(false)
-    const [editOpened, { open: openEdit, close: closeEdit }] = useDisclosure(false)
-    const [editingMessageId, setEditingMessageId] = useState<string | null>(null)
 
     const { list: listMessages, array: dbMessages } = useMessages()
 
@@ -138,6 +239,9 @@ export function DashboardChatView() {
 
     if (!item) return <Text c="dimmed" ta="center" py="xl">Chat not found.</Text>
 
+    // Use the chat title for the header, fallback to 'A.I. Assistant'
+    const chatTitle = item.title || 'A.I. Assistant'
+
     return (
         <ChatPageLayout>
             {/* Header */}
@@ -148,7 +252,7 @@ export function DashboardChatView() {
                             <IconRobot size={24} />
                         </Avatar>
                         <Box>
-                            <Title order={4} style={{ letterSpacing: '-0.5px' }}>{'A.I. Assistant'}</Title>
+                            <Title order={4} style={{ letterSpacing: '-0.5px' }}>{chatTitle}</Title>
                             <Group gap={6}>
                                 <Box w={8} h={8} bg="green.5" style={{ borderRadius: '50%' }} />
                                 <Text size="xs" c="dimmed" fw={500}>System Online</Text>
@@ -186,12 +290,7 @@ export function DashboardChatView() {
 
                     {sortedMessages.map((m) => (
                         <SingleProvider key={m.id} id={m.id} table="messages" schema={messageSchema}>
-                            <DashboardMessageBubble
-                                onEdit={() => {
-                                    setEditingMessageId(m.id)
-                                    openEdit()
-                                }}
-                            />
+                            <DashboardMessageBubble />
                         </SingleProvider>
                     ))}
 
@@ -220,7 +319,7 @@ export function DashboardChatView() {
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                     <Group align="flex-end" gap="sm">
                         <Textarea
-                            placeholder="Message the A.I. Assistant..."
+                            placeholder={`Message ${chatTitle}...`}
                             style={{ flex: 1 }}
                             autosize
                             minRows={1}
@@ -255,16 +354,6 @@ export function DashboardChatView() {
             <Modal opened={opened} onClose={close} title="Dashboard Chat Configuration" centered radius="lg">
                 <Paper p="xs">
                     <UpdateChat onSuccess={close} />
-                </Paper>
-            </Modal>
-
-            <Modal opened={editOpened} onClose={closeEdit} title="Edit Message" centered radius="lg">
-                <Paper p="xs">
-                    {editingMessageId && (
-                        <SingleProvider id={editingMessageId} table="messages" schema={messageSchema}>
-                            <UpdateMessage onSuccess={closeEdit} />
-                        </SingleProvider>
-                    )}
                 </Paper>
             </Modal>
         </ChatPageLayout>

@@ -7,31 +7,29 @@ export function CharacterListItem() {
     const { single } = useSingle('characters', schema)
     const character = single as Readable
     return (
-        <Paper p="sm" withBorder shadow="sm">
-            <Group>
-                <Avatar src={character.avatar} size="lg" radius="xl" alt={character.name} />
-                <Stack gap={0}>
-                    <Title order={4}>{character.name || 'Untitled Character'}</Title>
-                    <Text size="sm" c="dimmed" lineClamp={1}>
-                        {character.definition || 'No definition set'}
-                    </Text>
-                    {character.skills && character.skills.length > 0 && (
-                        <Group gap={4} mt={4}>
-                            {character.skills.slice(0, 3).map((skill) => (
-                                <Badge key={skill} size="xs" variant="light">
-                                    {skill}
-                                </Badge>
-                            ))}
-                            {character.skills.length > 3 && (
-                                <Text size="xs" c="dimmed">
-                                    +{character.skills.length - 3} more
-                                </Text>
-                            )}
-                        </Group>
-                    )}
-                </Stack>
-            </Group>
-        </Paper>
+        <Group wrap="nowrap">
+            <Avatar src={character.avatar} size="lg" radius="xl" alt={character.name} />
+            <Stack gap={0} style={{ flex: 1, overflow: 'hidden' }}>
+                <Title order={4}>{character.name || 'Untitled Character'}</Title>
+                <Text size="sm" c="dimmed" lineClamp={1}>
+                    {character.definition || 'No definition set'}
+                </Text>
+                {character.skills && character.skills.length > 0 && (
+                    <Group gap={4} mt={4}>
+                        {character.skills.slice(0, 3).map((skill) => (
+                            <Badge key={skill} size="xs" variant="light">
+                                {skill}
+                            </Badge>
+                        ))}
+                        {character.skills.length > 3 && (
+                            <Text size="xs" c="dimmed">
+                                +{character.skills.length - 3} more
+                            </Text>
+                        )}
+                    </Group>
+                )}
+            </Stack>
+        </Group>
     )
 }
 

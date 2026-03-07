@@ -7,23 +7,21 @@ export function VenueListItem() {
     const { single } = useSingle('venues', schema)
     const venue = single as Readable
     return (
-        <Paper p="sm" withBorder shadow="sm">
-            <Stack gap={4}>
-                <Title order={4}>{venue.title || 'Untitled Venue'}</Title>
-                <Text size="sm" c="dimmed" lineClamp={2}>
-                    {venue.circumstances || 'No circumstances set'}
-                </Text>
-                {venue.tools && venue.tools.length > 0 && (
-                    <Group gap={4} mt={4}>
-                        {venue.tools.map((tool) => (
-                            <Badge key={tool} size="xs" color="gray" variant="outline">
-                                {tool}
-                            </Badge>
-                        ))}
-                    </Group>
-                )}
-            </Stack>
-        </Paper>
+        <Stack gap={4}>
+            <Title order={4}>{venue.title || 'Untitled Venue'}</Title>
+            <Text size="sm" c="dimmed" lineClamp={2}>
+                {venue.circumstances || 'No circumstances set'}
+            </Text>
+            {venue.tools && venue.tools.length > 0 && (
+                <Group gap={4} mt={4}>
+                    {venue.tools.map((tool) => (
+                        <Badge key={tool} size="xs" color="gray" variant="outline">
+                            {tool}
+                        </Badge>
+                    ))}
+                </Group>
+            )}
+        </Stack>
     )
 }
 

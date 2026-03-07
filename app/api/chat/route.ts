@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         const cookieStore = await cookies()
         const userApiKey = cookieStore.get('google-ai-key')?.value
 
-        const modelName = model || 'gemini-3-flash-preview'
+        const modelName = model || 'gemini-2.5-flash'
 
         let provider: any
         if (modelName.includes('gpt')) {

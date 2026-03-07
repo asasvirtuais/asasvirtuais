@@ -112,7 +112,7 @@ You have the ability to generate objects based on user requests. When the user a
     if (!targetChatId) {
         return (
             <Center h="100%" mih={400}>
-                <Title order={3} c="red.6">Failed to load Dashboard Chat.</Title>
+                <Title order={3} c="red.6">Sign In to continue.</Title>
             </Center>
         )
     }
