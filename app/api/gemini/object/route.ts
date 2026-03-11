@@ -1,5 +1,5 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google'
-import { streamObject } from 'ai'
+import { streamText, Output } from 'ai'
 import { NextRequest } from 'next/server'
 
 export const maxDuration = 60
@@ -21,17 +21,17 @@ export async function POST(req: NextRequest) {
         const google = createGoogleGenerativeAI({ apiKey })
         const modelInstance = google(model || 'gemini-2.0-flash')
 
-        // Using streamObject because it's generally preferred for UX
-        // If the user specifically wants the Promise, the client can await it
-        const result = streamObject({
+        const { toTextStreamResponse } = streamText({
             model: modelInstance,
+            output: Output.object({
+                schema: schemaProp,
+            }),
             prompt,
             system: instructions || '',
             temperature: temperature ?? 0.7,
-            schema: schemaProp // The schema may be sent as JSON schema or if predefined
         })
 
-        return result.toTextStreamResponse()
+        return toTextStreamResponse()
     } catch (error: any) {
         console.error('Gemini Object API Error:', error)
         return new Response(JSON.stringify({ error: error.message }), {
@@ -40,3 +40,5 @@ export async function POST(req: NextRequest) {
         })
     }
 }
+
+

@@ -29,6 +29,7 @@ import { GeminiChat } from 'asasvirtuais-gemini'
 function ChatApp() {
     return (
         <GeminiChat 
+            api="/api/gemini/chat" // Optional, defaults to /api/gemini/chat
             instructions="You are a helpful assistant." 
             prompt="Hello, who are you?" 
             autoTrigger 
@@ -63,7 +64,12 @@ const recipeSchema = z.object({
 
 function RecipeGenerator() {
     return (
-        <GeminiObject schema={recipeSchema} prompt="Create a chocolate cake recipe" autoTrigger>
+        <GeminiObject 
+            api="/api/gemini/object" // Optional, defaults to /api/gemini/object
+            schema={recipeSchema} 
+            prompt="Create a chocolate cake recipe" 
+            autoTrigger
+        >
             {({ submit, object, isLoading }) => (
                 <div>
                     {!object && <button onClick={() => submit('Create a chocolate cake recipe')}>
@@ -88,7 +94,7 @@ import { GeminiImage } from 'asasvirtuais-gemini'
 
 function ImageApp() {
     return (
-        <GeminiImage>
+        <GeminiImage api="/api/gemini/image">
             {({ submit, result, loading, error }) => (
                 <div>
                     <button onClick={() => submit('A futuristic city at sunset')}>
@@ -103,6 +109,7 @@ function ImageApp() {
     )
 }
 ```
+
 
 ## Key Principles
 
