@@ -94,6 +94,24 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  packages/gemini:
+    dependencies:
+      '@ai-sdk/google':
+        specifier: '>=3.0.0'
+        version: 3.0.33(zod@4.3.6)
+      '@ai-sdk/react':
+        specifier: '>=3.0.0'
+        version: 3.0.105(react@19.2.4)(zod@4.3.6)
+      ai:
+        specifier: '>=6.0.0'
+        version: 6.0.103(zod@4.3.6)
+      react:
+        specifier: '>=18'
+        version: 19.2.4
+      zod:
+        specifier: '>=3'
+        version: 4.3.6
+
 packages:
 
   '@ai-sdk/gateway@3.0.57':
