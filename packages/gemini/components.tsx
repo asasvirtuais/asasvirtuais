@@ -3,6 +3,7 @@ import React from 'react'
 import { useGeneration, useObjectGeneration, useImageGeneration } from './hooks'
 
 export interface GeminiChatProps {
+    api?: string
     instructions?: string
     model?: string
     apiKey?: string
@@ -12,6 +13,7 @@ export interface GeminiChatProps {
 }
 
 export function GeminiChat({ 
+    api,
     instructions, 
     model, 
     apiKey, 
@@ -19,7 +21,7 @@ export function GeminiChat({
     autoTrigger,
     children 
 }: GeminiChatProps) {
-    const generation = useGeneration({ instructions, model, apiKey })
+    const generation = useGeneration({ api, instructions, model, apiKey })
     
     React.useEffect(() => {
         if (autoTrigger && prompt && generation.messages.length === 0 && (generation as any).status === 'ready') {
@@ -32,6 +34,7 @@ export function GeminiChat({
 
 
 export interface GeminiObjectProps<T = any> {
+    api?: string
     instructions?: string
     model?: string
     apiKey?: string
@@ -42,6 +45,7 @@ export interface GeminiObjectProps<T = any> {
 }
 
 export function GeminiObject<T = any>({ 
+    api,
     instructions, 
     model, 
     apiKey, 
@@ -50,7 +54,7 @@ export function GeminiObject<T = any>({
     autoTrigger,
     children 
 }: GeminiObjectProps<T>) {
-    const generation = useObjectGeneration<T>({ instructions, model, apiKey, schema })
+    const generation = useObjectGeneration<T>({ api, instructions, model, apiKey, schema })
     
     React.useEffect(() => {
         if (autoTrigger && prompt && !generation.object && !generation.isLoading) {
@@ -61,15 +65,16 @@ export function GeminiObject<T = any>({
     return <>{children(generation)}</>
 }
 
-interface GeminiImageProps {
+export interface GeminiImageProps {
+    api?: string
     apiKey?: string
     prompt?: string
     autoTrigger?: boolean
     children: (props: ReturnType<typeof useImageGeneration>) => React.ReactNode
 }
 
-export function GeminiImage({ apiKey, prompt, autoTrigger, children }: GeminiImageProps) {
-    const generation = useImageGeneration({ apiKey })
+export function GeminiImage({ api, apiKey, prompt, autoTrigger, children }: GeminiImageProps) {
+    const generation = useImageGeneration({ api, apiKey })
     
     React.useEffect(() => {
         if (autoTrigger && prompt && !generation.result && !generation.loading) {
