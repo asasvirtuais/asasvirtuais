@@ -1,0 +1,108 @@
+'use client'
+import { useChat, experimental_useObject as useObject } from '@ai-sdk/react'
+import { useState, useCallback } from 'react'
+import { DefaultChatTransport } from 'ai'
+
+/**
+ * Hook for Gemini text generation.
+ * Wraps useChat from @ai-sdk/react using AI SDK v6 transport pattern.
+ */
+export function useGeneration({ 
+    api = '/api/gemini/chat', 
+    instructions, 
+    model, 
+    apiKey 
+}: { 
+    api?: string, 
+    instructions?: string, 
+    model?: string, 
+    apiKey?: string 
+} = {}) {
+    return useChat({
+        transport: new DefaultChatTransport({
+            api,
+            body: { instructions, model, apiKey },
+            headers: apiKey ? { 'x-gemini-api-key': apiKey } : undefined
+        }),
+    })
+}
+
+/**
+ * Hook for Gemini object generation.
+ * Wraps useObject from @ai-sdk/react.
+ */
+export function useObjectGeneration<T = any>({ 
+    api = '/api/gemini/object', 
+    instructions, 
+    model, 
+    apiKey, 
+    schema 
+}: { 
+    api?: string, 
+    instructions?: string, 
+    model?: string, 
+    apiKey?: string, 
+    schema: any 
+}) {
+    // Cast useObject to any to avoid complex v6 constraint errors in a generic wrapper
+    const { object, submit: baseSubmit, ...rest } = (useObject as any)({
+        api,
+        schema,
+        headers: apiKey ? { 'x-gemini-api-key': apiKey } : undefined,
+    })
+
+    const submit = useCallback((prompt: string) => {
+        return baseSubmit({ prompt, instructions, model })
+    }, [baseSubmit, instructions, model])
+
+    return { ...rest, object: object as T | undefined, submit }
+}
+
+
+
+
+/**
+ * Hook for Gemini image generation.
+ * Calls our custom image generation API.
+ */
+export function useImageGeneration({
+    api = '/api/gemini/image',
+    apiKey
+}: {
+    api?: string,
+    apiKey?: string
+} = {}) {
+    const [loading, setLoading] = useState(false)
+    const [result, setResult] = useState<{ url: string } | null>(null)
+    const [error, setError] = useState<Error | null>(null)
+
+    const submit = useCallback(async (prompt: string, aspect_ratio?: string) => {
+        setLoading(true)
+        setError(null)
+        try {
+            const response = await fetch(api, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(apiKey ? { 'x-gemini-api-key': apiKey } : {})
+                },
+                body: JSON.stringify({ prompt, apiKey, aspect_ratio }),
+            })
+
+            const data = await response.json()
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to generate image')
+            }
+
+            setResult(data)
+            return data
+        } catch (err: any) {
+            setError(err)
+            throw err
+        } finally {
+            setLoading(false)
+        }
+    }, [api, apiKey])
+
+    return { submit, loading, result, error }
+}

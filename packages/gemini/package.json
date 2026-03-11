@@ -1,0 +1,29 @@
+{
+  "name": "asasvirtuais-gemini",
+  "version": "1.0.0",
+  "description": "A package for generating text, objects, and images using Gemini API and Vercel AI SDK.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gemini",
+    "google",
+    "ai",
+    "vercel",
+    "ai-sdk",
+    "image-generation",
+    "text-generation",
+    "zod"
+  ],
+  "author": "Asas Virtuais",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": ">=18",
+    "zod": ">=3",
+    "ai": ">=6.0.0",
+    "@ai-sdk/react": ">=3.0.0",
+    "@ai-sdk/google": ">=3.0.0"
+  }
+
+}
