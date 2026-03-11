@@ -21,7 +21,7 @@ export async function OPTIONS() {
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
-        const { prompt, apiKey: bodyApiKey, aspect_ratio = "1:1", model = 'imagen-3.0-generate-001' } = body
+        const { prompt, apiKey: bodyApiKey, aspect_ratio = "1:1", model = 'gemini-2.5-flash-image' } = body
 
         if (!prompt) {
             return NextResponse.json({ error: 'Prompt is required' }, { status: 400, headers: corsHeaders })
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
         // Save to Vercel Blob for persistent URL
         const fileName = `gemini-images/${Date.now()}-${Math.random().toString(36).substring(7)}.png`
-        
+
         // Handle data URL from generateImage
         const base64Data = image.base64
         const buffer = Buffer.from(base64Data, 'base64')
