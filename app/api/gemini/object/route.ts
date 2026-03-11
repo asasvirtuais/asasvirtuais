@@ -1,5 +1,5 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google'
-import { streamText, Output } from 'ai'
+import { generateObject } from 'ai'
 import { NextRequest } from 'next/server'
 
 export const maxDuration = 60
@@ -34,17 +34,18 @@ export async function POST(req: NextRequest) {
         const google = createGoogleGenerativeAI({ apiKey })
         const modelInstance = google(model || 'gemini-2.0-flash')
 
-        const { toTextStreamResponse } = streamText({
+        const result = await generateObject({
             model: modelInstance,
-            output: Output.object({
-                schema: schemaProp,
-            }),
+            schema: schemaProp,
             prompt,
             system: instructions || '',
             temperature: temperature ?? 0.7,
         })
 
-        return toTextStreamResponse({ headers: corsHeaders })
+        return new Response(JSON.stringify(result.object), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders },
+        })
     } catch (error: any) {
         console.error('Gemini Object API Error:', error)
         return new Response(JSON.stringify({ error: error.message }), {
@@ -53,5 +54,6 @@ export async function POST(req: NextRequest) {
         })
     }
 }
+
 
 

@@ -29,33 +29,54 @@ export function useGeneration({
 
 /**
  * Hook for Gemini object generation.
- * Wraps useObject from @ai-sdk/react.
+ * Performs a manual fetch for a full JSON object.
  */
-export function useObjectGeneration<T = any>({ 
-    api = '/api/gemini/object', 
-    instructions, 
-    model, 
-    apiKey, 
-    schema 
-}: { 
-    api?: string, 
-    instructions?: string, 
-    model?: string, 
-    apiKey?: string, 
-    schema: any 
+export function useObjectGeneration<T = any>({
+    api = '/api/gemini/object',
+    instructions,
+    model,
+    apiKey,
+    schema
+}: {
+    api?: string,
+    instructions?: string,
+    model?: string,
+    apiKey?: string,
+    schema: any
 }) {
-    // Cast useObject to any to avoid complex v6 constraint errors in a generic wrapper
-    const { object, submit: baseSubmit, ...rest } = (useObject as any)({
-        api,
-        schema,
-        headers: apiKey ? { 'x-gemini-api-key': apiKey } : undefined,
-    })
+    const [isLoading, setIsLoading] = useState(false)
+    const [object, setObject] = useState<T | undefined>(undefined)
+    const [error, setError] = useState<Error | null>(null)
 
-    const submit = useCallback((prompt: string) => {
-        return baseSubmit({ prompt, instructions, model })
-    }, [baseSubmit, instructions, model])
+    const submit = useCallback(async (prompt: string) => {
+        setIsLoading(true)
+        setError(null)
+        try {
+            const response = await fetch(api, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(apiKey ? { 'x-gemini-api-key': apiKey } : {})
+                },
+                body: JSON.stringify({ prompt, instructions, model, apiKey, schema }),
+            })
 
-    return { ...rest, object: object as T | undefined, submit }
+            const data = await response.json()
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to generate object')
+            }
+
+            setObject(data)
+            return data
+        } catch (err: any) {
+            setError(err)
+            throw err
+        } finally {
+            setIsLoading(false)
+        }
+    }, [api, instructions, model, apiKey, schema])
+
+    return { submit, isLoading, object, error }
 }
 
 
