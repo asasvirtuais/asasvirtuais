@@ -5,19 +5,32 @@ import { put } from '@vercel/blob'
 
 export const maxDuration = 60
 
+const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-gemini-api-key',
+}
+
+export async function OPTIONS() {
+    return new Response(null, {
+        status: 204,
+        headers: corsHeaders
+    })
+}
+
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
         const { prompt, apiKey: bodyApiKey, aspect_ratio = "1:1", model = 'imagen-3.0-generate-001' } = body
 
         if (!prompt) {
-            return NextResponse.json({ error: 'Prompt is required' }, { status: 400 })
+            return NextResponse.json({ error: 'Prompt is required' }, { status: 400, headers: corsHeaders })
         }
 
         const apiKey = bodyApiKey || req.headers.get('x-gemini-api-key') || process.env.GOOGLE_GENERATIVE_AI_API_KEY
 
         if (!apiKey) {
-            return NextResponse.json({ error: 'Google API key is missing' }, { status: 400 })
+            return NextResponse.json({ error: 'Google API key is missing' }, { status: 400, headers: corsHeaders })
         }
 
         const google = createGoogleGenerativeAI({ apiKey })
@@ -41,12 +54,12 @@ export async function POST(req: NextRequest) {
             contentType: 'image/png',
         })
 
-        return NextResponse.json({ url: blob.url, revisedPrompt: image.uint8Array ? '...' : undefined })
+        return NextResponse.json({ url: blob.url, revisedPrompt: image.uint8Array ? '...' : undefined }, { headers: corsHeaders })
     } catch (error: any) {
         console.error('Error drawing Gemini image:', error)
         return NextResponse.json(
             { error: error.message || 'Internal Server Error' },
-            { status: 500 }
+            { status: 500, headers: corsHeaders }
         )
     }
 }
