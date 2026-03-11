@@ -12,22 +12,22 @@ export interface GeminiChatProps {
     children: (props: ReturnType<typeof useGeneration>) => React.ReactNode
 }
 
-export function GeminiChat({ 
+export function GeminiChat({
     api,
-    instructions, 
-    model, 
-    apiKey, 
+    instructions,
+    model,
+    apiKey,
     prompt,
     autoTrigger,
-    children 
+    children
 }: GeminiChatProps) {
     const generation = useGeneration({ api, instructions, model, apiKey })
-    
+
     React.useEffect(() => {
         if (autoTrigger && prompt && generation.messages.length === 0 && (generation as any).status === 'ready') {
             (generation as any).sendMessage({ text: prompt })
         }
-    }, [autoTrigger, prompt, (generation as any).sendMessage, (generation as any).status, generation.messages.length])
+    }, [])
 
     return <>{children(generation)}</>
 }
@@ -44,23 +44,23 @@ export interface GeminiObjectProps<T = any> {
     children: (props: ReturnType<typeof useObjectGeneration<T>>) => React.ReactNode
 }
 
-export function GeminiObject<T = any>({ 
+export function GeminiObject<T = any>({
     api,
-    instructions, 
-    model, 
-    apiKey, 
-    schema, 
+    instructions,
+    model,
+    apiKey,
+    schema,
     prompt,
     autoTrigger,
-    children 
+    children
 }: GeminiObjectProps<T>) {
     const generation = useObjectGeneration<T>({ api, instructions, model, apiKey, schema })
-    
+
     React.useEffect(() => {
         if (autoTrigger && prompt && !generation.object && !generation.isLoading) {
             generation.submit(prompt)
         }
-    }, [autoTrigger, prompt, generation.submit, generation.isLoading, generation.object])
+    }, [])
 
     return <>{children(generation)}</>
 }
@@ -75,12 +75,12 @@ export interface GeminiImageProps {
 
 export function GeminiImage({ api, apiKey, prompt, autoTrigger, children }: GeminiImageProps) {
     const generation = useImageGeneration({ api, apiKey })
-    
+
     React.useEffect(() => {
         if (autoTrigger && prompt && !generation.result && !generation.loading) {
             generation.submit(prompt)
         }
-    }, [autoTrigger, prompt, generation.submit, generation.loading, generation.result])
+    }, [])
 
     return <>{children(generation)}</>
 }

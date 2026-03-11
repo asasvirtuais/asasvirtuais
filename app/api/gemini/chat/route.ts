@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
         }
 
         const google = createGoogleGenerativeAI({ apiKey })
-        const modelInstance = google(model || 'gemini-2.0-flash')
+        const modelInstance = google(model || 'gemini-3.1-flash-lite-preview')
 
         const result = streamText({
             model: modelInstance,

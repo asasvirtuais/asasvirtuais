@@ -1,5 +1,5 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google'
-import { generateObject } from 'ai'
+import { generateText, Output, jsonSchema } from 'ai'
 import { NextRequest } from 'next/server'
 
 export const maxDuration = 60
@@ -32,17 +32,19 @@ export async function POST(req: NextRequest) {
         }
 
         const google = createGoogleGenerativeAI({ apiKey })
-        const modelInstance = google(model || 'gemini-2.0-flash')
+        const modelInstance = google(model || 'gemini-3.1-flash-lite-preview')
 
-        const result = await generateObject({
+        const { output } = await generateText({
             model: modelInstance,
-            schema: schemaProp,
+            output: Output.object({
+                schema: jsonSchema(schemaProp),
+            }),
             prompt,
             system: instructions || '',
             temperature: temperature ?? 0.7,
         })
 
-        return new Response(JSON.stringify(result.object), {
+        return new Response(JSON.stringify(output), {
             status: 200,
             headers: { 'Content-Type': 'application/json', ...corsHeaders },
         })
@@ -54,6 +56,8 @@ export async function POST(req: NextRequest) {
         })
     }
 }
+
+
 
 
 

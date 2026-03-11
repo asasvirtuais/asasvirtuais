@@ -1,6 +1,6 @@
 {
   "name": "asasvirtuais-gemini",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A package for generating text, objects, and images using Gemini API and Vercel AI SDK.",
   "main": "index.ts",
   "scripts": {
