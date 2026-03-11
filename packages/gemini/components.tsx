@@ -2,7 +2,7 @@
 import React from 'react'
 import { useGeneration, useObjectGeneration, useImageGeneration } from './hooks'
 
-interface GeminiChatProps {
+export interface GeminiChatProps {
     instructions?: string
     model?: string
     apiKey?: string
@@ -31,7 +31,7 @@ export function GeminiChat({
 }
 
 
-interface GeminiObjectProps<T = any> {
+export interface GeminiObjectProps<T = any> {
     instructions?: string
     model?: string
     apiKey?: string
