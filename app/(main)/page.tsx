@@ -195,14 +195,14 @@ function LandingPage() {
                 }}
               >
                 <Intl
-                  en={<>Software that <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>works for the business, not against it.</Text></>}
-                  pt={<>Software que <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>trabalha a favor do negócio, não contra.</Text></>}
+                  en={<>Good business <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>doesn't rely on dependency.</Text></>}
+                  pt={<>Bons negócios <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>não criam dependência emocional.</Text></>}
                 />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="7+ years of full-stack expertise applied to building complete products — from database to interface — with a proprietary framework designed to work in any context, any stack, and with any team. The result: development timelines that other teams can't match, and codebases that never become a liability."
-                  pt="7+ anos de expertise full-stack aplicados na construção de produtos completos — do banco de dados à interface — com uma framework proprietária projetada para funcionar em qualquer contexto, qualquer stack e com qualquer equipe. O resultado: prazos de desenvolvimento que outros times não conseguem acompanhar, e códigos que nunca viram passivo."
+                  en="I don't want to be indispensable. I want to be your most powerful execution engine. You bring the investment and the technical specs — I deliver the only AI stack (Next + React) that actually works, with zero vendor lock-in. If you decide to go internal, you take 100% of the technology with you. No strings attached. Just business."
+                  pt="Eu não quero ser indispensável. Quero ser seu motor de execução mais potente. Você traz o investimento e as especificações técnicas — eu entrego a única stack de I.A. (Next + React) que realmente funciona, com zero vendor lock-in. Se decidir internalizar, você leva 100% da tecnologia com você. Sem amarras. Apenas negócios."
                 />
               </Text>
             </Box>
@@ -258,10 +258,10 @@ function LandingPage() {
         {/* ========== STATS ========== */}
         <GlassCard mb={120} style={{ background: 'linear-gradient(135deg, rgba(121, 80, 242, 0.06) 0%, rgba(21, 170, 191, 0.06) 100%)', border: '1px solid rgba(121, 80, 242, 0.15)' }}>
           <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
-            <StatCard value="7+" label={<Intl en="Years of Experience" pt="Anos de Experiência" />} />
-            <StatCard value="20+" label={<Intl en="Delivered Projects" pt="Projetos Entregues" />} />
-            <StatCard value="∞" label={<Intl en="Stack Compatibility" pt="Compatibilidade de Stack" />} />
-            <StatCard value="0" label={<Intl en="Vendor Lock-in" pt="Dependência de Fornecedor" />} />
+            <StatCard value="100%" label={<Intl en="Technical Ownership" pt="Propriedade Técnica" />} />
+            <StatCard value="0" label={<Intl en="Vendor Lock-in" pt="Zero Lock-in" />} />
+            <StatCard value="React" label={<Intl en="Next.js + AI Stack" pt="Next.js + I.A." />} />
+            <StatCard value="Just" label={<Intl en="Business Focus" pt="Foco em Negócio" />} />
           </SimpleGrid>
         </GlassCard>
 
@@ -272,14 +272,14 @@ function LandingPage() {
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }} style={{ lineHeight: 1.3 }}>
               <Intl
-                en={<>Most companies have already been <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>burned by software projects.</Text></>}
-                pt={<>A maioria das empresas já foi <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>queimada por projetos de software.</Text></>}
+                en={<>Software projects are usually <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>a trap of dependency.</Text></>}
+                pt={<>Projetos de software costumam ser <Text span variant="gradient" gradient={{ from: '#ff6b6b', to: '#ffa94d' }} inherit>uma armadilha de dependência.</Text></>}
               />
             </Title>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="The client hires a team or an agency. They promise the world. Three months later: the budget doubled, half the features don't work, and the company is locked into a codebase nobody else can maintain. It's not bad luck — it's the industry standard."
-                pt="O cliente contrata uma equipe ou agência. Prometem o mundo. Três meses depois: o orçamento dobrou, metade das funcionalidades não funciona, e a empresa está presa numa base de código que ninguém consegue manter. Não é azar — é o padrão do mercado."
+                en="Traditional agencies create 'black boxes' that make you a hostage. Maintenance feels like an eternal tax, and the code is a locked secret. When a consultant becomes indispensable to your survival, they stop being a partner and start being a weight. I break this cycle."
+                pt="Agências tradicionais criam 'caixas-pretas' que tornam você um refém. A manutenção parece um imposto eterno e o código é um segredo trancado. Quando um consultor se torna indispensável para sua sobrevivência, ele deixa de ser um parceiro e vira um peso. Eu quebro esse ciclo."
               />
             </Text>
           </Box>
@@ -333,14 +333,14 @@ function LandingPage() {
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }} style={{ lineHeight: 1.3 }}>
               <Intl
-                en={<>Technology that adapts to the client, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>never the other way around.</Text></>}
-                pt={<>Tecnologia que se adapta ao cliente, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>nunca o contrário.</Text></>}
+                en={<>Building assets, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>not technical dependency.</Text></>}
+                pt={<>Construímos ativos, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>não dependência técnica.</Text></>}
               />
             </Title>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="This expertise is built on a proprietary framework that integrates with any existing stack, any team, and any infrastructure. The architecture is designed so that no one — not even its creator — becomes a dependency. The client owns the code, understands the code, and can move forward with or without this partnership."
-                pt="Essa expertise é construída sobre uma framework proprietária que se integra a qualquer stack existente, qualquer equipe e qualquer infraestrutura. A arquitetura é projetada para que ninguém — nem mesmo o criador — se torne uma dependência. O cliente é dono do código, entende o código, e pode seguir com ou sem essa parceria."
+                en="The value of this partnership is 'Just Business'. I provide the absolute best AI-powered technology to build your vision at no initial cost, provided you bring the strategy and technical specs. In exchange, you get full access to the framework and architecture. No vendor lock-in, no hidden code. Your success is the only thing that keeps us together."
+                pt="O valor desta parceria é 'Apenas Negócios'. Eu forneço a melhor tecnologia movida a I.A. para construir sua visão sem custo inicial, desde que você traga a estratégia e as especificações. Em troca, você recebe acesso total à framework e arquitetura. Sem vendor lock-in, sem código oculto. Seu sucesso é a única coisa que nos mantém juntos."
               />
             </Text>
           </Box>
@@ -362,11 +362,11 @@ function LandingPage() {
               <ThemeIcon variant="light" color="cyan" size="xl" radius="md" mb="md">
                 <IconPuzzle size={24} />
               </ThemeIcon>
-              <Text fw={700} size="lg" mb="xs"><Intl en="Works With Any Stack" pt="Funciona Com Qualquer Stack" /></Text>
+              <Text fw={700} size="lg" mb="xs"><Intl en="The Definitive AI Stack" pt="A Stack de I.A. Definitiva" /></Text>
               <Text size="sm" c="dimmed">
                 <Intl
-                  en="The framework is not a replacement for existing tools — it's a layer that works on top of whatever the client already uses. React, Vue, Angular, REST, GraphQL, Firebase, AWS — the approach adapts."
-                  pt="A framework não substitui ferramentas existentes — é uma camada que funciona sobre o que o cliente já usa. React, Vue, Angular, REST, GraphQL, Firebase, AWS — a abordagem se adapta."
+                  en="I don't waste time with 'any stack'. I use the best: Next.js + React integrated with a proprietary AI engine. While the market promises magic with mediocre tools, I deliver results with the only architecture that actually makes AI perform in production."
+                  pt="Não perco tempo com 'qualquer stack'. Eu uso a melhor: Next.js + React integrados a um motor de I.A. proprietário. Enquanto o mercado promete mágica com ferramentas medíocres, eu entrego resultados com a única arquitetura que realmente faz a I.A. performar em produção."
                 />
               </Text>
             </GlassCard>
@@ -374,11 +374,11 @@ function LandingPage() {
               <ThemeIcon variant="light" color="green" size="xl" radius="md" mb="md">
                 <IconUsers size={24} />
               </ThemeIcon>
-              <Text fw={700} size="lg" mb="xs"><Intl en="Zero Dependency" pt="Zero Dependência" /></Text>
+              <Text fw={700} size="lg" mb="xs"><Intl en="Zero Vendor Lock-in" pt="Zero Vendor Lock-in" /></Text>
               <Text size="sm" c="dimmed">
                 <Intl
-                  en="The client is never locked in. The code uses industry-standard patterns and clear documentation. Any competent team — or even AI — can take over, extend, and maintain the project independently."
-                  pt="O cliente nunca fica preso. O código usa padrões da indústria e documentação clara. Qualquer equipe competente — ou até uma IA — consegue assumir, estender e manter o projeto de forma independente."
+                  en="The partnership is based on performance, not dependency. You own the code and the entire framework used to build it. If you decide to go internal or pick another partner, you take the full technology with you. No black boxes, just clean assets."
+                  pt="A parceria é baseada em performance, não em dependência. Você é dono do código e de toda a framework usada para construí-lo. Se decidir internalizar ou escolher outro parceiro, você leva toda a tecnologia com você. Sem caixas pretas, apenas ativos claros."
                 />
               </Text>
             </GlassCard>
@@ -619,20 +619,20 @@ function LandingPage() {
 
           <Box style={{ maxWidth: 700, margin: '0 auto' }}>
             <Timeline active={-1} bulletSize={40} lineWidth={2} color="violet">
-              <Timeline.Item bullet={<IconMessage size={20} />} title={<Text fw={700}><Intl en="1. Conversation" pt="1. Conversa" /></Text>}>
+              <Timeline.Item bullet={<IconMessage size={20} />} title={<Text fw={700}><Intl en="1. Strategic Alignment" pt="1. Alinhamento Estratégico" /></Text>}>
                 <Text c="dimmed" size="sm" mt={4}>
                   <Intl
-                    en="A conversation about the business, the problem, and what's actually needed. No jargon. Listening first."
-                    pt="Uma conversa sobre o negócio, o problema e o que realmente é necessário. Sem jargão técnico. Primeiro ouvir."
+                    en="A deep dive into your business model and strategy. We don't just talk code; we talk about ROI and the long-term value of the asset we are building."
+                    pt="Um mergulho profundo no seu modelo de negócio e estratégia. Não falamos apenas de código; falamos de ROI e do valor de longo prazo do ativo que estamos construindo."
                   />
                 </Text>
               </Timeline.Item>
 
-              <Timeline.Item bullet={<IconBulb size={20} />} title={<Text fw={700}><Intl en="2. Proposal with Clear Scope" pt="2. Proposta com Escopo Claro" /></Text>}>
+              <Timeline.Item bullet={<IconBulb size={20} />} title={<Text fw={700}><Intl en="2. Specs & Commitment" pt="2. Specs e Comprometimento" /></Text>}>
                 <Text c="dimmed" size="sm" mt={4}>
                   <Intl
-                    en="The client receives a document describing exactly what will be built, the timeline, and the investment. No hidden fees. If something is out of scope, it's explicitly stated."
-                    pt="O cliente recebe um documento descrevendo exatamente o que será construído, o prazo e o investimento. Sem taxas escondidas. Se algo está fora do escopo, está explicitamente descrito."
+                    en="You provide the technical specifications and the business strategy. This commitment ensures we are building a genuine asset. I apply high-end AI tech to map and prepare the architecture."
+                    pt="Você fornece as especificações técnicas e a estratégia do negócio. Esse comprometimento garante que estamos construindo um ativo real. Eu aplico tecnologia de I.A. de ponta para mapear e preparar a arquitetura."
                   />
                 </Text>
               </Timeline.Item>
@@ -646,20 +646,20 @@ function LandingPage() {
                 </Text>
               </Timeline.Item>
 
-              <Timeline.Item bullet={<IconDeviceLaptop size={20} />} title={<Text fw={700}><Intl en="4. Delivery" pt="4. Entrega" /></Text>}>
+              <Timeline.Item bullet={<IconDeviceLaptop size={20} />} title={<Text fw={700}><Intl en="4. Ownership Transfer" pt="4. Transferência de Propriedade" /></Text>}>
                 <Text c="dimmed" size="sm" mt={4}>
                   <Intl
-                    en="The finished product is deployed. The client owns the code. Full documentation. A complete walkthrough of everything delivered."
-                    pt="O produto finalizado é deployado. O cliente é dono do código. Documentação completa. Uma apresentação completa de tudo que foi entregue."
+                    en="The product is yours. You receive the full source code, the framework documentation, and the infrastructure access. No hidden parts. You are free to move forward as you wish."
+                    pt="O produto é seu. Você recebe o código-fonte completo, a documentação da framework e o acesso à infraestrutura. Sem partes ocultas. Você é livre para seguir como desejar."
                   />
                 </Text>
               </Timeline.Item>
 
-              <Timeline.Item bullet={<IconHeadset size={20} />} title={<Text fw={700}><Intl en="5. Support" pt="5. Suporte" /></Text>}>
+              <Timeline.Item bullet={<IconHeadset size={20} />} title={<Text fw={700}><Intl en="5. Consultancy & Evolution" pt="5. Consultoria e Evolução" /></Text>}>
                 <Text c="dimmed" size="sm" mt={4}>
                   <Intl
-                    en="Post-launch support period included. After that, the client can continue the partnership, bring in another team, or maintain it internally — the code is theirs."
-                    pt="Período de suporte pós-lançamento incluso. Depois disso, o cliente pode continuar a parceria, trazer outro time, ou manter internamente — o código é dele."
+                    en="The project enters a continuous maintenance and evolution phase. My monthly consultancy ensures the app is always updated, secure, and growing alongside your business."
+                    pt="O projeto entra em fase de manutenção e evolução contínua. Minha consultoria mensal garante que o app esteja sempre atualizado, seguro e crescendo junto com seu negócio."
                   />
                 </Text>
               </Timeline.Item>
@@ -673,67 +673,66 @@ function LandingPage() {
         <Box mb={120} id="pricing">
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
             <Title order={2} mb="sm" fz={{ base: rem(28), sm: rem(36) }}>
-              <Intl en="Transparent pricing." pt="Preços transparentes." />
+              <Intl en="The AI Advantage." pt="A Vantagem da I.A." />
             </Title>
             <Text size="lg" c="dimmed">
               <Intl
-                en="Real ranges based on past projects. Every project receives an individual quote after the initial conversation."
-                pt="Ranges reais baseados em projetos anteriores. Todo projeto recebe uma cotação individual após a conversa inicial."
+                en="State-of-the-art tech, zero barrier. I'm providing the infrastructure and the build. You provide the specs and the drive to win."
+                pt="Tecnologia de ponta, barreira zero. Eu forneço a infraestrutura e a construção. Você fornece as especificações e o desejo de vencer."
               />
             </Text>
           </Box>
 
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
             <GlassCard>
-              <Badge color="cyan" mb="md"><Intl en="Quick Win" pt="Resultado Rápido" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Specialized Forms & Tools" pt="Formulários & Ferramentas" /></Text>
+              <Badge color="cyan" mb="md"><Intl en="Low Friction" pt="Baixa Fricção" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Free App Development" pt="Desenvolvimento Gratuito" /></Text>
               <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
                 <Intl
-                  en="Technical forms, configurators, calculators, data capture tools. The kind of thing that looks simple but most teams deliver broken."
-                  pt="Formulários técnicos, configuradores, calculadoras e ferramentas de captura de dados. O tipo de coisa que parece simples mas a maioria dos times entrega quebrado."
+                  en="I'll build your application at zero cost provided you have a genuine interest in evolving the product via the monthly consultancy partnership."
+                  pt="Eu construo seu aplicativo com custo zero de desenvolvimento, desde que haja um interesse genuíno em evoluir o produto através da nossa parceria de consultoria mensal."
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
-                <Intl en="$1k+" pt="R$ 5k+" />
+                <Intl en="$0" pt="R$ 0" />
               </Text>
-              <Text size="xs" c="dimmed" mb="md"><Intl en="1–3 weeks delivery" pt="1–3 semanas de entrega" /></Text>
-              <Button fullWidth variant="light" color="cyan" radius="md" component="a" href="/forms-demo">
-                <Intl en="See a Live Demo" pt="Ver Demo ao Vivo" />
+              <Text size="xs" c="dimmed" mb="md"><Intl en="For genuine project interests" pt="Para interesses genuínos no projeto" /></Text>
+              <Button fullWidth variant="light" color="cyan" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                <Intl en="Discuss Your App" pt="Discutir Meu App" />
               </Button>
             </GlassCard>
 
             <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
-              <Badge color="violet" mb="md"><Intl en="Most Common" pt="Mais Comum" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Complete Systems" pt="Sistemas Completos" /></Text>
+              <Badge color="violet" mb="md"><Intl en="Ongoing Evolution" pt="Evolução Contínua" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Monthly Consultancy" pt="Consultoria Mensal" /></Text>
               <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
                 <Intl
-                  en="Full applications with backend, database, authentication, admin dashboard, and integrations (Stripe, Airtable, APIs, etc)."
-                  pt="Aplicações completas com backend, banco de dados, autenticação, painel admin e integrações (Stripe, Airtable, APIs, etc)."
+                  en="Continuous maintenance, technical updates, and constant evolution of your app. Value is negotiated based on project complexity."
+                  pt="Manutenção contínua, atualizações técnicas e evolução constante do seu aplicativo. Valor a negociar conforme a complexidade."
                 />
               </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$6k – $10k" pt="R$ 10k – R$ 20k" />
+              <Text fw={700} fz={24} mb="md">
+                <Intl en="To be negotiated" pt="Valor a negociar" />
               </Text>
-              <Text size="xs" c="dimmed" mb="md"><Intl en="3–8 weeks delivery" pt="3–8 semanas de entrega" /></Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="Includes hosting & support" pt="Inclui hospedagem e suporte" /></Text>
               <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Discuss a Project" pt="Discutir um Projeto" />
+                <Intl en="Check Values" pt="Verificar Valores" />
               </Button>
             </GlassCard>
 
             <GlassCard>
-              <Badge color="green" mb="md"><Intl en="Partnership" pt="Parceria" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Ongoing Development" pt="Desenvolvimento Contínuo" /></Text>
+              <Badge color="green" mb="md"><Intl en="Full Scale" pt="Escala Completa" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Strategic Partnership" pt="Parceria Estratégica" /></Text>
               <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: 50 }}>
                 <Intl
-                  en="Long-term contracts for continuous feature development, maintenance, and technical partnership. Ideal for companies that need CTO-level engineering without the CTO cost."
-                  pt="Contratos contínuos para desenvolvimento de features, manutenção e parceria técnica. Ideal para empresas que precisam de engenharia nível CTO sem o custo de um CTO."
+                  en="For larger projects that need higher availability, complex infrastructure, or dedicated engineering teams. A complete technical partner for your business."
+                  pt="Para projetos maiores que precisam de alta disponibilidade, infraestrutura complexa ou times dedicados. Um parceiro técnico completo para o seu negócio."
                 />
               </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$10k+" pt="R$ 30k+" />
+              <Text fw={700} fz={rem(24)} mb="md">
+                <Intl en="Custom Contract" pt="Contrato Customizado" />
               </Text>
-              <Text size="xs" c="dimmed" mb="md"><Intl en="Project contracts with installment options" pt="Contratos por projeto com parcelamento facilitado" /></Text>
-              <Text size="xs" c="dimmed" mb="md"><Intl en="Monthly retainer" pt="Contrato mensal" /></Text>
+              <Text size="xs" c="dimmed" mb="md"><Intl en="CTO-level technical management" pt="Gestão técnica nível CTO" /></Text>
               <Button fullWidth variant="light" color="green" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Intl en="Talk About Partnership" pt="Conversar Sobre Parceria" />
               </Button>
