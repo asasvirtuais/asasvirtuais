@@ -195,14 +195,14 @@ function LandingPage() {
                 }}
               >
                 <Intl
-                  en={<>Good business <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>doesn't rely on dependency.</Text></>}
-                  pt={<>Bons negócios <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>não criam dependência emocional.</Text></>}
+                  en={<>Web <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Developer.</Text></>}
+                  pt={<>Desenvolvedor <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Web.</Text></>}
                 />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I don't want to be indispensable. I want to be your most powerful execution engine. You bring the investment and the technical specs — I deliver the only AI stack (Next + React) that actually works, with zero vendor lock-in. If you decide to go internal, you take 100% of the technology with you. No strings attached. Just business."
-                  pt="Eu não quero ser indispensável. Quero ser seu motor de execução mais potente. Você traz o investimento e as especificações técnicas — eu entrego a única stack de I.A. (Next + React) que realmente funciona, com zero vendor lock-in. Se decidir internalizar, você leva 100% da tecnologia com você. Sem amarras. Apenas negócios."
+                  en="Good business doesn't create dependency. I am a reliable partner delivering high-performance software that doesn't leave you dependent. You bring the vision — I deliver the only AI stack (Next + React) that actually works, with zero vendor lock-in. If you decide to go internal, you take 100% of the technology with you. No strings attached."
+                  pt="Bons negócios não geram dependência. Sou um parceiro confiável que entrega tecnologia de alta performance sem te deixar dependendo de mim. Você traz a visão — eu entrego a única stack de I.A. (Next + React) que realmente funciona, com zero vendor lock-in. Se decidir internalizar, você leva 100% da tecnologia com você. Sem amarras."
                 />
               </Text>
             </Box>
