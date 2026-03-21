@@ -9,18 +9,18 @@ import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'asasvirtuais.dev | Ícaro C. Capobianco - Web Developer',
-  description: 'Web developer specialized in fast delivery and guaranteed results. High-performance software with zero vendor lock-in.',
+  title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
+  description: 'Desenvolvedor web focado em entrega rápida e autonomia do cliente. Software robusto sem aprisionamento tecnológico (vendor lock-in).',
   openGraph: {
-    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Web Developer',
-    description: 'Web developer specialized in fast delivery and guaranteed results. High-performance software with zero vendor lock-in.',
+    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
+    description: 'Desenvolvedor web focado em entrega rápida e autonomia do cliente. Software robusto sem aprisionamento tecnológico (vendor lock-in).',
     images: [{ url: '/looking-dev.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Web Developer',
-    description: 'Web developer specialized in fast delivery and guaranteed results. High-performance software with zero vendor lock-in.',
+    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
+    description: 'Desenvolvedor web focado em entrega rápida e autonomia do cliente. Software robusto sem aprisionamento tecnológico (vendor lock-in).',
     images: ['/looking-dev.png'],
   },
 }
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='pt-BR' suppressHydrationWarning>
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>

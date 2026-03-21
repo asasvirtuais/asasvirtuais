@@ -201,8 +201,8 @@ function LandingPage() {
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Good business doesn't create dependency. I am a reliable partner delivering high-performance software that doesn't leave you dependent. You bring the vision — I deliver the only AI stack (Next + React) that actually works, with zero vendor lock-in. If you decide to go internal, you take 100% of the technology with you. No strings attached."
-                  pt="Bons negócios não geram dependência. Sou um parceiro confiável que entrega tecnologia de alta performance sem te deixar dependendo de mim. Você traz a visão — eu entrego a única stack de I.A. (Next + React) que realmente funciona, com zero vendor lock-in. Se decidir internalizar, você leva 100% da tecnologia com você. Sem amarras."
+                  en="Good business doesn't create dependency. I am a reliable partner delivering solid software that doesn't leave you dependent. You bring the vision — I deliver the only AI stack (Next + React) that actually works, with zero vendor lock-in. If you decide to go internal, you take 100% of the technology with you. No strings attached."
+                  pt="Bons negócios não geram dependência. Sou um parceiro confiável que entrega software sólido sem te deixar dependente. Você traz a visão — eu entrego a única stack de I.A. (Next + React) que realmente funciona, com zero vendor lock-in. Se decidir internalizar, você leva 100% da tecnologia com você. Sem amarras."
                 />
               </Text>
             </Box>
