@@ -10,17 +10,17 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-  description: 'Desenvolvedor web focado em autonomia do cliente e entrega garantida dentro do prazo. Sem aprisionamento tecnológico (vendor lock-in).',
+  description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
   openGraph: {
     title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-    description: 'Desenvolvedor web focado em autonomia do cliente e entrega garantida dentro do prazo. Sem aprisionamento tecnológico (vendor lock-in).',
+    description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
     images: [{ url: '/looking-dev.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-    description: 'Desenvolvedor web focado em autonomia do cliente e entrega garantida dentro do prazo. Sem aprisionamento tecnológico (vendor lock-in).',
+    description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
     images: ['/looking-dev.png'],
   },
 }

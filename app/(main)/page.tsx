@@ -178,21 +178,21 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>Let's be honest: <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>the software market has become a circus.</Text></>}
-              pt={<>Vamos ser sinceros: <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>o mercado de software virou um circo.</Text></>}
+              en={<>If you're here, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>you're probably tired of the same old talk.</Text></>}
+              pt={<>Se você chegou até aqui, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>provavelmente está cansado da mesma conversa de sempre.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="It's hard to find anyone who actually wants to do honest business and serve one another. Between endless billable hours and opaque promises, the essence of building something meaningful has been lost. I'm not here to play that game."
-                pt="Está difícil encontrar quem realmente queira fazer um negócio honesto e servir um ao outro. Entre horas faturáveis infinitas e promessas opacas, a essência de construir algo que faça sentido se perdeu. Eu não estou aqui para jogar esse jogo."
+                en="I'm not interested in selling you a project or billing for 'deliverables'. I want to find people who actually care about what they are building. I've spent years refining a way to build software that is honest, fast, and stays out of the way of your business. Now, I'm looking for partners who value that integrity as much as I do."
+                pt="Eu não tenho interesse em te vender um projeto ou faturar em cima de 'entregáveis'. O que eu busco são pessoas que realmente se importam com o que estão construindo. Passei anos refinando uma forma de criar software que seja honesta, rápida e que não atrapalhe o seu negócio. Agora, procuro parceiros que valorizem essa integridade tanto quanto eu."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="For me, the real challenge isn't the code. The challenge is finding 'you' — the entrepreneur who truly believes in what they see is possible. Your vision is as important to me as the technology I've spent years refining. I value what I've built, and I want to deliver it to someone who values their own dream just as much."
-                pt="Para mim, o desafio real não é o código. O desafio é encontrar 'você' — o empreendedor que acredita de verdade no que vê ser possível. Sua visão é tão importante para mim quanto a tecnologia que passei anos refinando. Eu valorizo o que construí, e quero entregar isso para quem valoriza o próprio sonho na mesma medida."
+                en="The code is just the tool. The real work is understanding why your idea matters and making sure the technology supports it without becoming a burden. I treat every project as if it were my own, because if it doesn't work for you, it doesn't work for me."
+                pt="O código é apenas a ferramenta. O trabalho real é entender por que a sua ideia importa e garantir que a tecnologia suporte isso sem se tornar um fardo. Eu trato cada projeto como se fosse meu, porque se não funcionar para você, não funciona para mim."
               />
             </Text>
             <Group gap="lg" mt="md">
@@ -204,7 +204,7 @@ function LandingPage() {
                 rightSection={<FaArrowRight size={16} />}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Intl en="Let's build something true" pt="Vamos construir algo verdadeiro" />
+                <Intl en="Let's talk like people" pt="Vamos conversar como gente" />
               </Button>
             </Group>
           </Stack>
@@ -212,55 +212,55 @@ function LandingPage() {
 
         {/* ========== THE STATE OF THINGS ========== */}
         <Box mb={140} style={{ maxWidth: 800 }}>
-          <Divider mb={80} label={<Intl en="The reality of the market" pt="A realidade do mercado" />} labelPosition="center" />
+          <Divider mb={80} label={<Intl en="What I actually believe" pt="No que eu realmente acredito" />} labelPosition="center" />
           <Stack gap={80}>
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Why is it so hard to find honesty?" pt="Por que é tão difícil achar honestidade?" />
+                <Intl en="Business is about trust, not extraction" pt="Negócios são sobre confiança, não extração" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Agencies often profit from complexity and delay. The more confused you are, the more hours they bill. They create dependencies because it's safer for their business model. But that's not service — that's extraction. I want to work with people who value transparency and good will as much as I do."
-                  pt="Agências costumam lucrar com a complexidade e o atraso. Quanto mais confuso você está, mais horas elas faturam. Elas criam dependências porque é mais seguro para o modelo de negócio delas. Mas isso não é servir — é extrair. Eu quero trabalhar com pessoas que valorizam a transparência e a boa vontade tanto quanto eu."
+                  en="The software industry often profits from confusion. I prefer the opposite: total transparency. If something is simple, it should be simple. If something is a bad idea, I'll tell you. I'm looking for entrepreneurs who want a partner, not just a vendor."
+                  pt="A indústria de software costuma lucrar com a confusão. Eu prefiro o oposto: transparência total. Se algo é simples, deve ser simples. Se algo for uma ideia ruim, eu vou te falar. Procuro empreendedores que queiram um parceiro, não apenas um fornecedor."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="The value of your vision" pt="O valor da sua visão" />
+                <Intl en="Your vision is the heartbeat" pt="Sua visão é o que dá vida ao código" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I can build the technology, but I can't invent the soul of your business. I need you to know exactly what you want to achieve. When you bring a clear vision, my execution becomes a multiplier. We serve each other: I provide the structural integrity and the unique technology you see here, and you provide the heartbeat."
-                  pt="Eu posso construir a tecnologia, mas não posso inventar a alma do seu negócio. Preciso que você saiba exatamente o que quer alcançar. Quando você traz uma visão clara, minha execução vira um multiplicador. Nós servimos um ao outro: eu entrego a integridade estrutural e a tecnologia única que você vê aqui, e você entrega o pulsar do negócio."
+                  en="I can build the best system in the world, but it needs a purpose. You bring the soul of the business, the understanding of your market, and the drive to make it happen. I provide the structural honesty and the technology to get you there faster."
+                  pt="Eu posso construir o melhor sistema do mundo, mas ele precisa de um propósito. Você traz a alma do negócio, o entendimento do seu mercado e a vontade de fazer acontecer. Eu entro com a honestidade estrutural e a tecnologia para te levar lá mais rápido."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="I protect what I've built" pt="Eu protejo o que construí" />
+                <Intl en="I care about what I put my name on" pt="Eu me importo com o que coloco meu nome" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="The framework and architecture I use are my pride. It's unique, fast, and built for transparency. I don't want to waste it on projects without a soul or ideas that aren't serious. I want to put this power in the hands of entrepreneurs who will use it to deliver something real to the world."
-                  pt="A framework e a arquitetura que utilizo são o meu orgulho. É algo único, rápido e feito para ser transparente. Eu não quero desperdiçá-lo em projetos sem alma ou ideias que não são sérias. Quero colocar esse poder nas mãos de empreendedores que vão usá-lo para entregar algo real ao mundo."
+                  en="The architecture I've built is my life's work. I don't want to waste it on things that don't matter. I want to see my technology helping real people solve real problems. That's why I only work with people who are as serious about their business as I am about my craft."
+                  pt="A arquitetura que desenvolvi é o trabalho da minha vida. Não quero desperdiçá-la com coisas que não importam. Quero ver minha tecnologia ajudando pessoas reais a resolverem problemas reais. É por isso que só trabalho com quem leva o próprio negócio tão a sério quanto eu levo o meu ofício."
                 />
               </Text>
             </Box>
           </Stack>
         </Box>
 
-        <Divider mb={120} label={<Intl en="Proof of Partnership" pt="Provas de Parceria" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="Who I've worked with" pt="Com quem já trabalhei" />} labelPosition="center" />
 
         {/* ========== PORTFOLIO ========== */}
         <Box id="work" mb={140}>
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
             <Text size="lg" c="dimmed">
               <Intl
-                en="Here are some examples of entrepreneurs who knew exactly where they wanted to go. I just made sure the technology lived up to their vision."
-                pt="Aqui estão alguns exemplos de empreendedores que sabiam exatamente para onde queriam ir. Eu apenas garanti que a tecnologia estivesse à altura da visão deles."
+                en="I've helped these entrepreneurs because they knew exactly where they wanted to go, and I knew how to get them there without the usual headaches."
+                pt="Ajudei esses empreendedores porque eles sabiam exatamente para onde queriam ir, e eu sabia como levá-los até lá sem as dores de cabeça habituais."
               />
             </Text>
           </Box>
@@ -273,14 +273,14 @@ function LandingPage() {
               </Box>
               <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Group gap="sm" mb="xs">
-                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="Featured Partner" pt="Parceria em Destaque" /></Badge>
+                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="A Great Partnership" pt="Uma Grande Parceria" /></Badge>
                   <Badge variant="light" color="blue">USA</Badge>
                 </Group>
                 <Text fw={800} size="xl" mb="xs">Latham Pools — Lead Qualification System</Text>
                 <Text size="sm" c="dimmed" mb="md" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="A multi-step configurator that guides potential clients through product selection and pricing. Fully integrated with the company's sales pipeline, it transformed a complex technical process into a clear and efficient tool for the sales team."
-                    pt="Um configurador multi-etapas que guia potenciais clientes pela seleção de produtos e preços. Totalmente integrado ao pipeline de vendas da empresa, transformou um processo técnico complexo em uma ferramenta clara e eficiente para o time comercial."
+                    en="We turned a complex product selection into a simple, guided path for their clients. It's not just a form; it's a way for their sales team to work better and for customers to feel understood."
+                    pt="Transformamos uma seleção complexa de produtos em um caminho simples e guiado para os clientes deles. Não é apenas um formulário; é uma forma do time de vendas trabalhar melhor e dos clientes se sentirem compreendidos."
                   />
                 </Text>
                 <Group gap="xs">
@@ -299,11 +299,11 @@ function LandingPage() {
                 <Image src="/portfolio/cardcheckout/checkout.PNG" height={200} fit="contain" alt="Card Checkout" />
               </Box>
               <Box p="lg">
-                <Text fw={700} size="sm" mb="xs">Card Checkout — Payment Flow</Text>
+                <Text fw={700} size="sm" mb="xs">Card Checkout — Direct Payments</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A clear and direct payment flow designed to capture leads and process transactions without friction. Built for speed and reliability."
-                    pt="Um fluxo de pagamento claro e direto, desenhado para capturar leads e processar transações sem fricção. Construído para velocidade e confiabilidade."
+                    en="A payment flow that gets out of the way. Built to be fast, reliable, and easy for the user to finish what they started."
+                    pt="Um fluxo de pagamento que não atrapalha. Feito para ser rápido, confiável e fácil para o usuário terminar o que começou."
                   />
                 </Text>
               </Box>
@@ -318,8 +318,8 @@ function LandingPage() {
                 <Text fw={700} size="sm" mb="xs">CertWorld — Learning Platform</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A complete platform for lessons and certifications. Every feature serves the student's progress and the business's scalability."
-                    pt="Uma plataforma completa para aulas e certificações. Cada funcionalidade serve ao progresso do aluno e à escala do negócio."
+                    en="A space for students to grow. We focused on making the learning experience smooth and the business management simple."
+                    pt="Um espaço para alunos crescerem. Focamos em tornar a experiência de aprendizado fluida e a gestão do negócio simples."
                   />
                 </Text>
               </Box>
@@ -327,51 +327,51 @@ function LandingPage() {
           </SimpleGrid>
         </Box>
 
-        <Divider mb={120} label={<Intl en="The Investment" pt="O Investimento" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="How we work together" pt="Como trabalhamos juntos" />} labelPosition="center" />
 
         {/* ========== PRICING / INVESTMENT ========== */}
         <Box mb={140} id="pricing">
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 750, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }}>
-              <Intl en="Honest partnership, clear values." pt="Parceria honesta, valores claros." />
+              <Intl en="No complex contracts, just common sense." pt="Sem contratos complexos, apenas bom senso." />
             </Title>
             <Text size="lg" c="dimmed">
               <Intl
-                en="I invest in the creation of the asset because I believe in the partnership. You invest in the evolution of the business."
-                pt="Eu invisto na criação do ativo porque acredito na parceria. Você investe na evolução do negócio."
+                en="I believe in skin in the game. I put in the work to build the foundation, and you invest in making the business grow."
+                pt="Eu acredito em colocar a mão no fogo pelo que faço. Eu entro com o trabalho para construir a base, e você investe para fazer o negócio crescer."
               />
             </Text>
           </Box>
 
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
             <GlassCard>
-              <Badge color="cyan" mb="md"><Intl en="Commitment" pt="Comprometimento" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Development" pt="Desenvolvimento" /></Text>
+              <Badge color="cyan" mb="md"><Intl en="Trust" pt="Confiança" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Initial Build" pt="Construção Inicial" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="I build your system with no upfront development cost. My work is an investment in the vision you bring."
-                  pt="Eu construo seu sistema sem custo inicial de desenvolvimento. Meu trabalho é um investimento na visão que você traz."
+                  en="I'll build the core of your idea with no upfront cost. It's my way of showing I believe in what we are doing."
+                  pt="Eu construo o coração da sua ideia sem custo inicial. É a minha forma de mostrar que acredito no que estamos fazendo."
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
                 <Intl en="$0" pt="R$ 0" />
               </Text>
               <Button fullWidth variant="light" color="cyan" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Start the conversation" pt="Iniciar conversa" />
+                <Intl en="Let's talk" pt="Vamos conversar" />
               </Button>
             </GlassCard>
 
             <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
-              <Badge color="violet" mb="md"><Intl en="Service" pt="Serviço" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Consultancy" pt="Consultoria Mensal" /></Text>
+              <Badge color="violet" mb="md"><Intl en="Partnership" pt="Parceria" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Continuous Care" pt="Acompanhamento" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="A monthly partnership for continuous support, evolution, and strategic technical alignment. We grow together."
-                  pt="Uma parceria mensal para suporte contínuo, evolução e alinhamento técnico estratégico. Crescemos juntos."
+                  en="A monthly commitment where I stay by your side to evolve the technology as the business demands. No surprises."
+                  pt="Um compromisso mensal onde fico ao seu lado para evoluir a tecnologia conforme o negócio pedir. Sem surpresas."
                 />
               </Text>
               <Text fw={700} fz={24} mb="md">
-                <Intl en="To be negotiated" pt="Valor a negociar" />
+                <Intl en="To be discussed" pt="Valor a conversar" />
               </Text>
               <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Intl en="Discuss Details" pt="Discutir Detalhes" />
@@ -379,19 +379,19 @@ function LandingPage() {
             </GlassCard>
 
             <GlassCard>
-              <Badge color="green" mb="md"><Intl en="Expansion" pt="Expansão" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Strategic Partner" pt="Parceiro Técnico" /></Text>
+              <Badge color="green" mb="md"><Intl en="Commitment" pt="Comprometimento" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Dedicated Engineering" pt="Engenharia Dedicada" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="For larger operations needing dedicated engineering or CTO-level management. A complete technical soul for your business."
-                  pt="Para operações maiores que precisam de engenharia dedicada ou gestão nível CTO. Uma alma técnica completa para o seu negócio."
+                  en="For projects that need a deeper technical presence. I'll act as your technical partner to ensure everything runs perfectly."
+                  pt="Para projetos que precisam de uma presença técnica mais profunda. Atuarei como seu parceiro técnico para garantir que tudo rode perfeito."
                 />
               </Text>
               <Text fw={700} fz={rem(24)} mb="md">
-                <Intl en="Custom Contract" pt="Contrato Customizado" />
+                <Intl en="Custom Agreement" pt="Acordo Customizado" />
               </Text>
               <Button fullWidth variant="light" color="green" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Talk Scale" pt="Falar sobre Escala" />
+                <Intl en="Talk about scale" pt="Falar sobre escala" />
               </Button>
             </GlassCard>
           </SimpleGrid>
@@ -401,14 +401,14 @@ function LandingPage() {
         <Box id="contact" py={80} style={{ textAlign: 'center' }}>
           <Title order={1} mb="md" fz={{ base: rem(32), sm: rem(42) }}>
             <Intl
-              en={<>Ready to build <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>something true?</Text></>}
-              pt={<>Pronto pra construir <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>algo verdadeiro?</Text></>}
+              en={<>Ready to build <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>something that matters?</Text></>}
+              pt={<>Pronto pra construir <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>algo que importa?</Text></>}
             />
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 650, margin: '0 auto 40px' }}>
             <Intl
-              en="No sales pitch. Just an honest conversation about your vision. If I can serve your project, it will be clear. If not, I'll tell you straight away."
-              pt="Sem discurso de vendas. Apenas uma conversa honesta sobre a sua visão. Se eu puder servir ao seu projeto, ficará claro. Se não, eu te direi na hora."
+              en="No pitch, no pressure. Just a conversation between two people who want to build something good. If it's a fit, we'll know."
+              pt="Sem discurso, sem pressão. Apenas uma conversa entre duas pessoas que querem construir algo bom. Se fizer sentido para ambos, saberemos."
             />
           </Text>
           <Stack align="center" gap="md">
