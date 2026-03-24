@@ -178,21 +178,21 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>High-performance programming. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Done right, without the fluff.</Text></>}
-              pt={<>Programação de alta performance. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Direto ao ponto, sem frescura.</Text></>}
+              en={<>Systems development. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>From concept to product in days.</Text></>}
+              pt={<>Desenvolvimento de sistemas. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Do conceito ao produto em dias.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I code systems that actually work. I built my own tools to deliver faster and better than the standard market junk. If you need it done, I'll program it—simple as that."
-                pt="Eu programo sistemas que funcionam de verdade. Criei minhas próprias ferramentas para entregar mais rápido e melhor que o lixo que o mercado oferece por aí. Se você precisa de algo feito, eu faço — simples assim."
+                en="I turn your ideas into functional software quickly. With a clear vision of what needs to be built, I deliver results in days, not weeks."
+                pt="Transformo sua ideia em software funcional com rapidez. Com uma visão clara do que precisa ser feito, entrego resultados em dias, não semanas."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="Better, cheaper, and different. I've spent 7 years stripping away the technical waste that other people charge you for. No bureaucracy, no empty talk—just high-level code."
-                pt="Melhor, mais barato e diferente. Passei 7 anos eliminando o desperdício técnico que os outros te cobram caro para manter. Sem burocracia, sem papo furado — apenas código de alto nível."
+                en="I use a custom set of tools to speed up development and ensure quality, without the bottlenecks or delays of traditional processes."
+                pt="Uso um conjunto de ferramentas próprias para acelerar o desenvolvimento e garantir qualidade, sem as travas ou a demora dos processos tradicionais."
               />
             </Text>
             <Group gap="lg" mt="md">
@@ -216,36 +216,36 @@ function LandingPage() {
           <Stack gap={80}>
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Zero Waste" pt="Zero Desperdício" />
+                <Intl en="Focus on the Goal" pt="Foco no Objetivo" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I don't waste time with unnecessary abstractions. I deliver lean, powerful code that solves your needs without creating maintenance nightmares. If it's simple, I keep it simple."
-                  pt="Não perco tempo com abstrações desnecessárias. Entrego código enxuto e poderoso que resolve o que você precisa sem criar pesadelos de manutenção. Se é simples, eu mantenho simples."
+                  en="I prioritize understanding the core needs of your project. I build direct and efficient solutions, avoiding unnecessary complexity."
+                  pt="Priorizo entender a necessidade real do seu projeto. Desenvolvo soluções diretas e eficientes, evitando complexidade desnecessária."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Faster and Cheaper" pt="Mais Rápido e Mais Barato" />
+                <Intl en="Agile Delivery" pt="Entrega Ágil" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Because I use a superior stack I built myself, I can do in days what agencies take months to deliver. You get better tech for a fraction of the price because I've automated the boring parts."
-                  pt="Como uso ferramentas superiores que eu mesmo desenvolvi, consigo fazer em dias o que agências levam meses para entregar. Você ganha tecnologia melhor por uma fração do preço, porque eu automatizei a parte chata."
+                  en="With a refined workflow, I can turn ideas into functional prototypes in a fraction of the usual market time."
+                  pt="Com um fluxo de trabalho otimizado, consigo transformar ideias em protótipos funcionais em uma fração do tempo habitual do mercado."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Code that Lasts" pt="Código que Dura" />
+                <Intl en="Custom Technology" pt="Tecnologia Própria" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I don't just write code; I build tools that you can actually use. I work with people who want things done efficiently and don't want to hear corporate speeches about productivity."
-                  pt="Eu não apenas escrevo código; eu construo ferramentas que você realmente usa. Trabalho com quem quer as coisas feitas com eficiência e não quer ouvir discurso de CEO sobre produtividade."
+                  en="I use a custom framework that handles the repetitive parts of coding, allowing me to focus on what makes your project unique."
+                  pt="Utilizo um framework próprio que lida com a parte repetitiva do código, permitindo focar no que torna seu projeto único."
                 />
               </Text>
             </Box>
@@ -279,8 +279,8 @@ function LandingPage() {
                 <Text fw={800} size="xl" mb="xs">Latham Pools — Lead System</Text>
                 <Text size="sm" c="dimmed" mb="md" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="I programmed a system to help their clients choose products easily. No complex jargon—just a flow that works for the sales team and the customer."
-                    pt="Programei um sistema para ajudar os clientes deles a escolherem produtos facilmente. Sem enrolação — apenas um fluxo que funciona para o time de vendas e para o cliente."
+                    en="Configurator to help clients choose products, simplifying the sales flow."
+                    pt="Configurador para ajudar clientes a escolherem produtos, simplificando o fluxo de vendas."
                   />
                 </Text>
                 <Group gap="xs">
@@ -302,8 +302,8 @@ function LandingPage() {
                 <Text fw={700} size="sm" mb="xs">Card Checkout — Direct Payments</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A payment flow that just works. Built to be fast, reliable, and get the job done."
-                    pt="Um fluxo de pagamento que simplesmente funciona. Feito para ser rápido, confiável e resolver o problema."
+                    en="A high-performance checkout for direct payments, focused on conversion."
+                    pt="Checkout de alta performance para pagamentos diretos, focado em conversão."
                   />
                 </Text>
               </Box>
@@ -318,8 +318,8 @@ function LandingPage() {
                 <Text fw={700} size="sm" mb="xs">CertWorld — Learning Platform</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A simple platform for students. Clean code, no bugs, and easy to manage."
-                    pt="Uma plataforma simples para alunos. Código limpo, sem bugs e fácil de gerir."
+                    en="Online course platform with an intuitive interface and easy content management."
+                    pt="Plataforma de cursos online com interface intuitiva e fácil gestão de conteúdo."
                   />
                 </Text>
               </Box>
@@ -333,12 +333,12 @@ function LandingPage() {
         <Box mb={140} id="pricing">
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 750, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }}>
-              <Intl en="Straight Talk" pt="Papo Reto" />
+              <Intl en="The Deal" pt="O Acordo" />
             </Title>
             <Text size="lg" c="dimmed">
               <Intl
-                en="I show you that my code works first. Then we talk about how to keep it growing."
-                pt="Eu te mostro que meu código funciona primeiro. Depois a gente conversa sobre como continuar crescendo."
+                en="Clear steps to start and evolve your project."
+                pt="Etapas claras para iniciar e evoluir seu projeto."
               />
             </Text>
           </Box>
@@ -346,11 +346,11 @@ function LandingPage() {
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
             <GlassCard>
               <Badge color="cyan" mb="md"><Intl en="Proof of Concept" pt="Prova de Conceito" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Initial Code" pt="Código Inicial" /></Text>
+              <Text fw={700} size="xl" mb={4}><Intl en="Core Development" pt="Desenvolvimento Inicial" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="I'll program the core of your idea for free. If you like it, we move forward. No risk for you."
-                  pt="Eu programo o núcleo da sua ideia de graça. Se você gostar, a gente segue. Sem risco para você."
+                  en="I develop the core functionality of your project so you can validate the idea in practice before any long-term commitment."
+                  pt="Desenvolvo a funcionalidade principal do seu projeto para você validar a ideia na prática antes de qualquer compromisso de longo prazo."
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
@@ -363,11 +363,11 @@ function LandingPage() {
 
             <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
               <Badge color="violet" mb="md"><Intl en="Ongoing" pt="Contínuo" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Continuous Coding" pt="Programação Contínua" /></Text>
+              <Text fw={700} size="xl" mb={4}><Intl en="Continuous Evolution" pt="Evolução Contínua" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="I keep improving your system as you need it. Faster delivery than anyone else on the market."
-                  pt="Continuo melhorando seu sistema conforme a necessidade. Entrega mais rápida que qualquer um no mercado."
+                  en="Constant support and development to expand your system as your business grows and new needs arise."
+                  pt="Suporte e desenvolvimento constante para expandir seu sistema conforme seu negócio cresce e novas necessidades surgem."
                 />
               </Text>
               <Text fw={700} fz={24} mb="md">
@@ -379,12 +379,12 @@ function LandingPage() {
             </GlassCard>
 
             <GlassCard>
-              <Badge color="green" mb="md"><Intl en="Complex" pt="Complexo" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Technical Lead" pt="Liderança Técnica" /></Text>
+              <Badge color="green" mb="md"><Intl en="Robust" pt="Robusto" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Full Solution" pt="Solução Completa" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="Full technical management for projects that demand high volume and rock-solid reliability."
-                  pt="Gestão técnica total para projetos que exigem alto volume e confiabilidade absoluta."
+                  en="Complete systems for projects that demand high performance, complex integrations, and guaranteed stability."
+                  pt="Sistemas completos para projetos que exigem alta performance, integrações complexas e estabilidade garantida."
                 />
               </Text>
               <Text fw={700} fz={rem(24)} mb="md">
@@ -407,8 +407,8 @@ function LandingPage() {
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 650, margin: '0 auto 40px' }}>
             <Intl
-              en="No bureaucracy. Just a chat to get things moving."
-              pt="Sem burocracia. Só um papo pra fazer as coisas andarem."
+              en="Let's talk about your project and see how I can help you get it off the ground quickly."
+              pt="Vamos conversar sobre seu projeto e ver como posso ajudá-lo a sair do papel rapidamente."
             />
           </Text>
           <Stack align="center" gap="md">
