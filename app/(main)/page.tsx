@@ -166,7 +166,7 @@ function LandingPage() {
         {/* ========== HERO / CONVERSATION START ========== */}
         <Box mb={120} mt={60} style={{ maxWidth: 850 }}>
           <Badge variant="dot" color="violet" size="lg" mb="sm">
-            Ícaro C. Capobianco
+            Ícaro C. Capobianco — Programador
           </Badge>
           <Title
             order={1}
@@ -178,21 +178,21 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>High-performance Web Development. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Architected for growth.</Text></>}
-              pt={<>Desenvolvimento Web de alta performance. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Arquitetado para o crescimento.</Text></>}
+              en={<>High-performance programming. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Done right, without the fluff.</Text></>}
+              pt={<>Programação de alta performance. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Direto ao ponto, sem frescura.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I built the most efficient framework on the market to eliminate technical waste and deliver results. No bureaucracy, no empty promises—just high-end engineering focused on your business goals."
-                pt="Desenvolvi a framework mais eficiente do mercado para eliminar o desperdício técnico e entregar resultados reais. Sem burocracia, sem promessas vazias — apenas engenharia de ponta focada nos seus objetivos."
+                en="I code systems that actually work. I built my own tools to deliver faster and better than the standard market junk. If you need it done, I'll program it—simple as that."
+                pt="Eu programo sistemas que funcionam de verdade. Criei minhas próprias ferramentas para entregar mais rápido e melhor que o lixo que o mercado oferece por aí. Se você precisa de algo feito, eu faço — simples assim."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="The asasvirtuais architecture is the result of 7 years of refinement, designed to be fast, scalable, and stay out of your way. I offer elite technology for partners who demand excellence."
-                pt="A arquitetura asasvirtuais é o resultado de 7 anos de refinamento, desenhada para ser rápida, escalável e não atrapalhar sua evolução. Ofereço tecnologia de elite para parceiros que exigem excelência."
+                en="Better, cheaper, and different. I've spent 7 years stripping away the technical waste that other people charge you for. No bureaucracy, no empty talk—just high-level code."
+                pt="Melhor, mais barato e diferente. Passei 7 anos eliminando o desperdício técnico que os outros te cobram caro para manter. Sem burocracia, sem papo furado — apenas código de alto nível."
               />
             </Text>
             <Group gap="lg" mt="md">
@@ -204,7 +204,7 @@ function LandingPage() {
                 rightSection={<FaArrowRight size={16} />}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Intl en="Build the future" pt="Vamos construir o futuro" />
+                <Intl en="Let's build it" pt="Vamos fazer acontecer" />
               </Button>
             </Group>
           </Stack>
@@ -212,55 +212,55 @@ function LandingPage() {
 
         {/* ========== THE STATE OF THINGS ========== */}
         <Box mb={140} style={{ maxWidth: 800 }}>
-          <Divider mb={80} label={<Intl en="My Core Principles" pt="Meus Princípios Fundamentais" />} labelPosition="center" />
+          <Divider mb={80} label={<Intl en="How I Work" pt="Como eu trabalho" />} labelPosition="center" />
           <Stack gap={80}>
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Efficiency as a Standard" pt="Eficiência como Padrão" />
+                <Intl en="Zero Waste" pt="Zero Desperdício" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Software should be a multiplier, not a hidden cost. My approach is built on absolute technical transparency and clean architecture: if it's simple, it stays simple. I deliver lean, powerful systems that solve problems without creating new ones."
-                  pt="Software deve ser um multiplicador, não um custo escondido. Minha abordagem é baseada em transparência técnica absoluta e arquitetura limpa: se é simples, deve continuar simples. Entrego sistemas enxutos e poderosos que resolvem problemas sem criar novos."
+                  en="I don't waste time with unnecessary abstractions. I deliver lean, powerful code that solves your needs without creating maintenance nightmares. If it's simple, I keep it simple."
+                  pt="Não perco tempo com abstrações desnecessárias. Entrego código enxuto e poderoso que resolve o que você precisa sem criar pesadelos de manutenção. Se é simples, eu mantenho simples."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="High-Performance Strategy" pt="Estratégia de Alta Performance" />
+                <Intl en="Faster and Cheaper" pt="Mais Rápido e Mais Barato" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Elite technology at the service of a clear vision. I provide the high-performance engine; you provide the market drive. Together, we accelerate value delivery and scale your business with structural integrity."
-                  pt="Tecnologia de elite a serviço de uma visão clara. Eu entro com o motor de alta performance; você entra com a visão de mercado. Juntos, aceleramos a entrega de valor e escalamos seu negócio com integridade estrutural."
+                  en="Because I use a superior stack I built myself, I can do in days what agencies take months to deliver. You get better tech for a fraction of the price because I've automated the boring parts."
+                  pt="Como uso ferramentas superiores que eu mesmo desenvolvi, consigo fazer em dias o que agências levam meses para entregar. Você ganha tecnologia melhor por uma fração do preço, porque eu automatizei a parte chata."
                 />
               </Text>
             </Box>
 
             <Box>
               <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Commitment to Excellence" pt="Comprometimento com a Excelência" />
+                <Intl en="Code that Lasts" pt="Código que Dura" />
               </Title>
               <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Every line of code in the asasvirtuais framework was crafted to solve real-world problems elegantly. I don't just write code; I build assets. I partner with entrepreneurs who value craft and demand the best technical foundation for their ideas."
-                  pt="Cada linha de código na framework asasvirtuais foi pensada para resolver problemas reais de forma elegante. Eu não apenas escrevo código; eu construo ativos. Trabalho com empreendedores que valorizam o ofício e exigem a melhor base técnica para suas ideias."
+                  en="I don't just write code; I build tools that you can actually use. I work with people who want things done efficiently and don't want to hear corporate speeches about productivity."
+                  pt="Eu não apenas escrevo código; eu construo ferramentas que você realmente usa. Trabalho com quem quer as coisas feitas com eficiência e não quer ouvir discurso de CEO sobre produtividade."
                 />
               </Text>
             </Box>
           </Stack>
         </Box>
 
-        <Divider mb={120} label={<Intl en="Selected Partnerships" pt="Parcerias Selecionadas" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="What I've Done" pt="O que eu já fiz" />} labelPosition="center" />
 
         {/* ========== PORTFOLIO ========== */}
         <Box id="work" mb={140}>
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
             <Text size="lg" c="dimmed">
               <Intl
-                en="Proven results for businesses that prioritize speed, clarity, and technical excellence."
-                pt="Resultados comprovados para negócios que priorizam velocidade, clareza e excelência técnica."
+                en="Straightforward projects for people who value speed and technical clarity."
+                pt="Projetos diretos para quem valoriza velocidade e clareza técnica."
               />
             </Text>
           </Box>
@@ -273,20 +273,20 @@ function LandingPage() {
               </Box>
               <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Group gap="sm" mb="xs">
-                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="A Great Partnership" pt="Uma Grande Parceria" /></Badge>
+                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="Featured Project" pt="Projeto em Destaque" /></Badge>
                   <Badge variant="light" color="blue">USA</Badge>
                 </Group>
-                <Text fw={800} size="xl" mb="xs">Latham Pools — Lead Qualification System</Text>
+                <Text fw={800} size="xl" mb="xs">Latham Pools — Lead System</Text>
                 <Text size="sm" c="dimmed" mb="md" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="We turned a complex product selection into a simple, guided path for their clients. It's not just a form; it's a way for their sales team to work better and for customers to feel understood."
-                    pt="Transformamos uma seleção complexa de produtos em um caminho simples e guiado para os clientes deles. Não é apenas um formulário; é uma forma do time de vendas trabalhar melhor e dos clientes se sentirem compreendidos."
+                    en="I programmed a system to help their clients choose products easily. No complex jargon—just a flow that works for the sales team and the customer."
+                    pt="Programei um sistema para ajudar os clientes deles a escolherem produtos facilmente. Sem enrolação — apenas um fluxo que funciona para o time de vendas e para o cliente."
                   />
                 </Text>
                 <Group gap="xs">
                   <Badge size="sm" variant="outline" color="gray">React</Badge>
                   <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
-                  <Badge size="sm" variant="outline" color="gray">Multi-step Forms</Badge>
+                  <Badge size="sm" variant="outline" color="gray">Programming</Badge>
                 </Group>
               </Box>
             </SimpleGrid>
@@ -302,8 +302,8 @@ function LandingPage() {
                 <Text fw={700} size="sm" mb="xs">Card Checkout — Direct Payments</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A payment flow that gets out of the way. Built to be fast, reliable, and easy for the user to finish what they started."
-                    pt="Um fluxo de pagamento que não atrapalha. Feito para ser rápido, confiável e fácil para o usuário terminar o que começou."
+                    en="A payment flow that just works. Built to be fast, reliable, and get the job done."
+                    pt="Um fluxo de pagamento que simplesmente funciona. Feito para ser rápido, confiável e resolver o problema."
                   />
                 </Text>
               </Box>
@@ -318,8 +318,8 @@ function LandingPage() {
                 <Text fw={700} size="sm" mb="xs">CertWorld — Learning Platform</Text>
                 <Text size="xs" c="dimmed" mb="sm">
                   <Intl
-                    en="A space for students to grow. We focused on making the learning experience smooth and the business management simple."
-                    pt="Um espaço para alunos crescerem. Focamos em tornar a experiência de aprendizado fluida e a gestão do negócio simples."
+                    en="A simple platform for students. Clean code, no bugs, and easy to manage."
+                    pt="Uma plataforma simples para alunos. Código limpo, sem bugs e fácil de gerir."
                   />
                 </Text>
               </Box>
@@ -327,71 +327,71 @@ function LandingPage() {
           </SimpleGrid>
         </Box>
 
-        <Divider mb={120} label={<Intl en="How we work together" pt="Como trabalhamos juntos" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="The Deal" pt="O Acordo" />} labelPosition="center" />
 
         {/* ========== PRICING / INVESTMENT ========== */}
         <Box mb={140} id="pricing">
           <Box mb={60} style={{ textAlign: 'center', maxWidth: 750, margin: '0 auto' }}>
             <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }}>
-              <Intl en="Performance-First Engagement" pt="Engajamento Focado em Performance" />
+              <Intl en="Straight Talk" pt="Papo Reto" />
             </Title>
             <Text size="lg" c="dimmed">
               <Intl
-                en="I invest in the foundation because I know the technology works. You invest in scaling the business upon a rock-solid engine."
-                pt="Eu invisto na fundação porque confio na eficiência da minha tecnologia. Você investe em escalar o negócio sobre um motor sólido."
+                en="I show you that my code works first. Then we talk about how to keep it growing."
+                pt="Eu te mostro que meu código funciona primeiro. Depois a gente conversa sobre como continuar crescendo."
               />
             </Text>
           </Box>
 
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
             <GlassCard>
-              <Badge color="cyan" mb="md"><Intl en="Validation" pt="Validação" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Technical MVP" pt="MVP Técnico" /></Text>
+              <Badge color="cyan" mb="md"><Intl en="Proof of Concept" pt="Prova de Conceito" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Initial Code" pt="Código Inicial" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="I'll build the technical core of your vision with zero upfront cost. A practical demonstration of the framework's power."
-                  pt="Construo o núcleo técnico da sua visão com custo inicial zero. Uma demonstração prática da potência da framework."
+                  en="I'll program the core of your idea for free. If you like it, we move forward. No risk for you."
+                  pt="Eu programo o núcleo da sua ideia de graça. Se você gostar, a gente segue. Sem risco para você."
                 />
               </Text>
               <Text fw={900} fz={32} mb="md">
                 <Intl en="$0" pt="R$ 0" />
               </Text>
               <Button fullWidth variant="light" color="cyan" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Start Validation" pt="Iniciar Validação" />
+                <Intl en="Show me" pt="Me mostra" />
               </Button>
             </GlassCard>
 
             <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
-              <Badge color="violet" mb="md"><Intl en="Scale" pt="Escala" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Growth Partnership" pt="Parceria de Crescimento" /></Text>
+              <Badge color="violet" mb="md"><Intl en="Ongoing" pt="Contínuo" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Continuous Coding" pt="Programação Contínua" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="Continuous engineering to evolve the product as your market demands. Dedicated support for scaling operations."
-                  pt="Engenharia contínua para evoluir o produto conforme a demanda do mercado. Suporte dedicado para operações em escala."
+                  en="I keep improving your system as you need it. Faster delivery than anyone else on the market."
+                  pt="Continuo melhorando seu sistema conforme a necessidade. Entrega mais rápida que qualquer um no mercado."
                 />
               </Text>
               <Text fw={700} fz={24} mb="md">
-                <Intl en="Strategic Pricing" pt="Investimento Estratégico" />
+                <Intl en="Fair Value" pt="Valor Justo" />
               </Text>
               <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Discuss Strategy" pt="Discutir Estratégia" />
+                <Intl en="Let's Talk" pt="Vamos Conversar" />
               </Button>
             </GlassCard>
 
             <GlassCard>
-              <Badge color="green" mb="md"><Intl en="Enterprise" pt="Enterprise" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="CTO as a Service" pt="CTO as a Service" /></Text>
+              <Badge color="green" mb="md"><Intl en="Complex" pt="Complexo" /></Badge>
+              <Text fw={700} size="xl" mb={4}><Intl en="Technical Lead" pt="Liderança Técnica" /></Text>
               <Text size="sm" c="dimmed" mb="lg">
                 <Intl
-                  en="Deep technical leadership and infrastructure management for complex, high-volume operations."
-                  pt="Liderança técnica profunda e gestão de infraestrutura para operações complexas e de alto volume."
+                  en="Full technical management for projects that demand high volume and rock-solid reliability."
+                  pt="Gestão técnica total para projetos que exigem alto volume e confiabilidade absoluta."
                 />
               </Text>
               <Text fw={700} fz={rem(24)} mb="md">
-                <Intl en="Custom Architecture" pt="Arquitetura Customizada" />
+                <Intl en="Custom Pricing" pt="Valor Sob Medida" />
               </Text>
               <Button fullWidth variant="light" color="green" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Talk Enterprise" pt="Falar sobre Enterprise" />
+                <Intl en="Contact Me" pt="Chama no Zap" />
               </Button>
             </GlassCard>
           </SimpleGrid>
@@ -401,14 +401,14 @@ function LandingPage() {
         <Box id="contact" py={80} style={{ textAlign: 'center' }}>
           <Title order={1} mb="md" fz={{ base: rem(32), sm: rem(42) }}>
             <Intl
-              en={<>Ready to deploy <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>superior technology?</Text></>}
-              pt={<>Pronto para implementar <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>tecnologia superior?</Text></>}
+              en={<>Need <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>real programming?</Text></>}
+              pt={<>Precisa de <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>programação de verdade?</Text></>}
             />
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 650, margin: '0 auto 40px' }}>
             <Intl
-              en="Direct and strategic. A conversation to align your business goals with the most efficient technical execution possible."
-              pt="Direto ao ponto. Uma conversa estratégica para alinhar seus objetivos de negócio com a execução técnica mais eficiente possível."
+              en="No bureaucracy. Just a chat to get things moving."
+              pt="Sem burocracia. Só um papo pra fazer as coisas andarem."
             />
           </Text>
           <Stack align="center" gap="md">
@@ -445,7 +445,7 @@ function LandingPage() {
         <Divider mb="xl" />
         <Group justify="space-between" pb="xl">
           <Text size="sm" c="dimmed">
-            © 2026 Ícaro C. Capobianco. <Intl en="Built with transparency." pt="Construído com transparência." />
+            © 2026 Ícaro C. Capobianco. <Intl en="Code that works." pt="Código que funciona." />
           </Text>
           <Group gap="md">
             <Anchor href="https://github.com/asasvirtuais" target="_blank" c="dimmed" size="sm">GitHub</Anchor>
