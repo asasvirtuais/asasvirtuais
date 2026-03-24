@@ -178,21 +178,21 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>If you're here, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>you're probably tired of the same old talk.</Text></>}
-              pt={<>Se você chegou até aqui, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>provavelmente está cansado da mesma conversa de sempre.</Text></>}
+              en={<>Web Developer with 7 years of experience, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>freelancer focused on delivering results.</Text></>}
+              pt={<>Desenvolvedor Web com 7 anos de experiência, <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>freelancer focado em entregar resultados.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I'm not interested in selling you a project or billing for 'deliverables'. I want to find people who actually care about what they are building. I've spent years refining a way to build software that is honest, fast, and stays out of the way of your business. Now, I'm looking for partners who value that integrity as much as I do."
-                pt="Eu não tenho interesse em te vender um projeto ou faturar em cima de 'entregáveis'. O que eu busco são pessoas que realmente se importam com o que estão construindo. Passei anos refinando uma forma de criar software que seja honesta, rápida e que não atrapalhe o seu negócio. Agora, procuro parceiros que valorizem essa integridade tanto quanto eu."
+                en="I deliver what the market doesn't understand (or doesn't want to). While others fail by getting lost in bureaucratic processes and empty 'deliverables', I (only) get it right because I focus on the truth of your business."
+                pt="Eu entrego o que o mercado não entende (ou não quer entender). Onde os outros erram por se perderem em processos burocráticos e 'entregáveis' vazios, eu (só) acerto porque foco na verdade do seu negócio."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="The code is just the tool. The real work is understanding why your idea matters and making sure the technology supports it without becoming a burden. I treat every project as if it were my own, because if it doesn't work for you, it doesn't work for me."
-                pt="O código é apenas a ferramenta. O trabalho real é entender por que a sua ideia importa e garantir que a tecnologia suporte isso sem se tornar um fardo. Eu trato cada projeto como se fosse meu, porque se não funcionar para você, não funciona para mim."
+                en="I've spent years refining an architecture that is honest, fast, and stays out of the way of your growth. I'm looking for partners who value these results."
+                pt="Passei anos refinando uma arquitetura que é honesta, rápida e que não atrapalha o seu crescimento. Procuro parceiros que valorizem esses resultados."
               />
             </Text>
             <Group gap="lg" mt="md">
