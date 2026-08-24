@@ -1,8 +1,8 @@
 'use client';
 
-import { MantineProvider, createTheme } from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
-import React from 'react';
+import { MantineProvider, createTheme } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
+import React from 'react'
 
 const theme = createTheme({
   primaryColor: 'violet',
@@ -10,7 +10,7 @@ const theme = createTheme({
   headings: {
     fontFamily: 'Outfit, sans-serif',
   },
-});
+})
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
@@ -18,5 +18,5 @@ export function Provider({ children }: { children: React.ReactNode }) {
       <Notifications />
       {children}
     </MantineProvider>
-  );
+  )
 }

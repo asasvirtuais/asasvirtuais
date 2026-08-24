@@ -29,35 +29,6 @@ import {
   FaWhatsapp,
   FaEnvelope
 } from 'react-icons/fa'
-import {
-  SiNextdotjs,
-  SiReact,
-  SiTypescript,
-  SiNodedotjs,
-  SiPostgresql,
-  SiMongodb,
-  SiDocker,
-  SiVercel,
-  SiAirtable,
-  SiStripe,
-  SiPython,
-  SiFirebase,
-  SiGooglecloud
-} from 'react-icons/si'
-import {
-  IconRocket,
-  IconShieldCheck,
-  IconClock,
-  IconCurrencyDollar,
-  IconBulb,
-  IconArrowRight,
-  IconMessage,
-  IconCode,
-  IconDeviceLaptop,
-  IconHeadset,
-  IconUsers,
-  IconPuzzle
-} from '@tabler/icons-react'
 
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
 
