@@ -12,7 +12,7 @@ import {
 } from '@mantine/core'
 import { Notifications } from '@mantine/notifications'
 import { IconCheck, IconUser, IconSearch, IconReceipt, IconMail } from '@tabler/icons-react'
-import { Intl } from '@/app/(main)/IntlProvider'
+import { Intl } from '@/app/IntlProvider'
 
 // ═══════════════════════════════════════════════════════════════
 // MOCK DATA — Simulates separate database tables & external APIs

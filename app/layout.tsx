@@ -3,7 +3,6 @@ import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 import { ColorSchemeScript } from '@mantine/core'
 import { Provider } from '@/components/ui/provider'
-import { Auth0Provider } from '@auth0/nextjs-auth0/client'
 import { Analytics } from '@vercel/analytics/react'
 
 import { Metadata } from 'next'
@@ -36,11 +35,9 @@ export default function RootLayout({
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>
       <body>
-        <Auth0Provider>
           <Provider>
             {children}
           </Provider>
-        </Auth0Provider>
         <Analytics />
       </body>
     </html>

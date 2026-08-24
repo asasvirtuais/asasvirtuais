@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Title, Text, Box, rem, Paper, SimpleGrid, ThemeIcon, Badge, Group, Button, Divider, Stack, Anchor } from '@mantine/core'
-import { IntlProvider, Intl, LanguageToggle } from '@/app/(main)/IntlProvider'
+import { IntlProvider, Intl, LanguageToggle } from '@/app/IntlProvider'
 import { MachineryProvider } from '@/packages/machinery/provider'
 import { ConfigureMachinery, SubmittedQuotesList } from '@/packages/machinery/forms'
 import { IconArrowLeft } from '@tabler/icons-react'
