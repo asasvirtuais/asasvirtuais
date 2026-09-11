@@ -48,17 +48,17 @@ location: São Paulo, SP, Brasil
 
 **Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
 
-**Freelance Full-Stack Engineer** *(2025)* — Built CertWorld, an end-to-end online courses platform MVP, acting as the sole engineer from specification to production[cite: 1]. Architected and deployed lessons, examination workflows, payment processing, and user authentication using Next.js, React, Airtable, Stripe, and Auth0[cite: 1].
+**Freelance Full-Stack Engineer** *(2025)* — Built CertWorld, an end-to-end online courses platform MVP, acting as the sole engineer from specification to production. Architected and deployed lessons, examination workflows, payment processing, and user authentication using Next.js, React, Airtable, Stripe, and Auth0.
 
-**Freelance Full-Stack Engineer** *(2024)* — Delivered 8 contracts on Upwork with an average rating of 4.8/5.0 across TypeScript, React, Node.js, and PHP[cite: 1]. Built database apps, custom portal buildouts, ops dev tasks, and core frontend integrations for US-based clients, maintaining Top Rated status with over 5,000 tracked hours and $100k+ in platform earnings[cite: 1].
+**Freelance Full-Stack Engineer** *(2024)* — Delivered 8 contracts on Upwork with an average rating of 4.8/5.0 across TypeScript, React, Node.js, and PHP. Built database apps, custom portal buildouts, ops dev tasks, and core frontend integrations for US-based clients, maintaining Top Rated status with over 5,000 tracked hours and $100k+ in platform earnings.
 
-**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems[cite: 1]. Developed dynamic product configurators—including the Latham Pools lead-qualification tool using React, GraphQL, and Airtable—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines[cite: 1].
+**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems. Developed dynamic product configurators—including the Latham Pools lead-qualification tool using React, GraphQL, and Airtable—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines.
 
-**SDK Co** *(Sep 2021 — Feb 2022)* — Developer Advocate / Director, Web3 Technologies authoring technical documentation, facilitating developer onboarding, and researching blockchain protocol integrations using JavaScript and TypeScript[cite: 1].
+**SDK Co** *(Sep 2021 — Feb 2022)* — Developer Advocate / Director, Web3 Technologies authoring technical documentation, facilitating developer onboarding, and researching blockchain protocol integrations using JavaScript and TypeScript.
 
-**The Get Smart Group** *(Feb 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue[cite: 1]. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas[cite: 1].
+**The Get Smart Group** *(Feb 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas.
 
-**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns[cite: 1].
+**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns.
 
 ---
 
