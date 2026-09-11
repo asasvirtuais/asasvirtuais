@@ -30,14 +30,14 @@ location: São Paulo, SP, Brasil
 | Category | Skills |
 | :--- | :--- |
 | **Frontend Frameworks** | `Next.js` `React` |
-| **Languages** | `TypeScript` `JavaScript` `PHP` |
+| **Languages** | `TypeScript` `JavaScript` `PHP` `Python` |
 | **Backend Frameworks** | `Node.js` `Express` `Laravel` `Prisma` |
-| **Datastores** | `PostgreSQL` `MySQL` `MongoDB` `Redis` |
+| **Datastores** | `PostgreSQL` `MySQL` `MongoDB` `Redis` `Firestore` `Firebase Realtime DB` `SurrealDB` `IndexedDB (Dexie.js)` |
 | **APIs & Standards** | `REST` `GraphQL` `Stripe` `Auth0` `PayPal API` `Google APIs` `GoogleMaps API` |
-| **CMS** | `WooCommerce` `WordPress` |
-| **Infrastructure & Tools**| `Terraform` `AWS` `Supabase` `Firebase` `GitHub Actions` `Webpack` `Git` |
-| **Stylesheets** | `Tailwind CSS` `styled-components` `Material Design` `CSS3` `Flexbox` |
-| **Libraries** | `D3.js` `RxJS` `WebGL` `Web3` `Jest` `Chai` `ESLint` |
+| **CMS & Platforms** | `Airtable` `WooCommerce` `WordPress` |
+| **Cloud & DevOps** | `Terraform` `AWS` `Vercel` `GCP` `Fly.io` `Docker` `Supabase` `Firebase` `GitHub Actions` `Git` |
+| **Stylesheets & UI** | `Tailwind CSS` `Chakra UI` `Mantine` `styled-components` `Material Design` `CSS3` `Flexbox` |
+| **Libraries** | `Zod` `D3.js` `RxJS` `WebGL` `Web3` `Jest` `Chai` `ESLint` |
 | **Methodologies** | `Agile` `BDD` `DDD` `TDD` `FDD` |
 
 </div>
@@ -46,17 +46,19 @@ location: São Paulo, SP, Brasil
 
 ### 💼 Career Experience
 
-**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries.
+**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
 
-**Freelance Full-Stack Engineer** *(Jan 2024 — 2025)* — Top Rated freelancer across Upwork and Contra with over 5,000 tracked hours and $100k+ in earnings. Shipped full-stack production systems end-to-end, including architecting and deploying an entire online courses platform MVP (CertWorld) in 2025 using Next.js, React, Airtable, Stripe, and Auth0, alongside numerous successful client contracts delivering custom React, Node.js, and TypeScript integrations.
+**Freelance Full-Stack Engineer** *(2025)* — Built CertWorld, an end-to-end online courses platform MVP, acting as the sole engineer from specification to production[cite: 1]. Architected and deployed lessons, examination workflows, payment processing, and user authentication using Next.js, React, Airtable, Stripe, and Auth0[cite: 1].
 
-**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems. Developed dynamic pricing configurators—including the Latham Pools cost estimator qualifying leads for one of the largest pool manufacturers in the US—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines across Stripe and Airtable.
+**Freelance Full-Stack Engineer** *(2024)* — Delivered 8 contracts on Upwork with an average rating of 4.8/5.0 across TypeScript, React, Node.js, and PHP[cite: 1]. Built database apps, custom portal buildouts, ops dev tasks, and core frontend integrations for US-based clients, maintaining Top Rated status with over 5,000 tracked hours and $100k+ in platform earnings[cite: 1].
 
-**SDK Co** *(Sep 2021 — Feb 2022)* — Director, Web3 Technologies responsible for authoring technical documentation, onboarding developers, and researching blockchain integrations.
+**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems[cite: 1]. Developed dynamic product configurators—including the Latham Pools lead-qualification tool using React, GraphQL, and Airtable—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines[cite: 1].
 
-**The Get Smart Group** *(Mar 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas.
+**SDK Co** *(Sep 2021 — Feb 2022)* — Developer Advocate / Director, Web3 Technologies authoring technical documentation, facilitating developer onboarding, and researching blockchain protocol integrations using JavaScript and TypeScript[cite: 1].
 
-**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns.
+**The Get Smart Group** *(Feb 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue[cite: 1]. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas[cite: 1].
+
+**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns[cite: 1].
 
 ---
 
