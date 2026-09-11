@@ -46,7 +46,7 @@ location: São Paulo, SP, Brasil
 
 ### 💼 Career Experience
 
-**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
+**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries.
 
 **Freelance Full-Stack Engineer** *(Jan 2024 — 2025)* — Top Rated freelancer across Upwork and Contra with over 5,000 tracked hours and $100k+ in earnings. Shipped full-stack production systems end-to-end, including architecting and deploying an entire online courses platform MVP (CertWorld) in 2025 using Next.js, React, Airtable, Stripe, and Auth0, alongside numerous successful client contracts delivering custom React, Node.js, and TypeScript integrations.
 
