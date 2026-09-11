@@ -5,7 +5,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Status-Ready%20to%20interview-success?style=for-the-badge" alt="Status: Ready to interview"/>
   <img src="https://img.shields.io/badge/Location-São%20Paulo%2C%20SP%2C%20Brasil-blue?style=for-the-badge" alt="São Paulo, SP, Brasil"/>
-  <img src="https://img.shields.io/badge/Experience-7%20Years-orange?style=for-the-badge" alt="7 Years Experience"/>
+  <img src="https://img.shields.io/badge/Upwork-Top%20Rated%20%7C%205000%2B%20hrs%20%7C%20%24100k%2B-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Upwork Top Rated"/>
 </div>
 
 <br/>
@@ -34,7 +34,7 @@ location: São Paulo, SP, Brasil
 | **Backend Frameworks** | `Node.js` `Express` `Laravel` `Prisma` |
 | **Datastores** | `PostgreSQL` `MySQL` `MongoDB` `Redis` |
 | **APIs & Standards** | `REST` `GraphQL` `Stripe` `Auth0` `PayPal API` `Google APIs` `GoogleMaps API` |
-| **CMS** | `WordPress` `WooCommerce` |
+| **CMS** | `WooCommerce` `WordPress` |
 | **Infrastructure & Tools**| `Terraform` `AWS` `Supabase` `Firebase` `GitHub Actions` `Webpack` `Git` |
 | **Stylesheets** | `Tailwind CSS` `styled-components` `Material Design` `CSS3` `Flexbox` |
 | **Libraries** | `D3.js` `RxJS` `WebGL` `Web3` `Jest` `Chai` `ESLint` |
@@ -46,26 +46,17 @@ location: São Paulo, SP, Brasil
 
 ### 💼 Career Experience
 
-* **Startup Labs** — *Senior Full-Stack Engineer* `(Jul 2026 — Current)`
-  * Led full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript.
-  * Established clean architecture, defined API boundaries, and ensured data integrity and code quality across complex operational workflows.
-  * **Operational Ledger**: Worked on a complex dashboard and operational ledger project built from scratch (*Solutions Architect, React, TypeScript, Next.js*).
+**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
 
-* **The Get Smart Group** — *Web Developer* `(Mar 2022 — Jun 2023)`
-  * Developed custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems.
-  * Built dynamic product configurators, connected legacy PoS systems via APIs/GraphQL, integrated Stripe and Airtable, and automated deployment pipelines for US-based clients.
-  * **Pool Cost Estimator**: Built a lead-capturing form that qualified the lead with pool product options for Latham Pools, one of the biggest pool companies in the U.S. (*Full-Stack Engineer, React, GraphQL*).
+**Freelance Full-Stack Engineer** *(Jan 2024 — 2025)* — Top Rated freelancer across Upwork and Contra with over 5,000 tracked hours and $100k+ in earnings. Shipped full-stack production systems end-to-end, including architecting and deploying an entire online courses platform MVP (CertWorld) in 2025 using Next.js, React, Airtable, Stripe, and Auth0, alongside numerous successful client contracts delivering custom React, Node.js, and TypeScript integrations.
 
-* **SDK Co** — *Director, Web3 Technologies* `(Sep 2021 — Feb 2022)`
-  * Produced technical documentation. Supported developer onboarding. Researched blockchain integrations.
+**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems. Developed dynamic pricing configurators—including the Latham Pools cost estimator qualifying leads for one of the largest pool manufacturers in the US—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines across Stripe and Airtable.
 
-* **The Get Smart Group** — *Web Developer* `(Mar 2020 — Sep 2021)`
-  * Built dozens of WordPress plugins and front-end tools contributing to six-figure client revenue. Led the stack migration from PHP/jQuery to React and TypeScript.
-  * **Legacy PoS systems integration with WordPress**: Integrated legacy APIs for pool companies to see/manage their orders through their WordPress dashboard (*Full-Stack Engineer, React, TypeScript, PHP*).
-  * **Custom Scheduling Rules for WooCommerce Yith Bookings**: Examined the PHP plugin codebase and integrated it with a custom rule system for specific scheduling rules including specific daily service quotas (*Backend Engineer, JavaScript, PHP*).
+**SDK Co** *(Sep 2021 — Feb 2022)* — Director, Web3 Technologies responsible for authoring technical documentation, onboarding developers, and researching blockchain integrations.
 
-* **Expert Ready** — *WordPress Web Developer* `(Mar 2019 — Feb 2020)`
-  * Built WordPress themes and PHP plugins. Worked with jQuery, Bootstrap, and Event Sourcing.
+**The Get Smart Group** *(Mar 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas.
+
+**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns.
 
 ---
 
