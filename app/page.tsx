@@ -128,8 +128,8 @@ function LandingPage() {
         <Box mb={120} mt={60} style={{ maxWidth: 880 }}>
           <Badge variant="dot" color="violet" size="lg" mb="sm">
             <Intl
-              en="Ícaro C. Capobianco — Software Engineer · Solutions Architect"
-              pt="Ícaro C. Capobianco — Engenheiro de Software · Arquiteto de Soluções"
+              en="Ícaro C. Capobianco — Software Engineer · Framework Author"
+              pt="Ícaro C. Capobianco — Engenheiro de Software · Autor de Framework"
             />
           </Badge>
           <Title
@@ -179,9 +179,9 @@ function LandingPage() {
           </Stack>
         </Box>
 
-        <Divider mb={120} label={<Intl en="What I've built" pt="O que eu construí" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="Software I maintain" pt="Minha engenharia de software" />} labelPosition="center" />
 
-        {/* ========== WHAT I'VE BUILT ========== */}
+        {/* ========== SOFTWARE I MAINTAIN ========== */}
         <Box id="software" mb={140}>
           {/* ── Guild RPG ── */}
           <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">

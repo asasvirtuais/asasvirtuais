@@ -15,7 +15,7 @@
 
 ```yaml
 name: Icaro Carniello Capobianco
-primary_role: Software Engineer · Solutions Architect
+primary_role: Software Engineer · Framework Author
 preferred_roles: [Full-Stack Engineer, Solutions Architect]
 top_skills: [React, TypeScript, Next.js, Agentic development]
 experience: 7 years (Software professional since 2019)
@@ -24,7 +24,7 @@ location: São Paulo, SP, Brasil
 
 ---
 
-### 🧩 What I've Built
+### 🧩 Software I Maintain
 
 **[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)** — An open-source framework I created: of architectural decisions for React and TypeScript, plus an `AGENTS.md` that tells any coding agent where each piece of code goes. One CRUD interface routed to one middleware per table, one zod schema per table as type, validation and form fields, and forms that write into a shared index of rows so the UI never goes stale.
 
@@ -58,7 +58,7 @@ location: São Paulo, SP, Brasil
 
 ### 💼 Career Experience
 
-**asasvirtuais & Guild RPG** *(2025 — Current)* — Created the asasvirtuais open-source framework and maintain Guild RPG, a live multiplayer AI platform a coding agent built on it. See [What I've Built](#-what-ive-built).
+**asasvirtuais & Guild RPG** *(2025 — Current)* — Created the asasvirtuais open-source framework and maintain Guild RPG, a live multiplayer AI platform a coding agent built on it. See [Software I Maintain](#-software-i-maintain).
 
 **Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
 
