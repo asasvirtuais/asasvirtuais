@@ -167,7 +167,7 @@ function LandingPage() {
                 gradient={gradientText}
                 rightSection={<FaArrowRight size={16} />}
                 component="a"
-                href="/guild-rpg"
+                href="/never-broke-architecture"
               >
                 <Intl en="Read the case study" pt="Leia o estudo de caso" />
               </Button>
@@ -207,7 +207,7 @@ function LandingPage() {
                   <Stat value="0" label={<Intl en="lines changed by hand" pt="linhas alteradas à mão" />} />
                 </SimpleGrid>
                 <Group gap="sm">
-                  <Button component="a" href="/guild-rpg" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaArrowRight size={12} />}>
+                  <Button component="a" href="/never-broke-architecture" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaArrowRight size={12} />}>
                     <Intl en="Case study" pt="Estudo de caso" />
                   </Button>
                   <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="default" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
