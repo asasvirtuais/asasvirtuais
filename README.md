@@ -28,7 +28,7 @@ location: São Paulo, SP, Brasil
 
 **[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)** — An open-source framework I created: of architectural decisions for React and TypeScript, plus an `AGENTS.md` that tells any coding agent where each piece of code goes. One CRUD interface routed to one middleware per table, one zod schema per table as type, validation and form fields, and forms that write into a shared index of rows so the UI never goes stale.
 
-**[Guild RPG](https://guildrpg.vercel.app)** — The platform I maintain: a multiplayer play-by-post RPG where an AI runs the game. Claude Code built it on asasvirtuais from a written spec, from a phone, in about ten working days: **240 commits, 19 tables, 0 lines changed by hand, and the architecture never broke.** Read the case study: **[Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
+**[Guild RPG](https://guildrpg.vercel.app)** — The platform I maintain: a multiplayer play-by-post RPG where an AI runs the game. Claude Code built it on asasvirtuais from a written spec, from a phone, in about ten working days: **240 commits, 19 tables, and the architecture never broke.** Read the case study: **[Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
 
 > I make codebases **agent-maintainable**, and here's a live production app where the agent **never broke the architecture**.
 

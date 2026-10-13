@@ -26,7 +26,7 @@ const stats = [
   ['19', 'tables, all read and written through one CRUD interface'],
   ['50', 'commits that changed the database schema'],
   ['48', 'commits that changed authorization rules'],
-  ['0', 'lines of code changed by hand'],
+  ['5', 'structural refactors, each done in a day or less'],
 ]
 
 export function CaseStudy({ markdown }: { markdown: string }) {
@@ -115,7 +115,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
           </Title>
           <Text c="dimmed" size="lg" style={{ maxWidth: 680, margin: '0 auto 16px', lineHeight: 1.7 }}>
             A multi-tenant app with guilds, roles and permissions, an AI game master, a card economy and approval
-            workflows: 19 tables and 240 commits in about ten working days, with no code changed by hand.
+            workflows: 19 tables and 240 commits in about ten working days.
           </Text>
           <Text c="dimmed" size="lg" style={{ maxWidth: 680, margin: '0 auto', lineHeight: 1.7 }}>
             All of it maintained by two things: the framework's intelligent design and machine intelligence. The framework

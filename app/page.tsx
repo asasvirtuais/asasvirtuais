@@ -155,8 +155,8 @@ function LandingPage() {
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="240 commits, 19 tables, zero lines changed by hand, and the architecture never broke. Seven years of remote work for US clients before that."
-                pt="240 commits, 19 tabelas, nenhuma linha alterada à mão, e a arquitetura nunca quebrou. Antes disso, sete anos de trabalho remoto para clientes dos EUA."
+                en="240 commits, 19 tables, and the architecture never broke. Seven years of remote work for US clients before that."
+                pt="240 commits, 19 tabelas, e a arquitetura nunca quebrou. Antes disso, sete anos de trabalho remoto para clientes dos EUA."
               />
             </Text>
             <Group gap="md" mt="md">
@@ -204,7 +204,7 @@ function LandingPage() {
                   <Stat value="~10" label={<Intl en="working days" pt="dias úteis" />} />
                   <Stat value="240" label={<Intl en="commits by the agent" pt="commits do agente" />} />
                   <Stat value="19" label={<Intl en="tables, one CRUD interface" pt="tabelas, uma interface CRUD" />} />
-                  <Stat value="0" label={<Intl en="lines changed by hand" pt="linhas alteradas à mão" />} />
+                  <Stat value="5" label={<Intl en="big refactors, a day or less each" pt="grandes refatorações, um dia ou menos cada" />} />
                 </SimpleGrid>
                 <Group gap="sm">
                   <Button component="a" href="/never-broke-architecture" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaArrowRight size={12} />}>

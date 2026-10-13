@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { CaseStudy } from './case-study'
 
 const title = 'Built by an agent. The architecture never broke. | asasvirtuais.dev'
-const description = 'Case study: Guild RPG, a live multiplayer AI game built by Claude Code on the asasvirtuais framework in ten working days. 240 commits, 0 lines changed by hand.'
+const description = 'Case study: Guild RPG, a live multiplayer AI game built by Claude Code on the asasvirtuais framework in ten working days. 240 commits, 19 tables, and the architecture never broke.'
 
 export const metadata: Metadata = {
   title,
