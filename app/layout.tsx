@@ -7,20 +7,24 @@ import { Analytics } from '@vercel/analytics/react'
 
 import { Metadata } from 'next'
 
+const title = 'Ícaro C. Capobianco | asasvirtuais.dev'
+const description = 'Engenheiro de software, dono do framework open-source asasvirtuais e mantenedor do Guild RPG. Eu torno codebases sustentáveis por agentes.'
+
 export const metadata: Metadata = {
-  title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-  description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
+  metadataBase: new URL('https://asasvirtuais.dev'),
+  title,
+  description,
   openGraph: {
-    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-    description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
-    images: [{ url: '/looking-dev.png' }],
+    title,
+    description,
+    images: [{ url: '/software/guild-rpg.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'asasvirtuais.dev | Ícaro C. Capobianco - Desenvolvedor Web',
-    description: 'Desenvolvedor web que se importa com o seu negócio. Construindo software de forma honesta, transparente e sem amarras tecnológicas.',
-    images: ['/looking-dev.png'],
+    title,
+    description,
+    images: ['/software/guild-rpg.png'],
   },
 }
 

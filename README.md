@@ -1,11 +1,12 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,21&height=220&section=header&text=Icaro%20Carniello%20Capobianco&fontSize=46&fontAlignY=38&desc=Solutions%20Architect%20%7C%20Senior%20Full-Stack%20Developer&descAlignY=58&descFontSize=20&fontColor=ffffff" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,21&height=220&section=header&text=Icaro%20Carniello%20Capobianco&fontSize=46&fontAlignY=38&desc=I%20make%20codebases%20agent-maintainable&descAlignY=58&descFontSize=20&fontColor=ffffff" width="100%"/>
 </div>
 
 <div align="center">
   <img src="https://img.shields.io/badge/Status-Ready%20to%20interview-success?style=for-the-badge" alt="Status: Ready to interview"/>
   <img src="https://img.shields.io/badge/Location-São%20Paulo%2C%20SP%2C%20Brasil-blue?style=for-the-badge" alt="São Paulo, SP, Brasil"/>
-  <img src="https://img.shields.io/badge/Upwork-Top%20Rated%20%7C%205000%2B%20hrs%20%7C%20%24100k%2B-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Upwork Top Rated"/>
+  <a href="https://github.com/asasvirtuais/asasvirtuais-framework"><img src="https://img.shields.io/badge/Owner-asasvirtuais%20framework-7950f2?style=for-the-badge&logo=github&logoColor=white" alt="Owner of the asasvirtuais framework"/></a>
+  <a href="https://guildrpg.vercel.app"><img src="https://img.shields.io/badge/Maintainer-Guild%20RPG-d32f2f?style=for-the-badge" alt="Maintainer of Guild RPG"/></a>
 </div>
 
 <br/>
@@ -14,12 +15,22 @@
 
 ```yaml
 name: Icaro Carniello Capobianco
-primary_role: Solutions Architect
+primary_role: Software Engineer · Framework Author
 preferred_roles: [Full-Stack Engineer, Solutions Architect]
-top_skills: [React, TypeScript, Next.js]
-experience: 7 years (Software professional & freelancing since 2019)
+top_skills: [React, TypeScript, Next.js, Agentic development]
+experience: 7 years (Software professional since 2019)
 location: São Paulo, SP, Brasil
 ```
+
+---
+
+### 🧩 Software I Maintain
+
+**[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)** — *Owner.* An open-source framework of architectural decisions for React and TypeScript, plus an `AGENTS.md` that tells any coding agent where each piece of code goes. One CRUD interface routed to one middleware per table, one zod schema per table as type, validation and form fields, and forms that write into a shared index of rows so the UI never goes stale.
+
+**[Guild RPG](https://guildrpg.vercel.app)** — *Maintainer.* A multiplayer play-by-post RPG where an AI runs the game. Claude Code built it on asasvirtuais from a written spec, from a phone, in about ten working days: **240 commits, 19 tables, 0 lines changed by hand, and the architecture never broke.** Read the case study: **[Built by an agent. The architecture never broke.](https://asasvirtuais.dev/guild-rpg)**
+
+> I make codebases **agent-maintainable**, and here's a live production app where the agent **never broke the architecture**.
 
 ---
 
@@ -37,6 +48,7 @@ location: São Paulo, SP, Brasil
 | **CMS & Platforms** | `Airtable` `WooCommerce` `WordPress` |
 | **Cloud & DevOps** | `Terraform` `AWS` `Vercel` `GCP` `Fly.io` `Docker` `Supabase` `Firebase` `GitHub Actions` `Git` |
 | **Stylesheets & UI** | `Tailwind CSS` `Chakra UI` `Mantine` `styled-components` `Material Design` `CSS3` `Flexbox` |
+| **Agentic Development** | `Claude Code` `Spec-driven development` `AGENTS.md` `AI SDK` |
 | **Libraries** | `Zod` `D3.js` `RxJS` `WebGL` `Web3` `Jest` `Chai` `ESLint` |
 | **Methodologies** | `Agile` `BDD` `DDD` `TDD` `FDD` |
 
@@ -45,6 +57,8 @@ location: São Paulo, SP, Brasil
 ---
 
 ### 💼 Career Experience
+
+**asasvirtuais & Guild RPG** *(2025 — Current)* — Owner of the asasvirtuais open-source framework and maintainer of Guild RPG, a live multiplayer AI game built on it by a coding agent. See [Software I Maintain](#-software-i-maintain).
 
 **Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
 

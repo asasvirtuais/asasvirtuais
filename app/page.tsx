@@ -16,8 +16,6 @@ import {
   Anchor,
   ActionIcon,
   Tooltip,
-  Paper,
-  BoxProps,
   rem,
   Timeline
 } from '@mantine/core'
@@ -26,28 +24,20 @@ import {
   FaLinkedin,
   FaCode,
   FaArrowRight,
-  FaWhatsapp,
-  FaEnvelope
+  FaEnvelope,
+  FaFileDownload,
+  FaExternalLinkAlt
 } from 'react-icons/fa'
 
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
+import { GlassCard } from '@/components/ui/glass-card'
 
-const GlassCard = ({ children, padding = 'xl', ...props }: { children: React.ReactNode, padding?: any } & BoxProps) => (
-  <Paper
-    {...props}
-    p={padding}
-    style={{
-      background: 'rgba(255, 255, 255, 0.03)',
-      backdropFilter: 'blur(12px)',
-      border: '1px solid rgba(255, 255, 255, 0.08)',
-      borderRadius: 'var(--mantine-radius-lg)',
-      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-      ...props.style
-    }}
-  >
-    {children}
-  </Paper>
-)
+const CV = {
+  en: '/cv/Icaro-Capobianco-CV-EN.pdf',
+  pt: '/cv/Icaro-Capobianco-CV-PT.pdf',
+}
+
+const gradientText = { from: 'violet', to: 'cyan' }
 
 export default function Home() {
   return (
@@ -98,7 +88,7 @@ function LandingPage() {
         {/* Header/Nav */}
         <Group justify="space-between" mb={80}>
           <Group gap="xs">
-            <ThemeIcon size="xl" radius="md" variant="gradient" gradient={{ from: 'violet', to: 'cyan' }}>
+            <ThemeIcon size="xl" radius="md" variant="gradient" gradient={gradientText}>
               <FaCode size={20} />
             </ThemeIcon>
             <Text fw={800} size="xl" style={{ letterSpacing: '-0.5px' }}>
@@ -134,10 +124,13 @@ function LandingPage() {
           </Group>
         </Group>
 
-        {/* ========== HERO / CONVERSATION START ========== */}
-        <Box mb={120} mt={60} style={{ maxWidth: 850 }}>
+        {/* ========== HERO ========== */}
+        <Box mb={120} mt={60} style={{ maxWidth: 880 }}>
           <Badge variant="dot" color="violet" size="lg" mb="sm">
-            Ícaro C. Capobianco — Programador
+            <Intl
+              en="Ícaro C. Capobianco — Software Engineer · Framework Author"
+              pt="Ícaro C. Capobianco — Engenheiro de Software · Autor de Framework"
+            />
           </Badge>
           <Title
             order={1}
@@ -149,237 +142,243 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>Systems development. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>From concept to product in days.</Text></>}
-              pt={<>Desenvolvimento de sistemas. <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>Do conceito ao produto em dias.</Text></>}
+              en={<>I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable.</Text></>}
+              pt={<>Eu torno codebases <Text span variant="gradient" gradient={gradientText} inherit>sustentáveis por agentes.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I turn your ideas into functional software quickly. With a clear vision of what needs to be built, I deliver results in days, not weeks."
-                pt="Transformo sua ideia em software funcional com rapidez. Com uma visão clara do que precisa ser feito, entrego resultados em dias, não semanas."
+                en="I own asasvirtuais, an open-source framework of architectural rules for React and TypeScript, and I maintain Guild RPG, a live multiplayer game a coding agent built on it in ten working days."
+                pt="Sou dono do asasvirtuais, um framework open-source de regras de arquitetura para React e TypeScript, e mantenho o Guild RPG, um jogo multiplayer em produção que um agente de código construiu sobre ele em dez dias úteis."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
               <Intl
-                en="I use a custom set of tools to speed up development and ensure quality, without the bottlenecks or delays of traditional processes."
-                pt="Uso um conjunto de ferramentas próprias para acelerar o desenvolvimento e garantir qualidade, sem as travas ou a demora dos processos tradicionais."
+                en="240 commits, 19 tables, zero lines changed by hand, and the architecture never broke. Seven years of remote work for US clients before that."
+                pt="240 commits, 19 tabelas, nenhuma linha alterada à mão, e a arquitetura nunca quebrou. Antes disso, sete anos de trabalho remoto para clientes dos EUA."
               />
             </Text>
-            <Group gap="lg" mt="md">
+            <Group gap="md" mt="md">
               <Button
                 size="lg"
                 radius="md"
                 variant="gradient"
-                gradient={{ from: 'violet', to: 'cyan' }}
+                gradient={gradientText}
                 rightSection={<FaArrowRight size={16} />}
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                component="a"
+                href="/guild-rpg"
               >
-                <Intl en="Let's build it" pt="Vamos fazer acontecer" />
+                <Intl en="Read the case study" pt="Leia o estudo de caso" />
               </Button>
+              <Intl
+                en={<CVButton href={CV.en} label="Download CV" />}
+                pt={<CVButton href={CV.pt} label="Baixar currículo" />}
+              />
             </Group>
           </Stack>
         </Box>
 
-        {/* ========== THE STATE OF THINGS ========== */}
-        <Box mb={140} style={{ maxWidth: 800 }}>
-          <Divider mb={80} label={<Intl en="How I Work" pt="Como eu trabalho" />} labelPosition="center" />
-          <Stack gap={80}>
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Focus on the Goal" pt="Foco no Objetivo" />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="I prioritize understanding the core needs of your project. I build direct and efficient solutions, avoiding unnecessary complexity."
-                  pt="Priorizo entender a necessidade real do seu projeto. Desenvolvo soluções diretas e eficientes, evitando complexidade desnecessária."
-                />
-              </Text>
-            </Box>
+        <Divider mb={120} label={<Intl en="The software I maintain" pt="O software que eu mantenho" />} labelPosition="center" />
 
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Agile Delivery" pt="Entrega Ágil" />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="With a refined workflow, I can turn ideas into functional prototypes in a fraction of the usual market time."
-                  pt="Com um fluxo de trabalho otimizado, consigo transformar ideias em protótipos funcionais em uma fração do tempo habitual do mercado."
-                />
-              </Text>
-            </Box>
-
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Custom Technology" pt="Tecnologia Própria" />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="I use a custom framework that handles the repetitive parts of coding, allowing me to focus on what makes your project unique."
-                  pt="Utilizo um framework próprio que lida com a parte repetitiva do código, permitindo focar no que torna seu projeto único."
-                />
-              </Text>
-            </Box>
-          </Stack>
-        </Box>
-
-        <Divider mb={120} label={<Intl en="What I've Done" pt="O que eu já fiz" />} labelPosition="center" />
-
-        {/* ========== PORTFOLIO ========== */}
-        <Box id="work" mb={140}>
-          <Box mb={60} style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-            <Text size="lg" c="dimmed">
-              <Intl
-                en="Straightforward projects for people who value speed and technical clarity."
-                pt="Projetos diretos para quem valoriza velocidade e clareza técnica."
-              />
-            </Text>
-          </Box>
-
-          {/* ── FEATURED: Latham Pools ── */}
+        {/* ========== SOFTWARE I MAINTAIN ========== */}
+        <Box id="software" mb={140}>
+          {/* ── Guild RPG ── */}
           <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
-              <Box style={{ position: 'relative', minHeight: 300, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/latham-estimator/latham1.webp" height={300} fit="contain" alt="Latham Pools Estimator" />
+              <Box style={{ background: 'rgba(0,0,0,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: rem(32) }}>
+                <Image src="/software/guild-rpg.png" mah={460} w="auto" fit="contain" alt="Guild RPG: a mission encounter with an AI-drawn scene and player turns" />
               </Box>
               <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Group gap="sm" mb="xs">
-                  <Badge variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} size="lg"><Intl en="Featured Project" pt="Projeto em Destaque" /></Badge>
-                  <Badge variant="light" color="blue">USA</Badge>
+                  <Badge variant="gradient" gradient={gradientText} size="lg"><Intl en="Maintainer" pt="Mantenedor" /></Badge>
+                  <Badge variant="light" color="green"><Intl en="Live in production" pt="Em produção" /></Badge>
                 </Group>
-                <Text fw={800} size="xl" mb="xs">Latham Pools — Lead System</Text>
-                <Text size="sm" c="dimmed" mb="md" style={{ lineHeight: 1.7 }}>
+                <Text fw={800} size="xl" mb="xs">Guild RPG</Text>
+                <Text size="sm" c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="Configurator to help clients choose products, simplifying the sales flow."
-                    pt="Configurador para ajudar clientes a escolherem produtos, simplificando o fluxo de vendas."
+                    en="A multiplayer play-by-post RPG where an AI runs the game: guilds with roles and permissions, AI-drafted characters, a card economy, and missions narrated and illustrated by an AI game master. Built by Claude Code from a written spec, from a phone."
+                    pt="Um RPG multiplayer play-by-post em que uma IA conduz o jogo: guildas com cargos e permissões, personagens rascunhados por IA, uma economia de cartas e missões narradas e ilustradas por um mestre de jogo de IA. Construído pelo Claude Code a partir de uma especificação escrita, pelo celular."
                   />
                 </Text>
-                <Group gap="xs">
-                  <Badge size="sm" variant="outline" color="gray">React</Badge>
-                  <Badge size="sm" variant="outline" color="gray">Airtable</Badge>
-                  <Badge size="sm" variant="outline" color="gray">Programming</Badge>
+                <SimpleGrid cols={2} spacing="md" mb="lg">
+                  <Stat value="~10" label={<Intl en="working days" pt="dias úteis" />} />
+                  <Stat value="240" label={<Intl en="commits by the agent" pt="commits do agente" />} />
+                  <Stat value="19" label={<Intl en="tables, one CRUD interface" pt="tabelas, uma interface CRUD" />} />
+                  <Stat value="0" label={<Intl en="lines changed by hand" pt="linhas alteradas à mão" />} />
+                </SimpleGrid>
+                <Group gap="sm">
+                  <Button component="a" href="/guild-rpg" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaArrowRight size={12} />}>
+                    <Intl en="Case study" pt="Estudo de caso" />
+                  </Button>
+                  <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="default" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
+                    <Intl en="Open Guild RPG" pt="Abrir o Guild RPG" />
+                  </Button>
                 </Group>
               </Box>
             </SimpleGrid>
           </GlassCard>
 
-          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
-            {/* Card Checkout */}
-            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 200, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/cardcheckout/checkout.PNG" height={200} fit="contain" alt="Card Checkout" />
-              </Box>
-              <Box p="lg">
-                <Text fw={700} size="sm" mb="xs">Card Checkout — Direct Payments</Text>
-                <Text size="xs" c="dimmed" mb="sm">
+          {/* ── asasvirtuais framework ── */}
+          <GlassCard>
+            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
+              <Box>
+                <Group gap="sm" mb="xs">
+                  <Badge variant="gradient" gradient={gradientText} size="lg"><Intl en="Owner" pt="Dono" /></Badge>
+                  <Badge variant="light" color="gray">Open source</Badge>
+                </Group>
+                <Text fw={800} size="xl" mb="xs">asasvirtuais framework</Text>
+                <Text size="sm" c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
                   <Intl
-                    en="A high-performance checkout for direct payments, focused on conversion."
-                    pt="Checkout de alta performance para pagamentos diretos, focado em conversão."
+                    en="A set of architectural decisions for React and TypeScript apps, plus an AGENTS.md that tells any coding agent where each piece of code goes. It decides how data, forms and permissions are written, so the only questions left are about the product."
+                    pt="Um conjunto de decisões de arquitetura para apps React e TypeScript, mais um AGENTS.md que diz a qualquer agente de código onde cada parte do código vai. Ele decide como dados, formulários e permissões são escritos, então as únicas perguntas que sobram são sobre o produto."
                   />
                 </Text>
+                <Group gap="xs" mb="lg">
+                  {['TypeScript', 'React', 'Next.js', 'Zod', 'REST', 'IndexedDB', 'Airtable', 'Prisma'].map((tag) => (
+                    <Badge key={tag} size="sm" variant="outline" color="gray">{tag}</Badge>
+                  ))}
+                </Group>
+                <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" variant="default" radius="md" leftSection={<FaGithub size={14} />}>
+                  <Intl en="View on GitHub" pt="Ver no GitHub" />
+                </Button>
               </Box>
-            </GlassCard>
-
-            {/* CertWorld */}
-            <GlassCard padding={0} style={{ overflow: 'hidden' }}>
-              <Box style={{ position: 'relative', height: 200, background: 'rgba(0,0,0,0.2)', overflow: 'hidden' }}>
-                <Image src="/portfolio/certworld/courses.png" height={200} fit="contain" alt="CertWorld" />
-              </Box>
-              <Box p="lg">
-                <Text fw={700} size="sm" mb="xs">CertWorld — Learning Platform</Text>
-                <Text size="xs" c="dimmed" mb="sm">
-                  <Intl
-                    en="Online course platform with an intuitive interface and easy content management."
-                    pt="Plataforma de cursos online com interface intuitiva e fácil gestão de conteúdo."
-                  />
-                </Text>
-              </Box>
-            </GlassCard>
-          </SimpleGrid>
+              <Stack gap="md">
+                <Rule
+                  title={<Intl en="One CRUD interface" pt="Uma interface CRUD" />}
+                  text={<Intl en="find, list, create, update, remove — each call routed to the middleware of its table. Any other table is refused." pt="find, list, create, update, remove — cada chamada vai para o middleware da sua tabela. Qualquer outra tabela é recusada." />}
+                />
+                <Rule
+                  title={<Intl en="One schema per table" pt="Um schema por tabela" />}
+                  text={<Intl en="A zod schema is the type, the validation and the form fields. Change a column and every use updates." pt="Um schema zod é o tipo, a validação e os campos do formulário. Mude uma coluna e todo uso se atualiza." />}
+                />
+                <Rule
+                  title={<Intl en="Permissions grouped by table" pt="Permissões agrupadas por tabela" />}
+                  text={<Intl en="Every rule for a table lives in its own middleware. Security review means reading one file per table." pt="Toda regra de uma tabela vive no seu próprio middleware. Revisar segurança é ler um arquivo por tabela." />}
+                />
+                <Rule
+                  title={<Intl en="Forms that never go stale" pt="Formulários que nunca ficam desatualizados" />}
+                  text={<Intl en="Saves go into a shared index of rows, so every component showing that table updates on its own." pt="Cada save vai para um índice compartilhado de linhas, então todo componente daquela tabela se atualiza sozinho." />}
+                />
+              </Stack>
+            </SimpleGrid>
+          </GlassCard>
         </Box>
 
-        <Divider mb={120} label={<Intl en="The Deal" pt="O Acordo" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="Why it matters" pt="Por que importa" />} labelPosition="center" />
 
-        {/* ========== PRICING / INVESTMENT ========== */}
-        <Box mb={140} id="pricing">
-          <Box mb={60} style={{ textAlign: 'center', maxWidth: 750, margin: '0 auto' }}>
-            <Title order={2} mb="md" fz={{ base: rem(28), sm: rem(36) }}>
-              <Intl en="The Deal" pt="O Acordo" />
-            </Title>
-            <Text size="lg" c="dimmed">
-              <Intl
-                en="Clear steps to start and evolve your project."
-                pt="Etapas claras para iniciar e evoluir seu projeto."
-              />
-            </Text>
-          </Box>
-
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
-            <GlassCard>
-              <Badge color="cyan" mb="md"><Intl en="Proof of Concept" pt="Prova de Conceito" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Core Development" pt="Desenvolvimento Inicial" /></Text>
-              <Text size="sm" c="dimmed" mb="lg">
+        {/* ========== WHY IT MATTERS ========== */}
+        <Box mb={140} style={{ maxWidth: 800 }}>
+          <Stack gap={80}>
+            <Box>
+              <Title order={2} mb="md" fz={rem(28)}>
+                <Intl en="Agents don't remember. The codebase has to." pt="Agentes não lembram. O código precisa lembrar." />
+              </Title>
+              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="I develop the core functionality of your project so you can validate the idea in practice before any long-term commitment."
-                  pt="Desenvolvo a funcionalidade principal do seu projeto para você validar a ideia na prática antes de qualquer compromisso de longo prazo."
+                  en="Every agent session starts with no memory of the last one. When the architecture already decides where code goes, each session still puts it in the same place, and the codebase doesn't drift into five ways of doing one thing."
+                  pt="Cada sessão de um agente começa sem lembrar da anterior. Quando a arquitetura já decide onde o código vai, cada sessão o coloca no mesmo lugar, e o código não se espalha em cinco jeitos de fazer a mesma coisa."
                 />
               </Text>
-              <Text fw={900} fz={32} mb="md">
-                <Intl en="$0" pt="R$ 0" />
-              </Text>
-              <Button fullWidth variant="light" color="cyan" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Show me" pt="Me mostra" />
-              </Button>
-            </GlassCard>
+            </Box>
 
-            <GlassCard style={{ border: '1px solid rgba(121, 80, 242, 0.3)', background: 'rgba(121, 80, 242, 0.05)' }}>
-              <Badge color="violet" mb="md"><Intl en="Ongoing" pt="Contínuo" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Continuous Evolution" pt="Evolução Contínua" /></Text>
-              <Text size="sm" c="dimmed" mb="lg">
+            <Box>
+              <Title order={2} mb="md" fz={rem(28)}>
+                <Intl en="Big changes take a day or less" pt="Grandes mudanças levam um dia ou menos" />
+              </Title>
+              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Constant support and development to expand your system as your business grows and new needs arise."
-                  pt="Suporte e desenvolvimento constante para expandir seu sistema conforme seu negócio cresce e novas necessidades surgem."
+                  en="In Guild RPG, authorization moved into per-table middleware, every page switched to server-side fetching, and the economy's core tables were split with a data migration. Each took a day or less, while new features kept shipping."
+                  pt="No Guild RPG, a autorização foi movida para middlewares por tabela, todas as páginas passaram a buscar dados no servidor e as tabelas centrais da economia foram divididas com migração de dados. Cada mudança levou um dia ou menos, enquanto novas funcionalidades continuavam saindo."
                 />
               </Text>
-              <Text fw={700} fz={24} mb="md">
-                <Intl en="Fair Value" pt="Valor Justo" />
-              </Text>
-              <Button fullWidth variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Let's Talk" pt="Vamos Conversar" />
-              </Button>
-            </GlassCard>
+            </Box>
 
-            <GlassCard>
-              <Badge color="green" mb="md"><Intl en="Robust" pt="Robusto" /></Badge>
-              <Text fw={700} size="xl" mb={4}><Intl en="Full Solution" pt="Solução Completa" /></Text>
-              <Text size="sm" c="dimmed" mb="lg">
+            <Box>
+              <Title order={2} mb="md" fz={rem(28)}>
+                <Intl en="Bugs have an address" pt="Bugs têm endereço" />
+              </Title>
+              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
                 <Intl
-                  en="Complete systems for projects that demand high performance, complex integrations, and guaranteed stability."
-                  pt="Sistemas completos para projetos que exigem alta performance, integrações complexas e estabilidade garantida."
+                  en="A table's rules are in its middleware, its shape in its schema, its writes in its forms. When something breaks, it's obvious which file to open."
+                  pt="As regras de uma tabela estão no seu middleware, o formato no seu schema, as escritas nos seus formulários. Quando algo quebra, fica óbvio qual arquivo abrir."
                 />
               </Text>
-              <Text fw={700} fz={rem(24)} mb="md">
-                <Intl en="Custom Pricing" pt="Valor Sob Medida" />
+            </Box>
+          </Stack>
+        </Box>
+
+        <Divider mb={120} label={<Intl en="Career" pt="Carreira" />} labelPosition="center" />
+
+        {/* ========== CAREER ========== */}
+        <Box mb={140} style={{ maxWidth: 800 }}>
+          <Timeline active={0} bulletSize={14} lineWidth={2} color="violet">
+            <Timeline.Item title={<Intl en="Owner & maintainer — asasvirtuais, Guild RPG" pt="Dono e mantenedor — asasvirtuais, Guild RPG" />}>
+              <Text c="dimmed" size="xs" mb={4}>2025 — <Intl en="present" pt="atual" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="Open-source framework for agent-maintainable React and TypeScript codebases, proven on a live multiplayer product."
+                  pt="Framework open-source para codebases React e TypeScript sustentáveis por agentes, comprovado em um produto multiplayer em produção."
+                />
               </Text>
-              <Button fullWidth variant="light" color="green" radius="md" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                <Intl en="Contact Me" pt="Chama no Zap" />
-              </Button>
-            </GlassCard>
-          </SimpleGrid>
+            </Timeline.Item>
+            <Timeline.Item title={<Intl en="Senior Full-Stack Engineer — Startup Labs" pt="Engenheiro Full-Stack Sênior — Startup Labs" />}>
+              <Text c="dimmed" size="xs" mb={4}><Intl en="Jul 2026 — present" pt="Jul 2026 — atual" /></Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="Architecture and development for early-stage B2B SaaS products in Next.js, React and TypeScript."
+                  pt="Arquitetura e desenvolvimento de produtos B2B SaaS em estágio inicial com Next.js, React e TypeScript."
+                />
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item title={<Intl en="Freelance Full-Stack Engineer" pt="Engenheiro Full-Stack Freelancer" />}>
+              <Text c="dimmed" size="xs" mb={4}>2024 — 2025</Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="CertWorld, an online courses platform, as the sole engineer from spec to production. Top Rated on Upwork with 5,000+ tracked hours."
+                  pt="CertWorld, uma plataforma de cursos online, como único engenheiro da especificação à produção. Top Rated no Upwork com mais de 5.000 horas registradas."
+                />
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item title={<Intl en="Web Developer — The Get Smart Group (US)" pt="Desenvolvedor Web — The Get Smart Group (EUA)" />}>
+              <Text c="dimmed" size="xs" mb={4}>2020 — 2023</Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="Led the migration from PHP/jQuery to React and TypeScript. Built the Latham Pools lead-qualification tool and dozens of plugins behind six-figure client revenue."
+                  pt="Liderei a migração de PHP/jQuery para React e TypeScript. Construí a ferramenta de qualificação de leads da Latham Pools e dezenas de plugins por trás de receita de seis dígitos para clientes."
+                />
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item title={<Intl en="Developer Advocate — SDK Co (US)" pt="Developer Advocate — SDK Co (EUA)" />}>
+              <Text c="dimmed" size="xs" mb={4}>2021 — 2022</Text>
+              <Text size="sm" c="dimmed">
+                <Intl
+                  en="Technical documentation, developer onboarding and blockchain integration research."
+                  pt="Documentação técnica, onboarding de desenvolvedores e pesquisa de integrações blockchain."
+                />
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item title={<Intl en="Web Developer — Expert Ready (US)" pt="Desenvolvedor Web — Expert Ready (EUA)" />}>
+              <Text c="dimmed" size="xs" mb={4}>2019 — 2020</Text>
+              <Text size="sm" c="dimmed">
+                <Intl en="WordPress themes and PHP plugins." pt="Temas WordPress e plugins PHP." />
+              </Text>
+            </Timeline.Item>
+          </Timeline>
         </Box>
 
         {/* ========== CONTACT ========== */}
         <Box id="contact" py={80} style={{ textAlign: 'center' }}>
           <Title order={1} mb="md" fz={{ base: rem(32), sm: rem(42) }}>
             <Intl
-              en={<>Need <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>real programming?</Text></>}
-              pt={<>Precisa de <Text span variant="gradient" gradient={{ from: 'violet', to: 'cyan' }} inherit>programação de verdade?</Text></>}
+              en={<>Want a codebase <Text span variant="gradient" gradient={gradientText} inherit>agents can't break?</Text></>}
+              pt={<>Quer um código que <Text span variant="gradient" gradient={gradientText} inherit>agentes não quebram?</Text></>}
             />
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 650, margin: '0 auto 40px' }}>
             <Intl
-              en="Let's talk about your project and see how I can help you get it off the ground quickly."
-              pt="Vamos conversar sobre seu projeto e ver como posso ajudá-lo a sair do papel rapidamente."
+              en="Let's talk about your team, your product, or the framework."
+              pt="Vamos conversar sobre o seu time, o seu produto ou o framework."
             />
           </Text>
           <Stack align="center" gap="md">
@@ -388,18 +387,7 @@ function LandingPage() {
                 size="xl"
                 radius="md"
                 variant="gradient"
-                gradient={{ from: 'violet', to: 'cyan' }}
-                leftSection={<FaWhatsapp size={20} />}
-                component="a"
-                href="https://wa.me/+5516997234567"
-                target="_blank"
-              >
-                WhatsApp
-              </Button>
-              <Button
-                size="xl"
-                radius="md"
-                variant="default"
+                gradient={gradientText}
                 leftSection={<FaLinkedin size={20} />}
                 component="a"
                 href="https://linkedin.com/in/asasvirtuais"
@@ -407,8 +395,21 @@ function LandingPage() {
               >
                 LinkedIn
               </Button>
+              <Button
+                size="xl"
+                radius="md"
+                variant="default"
+                leftSection={<FaGithub size={20} />}
+                component="a"
+                href="https://github.com/asasvirtuais"
+                target="_blank"
+              >
+                GitHub
+              </Button>
             </Group>
-            <Text c="dimmed" size="sm">icaro@asasvirtuais.dev</Text>
+            <Anchor href="mailto:icaro@asasvirtuais.dev" c="dimmed" size="sm">
+              <Group gap={6} justify="center"><FaEnvelope size={12} /> icaro@asasvirtuais.dev</Group>
+            </Anchor>
           </Stack>
         </Box>
 
@@ -424,6 +425,32 @@ function LandingPage() {
           </Group>
         </Group>
       </Container>
+    </Box>
+  )
+}
+
+function CVButton({ href, label }: { href: string, label: string }) {
+  return (
+    <Button size="lg" radius="md" variant="default" leftSection={<FaFileDownload size={16} />} component="a" href={href} target="_blank">
+      {label}
+    </Button>
+  )
+}
+
+function Stat({ value, label }: { value: string, label: React.ReactNode }) {
+  return (
+    <Box>
+      <Text fw={900} fz={rem(28)} lh={1} variant="gradient" gradient={gradientText}>{value}</Text>
+      <Text size="xs" c="dimmed" mt={4}>{label}</Text>
+    </Box>
+  )
+}
+
+function Rule({ title, text }: { title: React.ReactNode, text: React.ReactNode }) {
+  return (
+    <Box style={{ borderLeft: '2px solid rgba(121, 80, 242, 0.5)', paddingLeft: rem(16) }}>
+      <Text fw={700} size="sm" mb={4}>{title}</Text>
+      <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{text}</Text>
     </Box>
   )
 }
