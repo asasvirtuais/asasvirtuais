@@ -1,6 +1,7 @@
 import React from 'react'
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
+import './theme.css'
 import { ColorSchemeScript } from '@mantine/core'
 import { Provider } from '@/components/ui/provider'
 import { Analytics } from '@vercel/analytics/react'

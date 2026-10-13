@@ -17,6 +17,7 @@ import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 import ReactMarkdown from 'react-markdown'
 
 import { GlassCard } from '@/components/ui/glass-card'
+import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
 
 const gradientText = { from: 'violet', to: 'cyan' }
 
@@ -31,11 +32,14 @@ const stats = [
 
 export function CaseStudy({ markdown }: { markdown: string }) {
   return (
-    <Box style={{ backgroundColor: '#0a0a0b', minHeight: '100vh', color: '#f8f9fa', overflowX: 'hidden' }}>
+    <Box style={{ backgroundColor: 'var(--site-bg)', minHeight: '100vh', color: 'var(--site-text)', overflowX: 'hidden' }}>
       <Container size="md" pt={40} pb={80}>
-        <Anchor href="/" c="dimmed" size="sm">
-          <Group gap={6}><FaArrowLeft size={11} /> asasvirtuais.dev</Group>
-        </Anchor>
+        <Group justify="space-between">
+          <Anchor href="/" c="dimmed" size="sm">
+            <Group gap={6}><FaArrowLeft size={11} /> asasvirtuais.dev</Group>
+          </Anchor>
+          <ColorSchemeToggle />
+        </Group>
 
         <Box mt={60} mb={60}>
           <Text size="sm" c="violet" fw={700} tt="uppercase" mb="sm" style={{ letterSpacing: '1px' }}>
@@ -75,14 +79,14 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             components={{
               h2: ({ children }) => <Title order={2} mt={64} mb="md" fz={rem(30)}>{children}</Title>,
               h3: ({ children }) => <Title order={3} mt={48} mb="sm" fz={rem(21)}>{children}</Title>,
-              p: ({ children }) => <Text c="gray.4" mb="md" style={{ lineHeight: 1.75 }}>{children}</Text>,
-              li: ({ children }) => <li style={{ color: 'var(--mantine-color-gray-4)', lineHeight: 1.7, marginBottom: 6 }}>{children}</li>,
-              strong: ({ children }) => <strong style={{ color: '#f8f9fa' }}>{children}</strong>,
+              p: ({ children }) => <Text c="var(--site-text-body)" mb="md" style={{ lineHeight: 1.75 }}>{children}</Text>,
+              li: ({ children }) => <li style={{ color: 'var(--site-text-body)', lineHeight: 1.7, marginBottom: 6 }}>{children}</li>,
+              strong: ({ children }) => <strong style={{ color: 'var(--site-text)' }}>{children}</strong>,
               pre: ({ children }) => (
                 <pre
                   style={{
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: 'var(--site-surface-code)',
+                    border: '1px solid var(--site-border)',
                     borderRadius: 'var(--mantine-radius-md)',
                     padding: rem(16),
                     overflowX: 'auto',
@@ -96,8 +100,8 @@ export function CaseStudy({ markdown }: { markdown: string }) {
               ),
               code: ({ children, className }) => (
                 className
-                  ? <code style={{ background: 'none', padding: 0, color: '#e9ecef' }}>{children}</code>
-                  : <code style={{ background: 'rgba(121, 80, 242, 0.15)', color: '#d0bfff', padding: '1px 5px', borderRadius: 4, fontSize: '0.9em' }}>{children}</code>
+                  ? <code style={{ background: 'none', padding: 0, color: 'var(--site-code-text)' }}>{children}</code>
+                  : <code style={{ background: 'var(--site-inline-code-bg)', color: 'var(--site-inline-code-text)', padding: '1px 5px', borderRadius: 4, fontSize: '0.9em' }}>{children}</code>
               ),
             }}
           >
@@ -120,7 +124,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
           <Text c="dimmed" size="lg" style={{ lineHeight: 1.7 }}>
             All of it maintained by two things: the framework's intelligent design and machine intelligence. The framework
             decided where every piece of code goes, the agents wrote it, and the architecture{' '}
-            <Text span c="white" fw={700} inherit>never broke</Text>.
+            <Text span c="var(--site-text-strong)" fw={700} inherit>never broke</Text>.
           </Text>
           <Group gap="sm" mt="xl">
             <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="gradient" gradient={gradientText} radius="md">

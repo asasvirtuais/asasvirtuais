@@ -31,6 +31,7 @@ import {
 
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
 import { GlassCard } from '@/components/ui/glass-card'
+import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
 
 const CV = {
   en: '/cv/Icaro-Capobianco-CV-EN.pdf',
@@ -51,9 +52,9 @@ function LandingPage() {
   return (
     <Box
       style={{
-        backgroundColor: '#0a0a0b',
+        backgroundColor: 'var(--site-bg)',
         minHeight: '100vh',
-        color: '#f8f9fa',
+        color: 'var(--site-text)',
         overflowX: 'hidden',
         position: 'relative'
       }}
@@ -66,7 +67,7 @@ function LandingPage() {
           right: '-5%',
           width: '50vw',
           height: '50vw',
-          background: 'radial-gradient(circle, rgba(121, 80, 242, 0.12) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, var(--site-glow-violet) 0%, transparent 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -78,7 +79,7 @@ function LandingPage() {
           left: '-5%',
           width: '60vw',
           height: '60vw',
-          background: 'radial-gradient(circle, rgba(21, 170, 191, 0.08) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, var(--site-glow-cyan) 0%, transparent 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -97,6 +98,10 @@ function LandingPage() {
           </Group>
           <Group gap="md">
             <LanguageToggle />
+            <Intl
+              en={<ColorSchemeToggle />}
+              pt={<ColorSchemeToggle lightLabel="Modo claro" darkLabel="Modo escuro" />}
+            />
             <Tooltip label="GitHub">
               <ActionIcon
                 component="a"
@@ -186,7 +191,7 @@ function LandingPage() {
           {/* ── Guild RPG ── */}
           <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
-              <Box style={{ background: 'rgba(0,0,0,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: rem(32) }}>
+              <Box style={{ background: 'var(--site-image-well)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: rem(32) }}>
                 <Image src="/software/guild-rpg.png" mah={460} w="auto" fit="contain" alt="Guild RPG: a mission encounter with an AI-drawn scene and player turns" />
               </Box>
               <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

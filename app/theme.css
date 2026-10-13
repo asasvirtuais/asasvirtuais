@@ -1,0 +1,37 @@
+/* Site colors for each Mantine color scheme. Components read these instead of hard-coded values. */
+
+:root[data-mantine-color-scheme='dark'] {
+  --site-bg: #0a0a0b;
+  --site-text: #f8f9fa;
+  --site-text-strong: #ffffff;
+  --site-text-body: var(--mantine-color-gray-4);
+  --site-surface: rgba(255, 255, 255, 0.03);
+  --site-surface-code: rgba(255, 255, 255, 0.04);
+  --site-border: rgba(255, 255, 255, 0.08);
+  --site-image-well: rgba(0, 0, 0, 0.25);
+  --site-glow-violet: rgba(121, 80, 242, 0.12);
+  --site-glow-cyan: rgba(21, 170, 191, 0.08);
+  --site-code-text: #e9ecef;
+  --site-inline-code-bg: rgba(121, 80, 242, 0.15);
+  --site-inline-code-text: #d0bfff;
+}
+
+:root[data-mantine-color-scheme='light'] {
+  --site-bg: #fafafb;
+  --site-text: #1a1b1e;
+  --site-text-strong: #000000;
+  --site-text-body: var(--mantine-color-gray-8);
+  --site-surface: rgba(255, 255, 255, 0.7);
+  --site-surface-code: rgba(0, 0, 0, 0.03);
+  --site-border: rgba(0, 0, 0, 0.08);
+  --site-image-well: rgba(121, 80, 242, 0.05);
+  --site-glow-violet: rgba(121, 80, 242, 0.1);
+  --site-glow-cyan: rgba(21, 170, 191, 0.08);
+  --site-code-text: #212529;
+  --site-inline-code-bg: rgba(121, 80, 242, 0.1);
+  --site-inline-code-text: #5f3dc4;
+}
+
+body {
+  background-color: var(--site-bg);
+}
