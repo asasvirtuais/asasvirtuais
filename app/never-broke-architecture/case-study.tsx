@@ -18,8 +18,7 @@ import ReactMarkdown from 'react-markdown'
 
 import { GlassCard } from '@/components/ui/glass-card'
 import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
-
-const gradientText = { from: 'violet', to: 'cyan' }
+import { gradientText, gradientFill } from '@/components/ui/palette'
 
 const stats = [
   ['~10', 'working days, Oct 1–12'],
@@ -42,7 +41,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         </Group>
 
         <Box mt={60} mb={60}>
-          <Text size="sm" c="violet" fw={700} tt="uppercase" mb="sm" style={{ letterSpacing: '1px' }}>
+          <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="sm" style={{ letterSpacing: '1px' }}>
             Case study · Guild RPG · October 2026
           </Text>
           <Title order={1} fz={{ base: rem(34), sm: rem(46) }} style={{ lineHeight: 1.1, fontWeight: 900 }} mb="xl">
@@ -56,7 +55,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             instructions file, <code>AGENTS.md</code>, that tells any coding agent where each piece of code goes.
           </Text>
           <Group gap="sm">
-            <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
+            <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="gradient" gradient={gradientFill} radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
               Open Guild RPG
             </Button>
             <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" variant="default" radius="md" leftSection={<FaGithub size={14} />}>
@@ -112,7 +111,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         <Divider my={80} />
 
         <Box>
-          <Text size="sm" c="violet" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The point</Text>
+          <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The point</Text>
           <Title order={2} fz={{ base: rem(26), sm: rem(34) }} mb="lg" style={{ lineHeight: 1.25 }}>
             I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable</Text>, and
             this case study shows what it accomplished.
@@ -127,7 +126,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             <Text span c="var(--site-text-strong)" fw={700} inherit>never broke</Text>.
           </Text>
           <Group gap="sm" mt="xl">
-            <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="gradient" gradient={gradientText} radius="md">
+            <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="gradient" gradient={gradientFill} radius="md">
               Talk to me on LinkedIn
             </Button>
             <Button component="a" href="/" variant="default" radius="md">

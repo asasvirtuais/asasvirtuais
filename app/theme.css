@@ -1,35 +1,46 @@
-/* Site colors for each Mantine color scheme. Components read these instead of hard-coded values. */
+/* Site colors for each Mantine color scheme. Components read these instead of hard-coded values.
+   Dark is a night flight: navy sky, sunlit accents. Light is a day flight: parchment, ink, burnt orange. */
 
 :root[data-mantine-color-scheme='dark'] {
-  --site-bg: #0a0a0b;
-  --site-text: #f8f9fa;
-  --site-text-strong: #ffffff;
-  --site-text-body: var(--mantine-color-gray-4);
-  --site-surface: rgba(255, 255, 255, 0.03);
-  --site-surface-code: rgba(255, 255, 255, 0.04);
-  --site-border: rgba(255, 255, 255, 0.08);
+  --site-bg: #0c1220;
+  --site-text: #f3ede2;
+  --site-text-strong: #fffaf0;
+  --site-text-body: #c9c4ba;
+  --site-accent: #ffb547;
+  --site-accent-border: rgba(255, 181, 71, 0.25);
+  --site-accent-line: rgba(255, 181, 71, 0.5);
+  --site-grad-from: #ffc061;
+  --site-grad-to: #ff7b72;
+  --site-surface: rgba(255, 245, 230, 0.035);
+  --site-surface-code: rgba(255, 245, 230, 0.04);
+  --site-border: rgba(255, 240, 220, 0.09);
   --site-image-well: rgba(0, 0, 0, 0.25);
-  --site-glow-violet: rgba(121, 80, 242, 0.12);
-  --site-glow-cyan: rgba(21, 170, 191, 0.08);
-  --site-code-text: #e9ecef;
-  --site-inline-code-bg: rgba(121, 80, 242, 0.15);
-  --site-inline-code-text: #d0bfff;
+  --site-glow-sun: rgba(255, 170, 70, 0.11);
+  --site-glow-sea: rgba(63, 143, 211, 0.1);
+  --site-code-text: #e8e3d8;
+  --site-inline-code-bg: rgba(255, 181, 71, 0.12);
+  --site-inline-code-text: #ffc978;
 }
 
 :root[data-mantine-color-scheme='light'] {
-  --site-bg: #fafafb;
-  --site-text: #1a1b1e;
-  --site-text-strong: #000000;
-  --site-text-body: var(--mantine-color-gray-8);
-  --site-surface: rgba(255, 255, 255, 0.7);
-  --site-surface-code: rgba(0, 0, 0, 0.03);
-  --site-border: rgba(0, 0, 0, 0.08);
-  --site-image-well: rgba(121, 80, 242, 0.05);
-  --site-glow-violet: rgba(121, 80, 242, 0.1);
-  --site-glow-cyan: rgba(21, 170, 191, 0.08);
-  --site-code-text: #212529;
-  --site-inline-code-bg: rgba(121, 80, 242, 0.1);
-  --site-inline-code-text: #5f3dc4;
+  --site-bg: #faf6ee;
+  --site-text: #1c2230;
+  --site-text-strong: #0b0f1a;
+  --site-text-body: #3d4454;
+  --site-accent: #b4410a;
+  --site-accent-border: rgba(194, 65, 12, 0.22);
+  --site-accent-line: rgba(194, 65, 12, 0.45);
+  --site-grad-from: #c2410c;
+  --site-grad-to: #c2255c;
+  --site-surface: rgba(255, 255, 255, 0.75);
+  --site-surface-code: rgba(60, 40, 10, 0.04);
+  --site-border: rgba(60, 40, 10, 0.1);
+  --site-image-well: rgba(255, 170, 70, 0.1);
+  --site-glow-sun: rgba(255, 170, 70, 0.2);
+  --site-glow-sea: rgba(63, 143, 211, 0.1);
+  --site-code-text: #2c2823;
+  --site-inline-code-bg: rgba(194, 65, 12, 0.08);
+  --site-inline-code-text: #a63a0a;
 }
 
 body {

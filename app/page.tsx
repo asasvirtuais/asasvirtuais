@@ -32,13 +32,12 @@ import {
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
 import { GlassCard } from '@/components/ui/glass-card'
 import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
+import { gradientText, gradientFill } from '@/components/ui/palette'
 
 const CV = {
   en: '/cv/Icaro-Capobianco-CV-EN.pdf',
   pt: '/cv/Icaro-Capobianco-CV-PT.pdf',
 }
-
-const gradientText = { from: 'violet', to: 'cyan' }
 
 export default function Home() {
   return (
@@ -67,7 +66,7 @@ function LandingPage() {
           right: '-5%',
           width: '50vw',
           height: '50vw',
-          background: 'radial-gradient(circle, var(--site-glow-violet) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, var(--site-glow-sun) 0%, transparent 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -79,7 +78,7 @@ function LandingPage() {
           left: '-5%',
           width: '60vw',
           height: '60vw',
-          background: 'radial-gradient(circle, var(--site-glow-cyan) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, var(--site-glow-sea) 0%, transparent 70%)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -89,11 +88,11 @@ function LandingPage() {
         {/* Header/Nav */}
         <Group justify="space-between" mb={80}>
           <Group gap="xs">
-            <ThemeIcon size="xl" radius="md" variant="gradient" gradient={gradientText}>
+            <ThemeIcon size="xl" radius="md" variant="gradient" gradient={gradientFill}>
               <FaCode size={20} />
             </ThemeIcon>
             <Text fw={800} size="xl" style={{ letterSpacing: '-0.5px' }}>
-              asasvirtuais<Text span c="violet" inherit>.dev</Text>
+              asasvirtuais<Text span c="var(--site-accent)" inherit>.dev</Text>
             </Text>
           </Group>
           <Group gap="md">
@@ -131,7 +130,7 @@ function LandingPage() {
 
         {/* ========== HERO ========== */}
         <Box mb={120} mt={60} style={{ maxWidth: 880 }}>
-          <Badge variant="dot" color="violet" size="lg" mb="sm">
+          <Badge variant="dot" color="sun" size="lg" mb="sm">
             <Intl
               en="Ícaro C. Capobianco — Software Engineer · Framework Author"
               pt="Ícaro C. Capobianco — Engenheiro de Software · Autor de Framework"
@@ -169,7 +168,7 @@ function LandingPage() {
                 size="lg"
                 radius="md"
                 variant="gradient"
-                gradient={gradientText}
+                gradient={gradientFill}
                 rightSection={<FaArrowRight size={16} />}
                 component="a"
                 href="/never-broke-architecture"
@@ -189,7 +188,7 @@ function LandingPage() {
         {/* ========== SOFTWARE I MAINTAIN ========== */}
         <Box id="software" mb={140}>
           {/* ── Guild RPG ── */}
-          <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">
+          <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid var(--site-accent-border)' }} mb="xl">
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
               <Box style={{ background: 'var(--site-image-well)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: rem(32) }}>
                 <Image src="/software/guild-rpg.png" mah={460} w="auto" fit="contain" alt="Guild RPG: a mission encounter with an AI-drawn scene and player turns" />
@@ -212,7 +211,7 @@ function LandingPage() {
                   <Stat value="5" label={<Intl en="big refactors, a day or less each" pt="grandes refatorações, um dia ou menos cada" />} />
                 </SimpleGrid>
                 <Group gap="sm">
-                  <Button component="a" href="/never-broke-architecture" variant="gradient" gradient={gradientText} radius="md" rightSection={<FaArrowRight size={12} />}>
+                  <Button component="a" href="/never-broke-architecture" variant="gradient" gradient={gradientFill} radius="md" rightSection={<FaArrowRight size={12} />}>
                     <Intl en="Case study" pt="Estudo de caso" />
                   </Button>
                   <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="default" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
@@ -315,7 +314,7 @@ function LandingPage() {
 
         {/* ========== CAREER ========== */}
         <Box mb={140} style={{ maxWidth: 800 }}>
-          <Timeline active={0} bulletSize={14} lineWidth={2} color="violet">
+          <Timeline active={0} bulletSize={14} lineWidth={2} color="sun">
             <Timeline.Item title={<Intl en="asasvirtuais & Guild RPG" pt="asasvirtuais e Guild RPG" />}>
               <Text c="dimmed" size="xs" mb={4}>2025 — <Intl en="present" pt="atual" /></Text>
               <Text size="sm" c="dimmed">
@@ -390,7 +389,7 @@ function LandingPage() {
                 size="xl"
                 radius="md"
                 variant="gradient"
-                gradient={gradientText}
+                gradient={gradientFill}
                 leftSection={<FaLinkedin size={20} />}
                 component="a"
                 href="https://linkedin.com/in/asasvirtuais"
@@ -451,7 +450,7 @@ function Stat({ value, label }: { value: string, label: React.ReactNode }) {
 
 function Rule({ title, text }: { title: React.ReactNode, text: React.ReactNode }) {
   return (
-    <Box style={{ borderLeft: '2px solid rgba(121, 80, 242, 0.5)', paddingLeft: rem(16) }}>
+    <Box style={{ borderLeft: '2px solid var(--site-accent-line)', paddingLeft: rem(16) }}>
       <Text fw={700} size="sm" mb={4}>{title}</Text>
       <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{text}</Text>
     </Box>
