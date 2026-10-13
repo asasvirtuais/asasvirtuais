@@ -8,7 +8,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 
 const title = 'Ícaro C. Capobianco | asasvirtuais.dev'
-const description = 'Engenheiro de software, dono do framework open-source asasvirtuais e mantenedor do Guild RPG. Eu torno codebases sustentáveis por agentes.'
+const description = 'Engenheiro de software. Criei o framework open-source asasvirtuais e mantenho a plataforma Guild RPG. Eu torno codebases sustentáveis por agentes.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://asasvirtuais.dev'),

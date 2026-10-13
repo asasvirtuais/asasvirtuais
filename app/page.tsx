@@ -128,8 +128,8 @@ function LandingPage() {
         <Box mb={120} mt={60} style={{ maxWidth: 880 }}>
           <Badge variant="dot" color="violet" size="lg" mb="sm">
             <Intl
-              en="Ícaro C. Capobianco — Software Engineer · Framework Author"
-              pt="Ícaro C. Capobianco — Engenheiro de Software · Autor de Framework"
+              en="Ícaro C. Capobianco — Software Engineer · Solutions Architect"
+              pt="Ícaro C. Capobianco — Engenheiro de Software · Arquiteto de Soluções"
             />
           </Badge>
           <Title
@@ -149,8 +149,8 @@ function LandingPage() {
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I own asasvirtuais, an open-source framework of architectural rules for React and TypeScript, and I maintain Guild RPG, a live multiplayer game a coding agent built on it in ten working days."
-                pt="Sou dono do asasvirtuais, um framework open-source de regras de arquitetura para React e TypeScript, e mantenho o Guild RPG, um jogo multiplayer em produção que um agente de código construiu sobre ele em dez dias úteis."
+                en="I created asasvirtuais, an open-source framework of architectural rules for React and TypeScript, and I maintain Guild RPG, a live multiplayer platform a coding agent built on it in ten working days."
+                pt="Criei o asasvirtuais, um framework open-source de regras de arquitetura para React e TypeScript, e mantenho o Guild RPG, uma plataforma multiplayer em produção que um agente de código construiu sobre ele em dez dias úteis."
               />
             </Text>
             <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
@@ -179,9 +179,9 @@ function LandingPage() {
           </Stack>
         </Box>
 
-        <Divider mb={120} label={<Intl en="The software I maintain" pt="O software que eu mantenho" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="What I've built" pt="O que eu construí" />} labelPosition="center" />
 
-        {/* ========== SOFTWARE I MAINTAIN ========== */}
+        {/* ========== WHAT I'VE BUILT ========== */}
         <Box id="software" mb={140}>
           {/* ── Guild RPG ── */}
           <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid rgba(121, 80, 242, 0.25)' }} mb="xl">
@@ -191,7 +191,6 @@ function LandingPage() {
               </Box>
               <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Group gap="sm" mb="xs">
-                  <Badge variant="gradient" gradient={gradientText} size="lg"><Intl en="Maintainer" pt="Mantenedor" /></Badge>
                   <Badge variant="light" color="green"><Intl en="Live in production" pt="Em produção" /></Badge>
                 </Group>
                 <Text fw={800} size="xl" mb="xs">Guild RPG</Text>
@@ -224,7 +223,6 @@ function LandingPage() {
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
               <Box>
                 <Group gap="sm" mb="xs">
-                  <Badge variant="gradient" gradient={gradientText} size="lg"><Intl en="Owner" pt="Dono" /></Badge>
                   <Badge variant="light" color="gray">Open source</Badge>
                 </Group>
                 <Text fw={800} size="xl" mb="xs">asasvirtuais framework</Text>
@@ -313,12 +311,12 @@ function LandingPage() {
         {/* ========== CAREER ========== */}
         <Box mb={140} style={{ maxWidth: 800 }}>
           <Timeline active={0} bulletSize={14} lineWidth={2} color="violet">
-            <Timeline.Item title={<Intl en="Owner & maintainer — asasvirtuais, Guild RPG" pt="Dono e mantenedor — asasvirtuais, Guild RPG" />}>
+            <Timeline.Item title={<Intl en="asasvirtuais & Guild RPG" pt="asasvirtuais e Guild RPG" />}>
               <Text c="dimmed" size="xs" mb={4}>2025 — <Intl en="present" pt="atual" /></Text>
               <Text size="sm" c="dimmed">
                 <Intl
-                  en="Open-source framework for agent-maintainable React and TypeScript codebases, proven on a live multiplayer product."
-                  pt="Framework open-source para codebases React e TypeScript sustentáveis por agentes, comprovado em um produto multiplayer em produção."
+                  en="Created the asasvirtuais open-source framework for agent-maintainable React and TypeScript codebases. Maintain Guild RPG, a live multiplayer platform built on it."
+                  pt="Criei o asasvirtuais, framework open-source para codebases React e TypeScript sustentáveis por agentes. Mantenho o Guild RPG, uma plataforma multiplayer em produção construída sobre ele."
                 />
               </Text>
             </Timeline.Item>
