@@ -110,13 +110,17 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         <Box style={{ textAlign: 'center' }}>
           <Text size="sm" c="violet" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The point</Text>
           <Title order={2} fz={{ base: rem(26), sm: rem(34) }} mb="lg" style={{ lineHeight: 1.25 }}>
-            I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable</Text>, and here's
-            a live production app where the agent <Text span variant="gradient" gradient={gradientText} inherit>never broke the architecture</Text>.
+            I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable</Text>, and
+            this case study shows what it accomplished.
           </Title>
-          <Text c="dimmed" size="lg" mb="xl" style={{ maxWidth: 680, margin: '0 auto', lineHeight: 1.7 }}>
-            The app is the evidence. The method is the framework and its rules: one CRUD interface, one schema per table,
-            permission rules grouped by table, forms that update a shared index of rows, and an instructions file an agent
-            follows from its first session. Any codebase can adopt it.
+          <Text c="dimmed" size="lg" style={{ maxWidth: 680, margin: '0 auto 16px', lineHeight: 1.7 }}>
+            A multi-tenant app with guilds, roles and permissions, an AI game master, a card economy and approval
+            workflows: 19 tables and 240 commits in about ten working days, with no code changed by hand.
+          </Text>
+          <Text c="dimmed" size="lg" style={{ maxWidth: 680, margin: '0 auto', lineHeight: 1.7 }}>
+            All of it maintained by two things: the framework's intelligent design and machine intelligence. The framework
+            decided where every piece of code goes, the agents wrote it, and the architecture{' '}
+            <Text span c="white" fw={700} inherit>never broke</Text>.
           </Text>
           <Group justify="center" gap="sm" mt="xl">
             <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="gradient" gradient={gradientText} radius="md">
