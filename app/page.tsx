@@ -168,8 +168,11 @@ function LandingPage() {
           />
           <Pledge
             icon={<FaInfinity size={18} />}
-            title={<Intl en="No charge per feature" pt="Sem cobrança por funcionalidade" />}
-            text={<Intl en="The price is set up front. You don't pay extra for each screen or button." pt="O preço é fechado antes de começar. Você não paga a mais por cada tela ou botão." />}
+            title={<Intl en="Unlimited features" pt="Funcionalidades ilimitadas" />}
+            text={<>
+              <Intl en="Ask for whatever your business needs. Everything is agreed in the quote, at a fixed price, before we start. " pt="Peça o que o seu negócio precisar. Tudo fica combinado no orçamento, com preço fechado, antes de começar. " />
+              <Anchor href={CONTACT} inherit c="var(--site-accent)"><Intl en="See quote" pt="Ver orçamento" /></Anchor>
+            </>}
           />
         </SimpleGrid>
 
@@ -235,6 +238,25 @@ function LandingPage() {
             </Text>
           </GlassCard>
         </Box>
+
+        <Divider mb={120} label={<Intl en="Case study" pt="Estudo de caso" />} labelPosition="center" />
+
+        {/* ========== CASE STUDY ========== */}
+        <GlassCard mb={140} style={{ maxWidth: 800, border: '1px solid var(--site-accent-border)' }}>
+          <Text size="xs" c="dimmed" mb={4}><Intl en="Guild RPG — our own product" pt="Guild RPG — produto próprio" /></Text>
+          <Title order={3} mb="sm" fz={rem(24)}>
+            <Intl en="A complete platform, built in ten working days." pt="Uma plataforma completa, feita em dez dias úteis." />
+          </Title>
+          <Text c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
+            <Intl
+              en="User accounts, groups with roles and permissions, and AI-generated content, live in production and built by our production line. Since then it has gone through five big changes, each done in a day or less, without breaking what already worked."
+              pt="Contas de usuário, grupos com cargos e permissões e conteúdo gerado por IA, em produção e construída pela nossa linha de produção. Desde então passou por cinco grandes mudanças, cada uma feita em um dia ou menos, sem quebrar o que já funcionava."
+            />
+          </Text>
+          <Button component="a" href="/never-broke-architecture" variant="default" radius="md" rightSection={<FaArrowRight size={12} />}>
+            <Intl en="Read the case study" pt="Ler o estudo de caso" />
+          </Button>
+        </GlassCard>
 
         {/* ========== WHO ========== */}
         <GlassCard mb={120} style={{ maxWidth: 800 }}>
