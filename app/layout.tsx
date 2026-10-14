@@ -8,8 +8,8 @@ import { Analytics } from '@vercel/analytics/react'
 
 import { Metadata } from 'next'
 
-const title = 'Ícaro C. Capobianco | asasvirtuais.dev'
-const description = 'Engenheiro de software. Criei o framework open-source asasvirtuais e mantenho a plataforma Guild RPG. Eu torno codebases sustentáveis por agentes.'
+const title = 'Asas Virtuais | Sistemas sob medida em uma semana'
+const description = 'Software sob medida para pequenos negócios, por menos de R$ 2.000, pronto em uma semana. Conectado às ferramentas que você já usa, e o código é seu na entrega.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://asasvirtuais.dev'),
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    images: [{ url: '/software/guild-rpg.png' }],
+    images: [{ url: '/portfolio/latham-estimator/latham1.webp' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: ['/software/guild-rpg.png'],
+    images: ['/portfolio/latham-estimator/latham1.webp'],
   },
 }
 

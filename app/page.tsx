@@ -9,7 +9,6 @@ import {
   Stack,
   SimpleGrid,
   Image,
-  Badge,
   Box,
   ThemeIcon,
   Divider,
@@ -17,16 +16,18 @@ import {
   ActionIcon,
   Tooltip,
   rem,
-  Timeline
 } from '@mantine/core'
 import {
   FaGithub,
   FaLinkedin,
-  FaCode,
+  FaFeatherAlt,
   FaArrowRight,
   FaEnvelope,
   FaFileDownload,
-  FaExternalLinkAlt
+  FaCalendarCheck,
+  FaKey,
+  FaPlug,
+  FaInfinity,
 } from 'react-icons/fa'
 
 import { IntlProvider, Intl, LanguageToggle } from './IntlProvider'
@@ -38,6 +39,8 @@ const CV = {
   en: '/cv/Icaro-Capobianco-CV-EN.pdf',
   pt: '/cv/Icaro-Capobianco-CV-PT.pdf',
 }
+
+const CONTACT = 'mailto:icaro@asasvirtuais.dev?subject=Or%C3%A7amento'
 
 export default function Home() {
   return (
@@ -89,10 +92,10 @@ function LandingPage() {
         <Group justify="space-between" mb={80}>
           <Group gap="xs">
             <ThemeIcon size="xl" radius="md" variant="gradient" gradient={gradientFill}>
-              <FaCode size={20} />
+              <FaFeatherAlt size={20} />
             </ThemeIcon>
             <Text fw={800} size="xl" style={{ letterSpacing: '-0.5px' }}>
-              asasvirtuais<Text span c="var(--site-accent)" inherit>.dev</Text>
+              Asas Virtuais
             </Text>
           </Group>
           <Group gap="md">
@@ -101,41 +104,11 @@ function LandingPage() {
               en={<ColorSchemeToggle />}
               pt={<ColorSchemeToggle lightLabel="Modo claro" darkLabel="Modo escuro" />}
             />
-            <Tooltip label="GitHub">
-              <ActionIcon
-                component="a"
-                href="https://github.com/asasvirtuais"
-                target="_blank"
-                variant="subtle"
-                color="gray"
-                size="lg"
-              >
-                <FaGithub size={22} />
-              </ActionIcon>
-            </Tooltip>
-            <Tooltip label="LinkedIn">
-              <ActionIcon
-                component="a"
-                href="https://linkedin.com/in/asasvirtuais"
-                target="_blank"
-                variant="subtle"
-                color="gray"
-                size="lg"
-              >
-                <FaLinkedin size={22} />
-              </ActionIcon>
-            </Tooltip>
           </Group>
         </Group>
 
         {/* ========== HERO ========== */}
-        <Box mb={120} mt={60} style={{ maxWidth: 880 }}>
-          <Badge variant="dot" color="sun" size="lg" mb="sm">
-            <Intl
-              en="Ícaro C. Capobianco — Software Engineer · Framework Author"
-              pt="Ícaro C. Capobianco — Engenheiro de Software · Autor de Framework"
-            />
-          </Badge>
+        <Box mb={120} mt={60} style={{ maxWidth: 820 }}>
           <Title
             order={1}
             fz={{ base: rem(34), sm: rem(44), md: rem(54) }}
@@ -146,21 +119,15 @@ function LandingPage() {
             }}
           >
             <Intl
-              en={<>I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable.</Text></>}
-              pt={<>Eu torno codebases <Text span variant="gradient" gradient={gradientText} inherit>sustentáveis por agentes.</Text></>}
+              en={<>The software your business needs, <Text span variant="gradient" gradient={gradientText} inherit>ready in one week.</Text></>}
+              pt={<>O sistema que o seu negócio precisa, <Text span variant="gradient" gradient={gradientText} inherit>pronto em uma semana.</Text></>}
             />
           </Title>
           <Stack gap="xl">
             <Text size="xl" style={{ lineHeight: 1.6, fontWeight: 500 }}>
               <Intl
-                en="I created asasvirtuais, an open-source framework of architectural rules for React and TypeScript, and I maintain Guild RPG, a live multiplayer platform a coding agent built on it in ten working days."
-                pt="Criei o asasvirtuais, um framework open-source de regras de arquitetura para React e TypeScript, e mantenho o Guild RPG, uma plataforma multiplayer em produção que um agente de código construiu sobre ele em dez dias úteis."
-              />
-            </Text>
-            <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-              <Intl
-                en="240 commits, 19 tables, and the architecture never broke. Seven years of remote work for US clients before that."
-                pt="240 commits, 19 tabelas, e a arquitetura nunca quebrou. Antes disso, sete anos de trabalho remoto para clientes dos EUA."
+                en="Custom web software for small businesses, for under R$ 2,000. Connected to the tools you already use, and the code is yours when we deliver."
+                pt="Software sob medida para pequenos negócios, por menos de R$ 2.000. Conectado às ferramentas que você já usa, e o código é seu na entrega."
               />
             </Text>
             <Group gap="md" mt="md">
@@ -171,259 +138,197 @@ function LandingPage() {
                 gradient={gradientFill}
                 rightSection={<FaArrowRight size={16} />}
                 component="a"
-                href="/never-broke-architecture"
+                href={CONTACT}
               >
-                <Intl en="Read the case study" pt="Leia o estudo de caso" />
+                <Intl en="Get a quote" pt="Pedir um orçamento" />
               </Button>
-              <Intl
-                en={<CVButton href={CV.en} label="Download CV" />}
-                pt={<CVButton href={CV.pt} label="Baixar currículo" />}
-              />
+              <Button size="lg" radius="md" variant="default" component="a" href="#como-funciona">
+                <Intl en="How it works" pt="Como funciona" />
+              </Button>
             </Group>
           </Stack>
         </Box>
 
-        <Divider mb={120} label={<Intl en="Software I maintain" pt="Minha engenharia de software" />} labelPosition="center" />
+        {/* ========== PROMISES ========== */}
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" mb={140}>
+          <Pledge
+            icon={<FaCalendarCheck size={18} />}
+            title={<Intl en="Delivered in one week" pt="Entrega em uma semana" />}
+            text={<Intl en="From the first conversation to the system running, in days, not months." pt="Da primeira conversa ao sistema funcionando, em dias, não em meses." />}
+          />
+          <Pledge
+            icon={<FaKey size={18} />}
+            title={<Intl en="100% yours" pt="100% seu" />}
+            text={<Intl en="You get the full code. Nothing ties you to us: take it to any other professional whenever you want." pt="Você recebe o código completo. Nada te prende à gente: pode levá-lo para qualquer outro profissional quando quiser." />}
+          />
+          <Pledge
+            icon={<FaPlug size={18} />}
+            title={<Intl en="Works with what you already use" pt="Funciona com o que você já usa" />}
+            text={<Intl en="Payments, spreadsheets, calendars, invoicing, messaging: if it has an integration, we connect it." pt="Pagamentos, planilhas, agenda, emissão de notas, mensagens: se tem integração, a gente conecta." />}
+          />
+          <Pledge
+            icon={<FaInfinity size={18} />}
+            title={<Intl en="No charge per feature" pt="Sem cobrança por funcionalidade" />}
+            text={<Intl en="The price is set up front. You don't pay extra for each screen or button." pt="O preço é fechado antes de começar. Você não paga a mais por cada tela ou botão." />}
+          />
+        </SimpleGrid>
 
-        {/* ========== SOFTWARE I MAINTAIN ========== */}
-        <Box id="software" mb={140}>
-          {/* ── Guild RPG ── */}
-          <GlassCard padding={0} style={{ overflow: 'hidden', border: '1px solid var(--site-accent-border)' }} mb="xl">
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
-              <Box style={{ background: 'var(--site-image-well)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: rem(32) }}>
-                <Image src="/software/guild-rpg.png" mah={460} w="auto" fit="contain" alt="Guild RPG: a mission encounter with an AI-drawn scene and player turns" />
-              </Box>
-              <Box p="xl" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Group gap="sm" mb="xs">
-                  <Badge variant="light" color="green"><Intl en="Live in production" pt="Em produção" /></Badge>
-                </Group>
-                <Text fw={800} size="xl" mb="xs">Guild RPG</Text>
-                <Text size="sm" c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
-                  <Intl
-                    en="A multiplayer play-by-post RPG where an AI runs the game: guilds with roles and permissions, AI-drafted characters, a card economy, and missions narrated and illustrated by an AI game master. Built by Claude Code from a written spec, from a phone."
-                    pt="Um RPG multiplayer play-by-post em que uma IA conduz o jogo: guildas com cargos e permissões, personagens rascunhados por IA, uma economia de cartas e missões narradas e ilustradas por um mestre de jogo de IA. Construído pelo Claude Code a partir de uma especificação escrita, pelo celular."
-                  />
-                </Text>
-                <SimpleGrid cols={2} spacing="md" mb="lg">
-                  <Stat value="~10" label={<Intl en="working days" pt="dias úteis" />} />
-                  <Stat value="240" label={<Intl en="commits by the agent" pt="commits do agente" />} />
-                  <Stat value="19" label={<Intl en="tables, one CRUD interface" pt="tabelas, uma interface CRUD" />} />
-                  <Stat value="5" label={<Intl en="big refactors, a day or less each" pt="grandes refatorações, um dia ou menos cada" />} />
-                </SimpleGrid>
-                <Group gap="sm">
-                  <Button component="a" href="/never-broke-architecture" variant="gradient" gradient={gradientFill} radius="md" rightSection={<FaArrowRight size={12} />}>
-                    <Intl en="Case study" pt="Estudo de caso" />
-                  </Button>
-                  <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="default" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
-                    <Intl en="Open Guild RPG" pt="Abrir o Guild RPG" />
-                  </Button>
-                </Group>
-              </Box>
-            </SimpleGrid>
-          </GlassCard>
+        <Divider mb={120} label={<Intl en="What we build" pt="O que fazemos" />} labelPosition="center" />
 
-          {/* ── asasvirtuais framework ── */}
-          <GlassCard>
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
-              <Box>
-                <Group gap="sm" mb="xs">
-                  <Badge variant="light" color="gray">Open source</Badge>
-                </Group>
-                <Text fw={800} size="xl" mb="xs">asasvirtuais framework</Text>
-                <Text size="sm" c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
-                  <Intl
-                    en="A set of architectural decisions for React and TypeScript apps, plus an AGENTS.md that tells any coding agent where each piece of code goes. It decides how data, forms and permissions are written, so the only questions left are about the product."
-                    pt="Um conjunto de decisões de arquitetura para apps React e TypeScript, mais um AGENTS.md que diz a qualquer agente de código onde cada parte do código vai. Ele decide como dados, formulários e permissões são escritos, então as únicas perguntas que sobram são sobre o produto."
-                  />
-                </Text>
-                <Group gap="xs" mb="lg">
-                  {['TypeScript', 'React', 'Next.js', 'Zod', 'REST', 'IndexedDB', 'Airtable', 'Prisma'].map((tag) => (
-                    <Badge key={tag} size="sm" variant="outline" color="gray">{tag}</Badge>
-                  ))}
-                </Group>
-                <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" variant="default" radius="md" leftSection={<FaGithub size={14} />}>
-                  <Intl en="View on GitHub" pt="Ver no GitHub" />
-                </Button>
-              </Box>
-              <Stack gap="md">
-                <Rule
-                  title={<Intl en="One CRUD interface" pt="Uma interface CRUD" />}
-                  text={<Intl en="find, list, create, update, remove — each call routed to the middleware of its table. Any other table is refused." pt="find, list, create, update, remove — cada chamada vai para o middleware da sua tabela. Qualquer outra tabela é recusada." />}
-                />
-                <Rule
-                  title={<Intl en="One schema per table" pt="Um schema por tabela" />}
-                  text={<Intl en="A zod schema is the type, the validation and the form fields. Change a column and every use updates." pt="Um schema zod é o tipo, a validação e os campos do formulário. Mude uma coluna e todo uso se atualiza." />}
-                />
-                <Rule
-                  title={<Intl en="Permissions grouped by table" pt="Permissões agrupadas por tabela" />}
-                  text={<Intl en="Every rule for a table lives in its own middleware. Security review means reading one file per table." pt="Toda regra de uma tabela vive no seu próprio middleware. Revisar segurança é ler um arquivo por tabela." />}
-                />
-                <Rule
-                  title={<Intl en="Forms that never go stale" pt="Formulários que nunca ficam desatualizados" />}
-                  text={<Intl en="Saves go into a shared index of rows, so every component showing that table updates on its own." pt="Cada save vai para um índice compartilhado de linhas, então todo componente daquela tabela se atualiza sozinho." />}
-                />
-              </Stack>
-            </SimpleGrid>
-          </GlassCard>
+        {/* ========== WHAT WE BUILD ========== */}
+        <Box mb={140}>
+          <Title order={2} mb="md" fz={rem(28)} style={{ maxWidth: 700 }}>
+            <Intl en="If it's eating your time today, it can probably be a system." pt="Se hoje isso toma o seu tempo, provavelmente dá para virar um sistema." />
+          </Title>
+          <Text size="lg" c="dimmed" mb={48} style={{ lineHeight: 1.7, maxWidth: 700 }}>
+            <Intl
+              en="A few examples of what we can build:"
+              pt="Alguns exemplos do que dá para fazer:"
+            />
+          </Text>
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+            <Idea title={<Intl en="Online booking" pt="Agendamento online" />} text={<Intl en="Clients pick a time on their own, and you stop scheduling over the phone." pt="O cliente escolhe o horário sozinho, e você para de marcar por telefone." />} />
+            <Idea title={<Intl en="Orders and quotes" pt="Pedidos e orçamentos" />} text={<Intl en="Customers build their order and see the price on the spot." pt="O cliente monta o pedido e vê o preço na hora." />} />
+            <Idea title={<Intl en="Client area" pt="Área do cliente" />} text={<Intl en="A place for your clients to log in, see their history and download files." pt="Um lugar para o seu cliente entrar, ver o histórico e baixar arquivos." />} />
+            <Idea title={<Intl en="Internal dashboard" pt="Painel de gestão" />} text={<Intl en="Sales, inventory or services in one screen, instead of five spreadsheets." pt="Vendas, estoque ou atendimentos em uma tela só, no lugar de cinco planilhas." />} />
+            <Idea title={<Intl en="Courses and members" pt="Cursos e membros" />} text={<Intl en="Sell and deliver your content on your own platform." pt="Venda e entregue o seu conteúdo em uma plataforma sua." />} />
+            <Idea title={<Intl en="Automations" pt="Automações" />} text={<Intl en="The copy-and-paste between systems you do every day, done by itself." pt="O copia e cola entre sistemas que você faz todo dia, feito sozinho." />} />
+          </SimpleGrid>
         </Box>
 
-        <Divider mb={120} label={<Intl en="Why it matters" pt="Por que importa" />} labelPosition="center" />
+        <Divider mb={120} label={<Intl en="How it works" pt="Como funciona" />} labelPosition="center" />
 
-        {/* ========== WHY IT MATTERS ========== */}
-        <Box mb={140} style={{ maxWidth: 800 }}>
-          <Stack gap={80}>
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Agents don't remember. The codebase has to." pt="Agentes não lembram. O código precisa lembrar." />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="Every agent session starts with no memory of the last one. When the architecture already decides where code goes, each session still puts it in the same place, and the codebase doesn't drift into five ways of doing one thing."
-                  pt="Cada sessão de um agente começa sem lembrar da anterior. Quando a arquitetura já decide onde o código vai, cada sessão o coloca no mesmo lugar, e o código não se espalha em cinco jeitos de fazer a mesma coisa."
-                />
-              </Text>
-            </Box>
-
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Big changes take a day or less" pt="Grandes mudanças levam um dia ou menos" />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="In Guild RPG, authorization moved into per-table middleware, every page switched to server-side fetching, and the economy's core tables were split with a data migration. Each took a day or less, while new features kept shipping."
-                  pt="No Guild RPG, a autorização foi movida para middlewares por tabela, todas as páginas passaram a buscar dados no servidor e as tabelas centrais da economia foram divididas com migração de dados. Cada mudança levou um dia ou menos, enquanto novas funcionalidades continuavam saindo."
-                />
-              </Text>
-            </Box>
-
-            <Box>
-              <Title order={2} mb="md" fz={rem(28)}>
-                <Intl en="Bugs have an address" pt="Bugs têm endereço" />
-              </Title>
-              <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                <Intl
-                  en="A table's rules are in its middleware, its shape in its schema, its writes in its forms. When something breaks, it's obvious which file to open."
-                  pt="As regras de uma tabela estão no seu middleware, o formato no seu schema, as escritas nos seus formulários. Quando algo quebra, fica óbvio qual arquivo abrir."
-                />
-              </Text>
-            </Box>
+        {/* ========== HOW IT WORKS ========== */}
+        <Box id="como-funciona" mb={140} style={{ maxWidth: 800 }}>
+          <Stack gap={48}>
+            <Step
+              n="1"
+              title={<Intl en="You tell us the problem" pt="Você conta o problema" />}
+              text={<Intl en="A conversation about how your business works today and what needs to change. No technical knowledge needed." pt="Uma conversa sobre como o seu negócio funciona hoje e o que precisa mudar. Não precisa entender nada de tecnologia." />}
+            />
+            <Step
+              n="2"
+              title={<Intl en="Fixed-price proposal" pt="Proposta com preço fechado" />}
+              text={<Intl en="You get what will be built, the deadline and the price, before paying anything." pt="Você recebe o que vai ser feito, o prazo e o preço, antes de pagar qualquer coisa." />}
+            />
+            <Step
+              n="3"
+              title={<Intl en="We build it in a week" pt="A gente constrói em uma semana" />}
+              text={<Intl en="You follow along and can ask for adjustments while the system takes shape." pt="Você acompanha e pode pedir ajustes enquanto o sistema toma forma." />}
+            />
+            <Step
+              n="4"
+              title={<Intl en="It's yours" pt="É seu" />}
+              text={<Intl en="The system goes live and you receive the code and every access. No strings attached." pt="O sistema vai ao ar e você recebe o código e todos os acessos. Sem amarras." />}
+            />
           </Stack>
+
+          <GlassCard mt={64}>
+            <Title order={3} mb="sm" fz={rem(22)}>
+              <Intl en="How can it be this fast and this affordable?" pt="Como dá para ser tão rápido e tão acessível?" />
+            </Title>
+            <Text c="dimmed" style={{ lineHeight: 1.7 }}>
+              <Intl
+                en="We built our own production line with artificial intelligence. It does the repetitive work that used to take weeks, following a method we developed and refined over years of projects. Every system is planned and reviewed by an experienced engineer before it reaches you."
+                pt="Montamos uma linha de produção própria com inteligência artificial. Ela faz o trabalho repetitivo que antes levava semanas, seguindo um método que desenvolvemos e refinamos em anos de projetos. Todo sistema é planejado e revisado por um engenheiro experiente antes de chegar até você."
+              />
+            </Text>
+          </GlassCard>
         </Box>
 
-        <Divider mb={120} label={<Intl en="Career" pt="Carreira" />} labelPosition="center" />
+        {/* ========== WHO ========== */}
+        <GlassCard mb={120} style={{ maxWidth: 800 }}>
+          <Text fw={800} size="lg" mb="xs">
+            <Intl en="Who's behind it" pt="Quem está por trás" />
+          </Text>
+          <Text c="dimmed" mb="lg" style={{ lineHeight: 1.7 }}>
+            <Intl
+              en="Asas Virtuais is led by Ícaro Capobianco, a software engineer with seven years of experience building systems for clients in Brazil and the United States, and Top Rated on Upwork."
+              pt="A Asas Virtuais é conduzida por Ícaro Capobianco, engenheiro de software com sete anos de experiência construindo sistemas para clientes no Brasil e nos Estados Unidos, e Top Rated no Upwork."
+            />
+          </Text>
+          <Group gap="sm">
+            <Intl
+              en={<CVButton href={CV.en} label="CV for hiring" />}
+              pt={<CVButton href={CV.pt} label="Currículo para contratação" />}
+            />
+            <Tooltip label="LinkedIn">
+              <ActionIcon component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="subtle" color="gray" size="lg">
+                <FaLinkedin size={20} />
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip label="GitHub">
+              <ActionIcon component="a" href="https://github.com/asasvirtuais" target="_blank" variant="subtle" color="gray" size="lg">
+                <FaGithub size={20} />
+              </ActionIcon>
+            </Tooltip>
+          </Group>
+        </GlassCard>
 
-        {/* ========== CAREER ========== */}
-        <Box mb={140} style={{ maxWidth: 800 }}>
-          <Timeline active={0} bulletSize={14} lineWidth={2} color="sun">
-            <Timeline.Item title={<Intl en="asasvirtuais & Guild RPG" pt="asasvirtuais e Guild RPG" />}>
-              <Text c="dimmed" size="xs" mb={4}>2025 — <Intl en="present" pt="atual" /></Text>
-              <Text size="sm" c="dimmed">
-                <Intl
-                  en="Created the asasvirtuais open-source framework for agent-maintainable React and TypeScript codebases. Maintain Guild RPG, a live multiplayer platform built on it."
-                  pt="Criei o asasvirtuais, framework open-source para codebases React e TypeScript sustentáveis por agentes. Mantenho o Guild RPG, uma plataforma multiplayer em produção construída sobre ele."
-                />
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title={<Intl en="Senior Full-Stack Engineer — Startup Labs" pt="Engenheiro Full-Stack Sênior — Startup Labs" />}>
-              <Text c="dimmed" size="xs" mb={4}><Intl en="Jul 2026 — present" pt="Jul 2026 — atual" /></Text>
-              <Text size="sm" c="dimmed">
-                <Intl
-                  en="Architecture and development for early-stage B2B SaaS products in Next.js, React and TypeScript."
-                  pt="Arquitetura e desenvolvimento de produtos B2B SaaS em estágio inicial com Next.js, React e TypeScript."
-                />
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title={<Intl en="Freelance Full-Stack Engineer" pt="Engenheiro Full-Stack Freelancer" />}>
-              <Text c="dimmed" size="xs" mb={4}>2024 — 2025</Text>
-              <Text size="sm" c="dimmed">
-                <Intl
-                  en="CertWorld, an online courses platform, as the sole engineer from spec to production. Top Rated on Upwork with 5,000+ tracked hours."
-                  pt="CertWorld, uma plataforma de cursos online, como único engenheiro da especificação à produção. Top Rated no Upwork com mais de 5.000 horas registradas."
-                />
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title={<Intl en="Web Developer — The Get Smart Group (US)" pt="Desenvolvedor Web — The Get Smart Group (EUA)" />}>
-              <Text c="dimmed" size="xs" mb={4}>2020 — 2023</Text>
-              <Text size="sm" c="dimmed">
-                <Intl
-                  en="Led the migration from PHP/jQuery to React and TypeScript. Built the Latham Pools lead-qualification tool and dozens of plugins behind six-figure client revenue."
-                  pt="Liderei a migração de PHP/jQuery para React e TypeScript. Construí a ferramenta de qualificação de leads da Latham Pools e dezenas de plugins por trás de receita de seis dígitos para clientes."
-                />
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title={<Intl en="Developer Advocate — SDK Co (US)" pt="Developer Advocate — SDK Co (EUA)" />}>
-              <Text c="dimmed" size="xs" mb={4}>2021 — 2022</Text>
-              <Text size="sm" c="dimmed">
-                <Intl
-                  en="Technical documentation, developer onboarding and blockchain integration research."
-                  pt="Documentação técnica, onboarding de desenvolvedores e pesquisa de integrações blockchain."
-                />
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title={<Intl en="Web Developer — Expert Ready (US)" pt="Desenvolvedor Web — Expert Ready (EUA)" />}>
-              <Text c="dimmed" size="xs" mb={4}>2019 — 2020</Text>
-              <Text size="sm" c="dimmed">
-                <Intl en="WordPress themes and PHP plugins." pt="Temas WordPress e plugins PHP." />
-              </Text>
-            </Timeline.Item>
-          </Timeline>
-        </Box>
+        <Divider mb={120} label={<Intl en="Ícaro's past projects" pt="Projetos anteriores do Ícaro" />} labelPosition="center" />
+
+        {/* ========== PAST WORK ========== */}
+        <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg" mb={140}>
+          <Work
+            image="/portfolio/latham-estimator/latham1.webp"
+            alt="Pool price estimator"
+            title={<Intl en="Online price estimator" pt="Orçamento online" />}
+            client="Latham Pools (EUA)"
+            text={<Intl en="Visitors pick model, size and options and get an estimate, while the company gets a qualified lead." pt="O visitante escolhe modelo, tamanho e opcionais e recebe uma estimativa, enquanto a empresa recebe um contato qualificado." />}
+          />
+          <Work
+            image="/portfolio/certworld/courses.png"
+            alt="Online courses platform"
+            title={<Intl en="Online courses platform" pt="Plataforma de cursos" />}
+            client="CertWorld (EUA)"
+            text={<Intl en="Course catalog, checkout, lessons and exams, in English and Spanish." pt="Catálogo de cursos, pagamento, aulas e provas, em inglês e espanhol." />}
+          />
+          <Work
+            image="/portfolio/cardcheckout/step1.leads.PNG"
+            alt="Package builder with live pricing"
+            title={<Intl en="Package builder" pt="Montador de pacotes" />}
+            client={<Intl en="Social media agency" pt="Agência de redes sociais" />}
+            text={<Intl en="The client builds their own service package and sees the monthly price update as they go." pt="O cliente monta o próprio pacote de serviços e vê o valor mensal mudar na hora." />}
+          />
+        </SimpleGrid>
 
         {/* ========== CONTACT ========== */}
-        <Box id="contact" py={80} style={{ textAlign: 'center' }}>
+        <Box id="contato" py={80} style={{ textAlign: 'center' }}>
           <Title order={1} mb="md" fz={{ base: rem(32), sm: rem(42) }}>
             <Intl
-              en={<>Want a codebase <Text span variant="gradient" gradient={gradientText} inherit>agents can't break?</Text></>}
-              pt={<>Quer um código que <Text span variant="gradient" gradient={gradientText} inherit>agentes não quebram?</Text></>}
+              en={<>Tell us what your business <Text span variant="gradient" gradient={gradientText} inherit>needs.</Text></>}
+              pt={<>Conta para a gente o que o seu negócio <Text span variant="gradient" gradient={gradientText} inherit>precisa.</Text></>}
             />
           </Title>
           <Text mb={40} c="dimmed" size="lg" style={{ maxWidth: 650, margin: '0 auto 40px' }}>
             <Intl
-              en="Let's talk about your team, your product, or the framework."
-              pt="Vamos conversar sobre o seu time, o seu produto ou o framework."
+              en="We reply with a fixed-price proposal. No commitment."
+              pt="A gente responde com uma proposta de preço fechado. Sem compromisso."
             />
           </Text>
           <Stack align="center" gap="md">
-            <Group justify="center" gap="lg">
-              <Button
-                size="xl"
-                radius="md"
-                variant="gradient"
-                gradient={gradientFill}
-                leftSection={<FaLinkedin size={20} />}
-                component="a"
-                href="https://linkedin.com/in/asasvirtuais"
-                target="_blank"
-              >
-                LinkedIn
-              </Button>
-              <Button
-                size="xl"
-                radius="md"
-                variant="default"
-                leftSection={<FaGithub size={20} />}
-                component="a"
-                href="https://github.com/asasvirtuais"
-                target="_blank"
-              >
-                GitHub
-              </Button>
-            </Group>
-            <Anchor href="mailto:icaro@asasvirtuais.dev" c="dimmed" size="sm">
-              <Group gap={6} justify="center"><FaEnvelope size={12} /> icaro@asasvirtuais.dev</Group>
-            </Anchor>
+            <Button
+              size="xl"
+              radius="md"
+              variant="gradient"
+              gradient={gradientFill}
+              leftSection={<FaEnvelope size={18} />}
+              component="a"
+              href={CONTACT}
+            >
+              <Intl en="Get a quote" pt="Pedir um orçamento" />
+            </Button>
+            <Anchor href={CONTACT} c="dimmed" size="sm">icaro@asasvirtuais.dev</Anchor>
           </Stack>
         </Box>
 
         {/* Footer */}
         <Divider mb="xl" />
         <Group justify="space-between" pb="xl">
-          <Text size="sm" c="dimmed">
-            © 2026 Ícaro C. Capobianco. <Intl en="Code that works." pt="Código que funciona." />
-          </Text>
+          <Text size="sm" c="dimmed">© 2026 Asas Virtuais</Text>
           <Group gap="md">
-            <Anchor href="https://github.com/asasvirtuais" target="_blank" c="dimmed" size="sm">GitHub</Anchor>
             <Anchor href="https://linkedin.com/in/asasvirtuais" target="_blank" c="dimmed" size="sm">LinkedIn</Anchor>
+            <Anchor href="https://github.com/asasvirtuais" target="_blank" c="dimmed" size="sm">GitHub</Anchor>
           </Group>
         </Group>
       </Container>
@@ -433,26 +338,56 @@ function LandingPage() {
 
 function CVButton({ href, label }: { href: string, label: string }) {
   return (
-    <Button size="lg" radius="md" variant="default" leftSection={<FaFileDownload size={16} />} component="a" href={href} target="_blank">
+    <Button radius="md" variant="default" leftSection={<FaFileDownload size={14} />} component="a" href={href} target="_blank">
       {label}
     </Button>
   )
 }
 
-function Stat({ value, label }: { value: string, label: React.ReactNode }) {
+function Pledge({ icon, title, text }: { icon: React.ReactNode, title: React.ReactNode, text: React.ReactNode }) {
   return (
-    <Box>
-      <Text fw={900} fz={rem(28)} lh={1} variant="gradient" gradient={gradientText}>{value}</Text>
-      <Text size="xs" c="dimmed" mt={4}>{label}</Text>
+    <GlassCard>
+      <Group gap="sm" mb="xs" wrap="nowrap">
+        <ThemeIcon size="lg" radius="md" variant="gradient" gradient={gradientFill}>{icon}</ThemeIcon>
+        <Text fw={800} size="lg">{title}</Text>
+      </Group>
+      <Text size="sm" c="dimmed" style={{ lineHeight: 1.7 }}>{text}</Text>
+    </GlassCard>
+  )
+}
+
+function Idea({ title, text }: { title: React.ReactNode, text: React.ReactNode }) {
+  return (
+    <Box style={{ borderLeft: '2px solid var(--site-accent-line)', paddingLeft: rem(16) }}>
+      <Text fw={700} mb={4}>{title}</Text>
+      <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{text}</Text>
     </Box>
   )
 }
 
-function Rule({ title, text }: { title: React.ReactNode, text: React.ReactNode }) {
+function Step({ n, title, text }: { n: string, title: React.ReactNode, text: React.ReactNode }) {
   return (
-    <Box style={{ borderLeft: '2px solid var(--site-accent-line)', paddingLeft: rem(16) }}>
-      <Text fw={700} size="sm" mb={4}>{title}</Text>
-      <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{text}</Text>
-    </Box>
+    <Group align="flex-start" gap="lg" wrap="nowrap">
+      <Text fw={900} fz={rem(32)} lh={1} variant="gradient" gradient={gradientText} style={{ minWidth: rem(28) }}>{n}</Text>
+      <Box>
+        <Text fw={800} size="lg" mb={4}>{title}</Text>
+        <Text c="dimmed" style={{ lineHeight: 1.7 }}>{text}</Text>
+      </Box>
+    </Group>
+  )
+}
+
+function Work({ image, alt, title, client, text }: { image: string, alt: string, title: React.ReactNode, client: React.ReactNode, text: React.ReactNode }) {
+  return (
+    <GlassCard padding={0} style={{ overflow: 'hidden' }}>
+      <Box style={{ background: 'var(--site-image-well)', aspectRatio: '16 / 10', overflow: 'hidden' }}>
+        <Image src={image} alt={alt} h="100%" w="100%" fit="cover" style={{ objectPosition: 'top' }} />
+      </Box>
+      <Box p="lg">
+        <Text fw={800} size="lg">{title}</Text>
+        <Text size="xs" c="dimmed" mb="sm">{client}</Text>
+        <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{text}</Text>
+      </Box>
+    </GlassCard>
   )
 }
