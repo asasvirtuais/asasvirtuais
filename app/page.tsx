@@ -26,7 +26,9 @@ import {
   FaCalendarCheck,
   FaKey,
   FaPlug,
-  FaInfinity,
+  FaComments,
+  FaRocket,
+  FaStore,
   FaCheck,
   FaCalendarAlt,
   FaFileInvoiceDollar,
@@ -47,6 +49,7 @@ const CV = {
 }
 
 const CONTACT = 'mailto:icaro@asasvirtuais.dev?subject=Or%C3%A7amento'
+const CONTACT_STARTUP = 'mailto:icaro@asasvirtuais.dev?subject=Assessoria%20para%20startup'
 
 export default function Home() {
   return (
@@ -65,31 +68,31 @@ function LandingPage() {
       <Container size="lg" pt={{ base: 48, md: 88 }} pb={{ base: 64, md: 104 }}>
         <Grid gap={{ base: 48, md: 64 }} align="center">
           <Grid.Col span={{ base: 12, md: 6 }}>
-            <Eyebrow><Intl en="Custom software development" pt="Desenvolvimento de software sob medida" /></Eyebrow>
+            <Eyebrow><Intl en="Software development" pt="Desenvolvimento de software" /></Eyebrow>
             <Title order={1} fz={{ base: rem(32), sm: rem(40), md: rem(46) }} lh={1.12} fw={800} mb="lg" style={{ letterSpacing: '-0.02em' }}>
               <Intl
-                en={<>Custom software for small businesses, <Text span c="var(--site-accent)" inherit>with short timelines and a clear scope.</Text></>}
-                pt={<>Sistemas sob medida para pequenas empresas, <Text span c="var(--site-accent)" inherit>com prazos curtos e escopo claro.</Text></>}
+                en={<>Software for startups and small businesses, <Text span c="var(--site-accent)" inherit>shaped around each one's needs.</Text></>}
+                pt={<>Software para startups e pequenos negócios, <Text span c="var(--site-accent)" inherit>do jeito que cada um precisa.</Text></>}
               />
             </Title>
             <Text size="lg" c="var(--site-text-body)" lh={1.65} mb="xl" maw={540}>
               <Intl
-                en="We build web systems that integrate with the tools you already use. Scope, timeline and cost are agreed before work begins, and the source code is handed over to you at the end of the project."
-                pt="Desenvolvemos sistemas web integrados às ferramentas que você já utiliza. Escopo, prazo e valor são definidos antes do início, e o código-fonte é entregue a você ao final do projeto."
+                en="Startups get technical advisory to take the product from idea to launch, and hands-on help to build it. Small businesses get a solution designed for their specific case, at a fair price."
+                pt="Startups contam com assessoria técnica para levar o produto da ideia ao lançamento, e com apoio direto para construí-lo. Pequenos negócios recebem uma solução pensada para o seu caso, por um preço justo."
               />
             </Text>
             <Group gap="sm" mb="xl">
               <Button size="lg" radius="md" rightSection={<FaArrowRight size={14} />} component="a" href={CONTACT}>
-                <Intl en="Request a quote" pt="Solicitar orçamento" />
+                <Intl en="Let's talk" pt="Vamos conversar" />
               </Button>
-              <Button size="lg" radius="md" variant="default" component="a" href="#como-funciona">
-                <Intl en="How we work" pt="Como trabalhamos" />
+              <Button size="lg" radius="md" variant="default" component="a" href="#para-quem">
+                <Intl en="How we can help" pt="Como podemos ajudar" />
               </Button>
             </Group>
             <Group gap="lg">
-              <Check><Intl en="Scope and cost agreed upfront" pt="Escopo e valor definidos antes do início" /></Check>
-              <Check><Intl en="Source code handed over" pt="Código-fonte entregue ao cliente" /></Check>
-              <Check><Intl en="Integrated with your tools" pt="Integração com as suas ferramentas" /></Check>
+              <Check><Intl en="Live in days, not months" pt="No ar em dias, não em meses" /></Check>
+              <Check><Intl en="Direct contact with the engineer" pt="Contato direto com o engenheiro" /></Check>
+              <Check><Intl en="Fits your existing tools" pt="Integrado às ferramentas que você já usa" /></Check>
             </Group>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 6 }}>
@@ -110,38 +113,82 @@ function LandingPage() {
         </Container>
       </Box>
 
+      {/* ========== AUDIENCES ========== */}
+      <Section id="para-quem">
+        <SectionHeading
+          eyebrow={<Intl en="Who we work with" pt="Para quem" />}
+          title={<Intl en="Two kinds of clients, two ways of working." pt="Dois tipos de cliente, duas formas de trabalhar." />}
+        />
+        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+          <Audience
+            icon={<FaRocket size={20} />}
+            label={<Intl en="For startups" pt="Para startups" />}
+            title={<Intl en="Advisory and support to build your product." pt="Assessoria e apoio no desenvolvimento do seu produto." />}
+            text={<Intl
+              en="Technical guidance when the decisions matter most, and hands-on development when you need more than advice. We work alongside your team, or as your team until you have one."
+              pt="Orientação técnica nas decisões que mais pesam e desenvolvimento na prática quando o conselho não basta. Trabalhamos junto com o seu time, ou como o seu time enquanto ele não existe."
+            />}
+            items={[
+              <Intl key="1" en="MVP scoping and prioritization" pt="Definição e priorização do MVP" />,
+              <Intl key="2" en="Stack and architecture that hold up as you grow" pt="Stack e arquitetura que acompanham o crescimento" />,
+              <Intl key="3" en="Development alongside your team" pt="Desenvolvimento lado a lado com a sua equipe" />,
+              <Intl key="4" en="Code review and ongoing technical support" pt="Revisão de código e acompanhamento técnico contínuo" />,
+            ]}
+            href={CONTACT_STARTUP}
+            cta={<Intl en="Talk about your startup" pt="Conversar sobre a sua startup" />}
+          />
+          <Audience
+            icon={<FaStore size={20} />}
+            label={<Intl en="For small businesses" pt="Para pequenos negócios" />}
+            title={<Intl en="The right solution for each case, at a fair price." pt="A solução certa para cada caso, por um preço justo." />}
+            text={<Intl
+              en="Instead of bending your routine to fit generic software, you get a system built around how your business already works, with only what it needs, so the price makes sense."
+              pt="Em vez de adaptar a sua rotina a um software genérico, você recebe um sistema construído em torno de como o seu negócio já funciona, só com o necessário, para que o preço faça sentido."
+            />}
+            items={[
+              <Intl key="1" en="Booking, orders, client areas and dashboards" pt="Agendamentos, pedidos, área do cliente e painéis" />,
+              <Intl key="2" en="Connected to payments, spreadsheets and invoicing" pt="Conectado a pagamentos, planilhas e notas fiscais" />,
+              <Intl key="3" en="Price in proportion to the problem being solved" pt="Valor proporcional ao problema a ser resolvido" />,
+              <Intl key="4" en="No technical knowledge required from you" pt="Nenhum conhecimento técnico exigido de você" />,
+            ]}
+            href={CONTACT}
+            cta={<Intl en="Request a quote" pt="Solicitar orçamento" />}
+          />
+        </SimpleGrid>
+      </Section>
+
       {/* ========== PROMISES ========== */}
-      <Section>
+      <Section band>
         <SectionHeading
           eyebrow={<Intl en="Why work with us" pt="Diferenciais" />}
-          title={<Intl en="A transparent process, from first contact to delivery." pt="Um processo transparente, do primeiro contato à entrega." />}
+          title={<Intl en="Less overhead, more working software." pt="Menos burocracia, mais sistema funcionando." />}
         />
         <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="lg">
           <Feature
             icon={<FaCalendarCheck size={18} />}
-            title={<Intl en="Short timelines" pt="Prazos curtos" />}
-            text={<Intl en="Projects are planned to go live in days, not months." pt="Projetos planejados para entrar em produção em dias, não em meses." />}
+            title={<Intl en="Days, not months" pt="Dias, não meses" />}
+            text={<Intl en="Most projects go live within a week or two, so you see results while the need is still fresh." pt="A maioria dos projetos entra no ar em uma ou duas semanas, enquanto a necessidade ainda é atual." />}
           />
           <Feature
-            icon={<FaKey size={18} />}
-            title={<Intl en="The code is yours" pt="O código é seu" />}
-            text={<Intl en="You receive the complete source code and every access. Maintaining or extending the system does not depend on us." pt="Você recebe o código-fonte completo e todos os acessos. A manutenção e a evolução do sistema não dependem da Asas Virtuais." />}
+            icon={<FaComments size={18} />}
+            title={<Intl en="Straight to the engineer" pt="Direto com o engenheiro" />}
+            text={<Intl en="No account managers in between: the person who understands your problem is the one writing the code." pt="Sem intermediários: quem entende o seu problema é quem escreve o código." />}
           />
           <Feature
             icon={<FaPlug size={18} />}
-            title={<Intl en="Integrations" pt="Integrações" />}
-            text={<Intl en="Payment providers, spreadsheets, calendars, invoicing and messaging, wherever an integration is available." pt="Meios de pagamento, planilhas, agendas, emissão de notas fiscais e mensageria, sempre que houver integração disponível." />}
+            title={<Intl en="Works with what you have" pt="Funciona com o que você já tem" />}
+            text={<Intl en="Payment providers, spreadsheets, calendars, invoicing and messaging, connected wherever an integration exists." pt="Meios de pagamento, planilhas, agendas, notas fiscais e mensageria, conectados sempre que houver integração." />}
           />
           <Feature
-            icon={<FaInfinity size={18} />}
-            title={<Intl en="Defined scope" pt="Escopo definido" />}
-            text={<Intl en="Features are defined with you and recorded in the proposal, with a fixed cost agreed before development begins." pt="As funcionalidades são definidas com você e registradas na proposta, com valor fechado antes do início do desenvolvimento." />}
+            icon={<FaKey size={18} />}
+            title={<Intl en="Free to move on" pt="Liberdade para seguir" />}
+            text={<Intl en="Code and accounts are in your name. If you ever want to continue with another team, nothing holds you back." pt="Código e contas ficam no seu nome. Se um dia quiser seguir com outra equipe, nada impede." />}
           />
         </SimpleGrid>
       </Section>
 
       {/* ========== WHAT WE BUILD ========== */}
-      <Section id="servicos" band>
+      <Section id="servicos">
         <SectionHeading
           eyebrow={<Intl en="Services" pt="Serviços" />}
           title={<Intl en="Systems for the processes that take up your team's time." pt="Sistemas para os processos que hoje consomem o tempo da sua equipe." />}
@@ -158,7 +205,7 @@ function LandingPage() {
       </Section>
 
       {/* ========== HOW IT WORKS ========== */}
-      <Section id="como-funciona">
+      <Section id="como-funciona" band>
         <SectionHeading
           eyebrow={<Intl en="Process" pt="Processo" />}
           title={<Intl en="Four steps, from discovery to delivery." pt="Quatro etapas, do diagnóstico à entrega." />}
@@ -172,17 +219,17 @@ function LandingPage() {
           <Step
             n="2"
             title={<Intl en="Proposal" pt="Proposta" />}
-            text={<Intl en="You receive the scope, timeline and cost in writing before any payment." pt="Você recebe o escopo, o prazo e o valor por escrito, antes de qualquer pagamento." />}
+            text={<Intl en="A short, objective proposal: what will be built, how long it takes and what it costs." pt="Uma proposta curta e objetiva: o que será feito, em quanto tempo e por quanto." />}
           />
           <Step
             n="3"
             title={<Intl en="Development" pt="Desenvolvimento" />}
-            text={<Intl en="You follow the progress and can request adjustments along the way." pt="Você acompanha o andamento e pode solicitar ajustes ao longo do processo." />}
+            text={<Intl en="You see the system take shape as it is built and adjust course along the way." pt="Você vê o sistema tomar forma durante o desenvolvimento e ajusta o rumo no caminho." />}
           />
           <Step
             n="4"
             title={<Intl en="Delivery" pt="Entrega" />}
-            text={<Intl en="The system goes live and you receive the source code and every access." pt="O sistema é publicado e você recebe o código-fonte e todos os acessos." />}
+            text={<Intl en="The system goes live, and we stay available to support you as it keeps evolving." pt="O sistema entra no ar, e seguimos disponíveis para apoiar a sua evolução." />}
           />
         </SimpleGrid>
 
@@ -200,7 +247,7 @@ function LandingPage() {
       </Section>
 
       {/* ========== WORK ========== */}
-      <Section id="portfolio" band>
+      <Section id="portfolio">
         <SectionHeading
           eyebrow={<Intl en="Work" pt="Portfólio" />}
           title={<Intl en="Projects in production." pt="Projetos em produção." />}
@@ -269,7 +316,7 @@ function LandingPage() {
       </Section>
 
       {/* ========== WHO ========== */}
-      <Section id="sobre">
+      <Section id="sobre" band>
         <Grid gap={{ base: 40, md: 72 }} align="center">
           <Grid.Col span={{ base: 12, md: 5 }}>
             <Box
@@ -335,13 +382,13 @@ function LandingPage() {
           </Title>
           <Text c="#a6aab5" size="lg" mb="xl" maw={560} mx="auto">
             <Intl
-              en="Describe what your business needs and we will reply with a proposal covering scope, timeline and cost, with no obligation."
-              pt="Descreva o que o seu negócio precisa e responderemos com uma proposta de escopo, prazo e valor, sem compromisso."
+              en="Tell us where your idea stands, or what is slowing your business down. The first conversation is free and carries no obligation."
+              pt="Conte em que pé está a sua ideia, ou o que está travando o seu negócio. A primeira conversa é gratuita e sem compromisso."
             />
           </Text>
           <Stack align="center" gap="sm">
             <Button size="lg" radius="md" leftSection={<FaEnvelope size={16} />} component="a" href={CONTACT}>
-              <Intl en="Request a quote" pt="Solicitar orçamento" />
+              <Intl en="Let's talk" pt="Vamos conversar" />
             </Button>
             <Anchor href={CONTACT} c="#a6aab5" size="sm">icaro@asasvirtuais.dev</Anchor>
           </Stack>
@@ -387,6 +434,7 @@ function Header() {
             <Logo h={32} />
           </Anchor>
           <Group gap="xl" visibleFrom="md">
+            <NavLink href="#para-quem"><Intl en="Who it's for" pt="Para quem" /></NavLink>
             <NavLink href="#servicos"><Intl en="Services" pt="Serviços" /></NavLink>
             <NavLink href="#como-funciona"><Intl en="Process" pt="Processo" /></NavLink>
             <NavLink href="#portfolio"><Intl en="Work" pt="Portfólio" /></NavLink>
@@ -445,8 +493,8 @@ function SectionHeading({ eyebrow, title, description }: { eyebrow: React.ReactN
 
 function Check({ children }: { children: React.ReactNode }) {
   return (
-    <Group gap={8} wrap="nowrap">
-      <FaCheck size={12} color="var(--site-blue)" />
+    <Group gap={8} wrap="nowrap" align="flex-start">
+      <FaCheck size={12} color="var(--site-blue)" style={{ flexShrink: 0, marginTop: 5 }} />
       <Text size="sm" c="var(--site-text-body)">{children}</Text>
     </Group>
   )
@@ -498,6 +546,25 @@ function Feature({ icon, title, text }: { icon: React.ReactNode, title: React.Re
       <Text fw={700} size="lg" mb={6}>{title}</Text>
       <Text size="sm" c="var(--site-text-body)" lh={1.7}>{text}</Text>
     </Box>
+  )
+}
+
+function Audience({ icon, label, title, text, items, href, cta }: { icon: React.ReactNode, label: React.ReactNode, title: React.ReactNode, text: React.ReactNode, items: React.ReactNode[], href: string, cta: React.ReactNode }) {
+  return (
+    <GlassCard padding="xl" style={{ display: 'flex', flexDirection: 'column' }}>
+      <Group gap="sm" mb="md" wrap="nowrap">
+        <ThemeIcon size={44} radius="md" style={{ background: 'var(--site-accent-soft)', color: 'var(--site-accent)' }}>{icon}</ThemeIcon>
+        <Text size="sm" fw={600} c="var(--site-accent)" tt="uppercase" style={{ letterSpacing: '0.08em' }}>{label}</Text>
+      </Group>
+      <Title order={3} fz={{ base: rem(22), md: rem(24) }} lh={1.25} mb="sm">{title}</Title>
+      <Text c="var(--site-text-body)" lh={1.7} mb="lg">{text}</Text>
+      <Stack gap="xs" mb="xl">
+        {items.map((item, i) => <Check key={i}>{item}</Check>)}
+      </Stack>
+      <Box mt="auto">
+        <Button component="a" href={href} variant="default" radius="md" rightSection={<FaArrowRight size={12} />}>{cta}</Button>
+      </Box>
+    </GlassCard>
   )
 }
 
