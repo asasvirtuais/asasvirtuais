@@ -7,11 +7,10 @@ export const GlassCard = ({ children, padding = 'xl', ...props }: { children: Re
     {...props}
     p={padding}
     style={{
-      background: 'var(--site-surface)',
-      backdropFilter: 'blur(12px)',
+      background: 'var(--site-card)',
       border: '1px solid var(--site-border)',
       borderRadius: 'var(--mantine-radius-lg)',
-      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+      boxShadow: 'var(--site-card-shadow)',
       ...props.style
     }}
   >

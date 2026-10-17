@@ -20,6 +20,14 @@
   --site-code-text: #e3e6ec;
   --site-inline-code-bg: rgba(241, 98, 15, 0.14);
   --site-inline-code-text: #ff9655;
+  --site-band: #161a24;
+  --site-card: #222836;
+  --site-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --site-accent-soft: rgba(241, 98, 15, 0.14);
+  --site-blue: #3aaef5;
+  --site-blue-soft: rgba(12, 148, 230, 0.14);
+  --site-header-bg: rgba(27, 32, 44, 0.85);
+  --site-cta-bg: #12161f;
 }
 
 :root[data-mantine-color-scheme='light'] {
@@ -41,6 +49,14 @@
   --site-code-text: #2a303d;
   --site-inline-code-bg: rgba(241, 98, 15, 0.08);
   --site-inline-code-text: #b4440a;
+  --site-band: #f5f6f8;
+  --site-card: #ffffff;
+  --site-card-shadow: 0 1px 2px rgba(27, 32, 44, 0.06), 0 4px 16px rgba(27, 32, 44, 0.04);
+  --site-accent-soft: rgba(241, 98, 15, 0.1);
+  --site-blue: #0a78bd;
+  --site-blue-soft: rgba(12, 148, 230, 0.1);
+  --site-header-bg: rgba(255, 255, 255, 0.85);
+  --site-cta-bg: #1b202c;
 }
 
 body {

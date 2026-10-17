@@ -18,7 +18,7 @@ import ReactMarkdown from 'react-markdown'
 
 import { GlassCard } from '@/components/ui/glass-card'
 import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
-import { gradientText, gradientFill } from '@/components/ui/palette'
+import { Logo } from '@/components/ui/logo'
 
 const stats = [
   ['~10', 'working days, Oct 1–12'],
@@ -35,7 +35,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
       <Container size="md" pt={40} pb={80}>
         <Group justify="space-between">
           <Anchor href="/" c="dimmed" size="sm">
-            <Group gap={6}><FaArrowLeft size={11} /> asasvirtuais.dev</Group>
+            <Group gap="sm"><FaArrowLeft size={11} /> <Logo h={26} /></Group>
           </Anchor>
           <ColorSchemeToggle />
         </Group>
@@ -45,7 +45,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             Case study · Guild RPG · October 2026
           </Text>
           <Title order={1} fz={{ base: rem(34), sm: rem(46) }} style={{ lineHeight: 1.1, fontWeight: 900 }} mb="xl">
-            Built by an agent. <Text span variant="gradient" gradient={gradientText} inherit>The architecture never broke.</Text>
+            Built by an agent. <Text span c="var(--site-accent)" inherit>The architecture never broke.</Text>
           </Title>
           <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }} mb="xl">
             Guild RPG is a multiplayer play-by-post role-playing game where an AI runs the game. Claude Code built it from a
@@ -55,7 +55,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             instructions file, <code>AGENTS.md</code>, that tells any coding agent where each piece of code goes.
           </Text>
           <Group gap="sm">
-            <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="gradient" gradient={gradientFill} radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
+            <Button component="a" href="https://guildrpg.vercel.app" target="_blank" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
               Open Guild RPG
             </Button>
             <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" variant="default" radius="md" leftSection={<FaGithub size={14} />}>
@@ -67,7 +67,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         <SimpleGrid cols={{ base: 2, sm: 3 }} spacing="md" mb={80}>
           {stats.map(([value, label]) => (
             <GlassCard key={label} padding="lg">
-              <Text fw={900} fz={rem(32)} lh={1} variant="gradient" gradient={gradientText}>{value}</Text>
+              <Text fw={900} fz={rem(32)} lh={1} c="var(--site-accent)">{value}</Text>
               <Text size="xs" c="dimmed" mt={6}>{label}</Text>
             </GlassCard>
           ))}
@@ -113,7 +113,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         <Box>
           <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The point</Text>
           <Title order={2} fz={{ base: rem(26), sm: rem(34) }} mb="lg" style={{ lineHeight: 1.25 }}>
-            I make codebases <Text span variant="gradient" gradient={gradientText} inherit>agent-maintainable</Text>, and
+            I make codebases <Text span c="var(--site-accent)" inherit>agent-maintainable</Text>, and
             this case study shows what it accomplished.
           </Title>
           <Text c="dimmed" size="lg" style={{ marginBottom: 16, lineHeight: 1.7 }}>
@@ -126,7 +126,7 @@ export function CaseStudy({ markdown }: { markdown: string }) {
             <Text span c="var(--site-text-strong)" fw={700} inherit>never broke</Text>.
           </Text>
           <Group gap="sm" mt="xl">
-            <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" variant="gradient" gradient={gradientFill} radius="md">
+            <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" radius="md">
               Talk to me on LinkedIn
             </Button>
             <Button component="a" href="/" variant="default" radius="md">

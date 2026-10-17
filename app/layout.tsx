@@ -7,6 +7,11 @@ import { Provider } from '@/components/ui/provider'
 import { Analytics } from '@vercel/analytics/react'
 
 import { Metadata } from 'next'
+import { Inter, Montserrat } from 'next/font/google'
+
+// Montserrat matches the logo wordmark; Inter carries the body text.
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-montserrat', display: 'swap' })
 
 const title = 'Asas Virtuais | Sistemas sob medida em uma semana'
 const description = 'Software sob medida para pequenos negócios, por menos de R$ 2.000, pronto em uma semana. Conectado às ferramentas que você já usa, e o código é seu na entrega.'
@@ -35,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-BR' suppressHydrationWarning>
+    <html lang='pt-BR' className={`${inter.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>

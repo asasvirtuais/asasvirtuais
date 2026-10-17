@@ -16,9 +16,10 @@ const theme = createTheme({
     // Cool neutral over white; gray[6] is the dimmed text color in light mode
     gray: ['#f8f9fb', '#f1f3f6', '#e6e8ed', '#d5d9e0', '#b9bec9', '#9aa0ad', '#5e6473', '#4b5160', '#363b47', '#1b202c'],
   },
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
   headings: {
-    fontFamily: 'Outfit, sans-serif',
+    fontFamily: 'var(--font-montserrat), Montserrat, system-ui, sans-serif',
+    fontWeight: '700',
   },
 })
 
