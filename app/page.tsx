@@ -65,31 +65,31 @@ function LandingPage() {
       <Container size="lg" pt={{ base: 48, md: 88 }} pb={{ base: 64, md: 104 }}>
         <Grid gap={{ base: 48, md: 64 }} align="center">
           <Grid.Col span={{ base: 12, md: 6 }}>
-            <Eyebrow><Intl en="Custom software for small businesses" pt="Software sob medida para pequenos negócios" /></Eyebrow>
-            <Title order={1} fz={{ base: rem(36), sm: rem(44), md: rem(52) }} lh={1.1} fw={800} mb="lg" style={{ letterSpacing: '-0.02em' }}>
+            <Eyebrow><Intl en="Custom software development" pt="Desenvolvimento de software sob medida" /></Eyebrow>
+            <Title order={1} fz={{ base: rem(32), sm: rem(40), md: rem(46) }} lh={1.12} fw={800} mb="lg" style={{ letterSpacing: '-0.02em' }}>
               <Intl
-                en={<>The software your business needs, <Text span c="var(--site-accent)" inherit>ready in one week.</Text></>}
-                pt={<>O sistema que o seu negócio precisa, <Text span c="var(--site-accent)" inherit>pronto em uma semana.</Text></>}
+                en={<>Custom software for small businesses, <Text span c="var(--site-accent)" inherit>with short timelines and a clear scope.</Text></>}
+                pt={<>Sistemas sob medida para pequenas empresas, <Text span c="var(--site-accent)" inherit>com prazos curtos e escopo claro.</Text></>}
               />
             </Title>
             <Text size="lg" c="var(--site-text-body)" lh={1.65} mb="xl" maw={540}>
               <Intl
-                en="Custom web software for under R$ 2,000. Connected to the tools you already use, and the code is yours when we deliver."
-                pt="Sistemas web sob medida por menos de R$ 2.000. Conectados às ferramentas que você já usa, e o código é seu na entrega."
+                en="We build web systems that integrate with the tools you already use. Scope, timeline and cost are agreed before work begins, and the source code is handed over to you at the end of the project."
+                pt="Desenvolvemos sistemas web integrados às ferramentas que você já utiliza. Escopo, prazo e valor são definidos antes do início, e o código-fonte é entregue a você ao final do projeto."
               />
             </Text>
             <Group gap="sm" mb="xl">
               <Button size="lg" radius="md" rightSection={<FaArrowRight size={14} />} component="a" href={CONTACT}>
-                <Intl en="Get a quote" pt="Pedir um orçamento" />
+                <Intl en="Request a quote" pt="Solicitar orçamento" />
               </Button>
               <Button size="lg" radius="md" variant="default" component="a" href="#como-funciona">
-                <Intl en="How it works" pt="Como funciona" />
+                <Intl en="How we work" pt="Como trabalhamos" />
               </Button>
             </Group>
             <Group gap="lg">
-              <Check><Intl en="Fixed price" pt="Preço fechado" /></Check>
-              <Check><Intl en="Code delivered to you" pt="Código entregue a você" /></Check>
-              <Check><Intl en="No technical knowledge needed" pt="Sem precisar entender de tecnologia" /></Check>
+              <Check><Intl en="Scope and cost agreed upfront" pt="Escopo e valor definidos antes do início" /></Check>
+              <Check><Intl en="Source code handed over" pt="Código-fonte entregue ao cliente" /></Check>
+              <Check><Intl en="Integrated with your tools" pt="Integração com as suas ferramentas" /></Check>
             </Group>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 6 }}>
@@ -102,10 +102,10 @@ function LandingPage() {
       <Box style={{ background: 'var(--site-band)', borderTop: '1px solid var(--site-border)', borderBottom: '1px solid var(--site-border)' }}>
         <Container size="lg" py={{ base: 32, md: 40 }}>
           <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
-            <Stat value={<Intl en="7 years" pt="7 anos" />} label={<Intl en="building software" pt="construindo software" />} />
+            <Stat value={<Intl en="7 years" pt="7 anos" />} label={<Intl en="of software development" pt="de experiência em desenvolvimento" />} />
             <Stat value="Top Rated" label={<Intl en="on Upwork" pt="no Upwork" />} />
             <Stat value={<Intl en="Brazil & US" pt="Brasil e EUA" />} label={<Intl en="clients served" pt="clientes atendidos" />} />
-            <Stat value={<Intl en="1 week" pt="1 semana" />} label={<Intl en="from conversation to launch" pt="da conversa ao sistema no ar" />} />
+            <Stat value={<Intl en="1 week" pt="1 semana" />} label={<Intl en="typical delivery time" pt="prazo típico de entrega" />} />
           </SimpleGrid>
         </Container>
       </Box>
@@ -113,29 +113,29 @@ function LandingPage() {
       {/* ========== PROMISES ========== */}
       <Section>
         <SectionHeading
-          eyebrow={<Intl en="Why Asas Virtuais" pt="Por que a Asas Virtuais" />}
-          title={<Intl en="Fast, affordable, and truly yours." pt="Rápido, acessível e seu de verdade." />}
+          eyebrow={<Intl en="Why work with us" pt="Diferenciais" />}
+          title={<Intl en="A transparent process, from first contact to delivery." pt="Um processo transparente, do primeiro contato à entrega." />}
         />
         <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="lg">
           <Feature
             icon={<FaCalendarCheck size={18} />}
-            title={<Intl en="Delivered in one week" pt="Entrega em uma semana" />}
-            text={<Intl en="From the first conversation to the system running, in days, not months." pt="Da primeira conversa ao sistema funcionando, em dias, não em meses." />}
+            title={<Intl en="Short timelines" pt="Prazos curtos" />}
+            text={<Intl en="Projects are planned to go live in days, not months." pt="Projetos planejados para entrar em produção em dias, não em meses." />}
           />
           <Feature
             icon={<FaKey size={18} />}
-            title={<Intl en="100% yours" pt="100% seu" />}
-            text={<Intl en="You get the full code. Nothing ties you to us: take it to any other professional whenever you want." pt="Você recebe o código completo. Nada te prende à gente: pode levá-lo para qualquer outro profissional quando quiser." />}
+            title={<Intl en="The code is yours" pt="O código é seu" />}
+            text={<Intl en="You receive the complete source code and every access. Maintaining or extending the system does not depend on us." pt="Você recebe o código-fonte completo e todos os acessos. A manutenção e a evolução do sistema não dependem da Asas Virtuais." />}
           />
           <Feature
             icon={<FaPlug size={18} />}
-            title={<Intl en="Works with what you use" pt="Funciona com o que você usa" />}
-            text={<Intl en="Payments, spreadsheets, calendars, invoicing, messaging: if it has an integration, we connect it." pt="Pagamentos, planilhas, agenda, emissão de notas, mensagens: se tem integração, a gente conecta." />}
+            title={<Intl en="Integrations" pt="Integrações" />}
+            text={<Intl en="Payment providers, spreadsheets, calendars, invoicing and messaging, wherever an integration is available." pt="Meios de pagamento, planilhas, agendas, emissão de notas fiscais e mensageria, sempre que houver integração disponível." />}
           />
           <Feature
             icon={<FaInfinity size={18} />}
-            title={<Intl en="Unlimited features" pt="Funcionalidades ilimitadas" />}
-            text={<Intl en="Ask for whatever your business needs. Everything is agreed in the quote, at a fixed price, before we start." pt="Peça o que o seu negócio precisar. Tudo fica combinado no orçamento, com preço fechado, antes de começar." />}
+            title={<Intl en="Defined scope" pt="Escopo definido" />}
+            text={<Intl en="Features are defined with you and recorded in the proposal, with a fixed cost agreed before development begins." pt="As funcionalidades são definidas com você e registradas na proposta, com valor fechado antes do início do desenvolvimento." />}
           />
         </SimpleGrid>
       </Section>
@@ -143,57 +143,57 @@ function LandingPage() {
       {/* ========== WHAT WE BUILD ========== */}
       <Section id="servicos" band>
         <SectionHeading
-          eyebrow={<Intl en="What we build" pt="O que fazemos" />}
-          title={<Intl en="If it's eating your time today, it can probably be a system." pt="Se hoje isso toma o seu tempo, provavelmente dá para virar um sistema." />}
-          description={<Intl en="A few examples of what we can build:" pt="Alguns exemplos do que dá para fazer:" />}
+          eyebrow={<Intl en="Services" pt="Serviços" />}
+          title={<Intl en="Systems for the processes that take up your team's time." pt="Sistemas para os processos que hoje consomem o tempo da sua equipe." />}
+          description={<Intl en="Some examples of what we build:" pt="Alguns exemplos do que desenvolvemos:" />}
         />
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-          <Service icon={<FaCalendarAlt size={16} />} title={<Intl en="Online booking" pt="Agendamento online" />} text={<Intl en="Clients pick a time on their own, and you stop scheduling over the phone." pt="O cliente escolhe o horário sozinho, e você para de marcar por telefone." />} />
-          <Service icon={<FaFileInvoiceDollar size={16} />} title={<Intl en="Orders and quotes" pt="Pedidos e orçamentos" />} text={<Intl en="Customers build their order and see the price on the spot." pt="O cliente monta o pedido e vê o preço na hora." />} />
-          <Service icon={<FaUserCircle size={16} />} title={<Intl en="Client area" pt="Área do cliente" />} text={<Intl en="A place for your clients to log in, see their history and download files." pt="Um lugar para o seu cliente entrar, ver o histórico e baixar arquivos." />} />
-          <Service icon={<FaChartBar size={16} />} title={<Intl en="Internal dashboard" pt="Painel de gestão" />} text={<Intl en="Sales, inventory or services in one screen, instead of five spreadsheets." pt="Vendas, estoque ou atendimentos em uma tela só, no lugar de cinco planilhas." />} />
-          <Service icon={<FaGraduationCap size={16} />} title={<Intl en="Courses and members" pt="Cursos e membros" />} text={<Intl en="Sell and deliver your content on your own platform." pt="Venda e entregue o seu conteúdo em uma plataforma sua." />} />
-          <Service icon={<FaSyncAlt size={16} />} title={<Intl en="Automations" pt="Automações" />} text={<Intl en="The copy-and-paste between systems you do every day, done by itself." pt="O copia e cola entre sistemas que você faz todo dia, feito sozinho." />} />
+          <Service icon={<FaCalendarAlt size={16} />} title={<Intl en="Online booking" pt="Agendamento online" />} text={<Intl en="Clients book appointments directly, without scheduling by phone." pt="Clientes reservam horários diretamente, sem depender de contato por telefone." />} />
+          <Service icon={<FaFileInvoiceDollar size={16} />} title={<Intl en="Orders and quotes" pt="Pedidos e orçamentos" />} text={<Intl en="Customers put together their order and see the price immediately." pt="Clientes montam o pedido e consultam o valor no mesmo momento." />} />
+          <Service icon={<FaUserCircle size={16} />} title={<Intl en="Client area" pt="Área do cliente" />} text={<Intl en="Individual access for clients to review their history, documents and files." pt="Acesso individual para clientes consultarem histórico, documentos e arquivos." />} />
+          <Service icon={<FaChartBar size={16} />} title={<Intl en="Internal dashboard" pt="Painel de gestão" />} text={<Intl en="Sales, inventory and services in a single dashboard, replacing scattered spreadsheets." pt="Vendas, estoque e atendimentos reunidos em um único painel, no lugar de várias planilhas." />} />
+          <Service icon={<FaGraduationCap size={16} />} title={<Intl en="Courses and member areas" pt="Cursos e áreas de membros" />} text={<Intl en="Sell and deliver content on a platform you own." pt="Venda e distribuição de conteúdo em uma plataforma própria." />} />
+          <Service icon={<FaSyncAlt size={16} />} title={<Intl en="Automations" pt="Automações" />} text={<Intl en="Repetitive tasks between systems, carried out automatically." pt="Tarefas repetitivas entre sistemas executadas automaticamente." />} />
         </SimpleGrid>
       </Section>
 
       {/* ========== HOW IT WORKS ========== */}
       <Section id="como-funciona">
         <SectionHeading
-          eyebrow={<Intl en="How it works" pt="Como funciona" />}
-          title={<Intl en="From first conversation to launch in four steps." pt="Da primeira conversa ao sistema no ar em quatro passos." />}
+          eyebrow={<Intl en="Process" pt="Processo" />}
+          title={<Intl en="Four steps, from discovery to delivery." pt="Quatro etapas, do diagnóstico à entrega." />}
         />
         <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="lg" mb="xl">
           <Step
             n="1"
-            title={<Intl en="You tell us the problem" pt="Você conta o problema" />}
-            text={<Intl en="A conversation about how your business works today and what needs to change. No technical knowledge needed." pt="Uma conversa sobre como o seu negócio funciona hoje e o que precisa mudar. Não precisa entender nada de tecnologia." />}
+            title={<Intl en="Discovery" pt="Diagnóstico" />}
+            text={<Intl en="A conversation to understand how your business works today and what needs to change. No technical knowledge is required." pt="Uma conversa para entender como o seu negócio funciona hoje e o que precisa mudar. Não é necessário conhecimento técnico." />}
           />
           <Step
             n="2"
-            title={<Intl en="Fixed-price proposal" pt="Proposta com preço fechado" />}
-            text={<Intl en="You get what will be built, the deadline and the price, before paying anything." pt="Você recebe o que vai ser feito, o prazo e o preço, antes de pagar qualquer coisa." />}
+            title={<Intl en="Proposal" pt="Proposta" />}
+            text={<Intl en="You receive the scope, timeline and cost in writing before any payment." pt="Você recebe o escopo, o prazo e o valor por escrito, antes de qualquer pagamento." />}
           />
           <Step
             n="3"
-            title={<Intl en="We build it in a week" pt="A gente constrói em uma semana" />}
-            text={<Intl en="You follow along and can ask for adjustments while the system takes shape." pt="Você acompanha e pode pedir ajustes enquanto o sistema toma forma." />}
+            title={<Intl en="Development" pt="Desenvolvimento" />}
+            text={<Intl en="You follow the progress and can request adjustments along the way." pt="Você acompanha o andamento e pode solicitar ajustes ao longo do processo." />}
           />
           <Step
             n="4"
-            title={<Intl en="It's yours" pt="É seu" />}
-            text={<Intl en="The system goes live and you receive the code and every access. No strings attached." pt="O sistema vai ao ar e você recebe o código e todos os acessos. Sem amarras." />}
+            title={<Intl en="Delivery" pt="Entrega" />}
+            text={<Intl en="The system goes live and you receive the source code and every access." pt="O sistema é publicado e você recebe o código-fonte e todos os acessos." />}
           />
         </SimpleGrid>
 
         <GlassCard style={{ borderLeft: '3px solid var(--site-blue)' }}>
           <Title order={3} mb="xs" fz={rem(20)}>
-            <Intl en="How can it be this fast and this affordable?" pt="Como dá para ser tão rápido e tão acessível?" />
+            <Intl en="Why the timelines are short" pt="Por que os prazos são curtos" />
           </Title>
           <Text c="var(--site-text-body)" lh={1.7}>
             <Intl
-              en="We built our own production line with artificial intelligence. It does the repetitive work that used to take weeks, following a method we developed and refined over years of projects. Every system is planned and reviewed by an experienced engineer before it reaches you."
-              pt="Montamos uma linha de produção própria com inteligência artificial. Ela faz o trabalho repetitivo que antes levava semanas, seguindo um método que desenvolvemos e refinamos em anos de projetos. Todo sistema é planejado e revisado por um engenheiro experiente antes de chegar até você."
+              en="We use our own AI-assisted development process to automate the repetitive parts of the work. It follows a method refined over years of client projects, and every system is planned and reviewed by an experienced software engineer before delivery."
+              pt="Utilizamos um processo de desenvolvimento próprio, apoiado por inteligência artificial, que automatiza as etapas repetitivas do trabalho. Ele segue um método refinado ao longo de anos de projetos, e todo sistema é planejado e revisado por um engenheiro de software experiente antes da entrega."
             />
           </Text>
         </GlassCard>
@@ -203,7 +203,7 @@ function LandingPage() {
       <Section id="portfolio" band>
         <SectionHeading
           eyebrow={<Intl en="Work" pt="Portfólio" />}
-          title={<Intl en="Real systems, in production." pt="Sistemas reais, em produção." />}
+          title={<Intl en="Projects in production." pt="Projetos em produção." />}
         />
 
         {/* Case study */}
@@ -215,12 +215,12 @@ function LandingPage() {
                   <Intl en="Case study · Guild RPG, our own product" pt="Estudo de caso · Guild RPG, produto próprio" />
                 </Text>
                 <Title order={3} mb="sm" fz={{ base: rem(24), md: rem(28) }}>
-                  <Intl en="A complete platform, built in ten working days." pt="Uma plataforma completa, feita em dez dias úteis." />
+                  <Intl en="A complete platform, developed in ten working days." pt="Uma plataforma completa, desenvolvida em dez dias úteis." />
                 </Title>
                 <Text c="var(--site-text-body)" mb="xl" lh={1.7}>
                   <Intl
-                    en="User accounts, groups with roles and permissions, and AI-generated content, live in production and built by our production line. Since then it has gone through five big changes, each done in a day or less, without breaking what already worked."
-                    pt="Contas de usuário, grupos com cargos e permissões e conteúdo gerado por IA, em produção e construída pela nossa linha de produção. Desde então passou por cinco grandes mudanças, cada uma feita em um dia ou menos, sem quebrar o que já funcionava."
+                    en="User accounts, groups with roles and permissions, and AI-generated content, running in production. Since launch, the platform has gone through five structural changes, each completed in a day or less without regressions."
+                    pt="Contas de usuário, grupos com papéis e permissões e conteúdo gerado por IA, em produção. Desde o lançamento, a plataforma passou por cinco mudanças estruturais, cada uma concluída em até um dia, sem regressões."
                   />
                 </Text>
                 <Box>
@@ -241,7 +241,7 @@ function LandingPage() {
         </GlassCard>
 
         <Text size="sm" fw={600} c="dimmed" mt={48} mb="md">
-          <Intl en="Ícaro's past client projects" pt="Projetos anteriores do Ícaro para clientes" />
+          <Intl en="Previous client projects by Ícaro Capobianco" pt="Projetos anteriores de Ícaro Capobianco para clientes" />
         </Text>
         <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
           <Work
@@ -249,7 +249,7 @@ function LandingPage() {
             alt="Pool price estimator"
             title={<Intl en="Online price estimator" pt="Orçamento online" />}
             client="Latham Pools (EUA)"
-            text={<Intl en="Visitors pick model, size and options and get an estimate, while the company gets a qualified lead." pt="O visitante escolhe modelo, tamanho e opcionais e recebe uma estimativa, enquanto a empresa recebe um contato qualificado." />}
+            text={<Intl en="Visitors choose model, size and options and receive an estimate; the company receives a qualified lead." pt="O visitante escolhe modelo, tamanho e opcionais e recebe uma estimativa; a empresa recebe um contato qualificado." />}
           />
           <Work
             image="/portfolio/certworld/courses.png"
@@ -263,7 +263,7 @@ function LandingPage() {
             alt="Package builder with live pricing"
             title={<Intl en="Package builder" pt="Montador de pacotes" />}
             client={<Intl en="Social media agency" pt="Agência de redes sociais" />}
-            text={<Intl en="The client builds their own service package and sees the monthly price update as they go." pt="O cliente monta o próprio pacote de serviços e vê o valor mensal mudar na hora." />}
+            text={<Intl en="Clients assemble their own service package and see the monthly price update in real time." pt="O cliente monta o próprio pacote de serviços e acompanha o valor mensal em tempo real." />}
           />
         </SimpleGrid>
       </Section>
@@ -294,8 +294,8 @@ function LandingPage() {
             <Title order={2} fz={{ base: rem(28), md: rem(34) }} mb="md">Ícaro Capobianco</Title>
             <Text size="lg" c="var(--site-text-body)" lh={1.7} mb="xl">
               <Intl
-                en="Asas Virtuais is led by Ícaro Capobianco, a software engineer with seven years of experience building systems for clients in Brazil and the United States, and Top Rated on Upwork."
-                pt="A Asas Virtuais é conduzida por Ícaro Capobianco, engenheiro de software com sete anos de experiência construindo sistemas para clientes no Brasil e nos Estados Unidos, e Top Rated no Upwork."
+                en="Asas Virtuais is led by Ícaro Capobianco, a software engineer with seven years of experience developing systems for clients in Brazil and the United States. He holds Top Rated status on Upwork."
+                pt="A Asas Virtuais é conduzida por Ícaro Capobianco, engenheiro de software com sete anos de experiência no desenvolvimento de sistemas para clientes no Brasil e nos Estados Unidos. É Top Rated no Upwork."
               />
             </Text>
             <Group gap="sm">
@@ -329,19 +329,19 @@ function LandingPage() {
           <Image src="/brand/mark-dark.png" alt="" h={56} w="auto" mx="auto" mb="lg" />
           <Title order={2} c="#ffffff" mb="sm" fz={{ base: rem(28), sm: rem(36) }}>
             <Intl
-              en={<>Tell us what your business <Text span c="#fb7a2c" inherit>needs.</Text></>}
-              pt={<>Conta para a gente o que o seu negócio <Text span c="#fb7a2c" inherit>precisa.</Text></>}
+              en={<>Let's talk about <Text span c="#fb7a2c" inherit>your project.</Text></>}
+              pt={<>Vamos conversar sobre <Text span c="#fb7a2c" inherit>o seu projeto.</Text></>}
             />
           </Title>
           <Text c="#a6aab5" size="lg" mb="xl" maw={560} mx="auto">
             <Intl
-              en="We reply with a fixed-price proposal. No commitment."
-              pt="A gente responde com uma proposta de preço fechado. Sem compromisso."
+              en="Describe what your business needs and we will reply with a proposal covering scope, timeline and cost, with no obligation."
+              pt="Descreva o que o seu negócio precisa e responderemos com uma proposta de escopo, prazo e valor, sem compromisso."
             />
           </Text>
           <Stack align="center" gap="sm">
             <Button size="lg" radius="md" leftSection={<FaEnvelope size={16} />} component="a" href={CONTACT}>
-              <Intl en="Get a quote" pt="Pedir um orçamento" />
+              <Intl en="Request a quote" pt="Solicitar orçamento" />
             </Button>
             <Anchor href={CONTACT} c="#a6aab5" size="sm">icaro@asasvirtuais.dev</Anchor>
           </Stack>
@@ -388,7 +388,7 @@ function Header() {
           </Anchor>
           <Group gap="xl" visibleFrom="md">
             <NavLink href="#servicos"><Intl en="Services" pt="Serviços" /></NavLink>
-            <NavLink href="#como-funciona"><Intl en="How it works" pt="Como funciona" /></NavLink>
+            <NavLink href="#como-funciona"><Intl en="Process" pt="Processo" /></NavLink>
             <NavLink href="#portfolio"><Intl en="Work" pt="Portfólio" /></NavLink>
             <NavLink href="#sobre"><Intl en="About" pt="Sobre" /></NavLink>
           </Group>
@@ -399,7 +399,7 @@ function Header() {
               pt={<ColorSchemeToggle lightLabel="Modo claro" darkLabel="Modo escuro" />}
             />
             <Button component="a" href={CONTACT} radius="md" size="sm" visibleFrom="sm">
-              <Intl en="Get a quote" pt="Pedir orçamento" />
+              <Intl en="Contact us" pt="Fale conosco" />
             </Button>
           </Group>
         </Group>
