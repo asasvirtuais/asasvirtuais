@@ -5,16 +5,16 @@ import { Notifications } from '@mantine/notifications'
 import React from 'react'
 
 const theme = createTheme({
-  primaryColor: 'sun',
-  primaryShade: { light: 7, dark: 3 },
+  primaryColor: 'brand',
+  primaryShade: { light: 7, dark: 5 },
   autoContrast: true,
   colors: {
-    // Amber to burnt orange: the sun Ícaro flew toward
-    sun: ['#fff4e2', '#ffe7c2', '#ffcf85', '#ffb547', '#ffa01f', '#f28c0f', '#d97706', '#b45309', '#92400e', '#78350f'],
-    // Navy night sky; dark[2] is the dimmed text color in dark mode
-    dark: ['#f3ede2', '#c3c9d6', '#9aa3b5', '#6e7890', '#4b546b', '#323b52', '#222a3e', '#161d2f', '#0f1626', '#0a0f1b'],
-    // Warm stone; gray[6] is the dimmed text color in light mode
-    gray: ['#faf8f4', '#f3efe8', '#e8e2d8', '#dad2c5', '#c2b8a8', '#a3988a', '#6b6458', '#5a5348', '#433d35', '#2c2823'],
+    // The logo's orange wing; brand[5] is the logo color
+    brand: ['#fff1e6', '#ffdcc4', '#ffbb8f', '#ff9655', '#fb7a2c', '#f1620f', '#d9540c', '#b4440a', '#8f3709', '#6e2a07'],
+    // The logo's navy background (dark[7]); dark[2] is the dimmed text color in dark mode
+    dark: ['#eef0f4', '#c9ccd4', '#a6aab5', '#7d8292', '#565c6c', '#3a404f', '#2a303d', '#1b202c', '#151a24', '#0f131b'],
+    // Cool neutral over white; gray[6] is the dimmed text color in light mode
+    gray: ['#f8f9fb', '#f1f3f6', '#e6e8ed', '#d5d9e0', '#b9bec9', '#9aa0ad', '#5e6473', '#4b5160', '#363b47', '#1b202c'],
   },
   fontFamily: 'Inter, sans-serif',
   headings: {

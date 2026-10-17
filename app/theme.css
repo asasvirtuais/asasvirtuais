@@ -1,46 +1,46 @@
 /* Site colors for each Mantine color scheme. Components read these instead of hard-coded values.
-   Dark is a night flight: navy sky, sunlit accents. Light is a day flight: parchment, ink, burnt orange. */
+   Taken from the Asas Virtuais logo: orange leads, blue supports. Dark sits on the logo's navy, light on white. */
 
 :root[data-mantine-color-scheme='dark'] {
-  --site-bg: #0c1220;
-  --site-text: #f3ede2;
-  --site-text-strong: #fffaf0;
-  --site-text-body: #c9c4ba;
-  --site-accent: #ffb547;
-  --site-accent-border: rgba(255, 181, 71, 0.25);
-  --site-accent-line: rgba(255, 181, 71, 0.5);
-  --site-grad-from: #ffc061;
-  --site-grad-to: #ff7b72;
-  --site-surface: rgba(255, 245, 230, 0.035);
-  --site-surface-code: rgba(255, 245, 230, 0.04);
-  --site-border: rgba(255, 240, 220, 0.09);
+  --site-bg: #1b202c;
+  --site-text: #eef0f4;
+  --site-text-strong: #ffffff;
+  --site-text-body: #c3c7d0;
+  --site-accent: #fb7a2c;
+  --site-accent-border: rgba(241, 98, 15, 0.3);
+  --site-accent-line: rgba(12, 148, 230, 0.6);
+  --site-grad-from: #ff9655;
+  --site-grad-to: #f1620f;
+  --site-surface: rgba(255, 255, 255, 0.035);
+  --site-surface-code: rgba(255, 255, 255, 0.04);
+  --site-border: rgba(255, 255, 255, 0.09);
   --site-image-well: rgba(0, 0, 0, 0.25);
-  --site-glow-sun: rgba(255, 170, 70, 0.11);
-  --site-glow-sea: rgba(63, 143, 211, 0.1);
-  --site-code-text: #e8e3d8;
-  --site-inline-code-bg: rgba(255, 181, 71, 0.12);
-  --site-inline-code-text: #ffc978;
+  --site-glow-sun: rgba(241, 98, 15, 0.1);
+  --site-glow-sea: rgba(12, 148, 230, 0.12);
+  --site-code-text: #e3e6ec;
+  --site-inline-code-bg: rgba(241, 98, 15, 0.14);
+  --site-inline-code-text: #ff9655;
 }
 
 :root[data-mantine-color-scheme='light'] {
-  --site-bg: #faf6ee;
-  --site-text: #1c2230;
-  --site-text-strong: #0b0f1a;
-  --site-text-body: #3d4454;
-  --site-accent: #b4410a;
-  --site-accent-border: rgba(194, 65, 12, 0.22);
-  --site-accent-line: rgba(194, 65, 12, 0.45);
-  --site-grad-from: #c2410c;
-  --site-grad-to: #c2255c;
-  --site-surface: rgba(255, 255, 255, 0.75);
-  --site-surface-code: rgba(60, 40, 10, 0.04);
-  --site-border: rgba(60, 40, 10, 0.1);
-  --site-image-well: rgba(255, 170, 70, 0.1);
-  --site-glow-sun: rgba(255, 170, 70, 0.2);
-  --site-glow-sea: rgba(63, 143, 211, 0.1);
-  --site-code-text: #2c2823;
-  --site-inline-code-bg: rgba(194, 65, 12, 0.08);
-  --site-inline-code-text: #a63a0a;
+  --site-bg: #ffffff;
+  --site-text: #1b202c;
+  --site-text-strong: #11141c;
+  --site-text-body: #3d4352;
+  --site-accent: #c2470a;
+  --site-accent-border: rgba(241, 98, 15, 0.25);
+  --site-accent-line: rgba(12, 148, 230, 0.55);
+  --site-grad-from: #e0590d;
+  --site-grad-to: #b4440a;
+  --site-surface: rgba(27, 32, 44, 0.025);
+  --site-surface-code: rgba(27, 32, 44, 0.04);
+  --site-border: rgba(27, 32, 44, 0.1);
+  --site-image-well: rgba(12, 148, 230, 0.06);
+  --site-glow-sun: rgba(241, 98, 15, 0.1);
+  --site-glow-sea: rgba(12, 148, 230, 0.1);
+  --site-code-text: #2a303d;
+  --site-inline-code-bg: rgba(241, 98, 15, 0.08);
+  --site-inline-code-text: #b4440a;
 }
 
 body {

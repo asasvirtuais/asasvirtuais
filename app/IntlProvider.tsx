@@ -43,9 +43,9 @@ export function Intl({ en, pt }: { en: ReactNode; pt: ReactNode }) {
 const PULSE_ANIMATION_ID = 'lang-toggle-pulse'
 const PULSE_KEYFRAMES = `
 @keyframes langPulseRing {
-    0% { box-shadow: 0 0 0 0 rgba(255, 160, 31, 0.5); }
-    70% { box-shadow: 0 0 0 8px rgba(255, 160, 31, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 160, 31, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(241, 98, 15, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(241, 98, 15, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(241, 98, 15, 0); }
 }
 `
 
@@ -123,7 +123,7 @@ export function LanguageToggle() {
 
             <Popover.Dropdown
                 style={{
-                    background: 'linear-gradient(135deg, #c2410c 0%, #c2255c 100%)',
+                    background: 'linear-gradient(135deg, #e0590d 0%, #a83f09 100%)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     backdropFilter: 'blur(12px)',
                     cursor: 'pointer',
