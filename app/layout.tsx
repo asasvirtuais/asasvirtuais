@@ -18,12 +18,14 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
+    images: [{ url: '/og/asas-virtuais.png', width: 1200, height: 630, alt: 'Asas Virtuais' }],
     type: 'website',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title,
     description,
+    images: ['/og/asas-virtuais.png'],
   },
 }
 
