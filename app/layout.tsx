@@ -18,14 +18,12 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    images: [{ url: '/portfolio/latham-estimator/latham1.webp' }],
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title,
     description,
-    images: ['/portfolio/latham-estimator/latham1.webp'],
   },
 }
 
