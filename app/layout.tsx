@@ -13,8 +13,8 @@ import { Inter, Montserrat } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-montserrat', display: 'swap' })
 
-const title = 'Asas Virtuais | Desenvolvimento de sistemas sob medida'
-const description = 'Desenvolvimento de sistemas web sob medida para pequenas empresas. Escopo, prazo e valor definidos antes do início, integração com as ferramentas que você já utiliza e código-fonte entregue ao cliente.'
+const title = 'Asas Virtuais | Software para startups e pequenos negócios'
+const description = 'Assessoria técnica e apoio no desenvolvimento para startups. Sistemas sob medida para pequenos negócios, pensados para cada caso e por um preço justo.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://asasvirtuais.dev'),
