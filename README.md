@@ -34,10 +34,10 @@ One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each ca
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
-  <img alt="240 commits, 19 tables, 10 working days, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
+  <img alt="10 working days, 240 commits, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
 </picture>
 
-A coding agent built a 19-table production app on asasvirtuais from a written spec. Ten problems that codebase never had:
+A coding agent built a multi-tenant, subscription-based AI SaaS on asasvirtuais from a written spec. Ten problems that codebase never had:
 
 1. No type updates by hand across dozens of files after a database change
 2. No pile of server actions, each with its own access to the database
@@ -57,8 +57,8 @@ A coding agent built a 19-table production app on asasvirtuais from a written sp
 **Startup Labs** · Senior Full-Stack Engineer · 2026 – now<br>
 Full-stack architecture for early-stage B2B SaaS products in Next.js, React and TypeScript.
 
-**asasvirtuais** · Creator · 2025 – now<br>
-The framework above, and the production apps built on it.
+**asasvirtuais** · Founder · 2025 – now<br>
+The framework above, and a multi-tenant, subscription-based AI SaaS I own and run on it.
 
 **Freelance** · Full-Stack Engineer · 2024 – 2025<br>
 Top Rated on Upwork (4.8/5). Built CertWorld, an online courses platform, alone from spec to production.
