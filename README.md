@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/hero-dark.svg">
-  <img alt="asasvirtuais: feature-driven architecture for AI-coded apps, by Icaro Capobianco" src=".github/readme/hero-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/hero-dark-2.svg">
+  <img alt="asasvirtuais: feature-driven architecture for AI-coded apps, by Icaro Capobianco" src=".github/readme/hero-light-2.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -33,8 +33,8 @@ One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each ca
 ## [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
-  <img alt="10 working days, 240 commits, 19 tables, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark-2.svg">
+  <img alt="10 working days, 240 commits, 19 tables, 0 architecture breaks" src=".github/readme/stats-light-2.svg" width="100%">
 </picture>
 
 A coding agent built a multi-tenant, subscription-based AI SaaS on asasvirtuais from a written spec. Ten problems that codebase never had:
