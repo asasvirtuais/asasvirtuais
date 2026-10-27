@@ -30,14 +30,14 @@ Every feature is a folder with the same files as every other feature. Read one, 
 
 One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each call to its table's middleware, so a security review means reading one file per table. An `AGENTS.md` tells any coding agent where each piece goes.
 
-## Proof: Guild RPG
+## Proof: a production app, built by an agent
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
   <img alt="Guild RPG: 240 commits, 19 tables, 10 working days, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
 </picture>
 
-[Guild RPG](https://guildrpg.vercel.app) is a multiplayer play-by-post RPG where an AI runs the game: guilds with roles and permissions, a card economy, AI-run missions and web push. Claude Code built it on asasvirtuais from a written spec, from a phone. 50 commits changed the database schema, and the architecture held through every one of them.
+A production multi-tenant app: role-based permissions per tenant, approval workflows, a marketplace with inventory and orders, AI generation throughout and web push. Claude Code built it on asasvirtuais from a written spec, from a phone. 50 commits changed the database schema, and the architecture held through every one of them.
 
 **→ [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
 
