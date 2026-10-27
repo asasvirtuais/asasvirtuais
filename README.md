@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/hero-dark-2.svg">
-  <img alt="asasvirtuais: feature-driven architecture for AI-coded apps, by Icaro Capobianco" src=".github/readme/hero-light-2.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/hero-dark-3.svg">
+  <img alt="asasvirtuais: feature-driven architecture for AI-coded apps, by Icaro Capobianco" src=".github/readme/hero-light-3.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -16,19 +16,6 @@
 I'm Icaro Capobianco, a software engineer in São Paulo. I created **[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)**, a feature-driven (FDD) architecture framework for React and TypeScript apps written by coding agents.
 
 AI-coded apps usually rot the same way: every session, the agent invents a new place for code and a new way to do the same thing. asasvirtuais makes those decisions once, up front, so the only questions left are about the product.
-
-## How it works
-
-Every feature is a folder with the same files as every other feature. Read one, and you know where everything is in the rest.
-
-| File | What it owns |
-| :--- | :--- |
-| `schema.ts` | One zod schema per table: the TypeScript type, the validation and the form fields |
-| `middleware.ts` | Every rule for the table: who can read, what is checked before a write, what runs after |
-| `forms.tsx` | `CreateForm`, `UpdateForm`, `FilterForm`, which write into a shared row index so the UI never goes stale |
-| `providers.tsx` · `hooks.tsx` | The table's rows, available to any component |
-
-One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each call to its table's middleware, so a security review means reading one file per table. An `AGENTS.md` tells any coding agent where each piece goes.
 
 ## [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)
 
