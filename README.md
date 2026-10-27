@@ -34,7 +34,7 @@ One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each ca
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
-  <img alt="10 working days, 240 commits, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
+  <img alt="10 working days, 240 commits, 19 tables, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
 </picture>
 
 A coding agent built a multi-tenant, subscription-based AI SaaS on asasvirtuais from a written spec. Ten problems that codebase never had:
