@@ -1,81 +1,66 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,21&height=220&section=header&text=Icaro%20Carniello%20Capobianco&fontSize=46&fontAlignY=38&desc=I%20make%20codebases%20agent-maintainable&descAlignY=58&descFontSize=20&fontColor=ffffff" width="100%"/>
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/hero-dark.svg">
+  <img alt="asasvirtuais: feature-driven architecture for AI-coded apps, by Icaro Capobianco" src=".github/readme/hero-light.svg" width="100%">
+</picture>
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Status-Ready%20to%20interview-success?style=for-the-badge" alt="Status: Ready to interview"/>
-  <img src="https://img.shields.io/badge/Location-São%20Paulo%2C%20SP%2C%20Brasil-blue?style=for-the-badge" alt="São Paulo, SP, Brasil"/>
-  <a href="https://github.com/asasvirtuais/asasvirtuais-framework"><img src="https://img.shields.io/badge/Framework-asasvirtuais-7950f2?style=for-the-badge&logo=github&logoColor=white" alt="asasvirtuais framework"/></a>
-  <a href="https://guildrpg.vercel.app"><img src="https://img.shields.io/badge/Platform-Guild%20RPG-d32f2f?style=for-the-badge" alt="Guild RPG platform"/></a>
-</div>
+<p align="center">
+  <a href="https://github.com/asasvirtuais/asasvirtuais-framework"><b>Framework</b></a>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://asasvirtuais.dev/never-broke-architecture"><b>Case study</b></a>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://asasvirtuais.dev">asasvirtuais.dev</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://linkedin.com/in/asasvirtuais">LinkedIn</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="mailto:icaro@asasvirtuais.dev">icaro@asasvirtuais.dev</a>
+</p>
 
-<br/>
+<br>
 
-### 👨‍💻 About Me
+I'm Icaro Capobianco, a software engineer in São Paulo. I created **[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)**, a feature-driven (FDD) architecture framework for React and TypeScript apps written by coding agents.
 
-```yaml
-name: Icaro Carniello Capobianco
-primary_role: Software Engineer · Framework Author
-preferred_roles: [Full-Stack Engineer, Solutions Architect]
-top_skills: [React, TypeScript, Next.js, Agentic development]
-experience: 7 years (Software professional since 2019)
-location: São Paulo, SP, Brasil
-```
+AI-coded apps usually rot the same way: every session, the agent invents a new place for code and a new way to do the same thing. asasvirtuais makes those decisions once, up front, so the only questions left are about the product.
 
----
+## How it works
 
-### 🧩 Software I Maintain
+Every feature is a folder with the same files as every other feature. Read one, and you know where everything is in the rest.
 
-**[asasvirtuais](https://github.com/asasvirtuais/asasvirtuais-framework)** — An open-source framework I created: of architectural decisions for React and TypeScript, plus an `AGENTS.md` that tells any coding agent where each piece of code goes. One CRUD interface routed to one middleware per table, one zod schema per table as type, validation and form fields, and forms that write into a shared index of rows so the UI never goes stale.
-
-**[Guild RPG](https://guildrpg.vercel.app)** — The platform I maintain: a multiplayer play-by-post RPG where an AI runs the game. Claude Code built it on asasvirtuais from a written spec, from a phone, in about ten working days: **240 commits, 19 tables, and the architecture never broke.** Read the case study: **[Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
-
-> I make codebases **agent-maintainable**, and here's a live production app where the agent **never broke the architecture**.
-
----
-
-### 🛠️ Skills & Technologies
-
-<div align="center">
-
-| Category | Skills |
+| File | What it owns |
 | :--- | :--- |
-| **Frontend Frameworks** | `Next.js` `React` |
-| **Languages** | `TypeScript` `JavaScript` `PHP` `Python` |
-| **Backend Frameworks** | `Node.js` `Express` `Laravel` `Prisma` |
-| **Datastores** | `PostgreSQL` `MySQL` `MongoDB` `Redis` `Firestore` `Firebase Realtime DB` `SurrealDB` `IndexedDB (Dexie.js)` |
-| **APIs & Standards** | `REST` `GraphQL` `Stripe` `Auth0` `PayPal API` `Google APIs` `GoogleMaps API` |
-| **CMS & Platforms** | `Airtable` `WooCommerce` `WordPress` |
-| **Cloud & DevOps** | `Terraform` `AWS` `Vercel` `GCP` `Fly.io` `Docker` `Supabase` `Firebase` `GitHub Actions` `Git` |
-| **Stylesheets & UI** | `Tailwind CSS` `Chakra UI` `Mantine` `styled-components` `Material Design` `CSS3` `Flexbox` |
-| **Agentic Development** | `Claude Code` `Spec-driven development` `AGENTS.md` `AI SDK` |
-| **Libraries** | `Zod` `D3.js` `RxJS` `WebGL` `Web3` `Jest` `Chai` `ESLint` |
-| **Methodologies** | `Agile` `BDD` `DDD` `TDD` `FDD` |
+| `schema.ts` | One zod schema per table: the TypeScript type, the validation and the form fields |
+| `middleware.ts` | Every rule for the table: who can read, what is checked before a write, what runs after |
+| `forms.tsx` | `CreateForm`, `UpdateForm`, `FilterForm`, which write into a shared row index so the UI never goes stale |
+| `providers.tsx` · `hooks.tsx` | The table's rows, available to any component |
 
-</div>
+One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each call to its table's middleware, so a security review means reading one file per table. An `AGENTS.md` tells any coding agent where each piece goes.
 
----
+## Proof: Guild RPG
 
-### 💼 Career Experience
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
+  <img alt="Guild RPG: 240 commits, 19 tables, 10 working days, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
+</picture>
 
-**asasvirtuais & Guild RPG** *(2025 — Current)* — Created the asasvirtuais open-source framework and maintain Guild RPG, a live multiplayer AI platform a coding agent built on it. See [Software I Maintain](#-software-i-maintain).
+[Guild RPG](https://guildrpg.vercel.app) is a multiplayer play-by-post RPG where an AI runs the game: guilds with roles and permissions, a card economy, AI-run missions and web push. Claude Code built it on asasvirtuais from a written spec, from a phone. 50 commits changed the database schema, and the architecture held through every one of them.
 
-**Startup Labs** *(Jul 2026 — Current)* — Senior Full-Stack Engineer leading full-stack architecture and development for early-stage B2B SaaS products using Next.js, React, and TypeScript. Established clean architecture, defined API boundaries, and built an operational ledger dashboard from scratch.
+**→ [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
 
-**Freelance Full-Stack Engineer** *(2025)* — Built CertWorld, an end-to-end online courses platform MVP, acting as the sole engineer from specification to production. Architected and deployed lessons, examination workflows, payment processing, and user authentication using Next.js, React, Airtable, Stripe, and Auth0.
+## Experience
 
-**Freelance Full-Stack Engineer** *(2024)* — Delivered 8 contracts on Upwork with an average rating of 4.8/5.0 across TypeScript, React, Node.js, and PHP. Built database apps, custom portal buildouts, ops dev tasks, and core frontend integrations for US-based clients, maintaining Top Rated status with over 5,000 tracked hours and $100k+ in platform earnings.
+**Startup Labs** · Senior Full-Stack Engineer · 2026 – now<br>
+Full-stack architecture for early-stage B2B SaaS products in Next.js, React and TypeScript.
 
-**The Get Smart Group** *(Mar 2022 — Jun 2023)* — Web Developer building custom React and TypeScript interfaces integrated into WordPress and WooCommerce ecosystems. Developed dynamic product configurators—including the Latham Pools lead-qualification tool using React, GraphQL, and Airtable—connected legacy POS systems via APIs/GraphQL, and automated deployment pipelines.
+**asasvirtuais** · Creator · 2025 – now<br>
+The framework above, and Guild RPG built on it.
 
-**SDK Co** *(Sep 2021 — Feb 2022)* — Developer Advocate / Director, Web3 Technologies authoring technical documentation, facilitating developer onboarding, and researching blockchain protocol integrations using JavaScript and TypeScript.
+**Freelance** · Full-Stack Engineer · 2024 – 2025<br>
+Top Rated on Upwork (4.8/5). Built CertWorld, an online courses platform, alone from spec to production.
 
-**The Get Smart Group** *(Feb 2020 — Sep 2021)* — Web Developer building dozens of WordPress plugins and front-end tools contributing to six-figure client revenue. Led the frontend migration from PHP/jQuery to React and TypeScript, built legacy POS API bridges into the admin dashboard, and engineered a custom booking rule system for WooCommerce Yith Bookings with dynamic daily service quotas.
+**The Get Smart Group** · Web Developer · 2020 – 2021, 2022 – 2023<br>
+React and TypeScript on WordPress and WooCommerce, including the Latham Pools lead-qualification configurator.
 
-**Expert Ready** *(Mar 2019 — Feb 2020)* — WordPress Web Developer developing production WordPress themes and custom PHP plugins using Bootstrap, jQuery, and Event Sourcing patterns.
+**SDK Co** · Developer Advocate, Web3 · 2021 – 2022
 
----
+**Expert Ready** · WordPress Developer · 2019 – 2020
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,21&height=100&section=footer" width="100%"/>
-</div>
+<br>
+
+<sub>TypeScript · React · Next.js · Node.js · Zod · PostgreSQL · Airtable · Firebase · Vercel · AWS · Claude Code</sub>
+
+<sub>Open to Full-Stack Engineer and Solutions Architect roles · CV in [English](https://asasvirtuais.dev/cv/Icaro-Capobianco-CV-EN.pdf) or [Português](https://asasvirtuais.dev/cv/Icaro-Capobianco-CV-PT.pdf)</sub>
