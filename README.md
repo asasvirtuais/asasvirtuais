@@ -30,16 +30,27 @@ Every feature is a folder with the same files as every other feature. Read one, 
 
 One CRUD interface (`find`, `list`, `create`, `update`, `remove`) routes each call to its table's middleware, so a security review means reading one file per table. An `AGENTS.md` tells any coding agent where each piece goes.
 
-## Proof: a production app, built by an agent
+## [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/stats-dark.svg">
-  <img alt="Guild RPG: 240 commits, 19 tables, 10 working days, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
+  <img alt="240 commits, 19 tables, 10 working days, 0 architecture breaks" src=".github/readme/stats-light.svg" width="100%">
 </picture>
 
-A production multi-tenant app: role-based permissions per tenant, approval workflows, a marketplace with inventory and orders, AI generation throughout and web push. Claude Code built it on asasvirtuais from a written spec, from a phone. 50 commits changed the database schema, and the architecture held through every one of them.
+A coding agent built a 19-table production app on asasvirtuais from a written spec. Ten problems that codebase never had:
 
-**→ [Built by an agent. The architecture never broke.](https://asasvirtuais.dev/never-broke-architecture)**
+1. No type updates by hand across dozens of files after a database change
+2. No pile of server actions, each with its own access to the database
+3. No state management written again on every screen
+4. No permission checks scattered across unrelated files
+5. No stale data, and no components fetching their own data
+6. No business logic mixed with CRUD operations
+7. No long server-side operations where simple steps would do
+8. No new decision about where code goes, session after session
+9. No different error-handling style in every file
+10. No documentation drifting away from the code
+
+**[Read the case study →](https://asasvirtuais.dev/never-broke-architecture)**
 
 ## Experience
 
@@ -47,7 +58,7 @@ A production multi-tenant app: role-based permissions per tenant, approval workf
 Full-stack architecture for early-stage B2B SaaS products in Next.js, React and TypeScript.
 
 **asasvirtuais** · Creator · 2025 – now<br>
-The framework above, and Guild RPG built on it.
+The framework above, and the production apps built on it.
 
 **Freelance** · Full-Stack Engineer · 2024 – 2025<br>
 Top Rated on Upwork (4.8/5). Built CertWorld, an online courses platform, alone from spec to production.
