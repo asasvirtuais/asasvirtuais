@@ -21,13 +21,24 @@ import { ColorSchemeToggle } from '@/components/ui/color-scheme-toggle'
 import { Logo } from '@/components/ui/logo'
 
 const stats = [
-  ['~10', 'working days, Oct 1–12'],
-  ['240', 'commits by the agent'],
-  ['19', 'tables, all read and written through one CRUD interface'],
-  ['50', 'commits that changed the database schema'],
-  ['48', 'commits that changed authorization rules'],
-  ['5', 'structural refactors, each done in a day or less'],
+  ['240', 'commits by a coding agent on a single, unchanging architectural pattern'],
+  ['19', 'database tables, all read and written through one unified CRUD interface'],
+  ['50', 'commits that altered or migrated the database schema without breaking types'],
+  ['48', 'commits that evolved role-based authorization rules inside isolated table middlewares'],
+  ['5', 'full-codebase structural refactors, each completed in a day or less'],
+  ['0', 'times the architecture broke'],
 ]
+
+const links = (
+  <Group gap="sm">
+    <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" radius="md" leftSection={<FaGithub size={14} />}>
+      asasvirtuais on GitHub
+    </Button>
+    <Button component="a" href="https://guildrpg.vercel.app" target="_blank" variant="default" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
+      Open Guild RPG
+    </Button>
+  </Group>
+)
 
 export function CaseStudy({ markdown }: { markdown: string }) {
   return (
@@ -42,28 +53,25 @@ export function CaseStudy({ markdown }: { markdown: string }) {
 
         <Box mt={60} mb={60}>
           <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="sm" style={{ letterSpacing: '1px' }}>
-            Case study · Guild RPG · October 2026
+            Case Study · asasvirtuais
           </Text>
           <Title order={1} fz={{ base: rem(34), sm: rem(46) }} style={{ lineHeight: 1.1, fontWeight: 900 }} mb="xl">
-            Built by an agent. <Text span c="var(--site-accent)" inherit>The architecture never broke.</Text>
+            Never Broke <Text span c="var(--site-accent)" inherit>Architecture</Text>
           </Title>
-          <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }} mb="xl">
-            Guild RPG is a multiplayer play-by-post role-playing game where an AI runs the game. Claude Code built it from a
-            written specification in about ten working days, from a phone. In 240 commits, bugs were rare and quick to find.
-            It is live in production. This page shows what made that possible: a framework,{' '}
-            <Anchor href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank">asasvirtuais</Anchor>, and one
-            instructions file, <code>AGENTS.md</code>, that tells any coding agent where each piece of code goes.
+          <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }} mb="md">
+            asasvirtuais is a framework of architectural decisions for feature-driven development. It locks down how forms,
+            server actions, state, and database operations connect so that every feature is built the same way—whether by a
+            human developer or a coding agent.
           </Text>
-          <Group gap="sm">
-            <Button component="a" href="https://guildrpg.vercel.app" target="_blank" radius="md" rightSection={<FaExternalLinkAlt size={11} />}>
-              Open Guild RPG
-            </Button>
-            <Button component="a" href="https://github.com/asasvirtuais/asasvirtuais-framework" target="_blank" variant="default" radius="md" leftSection={<FaGithub size={14} />}>
-              asasvirtuais on GitHub
-            </Button>
-          </Group>
+          <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }} mb="xl">
+            To test it at scale, an autonomous coding agent built Guild RPG—a live, multi-tenant production platform—strictly
+            within the framework's rules across 240 commits. The architecture never broke, feature velocity never slowed down,
+            and structural tech debt remained practically zero.
+          </Text>
+          {links}
         </Box>
 
+        <Title order={2} mb="md" fz={rem(30)}>Results</Title>
         <SimpleGrid cols={{ base: 2, sm: 3 }} spacing="md" mb={80}>
           {stats.map(([value, label]) => (
             <GlassCard key={label} padding="lg">
@@ -111,28 +119,26 @@ export function CaseStudy({ markdown }: { markdown: string }) {
         <Divider my={80} />
 
         <Box>
-          <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The point</Text>
+          <Text size="sm" c="var(--site-accent)" fw={700} tt="uppercase" mb="md" style={{ letterSpacing: '1px' }}>The framework</Text>
           <Title order={2} fz={{ base: rem(26), sm: rem(34) }} mb="lg" style={{ lineHeight: 1.25 }}>
-            I make codebases <Text span c="var(--site-accent)" inherit>agent-maintainable</Text>, and
-            this case study shows what it accomplished.
+            asasvirtuais
           </Title>
           <Text c="dimmed" size="lg" style={{ marginBottom: 16, lineHeight: 1.7 }}>
-            A multi-tenant app with guilds, roles and permissions, an AI game master, a card economy and approval
-            workflows: 19 tables and 240 commits in about ten working days.
+            Most stacks leave the same architectural questions open on every feature: where client state lives, how a form
+            reaches the server, how lists refresh after a write, and where permission checks sit. Developers and coding agents
+            end up solving those problems over and over, accumulating boilerplate and architectural drift with every commit.
           </Text>
-          <Text c="dimmed" size="lg" style={{ lineHeight: 1.7 }}>
-            All of it maintained by two things: the framework's intelligent design and machine intelligence. The framework
-            decided where every piece of code goes, the agents wrote it, and the architecture{' '}
-            <Text span c="var(--site-text-strong)" fw={700} inherit>never broke</Text>.
+          <Text c="dimmed" size="lg" style={{ marginBottom: 16, lineHeight: 1.7 }}>
+            asasvirtuais answers those questions once at the root. Forms bind directly to server actions, server actions route
+            through domain middleware to database operations, and mutations automatically update a shared reactive index on
+            the client.
           </Text>
-          <Group gap="sm" mt="xl">
-            <Button component="a" href="https://linkedin.com/in/asasvirtuais" target="_blank" radius="md">
-              Talk to me on LinkedIn
-            </Button>
-            <Button component="a" href="/" variant="default" radius="md">
-              About me
-            </Button>
-          </Group>
+          <Text c="dimmed" size="lg" style={{ lineHeight: 1.7 }} mb="xl">
+            Whether used by human engineers or autonomous coding agents, the result is the same: continuous, non-frictional
+            feature delivery where the codebase never wears out and structural tech debt stays at{' '}
+            <Text span c="var(--site-text-strong)" fw={700} inherit>practically zero</Text>.
+          </Text>
+          {links}
         </Box>
       </Container>
     </Box>

@@ -1,119 +1,22 @@
-## What was built
+## How development went
 
-This is not a small demo. It has an in-game economy, roles and permissions, approval workflows and AI calls throughout. Apps with these parts are usually the first to become hard to change.
+Development stayed flat and predictable from the first commit to the 240th.
 
-- **Guilds**: Five roles, per-guild permission settings, member approval, invite and claim links that work signed out.
-- **Characters**: Drafted by the AI from a description, with sheets, portraits, approvals and edits.
-- **A card economy**: A store with stock, orders, crafting, training, custom cards, wallets and logs.
-- **Missions**: An AI game master writes situations, resolves turns, draws scenes and writes the guild's history.
-- **Accounts**: Each player picks their text and image models and their art style.
-- **Around it**: Push notifications, a What's New dialog, a landing page with demos that play themselves.
+- **Exhaustion-free velocity.** Features went in one after another, each wired the exact same way as the one before it. Because new features never introduced competing patterns, the 240th commit was as straightforward to deliver as the first.
+- **Zero architectural guesswork.** The framework already decides how data is fetched, how forms mutate the server, how client state updates, and where authorization lives. The only decisions left during development were about the product itself: what it does and what each screen shows.
+- **Stateless consistency.** Every coding agent session started with a fresh context window and zero memory of the previous session. Guided only by the framework's conventions and a single `AGENTS.md` file, every session placed code in the exact same places.
+- **Obvious debugging.** Bugs were rare, and when one appeared, its location was deterministic: a table's access rules live in its middleware, its data shape in its schema, and its mutations in its forms. There was never a need to grep across the codebase to find where a state bug or permission leak originated.
+- **Painless structural pivots.** When the rules of the framework itself were refined mid-project—moving to one folder per component, isolating permissions into per-table middleware, or shifting all initial data fetching to the server—the agent applied the new rule across the entire 19-table codebase in a day or less while features kept shipping.
 
-## From specs to code
+## Ten things that never happened
 
-`SPECS.md` describes the product in plain words. `PLAN.md` splits it into phases, and the agent builds each phase in one or a few commits. Design work was entirely optional: when the spec didn't say how a screen should look, the agent asked, and the answer was added to the spec.
+In a standard codebase, weeks of rapid feature delivery usually produce diverging patterns: ad-hoc endpoints, duplicated `useState` hooks, scattered permission checks, and stale caches. Because the architecture came solved at the framework level, these ten failure modes never appeared in the codebase.
 
-The framework already decides how data, forms and permissions are written, so the only questions left for the human were about the product: what it does and what each screen shows.
+### 1. No manual state management written on every screen
 
-A few times, the human changed a rule of the framework itself: one folder per component, each table's permission rules in its own middleware, pages that fetch on the server and pass their rows down. Each time, the agent applied the new rule to the whole app in a day or less.
+**Instead:** Every mutation goes through the framework's declarative forms (`CreateForm`, `UpdateForm`, `FilterForm`). Submitting a form writes to the server and automatically updates a shared, in-memory reactive index of that table's rows on the client. Every component reading from that table updates immediately. No component keeps a local `useState` copy of a database row, and nothing ever requires a manual refetch.
 
-Bugs were extremely rare. When one appeared, it was obvious which file it was in: a table's rules are in its middleware, its data shape in its schema, its writes in its forms. The agent went straight to that file instead of searching the whole codebase.
-
-- **Oct 1** · Data model and infrastructure, built from the spec *(Phase 1)*
-- **Oct 1** · Onboarding, quests and multi-tenant groups with membership and invites *(Phases 2–4)*
-- **Oct 1** · An AI game master that runs turn-based sessions for several players *(Phase 5)*
-- **Oct 1** · Session wrap-up: reports, review by the group's council, a public history *(Phase 6)*
-- **Oct 3** · Sessions run entirely by the AI, on the server *(Phase 7)*
-- **Oct 3** · A store, background activities and approval queues *(Phase 8)*
-- **Oct 3** · Onboarding presets per tenant and **per-user AI model settings** *(Phases 8.5–9)*
-- **Oct 3** · A player-driven marketplace with a catalog, tradeable items, batch orders and discounts *(Phases 10–10.1)*
-- **Oct 3** · Multi-step creation flows, review workflows and audit logs *(Phase 10.2)*
-- **Oct 4** · Authorization refactored into one middleware per table *(Phase 10.3)*
-- **Oct 6** · Role-based permissions per tenant, configurable by the owner, with member approval *(Phase 10.4)*
-- **Oct 9** · Inventory with quantities and shared stock, with a data migration *(Phase 11)*
-- **Oct 9** · Custom item requests with a review queue and new permissions *(Phase 11.1)*
-- **Oct 11** · Notifications with web push *(Phase 11.2)*
-
-## Ten problems this codebase never had
-
-When an agent works on a codebase for weeks, it usually starts solving the same problem in different ways, and the code gets harder to change. Below are ten problems of that kind that this app never had. Each one shows what the code does instead, with trimmed code from the app.
-
-### No type updates by hand across dozens of files after a database change
-
-**Instead:** Each table has one zod schema, and it serves as the TypeScript type, the validation and the form fields. `readable` lists what the app reads, `writable` what a client may send. When a column changes, every hook, form and middleware that uses it gets the new type automatically.
-
-**50 commits** changed the database schema in ten days. Splitting the store's items into cards and owned copies renamed tables across the whole economy, in a single commit.
-
-*packages/memberships/schema.ts*
-
-```typescript
-// packages/memberships/schema.ts
-export const roles = ['owner', 'staff', 'counselor', 'emissary', 'member'] as const
-
-export const readable = z.object({
-  id: z.string(),
-  guild: z.string(),
-  user: z.string(),
-  role: z.enum(roles),
-  status: z.enum(['pending', 'active', 'rejected', 'removed']),
-  treasure: z.number().int(),
-  created: z.date(),
-  updated: z.date(),
-})
-
-// What a client may send
-export const writable = readable.pick({
-  guild: true, user: true, role: true, status: true,
-}).partial({ role: true, status: true })
-
-export const schema = { readable, writable }
-export type Readable = z.infer<typeof readable>
-```
-
-### No pile of server actions, each with its own access to the database
-
-**Instead:** There is one CRUD interface: `find`, `list`, `create`, `update`, `remove`. Each operation passes the call to the middleware of the table it is for. Any other table is refused. To review security, you read this one file and one middleware file per table. There are no scattered endpoints to find.
-
-Adding a table to the app means adding one line to this switch.
-
-*app/actions.ts*
-
-```typescript
-// app/actions.ts: the only way into the database
-'use server'
-
-function middleware(table?: string) {
-  switch (table) {
-    case 'users': return users
-    case 'guilds': return guilds
-    case 'memberships': return memberships
-    case 'characters': return characters
-    case 'missions': return missions
-    // … one line per table, 19 in all
-    default: throw new Error('Forbidden')
-  }
-}
-
-const crud = makeSchemaTableInterface(schema, null, {
-  find:   async (props) => middleware(props.table).find(props),
-  list:   async (props) => middleware(props.table).list(props),
-  create: async (props) => middleware(props.table).create(props),
-  update: async (props) => middleware(props.table).update(props),
-  remove: async (props) => middleware(props.table).remove(props),
-})!
-
-export const find   = action(crud.find)
-export const list   = action(crud.list)
-export const create = action(crud.create)
-export const update = action(crud.update)
-export const remove = action(crud.remove)
-```
-
-### No state management written again on every screen
-
-**Instead:** Writes go through the framework's forms: `CreateForm`, `UpdateForm`, `FilterForm`. A flag or a role is an `UpdateForm` with one field. The saved row goes into a shared, in-memory index of the table's rows, and every component showing that table updates from it. Nobody keeps a `useState` copy of a row that can go out of date.
-
-Changing a member's role from a select updates the members list. No reload and no hand-written optimistic update.
+Changing a member's role from a dropdown updates the members list across the screen with zero state boilerplate or hand-written optimistic updates.
 
 *members/component.tsx · packages/memberships/forms.tsx*
 
@@ -144,16 +47,55 @@ export function RemoveMembership({ children }) {
 }
 ```
 
-### No permission checks scattered across unrelated files
+### 2. No pile of loose endpoints accessing the database
 
-**Instead:** Each table has one `middleware.ts`, next to its schema, with every rule for that table: who can read rows (`find`, `list`), and what is checked before and done after each write (`create`, `update`, `remove`). To know who may change a membership, you read the memberships middleware. Nothing else.
+**Instead:** There is only one CRUD interface into the database: `find`, `list`, `create`, `update`, `remove`. Every database call passes through a single switch that routes the operation to the target table's middleware. Unregistered tables are rejected. Auditing database access across the entire application means reading this single file and one middleware file per table.
 
-**48 commits** added roles, permissions, approvals and review queues. Each change was made in the middleware of the table it was about.
+Adding a new table to the backend means adding one line to this switch.
+
+*app/actions.ts*
+
+```typescript
+// app/actions.ts: the only gateway into the database
+'use server'
+
+function middleware(table?: string) {
+  switch (table) {
+    case 'users': return users
+    case 'guilds': return guilds
+    case 'memberships': return memberships
+    case 'characters': return characters
+    case 'missions': return missions
+    // … one line per table, 19 in all
+    default: throw new Error('Forbidden')
+  }
+}
+
+const crud = makeSchemaTableInterface(schema, null, {
+  find:   async (props) => middleware(props.table).find(props),
+  list:   async (props) => middleware(props.table).list(props),
+  create: async (props) => middleware(props.table).create(props),
+  update: async (props) => middleware(props.table).update(props),
+  remove: async (props) => middleware(props.table).remove(props),
+})!
+
+export const find   = action(crud.find)
+export const list   = action(crud.list)
+export const create = action(crud.create)
+export const update = action(crud.update)
+export const remove = action(crud.remove)
+```
+
+### 3. No permission checks scattered across unrelated files
+
+**Instead:** Each table has a single `middleware.ts` file sitting next to its schema. It defines every rule for that domain: who can read rows (`find`, `list`), what pre-flight authorization is checked before a write (`create`, `update`, `remove`), and what side effects must follow a write inside the same operation. To know who is allowed to modify a membership, you read the memberships middleware—nothing else.
+
+**48 commits** added roles, tenant permissions, approval workflows, and review queues. Every change stayed confined to the middleware of the table it governed.
 
 *packages/memberships/middleware.ts*
 
 ```typescript
-// packages/memberships/middleware.ts: its shape, rules left out
+// packages/memberships/middleware.ts: domain rules in one place
 export const memberships = makeSchemaTableInterface({ memberships: schema }, 'memberships', {
   find: async (props) => {
     const row = await db.find(props)
@@ -162,13 +104,13 @@ export const memberships = makeSchemaTableInterface({ memberships: schema }, 'me
   },
   list: async (props) => {
     const rows = await db.list(props)
-    // read rules: keep the rows this user may see
+    // read rules: keep only the rows this user may see
     return rows
   },
   create: async (props) => {
     // pre-flight: who may write, and is the data valid?
     const row = await db.create(props)
-    // side effects: notifications, records that follow
+    // side effects: notifications, records that must follow
     return row
   },
   update: async (props) => {
@@ -181,18 +123,16 @@ export const memberships = makeSchemaTableInterface({ memberships: schema }, 'me
 })!
 ```
 
-### No stale data, and no components fetching their own data
+### 4. No stale data, and no client components fetching on mount
 
-**Instead:** Each page runs on the server, fetches the rows its components show and passes them down. Components read those rows and filter them. They don't fetch anything when they appear. Every save goes through a form that updates the shared rows, so nothing on screen goes stale and no cache needs clearing.
+**Instead:** Every page runs as a Server Component, fetches the exact rows its tree needs, and hands them down to the client table providers via `asAbove`. Client components read and filter that shared index synchronously—they never trigger their own fetches when they mount. Because every subsequent save goes through a form that mutates that same shared index, nothing on screen goes out of date and no route cache needs clearing.
 
-One commit, *Pages fetch on the server and hand rows down with asAbove*, moved the whole app to this pattern.
-
-*guild/\[slug\]/members/page.tsx · components/members*
+*guild/[slug]/members/page.tsx · components/members*
 
 ```typescript
-// app/(app)/guild/[slug]/members/page.tsx: a Server Component
+// app/(app)/guild/[slug]/members/page.tsx: Server Component hydrates the index
 export default async function GuildMembersPage({ params }) {
-  // … the guild, and the viewer's permission to manage members
+  // … resolves guild and viewer permissions
   const memberships = ok(await list({ table: 'memberships', query: { guild: guild.id, status: { $in: ['active', 'pending'] } } }))
   const users = ok(await list({ table: 'users', query: { id: { $in: memberships.map((row) => row.user) } } }))
 
@@ -206,7 +146,7 @@ export default async function GuildMembersPage({ params }) {
   )
 }
 
-// components/members/component.tsx: reads the table, never fetches
+// components/members/component.tsx: reads the index synchronously, never fetches
 export function MembersList() {
   const { single: guild } = useGuild()
   const { single: actor } = useMembership()
@@ -223,25 +163,57 @@ export function MembersList() {
 }
 ```
 
-### No business logic mixed with CRUD operations
+### 5. No manual type updates across dozens of files after a schema change
 
-**Instead:** A table's middleware does three things only: it checks who may do the operation and what was sent, it writes, and it runs what must follow the write. Everything else (AI generation, previews, calls to outside services) is its own server action, kept next to the component that uses it. It returns a result and saves nothing. A form saves the result, through the same CRUD as everything else.
+**Instead:** Each table defines one Zod schema split into `readable` (what the database returns) and `writable` (what a client is permitted to submit). That single definition drives the TypeScript types, the runtime validation, the reactive hooks, and the form fields. When a column changes, every hook, form, and middleware referencing that table inherits the updated type automatically.
 
-The CRUD stayed small and predictable while the AI features changed constantly. The default text model alone changed six times in ten days, a few lines each time.
+**50 commits** modified the database schema in ten days—including splitting the store's core items into separate cards and owned copies tables across the entire economy in a single commit.
 
-*components/describe (trimmed)*
+*packages/memberships/schema.ts*
 
 ```typescript
-// components/describe/actions.tsx: business logic, outside the CRUD
+// packages/memberships/schema.ts
+export const roles = ['owner', 'staff', 'counselor', 'emissary', 'member'] as const
+
+export const readable = z.object({
+  id: z.string(),
+  guild: z.string(),
+  user: z.string(),
+  role: z.enum(roles),
+  status: z.enum(['pending', 'active', 'rejected', 'removed']),
+  treasure: z.number().int(),
+  created: z.date(),
+  updated: z.date(),
+})
+
+// What a client may send
+export const writable = readable.pick({
+  guild: true, user: true, role: true, status: true,
+}).partial({ role: true, status: true })
+
+export const schema = { readable, writable }
+export type Readable = z.infer<typeof readable>
+```
+
+### 6. No business logic mixed into CRUD operations
+
+**Instead:** Table middleware is strictly for authorization, persistence, and transactional side effects. Everything else—AI generation, previews, calls to external services—lives in a dedicated server action placed next to the component that triggers it. Those actions compute and return a result without touching the database, and a standard form saves the result through the unified CRUD.
+
+The CRUD layer stayed small and stable while AI features evolved rapidly. The default text model changed six times in ten days, requiring only a few lines each time.
+
+*components/describe*
+
+```typescript
+// components/describe/actions.tsx: stateless business logic outside the CRUD
 'use server'
 
 export const draftCharacter = action(async (params) => {
-  // check who is asking
+  // verify caller
   const draft = await generateObject({ /* task, prompt, schema */ })
-  return draft   // returned, not saved: a form saves it
+  return draft   // returned to the client, not saved; the form saves it
 })
 
-// components/describe/component.tsx: the form that saves it
+// components/describe/component.tsx: the form receives the draft and saves it
 <CreateCharacter>
   {(character) => (
     <Draft action={draftCharacter} onResult={(draft) => character.setFields(draft)}>
@@ -251,16 +223,16 @@ export const draftCharacter = action(async (params) => {
 </CreateCharacter>
 ```
 
-### No long server-side operations where simple steps would do
+### 7. No monolithic server operations where composable steps belong
 
-**Instead:** When an operation could be split into steps, the steps ran on the client. Each step is a small action nested inside the form that saves the record, and its result fills the form (`onResult`). The user sees each result as soon as it is ready, can change or redo it, and one ordinary save writes the record.
+**Instead:** Multi-step workflows are orchestrated declaratively on the client by nesting `ActionProvider` or inner `Form` blocks inside the outer persistence form. Each step runs its own async action and pipes its output into the parent form's fields via `onResult`. The user sees each intermediate result immediately, can edit or regenerate it, and commits the final record with one ordinary save.
 
-Creating a mission shows the AI's draft first, then its cover, instead of one long request that ends with everything or nothing. Steps stayed on the server only where an interruption could leave a record in a stale state.
+Creating a mission drafts the text with AI first, then generates the cover art into the form, rather than blocking on a single brittle server request. Operations only stayed bundled on the server when an interruption would leave data in a corrupted state.
 
 *missions/new/components/form/component.tsx*
 
 ```typescript
-// missions/new: the AI steps nested inside the form that saves
+// missions/new: AI steps nested declaratively inside the persistence form
 <CreateMission
   defaults={{ guild: guild.id, title: '', premise: '', goal: '', cover: null }}
   onSuccess={(mission) => router.push(`/mission/${mission.id}`)}
@@ -273,7 +245,7 @@ Creating a mission shows the AI's draft first, then its cover, instead of one lo
     >
       {(cover) => (
         <>
-          {/* 1. The AI drafts the mission into the form */}
+          {/* 1. The AI drafts the mission fields into the form */}
           <PromptFill
             action={(prompt) => draftMission({ prompt, guild: guild.id })}
             onResult={(draft) => mission.setFields({ ...mission.fields, ...draft })}
@@ -284,7 +256,7 @@ Creating a mission shows the AI's draft first, then its cover, instead of one lo
           {/* 2. The AI draws the cover into the form */}
           <button onClick={cover.submit} disabled={cover.loading}>Draw Cover</button>
 
-          {/* 3. One write, through the CRUD */}
+          {/* 3. One ordinary write through the CRUD */}
           <button onClick={mission.submit} disabled={mission.loading}>Create Mission</button>
         </>
       )}
@@ -293,11 +265,11 @@ Creating a mission shows the AI's draft first, then its cover, instead of one lo
 </CreateMission>
 ```
 
-### No new decision about where code goes, session after session
+### 8. No recurring decisions about where files belong
 
-**Instead:** New code has a fixed place before it is written. Every table gets a package with the same files as every other table. Every page keeps its components in `components/`, one folder per component, with its server actions in the same folder. Each agent session started with no memory of the last one, and each one still put code in the same places.
+**Instead:** Every piece of code has a fixed location before it is written. Every table gets a package in `packages/{table}/` with the exact same six files. Every route keeps its UI components in `components/`, one directory per component, with component-specific server actions colocated right beside it.
 
-19 table packages with the same files. Read one, and you know where everything is in the others.
+There are 19 table packages with identical structure. Understand one, and you know where every file lives across the entire repository.
 
 *packages/ · app/*
 
@@ -311,50 +283,46 @@ packages/memberships/        one table, one directory
   fields.tsx                 inputs for the forms
 
 app/(app)/mission/[id]/      one route
-  page.tsx                   fetches its rows, provides its tables
+  page.tsx                   fetches its rows, hydrates its table providers
   components/
     brief/component.tsx      one directory per component
     closing/component.tsx
-    closing/actions.tsx      its server actions, next to it
+    closing/actions.tsx      its server actions, colocated next to it
     engine/actions.tsx
     engine/hooks.tsx
     participants/component.tsx
 ```
 
-### No different error-handling style in every file
+### 9. No competing error-handling styles
 
-**Instead:** Every server action is wrapped in `action()`. In production, Next.js hides the message of a thrown error, so `action()` returns the message instead and the client throws it again. Every form shows errors the same way. Checks fail with `Forbidden` or `Unauthorized`, and the player sees that message.
-
-One small file handles errors for every action in the app.
+**Instead:** Every server action is wrapped in a single `action()` helper. Because Next.js strips error messages from thrown server errors in production, `action()` catches application errors and returns `{ error: message }` while rethrowing framework redirects and `notFound()` calls. On the client, the provider unwraps the response and throws the message so every form surfaces `.error.message` identically.
 
 *lib/action.ts · app/providers.tsx*
 
 ```typescript
-// lib/action.ts: every server action is wrapped the same way
+// lib/action.ts: every server action is wrapped identically
 export function action(work) {
   return async (...params) => {
     try {
       return await work(...params)
     } catch (error) {
       unstable_rethrow(error)          // redirects and notFound() still throw
-      return { error: error.message }  // production would hide the message
+      return { error: error.message }  // preserves the message in production
     }
   }
 }
 
-// app/providers.tsx: the client throws it again, so every form shows it
+// app/providers.tsx: the client unwraps and rethrows so forms catch it uniformly
 const crud = unwrap(actions)
 <InterfaceProvider {...crud}>{children}</InterfaceProvider>
 
-// in any form
+// inside any form
 {order.error && <p>{order.error.message}</p>}
 ```
 
-### No documentation drifting away from the code
+### 10. No documentation drifting away from the code
 
-**Instead:** Keeping the docs current is one of the rules, so the agent updates them in the same commit as the code. `SPECS.md` says what the product is, in plain words, and every rule in the code can be traced back to it. `PLAN.md` says what comes next, `CHANGELOG.md` what changed, and the in-app What's New tells players.
-
-After ten days, the specification still matches the app in production.
+**Instead:** Updating the documentation in the same commit as the code is an enforced workflow rule. `SPECS.md` defines the product behavior in plain language, and every domain rule in the codebase traces back to it. `PLAN.md` sequences upcoming phases, `CHANGELOG.md` records completed work, and an in-app What's New dialog surfaces changes to players. After 240 commits, the written specification still matches the live production system.
 
 *SPECS.md (excerpt)*
 
@@ -373,12 +341,30 @@ There is no separate approvals table.
 | Sheet edit  | revision `pending`    | the sheet is replaced       |
 ````
 
-## Big changes took a day or less
+## Five full-app refactors, each done in a day or less
 
-An architecture is really tested when the product changes its mind. Each of these structural changes was done in a day or less, while new features kept shipping.
+An architecture proves its resilience when the structure or domain model changes mid-flight. Each of these codebase-wide changes was completed in a day or less while feature delivery continued uninterrupted:
 
-- **Oct 2** · The whole app rebuilt with one folder per component: *Rebuild on the component-directory architecture*
-- **Oct 4** · Every table's rules moved into its own middleware, in seven steps on one day: *Phase 10.3a to 10.3g*
-- **Oct 7** · Every page switched to fetching on the server: *Pages fetch on the server and hand rows down with asAbove*
-- **Oct 9** · The economy's core tables renamed and split: *SKUs become cards, owned cards become copies*
-- **Oct 9** · Owned items became quantities, with a migration remapping every reference: *Phase 11: copy quantities and guild stock*
+- **Oct 2 — Component-directory refactor:** The entire UI layer was reorganized into one directory per component with colocated server actions.
+- **Oct 4 — Per-table middleware isolation:** Authorization rules across the entire application were extracted and unified into isolated `middleware.ts` files per table across seven sequential commits in a single day.
+- **Oct 7 — Server-first data hydration:** Every page across the app was switched to fetch rows in Server Components and hydrate client table providers via `asAbove`.
+- **Oct 9 — Economy table split:** The store's core tables were renamed and split mid-flight—turning SKUs into cards and owned items into copies across the whole economy.
+- **Oct 9 — Inventory quantity migration:** Owned items were converted into stackable quantities with guild-wide shared stock, including a data migration remapping every existing reference.
+
+## The production app: Guild RPG
+
+The test application built on asasvirtuais is Guild RPG, a multiplayer play-by-post role-playing platform with an in-game economy, multi-tenant permissions, approval workflows, and AI orchestration throughout:
+
+- **Multi-tenant guilds:** Five role tiers, per-guild configurable permissions, member approval queues, and invite/claim links that work while signed out.
+- **AI-drafted characters:** Character sheets and portraits generated from plain-text descriptions, complete with revision approval flows.
+- **A card economy:** A guild store with shared stock, batch orders, crafting, training, custom card requests, player wallets, and transaction logs.
+- **Autonomous AI missions:** An AI game master that sets scenes, resolves multi-player turns, illustrates moments, and compiles the guild's canon history.
+- **Player model routing:** Per-user selection of text models, image generation models, and visual art styles.
+- **Platform features:** Web push notifications, an automated What's New feed, and interactive self-playing demos on the landing page.
+
+Delivery timeline across 14 phases:
+
+- **Oct 1 (Phases 1–6):** Core data model, onboarding, multi-tenant guilds, turn-based AI game master sessions, council review workflows, and public guild histories.
+- **Oct 3 (Phases 7–10.2):** Server-autonomous AI sessions, store and background activities, per-tenant onboarding presets, player marketplace with batch orders, multi-step creation flows, and audit logs.
+- **Oct 4–6 (Phases 10.3–10.4):** Full refactoring of authorization into per-table middleware and owner-configurable role permissions per guild.
+- **Oct 9–11 (Phases 11–11.2):** Inventory quantity and shared stock migration, custom item review queues, and web push notifications.

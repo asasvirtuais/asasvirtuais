@@ -3,8 +3,8 @@ import path from 'node:path'
 import { Metadata } from 'next'
 import { CaseStudy } from './case-study'
 
-const title = 'Built by an agent. The architecture never broke. | asasvirtuais.dev'
-const description = 'Case study: Guild RPG, a live multiplayer AI game built by Claude Code on the asasvirtuais framework in ten working days. 240 commits, 19 tables, and the architecture never broke.'
+const title = 'Never Broke Architecture | asasvirtuais.dev'
+const description = 'Case study: an autonomous coding agent built Guild RPG, a live multi-tenant platform, strictly within the asasvirtuais framework across 240 commits. The architecture never broke.'
 
 export const metadata: Metadata = {
   title,
