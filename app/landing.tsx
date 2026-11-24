@@ -43,7 +43,7 @@ export default function Landing() {
       <Fabric />
 
       <header className="av-top">
-        <a href="/" className="av-mark">ASAS VIRTUAIS</a>
+        <a href="/" className="av-mark"><span className="av-code">&lt;/&gt;</span>ASAS VIRTUAIS</a>
         <button className="av-lang" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label="Idioma / Language">
           <span className={lang === 'pt' ? 'on' : ''}>PT</span>
           <span className="sep">/</span>
@@ -199,6 +199,8 @@ const css = `
   font-family: var(--font-montserrat), var(--font-inter), sans-serif;
   font-weight: 700; font-size: 14px; letter-spacing: 0.42em;
 }
+.av-mark { display: inline-flex; align-items: center; gap: 14px; }
+.av-code { font-family: var(--font-inter), sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0; }
 .av-lang {
   background: none; border: 0; color: #000; cursor: pointer;
   font: inherit; font-size: 12px; letter-spacing: 0.18em; padding: 6px 0;
