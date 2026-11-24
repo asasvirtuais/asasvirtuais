@@ -12,7 +12,7 @@ const LINKS = {
   framework: 'https://github.com/asasvirtuais/asasvirtuais-framework',
   caseStudy: '/never-broke-architecture',
   fastTrack: 'https://fasttrackbta.us',
-  linkedinCompany: '', // ex.: https://www.linkedin.com/company/asasvirtuais
+  linkedinCompany: 'https://www.linkedin.com/company/asasvirtuaisdev',
   linkedinPersonal: 'https://www.linkedin.com/in/asasvirtuais',
   x: '', // ex.: https://x.com/asasvirtuais
   email: 'mailto:icaro@asasvirtuais.dev?subject=Consultoria',
