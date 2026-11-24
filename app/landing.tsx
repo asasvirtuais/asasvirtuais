@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 const LINKS = {
   framework: 'https://github.com/asasvirtuais/asasvirtuais-framework',
   fastTrack: 'https://fasttrackbta.us',
-  linkedin: 'https://www.linkedin.com/company/asasvirtuaisdev',
+  linkedin: 'https://www.linkedin.com/company/asasvirtuaiscom',
   x: '', // ex.: https://x.com/asasvirtuais
   email: 'mailto:icaro@asasvirtuais.dev?subject=Consultoria',
 }
