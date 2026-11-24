@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
       { source: '/guild-rpg', destination: '/never-broke-architecture', permanent: true },
     ]
   },
+  async headers() {
+    return [
+      { source: '/brand/:path*', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] },
+    ]
+  },
   async rewrites() {
     return {
       // asasvirtuais.dev keeps the old full site at its root; asasvirtuais.com gets the minimal landing.

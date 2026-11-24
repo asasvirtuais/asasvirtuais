@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 
 const LINKS = {
   framework: 'https://github.com/asasvirtuais/asasvirtuais-framework',
-  caseStudy: '/never-broke-architecture',
   fastTrack: 'https://fasttrackbta.us',
   linkedin: 'https://www.linkedin.com/company/asasvirtuaisdev',
   x: '', // ex.: https://x.com/asasvirtuais
@@ -16,7 +15,6 @@ const COPY = {
     kicker: 'Consultoria em agentes de código aplicado',
     title: ['Arquitetura que', 'agentes de código', 'não quebram.'],
     framework: 'Framework',
-    caseStudy: 'Case study',
     contact: 'Contato',
     bta: 'Entrega em uma semana',
   },
@@ -24,7 +22,6 @@ const COPY = {
     kicker: 'Applied coding agents consulting',
     title: ['Architecture', 'coding agents', "can't break."],
     framework: 'Framework',
-    caseStudy: 'Case study',
     contact: 'Contact',
     bta: 'One-week delivery',
   },
@@ -61,7 +58,6 @@ export default function Landing() {
         </h1>
         <nav className="av-links">
           <a href={LINKS.framework} target="_blank" rel="noreferrer">{t.framework}<i>↗</i></a>
-          <a href={LINKS.caseStudy}>{t.caseStudy}<i>→</i></a>
           <a href={LINKS.email}>{t.contact}<i>→</i></a>
         </nav>
       </section>
