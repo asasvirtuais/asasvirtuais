@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
       { source: '/guild-rpg', destination: '/never-broke-architecture', permanent: true },
     ]
   },
+  async rewrites() {
+    return {
+      // asasvirtuais.dev keeps the old full site at its root; asasvirtuais.com gets the minimal landing.
+      beforeFiles: [
+        { source: '/', has: [{ type: 'host', value: '(www\\.)?asasvirtuais\\.dev' }], destination: '/servicos' },
+      ],
+    }
+  },
 }
 
 export default nextConfig
