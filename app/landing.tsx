@@ -15,14 +15,14 @@ const COPY = {
     kicker: 'Consultoria em agentes de código aplicado',
     title: ['Arquitetura que', 'agentes de código', 'não quebram.'],
     framework: 'Framework',
-    contact: 'Contato',
+    contact: 'Mande mensagem no LinkedIn',
     bta: 'Entrega em uma semana',
   },
   en: {
     kicker: 'Applied coding agents consulting',
     title: ['Architecture', 'coding agents', "can't break."],
     framework: 'Framework',
-    contact: 'Contact',
+    contact: 'Message us on LinkedIn',
     bta: 'One-week delivery',
   },
 }
@@ -58,7 +58,7 @@ export default function Landing() {
         </h1>
         <nav className="av-links">
           <a href={LINKS.framework} target="_blank" rel="noreferrer">{t.framework}<i>↗</i></a>
-          <a href={LINKS.email}>{t.contact}<i>→</i></a>
+          <a href={LINKS.linkedin} target="_blank" rel="noreferrer">{t.contact}<i>↗</i></a>
         </nav>
       </section>
 
