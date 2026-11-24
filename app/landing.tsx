@@ -16,14 +16,14 @@ const COPY = {
     title: ['Arquitetura que', 'agentes de código', 'não quebram.'],
     framework: 'Framework',
     contact: 'Mande mensagem no LinkedIn',
-    bta: 'Entrega em uma semana',
+    bta: 'Business Tools & Apps',
   },
   en: {
     kicker: 'Applied coding agents consulting',
     title: ['Architecture', 'coding agents', "can't break."],
     framework: 'Framework',
     contact: 'Message us on LinkedIn',
-    bta: 'One-week delivery',
+    bta: 'Business Tools & Apps',
   },
 }
 
